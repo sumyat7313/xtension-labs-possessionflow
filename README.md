@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/likalight1/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://github.com/likalight1/xtension-labs-possessionflow/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/likalight1/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
   <a href="docs/verification.json"><img src="https://img.shields.io/badge/tests-53%20verified-31b88a" alt="53 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
