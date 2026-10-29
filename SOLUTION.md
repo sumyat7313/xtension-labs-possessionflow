@@ -1,12 +1,8 @@
-# Xtension Labs — PossessionFlow 1.2
+# Xtension Labs — PossessionFlow 1.3.0
 
-Local team-possession inference for More than a Hack 2027 Phase 1. The current
-release is **control-spell-balanced-l2-0.001-cost-1**. Model selection used other matches with independent
-validation and a final test; it did not use the competition public labels.
+Selected **camera-context** and refitted its control head on all seven public matches.
 
-Read [the technical report](docs/TECHNICAL_REPORT.md),
-[training results](docs/CONTROL_CAMPAIGN.md), and
-[independent model review](docs/REVIEW_V2.md).
+See [the technical report](docs/TECHNICAL_REPORT.md), [current development evidence](docs/ROBUST_CAMPAIGN.md), and [historical v1.2 evidence](docs/CONTROL_CAMPAIGN.md).
 
 ## Run the submission
 
@@ -53,36 +49,13 @@ requested model is missing. `--tracking-only` explicitly disables tactical tags.
 ## Training and evidence
 
 ```bash
-python tools/train_control.py --download --out runs/campaign-reproduction
-python tools/audit_observations.py --output runs/observation-audit.json
+python tools/train_robust.py --data-dir data/external/idsse --out runs/campaign-reproduction
 ```
 
-External data is the [IDSSE/Sportec dataset](https://doi.org/10.6084/m9.figshare.28196177)
-by Bassek, Rein, Weber and Memmert (2025), CC BY 4.0. Its references are used only
-as targets or scores, never inference features. See the model and selection JSON
-for training provenance and the technical report for transformations and attribution.
-
-The 15-candidate control campaign uses two whole training matches, two development
-matches and three fresh final matches. J03WMX is now development data. Clean and deterministic degraded inputs are compared separately.
-The public five-minute competition labels are not a tuning or model-selection set.
-`python -m possession evaluate` remains available for correctness checks, but it
-was not used to select or retune the current release. Historical public scores
-must not be presented as scores for changed predictions.
-
-Tests cover parsing/alignment, physical scaling, half isolation, feature symmetry,
-unknown-target exclusion, train-only scaling, deterministic fitting and model
-serialization, exact temporal decoding, validation selection gates, label leakage,
-model snapshots and data-excluding packaging. A full synthetic demonstration is
-available through `python -m possession demo`; it cannot be packaged as a submission.
+The runner verifies seven public IDSSE/Sportec filesets and records its fixed protocol before fitting. All matches are previously exposed development data. Whole scored matches are excluded from their control fit; the frozen dead head's training matches are not scored. No competition reference labels are loaded. See the campaign document for CC BY attribution, fixed candidates and release gates.
 
 ## Submission status
 
-The prepared team name is **Xtension Labs**. Local files do not constitute a form
-submission. A public source repository URL and the organiser's emailed Google Form
-are still required; team eligibility must also be confirmed. The published deadline
-is November 17, 2026, without a time/timezone in the repository.
+Team: **Xtension Labs**. The repository remains private. Prepared files are not a form submission. The organizer's public-source requirement, emailed submission form and team eligibility remain outstanding. The published deadline is November 17, 2026, without a time/timezone in the repository.
 
-No hidden-match score or winning rank is claimed. External tracking is cleaner
-than the competition recording; occlusions, false tags, aerial duels and referee
-decisions remain limitations. The organiser's original licence is retained in
-`LICENSE`; the external data and derived trained model require their CC BY attribution.
+Hidden competition accuracy and ranking are unknown.

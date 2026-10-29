@@ -5,10 +5,10 @@
 <p align="center">
   <a href="https://github.com/likalight1/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/verification.json"><img src="https://img.shields.io/badge/tests-93%20verified-31b88a" alt="93 tests verified locally"></a>
+  <a href="docs/verification.json"><img src="https://img.shields.io/badge/tests-125%20verified-31b88a" alt="125 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
-  <img src="https://img.shields.io/badge/release-1.2.0-112b36" alt="Release 1.2.0">
+  <img src="https://img.shields.io/badge/release-1.3.0-112b36" alt="Release 1.3.0">
 </p>
 
 <p align="center">
@@ -28,13 +28,13 @@
 
 PossessionFlow assigns a possession label to every video frame using tactical player and ball tracking plus automatic event tags. A learned live/dead-ball classifier detects stoppages, a symmetric control model identifies the team in possession, and temporal decoding turns noisy observations into coherent possession intervals.
 
-The selected **1.2 model** includes frozen stoppage weights and the new spell-balanced team-control head. Inference runs locally on a CPU with no API keys or retraining. The release contains the complete **199,319-frame BAR–ATH prediction**, its provenance, and the evidence behind model selection.
+Release **1.3.0** includes the complete **199,319-frame prediction**, reproducible source and frozen model weights. Selected **camera-context** and refitted its control head on all seven public matches.
 
-- **Learned control and stoppages:** 52 team-control features plus 58 live/dead features, trained on two external matches with separate development and final matches.
-- **Short-possession sensitivity:** training-only spell balancing and validated transition costs reduce missed control changes.
-- **Reproducibility:** frozen weights, pinned dependencies, input/output hashes, and a verified byte-identical clean-source reproduction.
-- **Auditable evaluation:** clean and degraded tracking benchmarks, leakage checks, and explicit release gates.
-- **Portable delivery:** Python CLI, Windows launcher, synthetic demo, and dataset-free CI.
+- **Camera-aware training:** moving field-of-view clipping, detector gaps, duplicate and false detections, fragmented player slots.
+- **Possession-change evidence:** contested touches, reach, acceleration and directional context.
+- **Missing-ball branch:** bounded observation context and coverage-weighted team geometry.
+- **Auditable selection:** fixed ablations, whole-match folds, explicit regression gates and baseline fallback.
+- **Portable reproduction:** CPU-only inference, pinned dependencies, hashes and clean-source verification.
 
 ## Quick start
 
@@ -74,23 +74,19 @@ Windows users can also run `./run-challenge.ps1 -Action Predict`; pass `-PythonP
 
 ## Results
 
-Release **1.2** was selected from 15 fixed candidates on J03WN1 and the previously exposed J03WMX. Training used J03WOH + J03WOY. The frozen winner then passed the release gate on **three fresh final matches**, compared with the exact released v1.1 model.
+The latest campaign compared four alternatives with v1.2 across five scored matches and three tracking conditions. **All seven available matches were previously exposed: these are development CV results, not an untouched test or leaderboard score.** Each control fit excludes its scored match fold.
 
-| Fresh final match | Tracking | v1.1 spell F1 | v1.2 spell F1 | Gain |
-| :--- | :--- | ---: | ---: | ---: |
-| J03WPY | clean | 0.4207 | **0.4985** | +0.0778 |
-| J03WPY | degraded | 0.2847 | **0.3369** | +0.0522 |
-| J03WQQ | clean | 0.4610 | **0.5542** | +0.0932 |
-| J03WQQ | degraded | 0.3171 | **0.3974** | +0.0803 |
-| J03WR9 | clean | 0.4343 | **0.5245** | +0.0902 |
-| J03WR9 | degraded | 0.2844 | **0.3397** | +0.0553 |
-| **Equal-cell mean** | **6 conditions** | **0.3670** | **0.4419** | **+0.0748** |
+| Candidate | Mean spell F1 | Transition recall | <2s spell recall | Gate |
+| --- | ---: | ---: | ---: | --- |
+| release-1.2 | 0.4409 | 0.2976 | 0.0861 | baseline |
+| camera-context | 0.4776 | 0.3735 | 0.1434 | pass |
+| camera-context-fast | 0.4507 | 0.4281 | 0.1793 | fail |
+| camera-control | 0.4442 | 0.3092 | 0.0882 | fail |
+| context-control | 0.4746 | 0.3972 | 0.1600 | pass |
 
-![Independent final-test comparison](assets/control-benchmark.png)
+Selected **camera-context** and refitted its control head on all seven public matches.
 
-Mean spell-F1 gain was **+0.0748**. Every match/regime cell met the predeclared non-regression gate. Short possessions remain difficult, and clean/degraded variants are correlated observations of each match. These are external results, not a hackathon leaderboard score; the hidden competition score is unknown.
-
-See the [full campaign and diagnostic tables](docs/CONTROL_CAMPAIGN.md), [independent review](docs/REVIEW_V2.md), and [machine-readable evidence](models/control-selection.json). The [v1.1 campaign](docs/TRAINING_CAMPAIGN.md) remains available for historical comparison.
+See [the protocol and full outcome](docs/ROBUST_CAMPAIGN.md) and [machine-readable evidence](models/robust-selection.json). The historical v1.2 campaign improved mean spell F1 from **0.3670 to 0.4419** on its then-fresh final matches; those matches are now exposed. Its [original evidence](docs/CONTROL_CAMPAIGN.md) and [source archive](models/baselines/v1.2-source.zip) remain preserved.
 
 ## How it works
 
@@ -99,7 +95,7 @@ flowchart LR
     A[Tactical tracking] --> C[Aligned observations]
     B[Automatic event tags] --> C
     C --> D[58-feature live/dead model]
-    C --> E[52-feature symmetric control model]
+    C --> E[98-feature symmetric control model]
     D --> F[Duration-aware joint decoding]
     E --> F
     F --> G[Frame labels and possession intervals]
@@ -111,10 +107,10 @@ The pipeline separates match halves, checks physical scaling, handles missing ob
 To reproduce the external training campaign:
 
 ```bash
-python tools/train_control.py --download --out runs/campaign-reproduction
+python tools/train_robust.py --data-dir data/external/idsse --out runs/campaign-reproduction
 ```
 
-This downloads approximately 2.62 GB of external match data. It is an optional research step; inference uses the packaged weights. The [campaign protocol](docs/CONTROL_CAMPAIGN.md) records match separation, degradation, selection, and release gates.
+Obtain the seven public IDSSE/Sportec filesets (approximately 2.62 GB) first. Training is an optional research step; inference uses the packaged weights. The [campaign protocol](docs/ROBUST_CAMPAIGN.md) records whole-match folds, camera augmentation, selection and release gates. All results are development CV.
 
 ## Submission artifacts
 
@@ -123,14 +119,14 @@ This downloads approximately 2.62 GB of external match data. It is an optional r
 | [Xtension Labs.csv](submission/Xtension%20Labs.csv) | Validated prediction for all 199,319 video frames |
 | [Xtension Labs.md](submission/Xtension%20Labs.md) | Technical submission document |
 | [models/submission.json](models/submission.json) | Frozen selected model and training provenance |
-| [models/control-selection.json](models/control-selection.json) | Candidate selection evidence |
+| [models/robust-selection.json](models/robust-selection.json) | Current development CV and selection evidence |
 | [submission/manifest.json](submission/manifest.json) | Input, code, model, configuration, and output hashes |
-| [submission/verification.json](submission/verification.json) | Recorded release checks and final-test results |
+| [submission/verification.json](submission/verification.json) | Recorded release checks and development-CV status |
 
 CSV SHA-256:
 
 ```text
-005773891ee98672c89b9bb280aa60a03adf3bdbf2eb0194523b635a2b69e590
+d00ec38ac1980eca8631e5ce96eb669625ca19999d2e951582969d99a3c81271
 ```
 
 Check the committed release without downloading any match data:
@@ -148,8 +144,8 @@ python -m possession validate "submission/Xtension Labs.csv"
 | :--- | :--- |
 | [Solution guide](SOLUTION.md) | CLI usage, reproduction, training and packaging |
 | [Technical report](docs/TECHNICAL_REPORT.md) | Features, model, decoding, assumptions and limitations |
-| [Training campaign](docs/CONTROL_CAMPAIGN.md) | Candidate comparisons and external final-test results |
-| [Model review](docs/REVIEW_V2.md) | Independent checks and remaining weaknesses |
+| [Training campaign](docs/ROBUST_CAMPAIGN.md) | Camera/context ablations and development-CV results |
+| [Historical v1.2 review](docs/REVIEW_V2.md) | Earlier checks and remaining weaknesses |
 | [Algorithm audit](docs/ALGORITHM_AUDIT.md) | Engineering findings and validation coverage |
 | [Challenge](CHALLENGE.md) · [Evaluation](EVALUATION.md) | Organizer task definition and scoring |
 | [Data terms](DATA.md) · [Rules](RULES.md) | Authorized data use and competition requirements |

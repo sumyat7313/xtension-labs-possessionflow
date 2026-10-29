@@ -1,24 +1,21 @@
-# Xtension Labs — release 1.2
+# Xtension Labs — release 1.3.0
 
-Selected **control-spell-balanced-l2-0.001-cost-1**, tested against the exact v1.1 release on three fresh
-external matches. Final mean spell F1: **0.3670 → 0.4419**.
-The predeclared mean-gain and every-cell non-regression gate passed.
+Promoted camera-context after passing every predeclared development gate.
 
-- 93 engineering tests pass.
-- All 199,319 target rows pass the organizer's CSV validator.
-- Verified byte-identical from a clean source extraction.
-- Source, config, model, inputs, selection evidence and output hashes are recorded.
-- No competition labels were used for model selection or rescored for this release.
-- Restricted target data and raw external XML are excluded from Git and bundles.
+- 125 engineering tests pass in the workspace and clean source extraction.
+- All 199,319 target rows pass the organizer's CSV contract.
+- Clean-source inference reproduces CSV, model and config bytes exactly.
+- Five candidates were scored in 15 whole-match/regime development cells each.
+- The seven external matches are previously exposed; no untouched test is claimed.
+- No competition reference labels were used for fitting, selection or rescoring.
 
-CSV SHA-256: `005773891ee98672c89b9bb280aa60a03adf3bdbf2eb0194523b635a2b69e590`
+CSV SHA-256: `d00ec38ac1980eca8631e5ce96eb669625ca19999d2e951582969d99a3c81271`
 
-Model SHA-256: `115c192cd4aa71be837e1c4bd2137d91add6dcea4b006a809b13232e62f43c0b`
+Model SHA-256: `f4feb096face6a2a3eb1214079a5f34ea8b495147478b7a92b6b224a42dc0573`
 
-See [technical report](TECHNICAL_REPORT.md), [campaign](CONTROL_CAMPAIGN.md),
-[independent review](REVIEW_V2.md), and [verification](verification.json).
+See [campaign evidence](ROBUST_CAMPAIGN.md), [technical report](TECHNICAL_REPORT.md)
+and [verification](verification.json). The original v1.2 source and model remain
+under `models/baselines/`; historical reports remain under `docs/releases/v1.2/`.
 
-The private GitHub repository contains prepared files; it is not a completed form
-submission. The public-source requirement, eligibility confirmation and organizer
-form remain outstanding. Hidden competition accuracy and ranking are unknown.
-The prior release records remain under `docs/releases/v1.1/`.
+The repository remains private. Prepared files are not a submitted competition
+form. Public-source access, the emailed form and team eligibility remain outstanding.

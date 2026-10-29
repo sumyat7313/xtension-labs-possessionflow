@@ -27,7 +27,10 @@ def source_files():
         paths.append(ROOT / "models/selection.json")
     for name in ("tools/train_control.py", "tools/control_diagnostics.py", "tools/verify_release.py",
                  "docs/RESEARCH_V2.md", "docs/REVIEW_V2.md", "docs/CONTROL_CAMPAIGN.md",
-                 "models/baselines/v1.1.json", "configs/baselines/v1.1.json", "models/control-selection.json"):
+                 "models/baselines/v1.1.json", "configs/baselines/v1.1.json", "models/control-selection.json",
+                 "tools/train_robust.py", "tools/camera_augmentation.py", "docs/ROBUST_CAMPAIGN.md",
+                 "models/baselines/v1.2.json", "configs/baselines/v1.2.json", "models/baselines/v1.2-source.zip",
+                 "models/robust-selection.json"):
         if (ROOT / name).is_file():
             paths.append(ROOT / name)
     missing = [path.name for path in paths if not path.is_file()]

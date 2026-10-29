@@ -193,6 +193,9 @@ def validate_model(model):
     if "control_model" in model:
         from .control import validate_model as validate_control
         validate_control(model["control_model"])
+    if "robust_control_model" in model:
+        from .robust_control import validate_model as validate_robust
+        validate_robust(model["robust_control_model"])
     for key in ("mean", "scale", "coefficients"):
         a = np.asarray(model.get(key), dtype=float)
         if a.shape != (len(FEATURE_NAMES),) or not np.isfinite(a).all():
@@ -274,15 +277,27 @@ def resolve_config(config, model):
     return replace(config, **model.get("decoder_settings", {})).validate()
 
 
+def fuse_control_probabilities(dead, home, team_log_odds):
+    """Shared bounded learned-control/tag fusion for production and experiments."""
+    home = np.clip(home, 1e-8, 1 - 1e-8)
+    team_logit = np.log(home) - np.log1p(-home)
+    home = _sigmoid(np.clip(team_logit + team_log_odds, -8, 8))
+    return np.column_stack(((1 - dead) * home, (1 - dead) * (1 - home), dead))
+
+
 def learned_probabilities(features, tags, X, model, control_matrix=None):
     """Observation-only emissions shared by campaign and production inference."""
     dead = predict_dead(X, model)
-    if "control_model" in model:
-        from .control import predict_home
+    if "robust_control_model" in model or "control_model" in model:
+        if "robust_control_model" in model:
+            from .robust_control import predict_home
+            control_model = model["robust_control_model"]
+        else:
+            from .control import predict_home
+            control_model = model["control_model"]
         if control_matrix is None or len(control_matrix) != len(dead):
             raise ValueError("Combined model requires a matching control feature matrix")
-        home = np.clip(predict_home(model["control_model"], control_matrix), 1e-8, 1 - 1e-8)
-        team_logit = np.log(home) - np.log1p(-home)
+        return fuse_control_probabilities(dead, predict_home(control_model, control_matrix), tags.team_log_odds)
     else:
         team_logit = features.team_log_odds
     home = _sigmoid(np.clip(team_logit + tags.team_log_odds, -8, 8))
@@ -332,8 +347,11 @@ def infer_learned(tracking, events, blocks, pitch, fps, config, model, mode=None
     tags = build(events, features, tracking.team_names, len(tracking.ball), fps, blocks, config)
     X = feature_matrix(tracking, features, blocks, pitch, fps)
     control_matrix = None
-    if "control_model" in model:
-        from .control import feature_matrix as control_features
+    if "robust_control_model" in model or "control_model" in model:
+        if "robust_control_model" in model:
+            from .robust_control import feature_matrix as control_features
+        else:
+            from .control import feature_matrix as control_features
         control_matrix = control_features(tracking, features, blocks, pitch, fps)
     labels, probabilities, warnings = decode_learned(features, tags, X, blocks, fps, config, model, mode,
                                                     control_matrix=control_matrix)
