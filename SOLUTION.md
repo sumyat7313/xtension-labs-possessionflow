@@ -1,12 +1,12 @@
-# Xtension Labs — PossessionFlow 1.1
+# Xtension Labs — PossessionFlow 1.2
 
 Local team-possession inference for More than a Hack 2027 Phase 1. The current
-release is **l2-0.001_joint**. Model selection used other matches with independent
+release is **control-spell-balanced-l2-0.001-cost-1**. Model selection used other matches with independent
 validation and a final test; it did not use the competition public labels.
 
 Read [the technical report](docs/TECHNICAL_REPORT.md),
-[training results](docs/TRAINING_CAMPAIGN.md), and
-[independent model review](docs/MODEL_REVIEW.md).
+[training results](docs/CONTROL_CAMPAIGN.md), and
+[independent model review](docs/REVIEW_V2.md).
 
 ## Run the submission
 
@@ -53,7 +53,7 @@ requested model is missing. `--tracking-only` explicitly disables tactical tags.
 ## Training and evidence
 
 ```bash
-python tools/train_stoppages.py --download --out runs/campaign-reproduction
+python tools/train_control.py --download --out runs/campaign-reproduction
 python tools/audit_observations.py --output runs/observation-audit.json
 ```
 
@@ -62,8 +62,8 @@ by Bassek, Rein, Weber and Memmert (2025), CC BY 4.0. Its references are used on
 as targets or scores, never inference features. See the model and selection JSON
 for training provenance and the technical report for transformations and attribution.
 
-The six-model campaign uses two whole training matches, one validation match and
-one final test. Clean and deterministic degraded inputs are compared separately.
+The 15-candidate control campaign uses two whole training matches, two development
+matches and three fresh final matches. J03WMX is now development data. Clean and deterministic degraded inputs are compared separately.
 The public five-minute competition labels are not a tuning or model-selection set.
 `python -m possession evaluate` remains available for correctness checks, but it
 was not used to select or retune the current release. Historical public scores

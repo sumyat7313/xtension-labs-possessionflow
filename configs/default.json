@@ -29,5 +29,5 @@
   "stop_cost": 3.0,
   "tag_log_odds": 2.0,
   "tag_taper_seconds": 0.8,
-  "team_switch_cost": 4.0
+  "team_switch_cost": 1.0
 }

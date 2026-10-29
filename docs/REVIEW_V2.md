@@ -135,8 +135,79 @@ evidence than one, but still cannot support a claim about winning the hackathon.
 
 ## Release review status
 
-Control-unit integrity review passed. Campaign selection, final-test outcomes,
-production integration, exact submission reproduction and release provenance
-remain separate checks; this paragraph will be updated after those checks are
-available. The frozen release 1.1 submission must not be silently replaced by
-research candidates that have not passed the release gate.
+Control-unit and synthetic production-integration review passed. The independent
+reviewer observed the saved protocol during training, before a selection file
+existed, then checked the frozen selection while final testing began.
+
+All 60 validation records (15 candidates × 2 matches × 2 regimes), their prediction
+file hashes, and all 17 frozen scientific source hashes were verified. Independently
+recomputing every eligibility gate and ranking selected the same model:
+**control-spell-balanced-l2-0.001-cost-1**. Its mean validation spell-F1 gain over
+release 1.1 is **0.11131165**, with gains of 0.10145774/0.09253010 on J03WMX
+clean/degraded and 0.10832781/0.14293096 on J03WN1 clean/degraded.
+
+The validation ablation supports adding learned control, rather than attributing
+the gain entirely to lowering the switching penalty: mean spell-F1 is 0.421773
+for the winner, 0.310461 for release 1.1, and 0.329390/0.331243 for switch-cost
+1/2 alone. Short possessions remain difficult. For spells shorter than two
+seconds, selected-model recall at temporal IoU 0.5 is only 6.3–11.7% across these
+validation cells, versus 0.5–4.1% for the incumbent. This is improvement, not a
+complete solution to short-possession recovery.
+
+Protocol SHA-256:
+`f6f810eb6522f9db3b36bbc8374df862ec66ba8e3cc0f27a369917c5105a4e24`
+
+Frozen selection SHA-256:
+`d21b5a106eada42b84adee5c9e1bb39333ca7cd28333938af82c0079a964e37c`
+
+Selected model SHA-256:
+`115c192cd4aa71be837e1c4bd2137d91add6dcea4b006a809b13232e62f43c0b`
+
+## Final-test outcome and independent decision
+
+**The frozen winner passed the predeclared v2 release gate.** All three fresh
+final matches improved in both observation regimes:
+
+| Final match | Regime | Release 1.1 spell-F1 | Selected spell-F1 | Gain |
+| --- | --- | ---: | ---: | ---: |
+| J03WPY | clean | 0.4207 | 0.4985 | +0.0778 |
+| J03WPY | degraded | 0.2847 | 0.3369 | +0.0522 |
+| J03WQQ | clean | 0.4610 | 0.5542 | +0.0932 |
+| J03WQQ | degraded | 0.3171 | 0.3974 | +0.0803 |
+| J03WR9 | clean | 0.4343 | 0.5245 | +0.0902 |
+| J03WR9 | degraded | 0.2844 | 0.3397 | +0.0553 |
+
+Mean gain across the six cells is **0.07483763**, above the required 0.02; no cell
+regresses. Macro-F1 and dead-ball precision improve in every cell. Dead-ball
+recall falls slightly in five cells (largest absolute drop approximately 0.005)
+and rises in J03WPY clean. A frozen dead-ball classifier does not freeze the joint
+decoder's final dead/live path, because changed team evidence also affects the
+joint decoding objective.
+
+The paired within-match bootstrap 5th–95th percentile gain intervals are positive
+in every cell. Those intervals condition on each match and use the official
+fixed-prediction-count bootstrap approximation; they are not independent-match
+confidence intervals or evidence of a hackathon ranking. There are three final
+matches, not six independent matches.
+
+After completion, this reviewer independently verified:
+
+- All 72 validation/final prediction file hashes and their recorded score-file
+  agreement.
+- All 17 scientific source hashes remained equal to the frozen protocol.
+- Exactly 12 final records exist: the incumbent and the one frozen winner in
+  each of the six declared cells. No runner-up final results exist in the summary.
+- The selection and final eligibility gate recompute identically from the records.
+- The protocol, frozen selection, selected model and released model hashes agree.
+- The final released model bytes are exactly the selected model bytes; there was
+  no post-selection refit or final-set retuning.
+
+Audited campaign summary SHA-256:
+`4e780f17e25486ed454498e459395262202cdbaf62848e1ac9ba4bba808fdb90`
+
+This supports promotion among the declared candidates on the observed external
+evidence. It does not establish hidden competition accuracy. Rebuilding the exact
+competition submission, validating its format and provenance, and reproducing it
+from a clean source extraction are separate engineering release checks recorded
+by the main release process. These three final matches are now exposed and must
+not be described as untouched test sets for subsequent model development.

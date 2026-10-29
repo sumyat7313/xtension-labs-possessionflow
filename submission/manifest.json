@@ -1,6 +1,6 @@
 {
-  "code_sha256": "8c69979d0235a1e99d98561e92e353af3a0475a79f1c99b17e705cfe35f1937e",
-  "config_sha256": "8d190bec7b92ae61157f6b41fbc839bc6d400e6f626908d4a6d8bdacc7dd76cf",
+  "code_sha256": "339df7cf495318261694c62976814c3101a7ff577697d4272309dfaa14100f92",
+  "config_sha256": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
   "game": "BAR-ATH",
   "ground_truth_used_for_inference": false,
   "inputs": {
@@ -23,22 +23,50 @@
   "learned_model": {
     "decoder_mode": "joint",
     "filename": "model.json",
-    "sha256": "3759734a29a07eafc11723029800d30863d00c0a9e478bea3fcafaf6805c2867"
+    "sha256": "115c192cd4aa71be837e1c4bd2137d91add6dcea4b006a809b13232e62f43c0b"
   },
   "output": {
     "filename": "predictions.csv",
     "rows": 199319,
-    "sha256": "ea2807bbe4b15d25f1d1ec4494fea42a85bee215f2d1f43a417642d5bd60ac96"
+    "sha256": "005773891ee98672c89b9bb280aa60a03adf3bdbf2eb0194523b635a2b69e590"
   },
   "runtime": {
     "numpy": "2.5.4",
     "python": "3.12.14"
   },
   "schema_version": 1,
-  "solution_version": "1.1.0",
+  "solution_version": "1.2.0",
   "synthetic": false,
   "tracking_only": false,
   "training_data": {
+    "control_training_matches": {
+      "J03WOH": {
+        "inputs": {
+          "J03WOH_metadata.xml": {
+            "bytes": 11745,
+            "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+          },
+          "J03WOH_tracking.xml": {
+            "bytes": 348945715,
+            "sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+          }
+        },
+        "reference_sha256": "4d06f48193bca461f7b85d710edce004b56cb4a6d3b150fba20fc3c3989589bb"
+      },
+      "J03WOY": {
+        "inputs": {
+          "J03WOY_metadata.xml": {
+            "bytes": 11952,
+            "sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9"
+          },
+          "J03WOY_tracking.xml": {
+            "bytes": 362567859,
+            "sha256": "a228ef0e676d009cefff1580fcb721b53f598454eb120ec347e0a628a3a4646b"
+          }
+        },
+        "reference_sha256": "eac9d72f3af3316964e95cdda04054215639e5dec4c60f6ef9042b02c4042f4a"
+      }
+    },
     "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
     "final_test_matches": [
       "J03WMX"
@@ -95,6 +123,16 @@
         }
       }
     },
+    "v2_final_test_matches": [
+      "J03WPY",
+      "J03WQQ",
+      "J03WR9"
+    ],
+    "v2_protocol_sha256": "f6f810eb6522f9db3b36bbc8374df862ec66ba8e3cc0f27a369917c5105a4e24",
+    "v2_validation_matches": [
+      "J03WN1",
+      "J03WMX"
+    ],
     "validation_matches": [
       "J03WN1"
     ]

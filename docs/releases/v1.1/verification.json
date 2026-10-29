@@ -1,0 +1,119 @@
+{
+  "actual_match_csv_sha256": "ea2807bbe4b15d25f1d1ec4494fea42a85bee215f2d1f43a417642d5bd60ac96",
+  "actual_match_rows": 199319,
+  "clean_source_extraction_tests_passed": 53,
+  "clean_source_model_byte_identical": true,
+  "clean_source_reproduction_byte_identical": true,
+  "code_sha256": "8c69979d0235a1e99d98561e92e353af3a0475a79f1c99b17e705cfe35f1937e",
+  "competition_form_submitted": false,
+  "competition_public_ground_truth_re_evaluated_for_this_release": false,
+  "competition_public_labels_used_for_training_or_selection": false,
+  "config_sha256": "8d190bec7b92ae61157f6b41fbc839bc6d400e6f626908d4a6d8bdacc7dd76cf",
+  "date": "2026-10-29",
+  "engineering_tests_passed": 53,
+  "external_final_records": [
+    {
+      "candidate": "baseline",
+      "dead_precision": 0.9881536189069424,
+      "dead_recall": 0.5519819135945081,
+      "macroF1": 0.7198797291206348,
+      "match": "J03WMX",
+      "predicted_spells": 256,
+      "prediction_sha256": "86b5498312f579de93fdada2375edaf55c0badfbf764bad812afe9e1c5fe7bf3",
+      "reference_spells": 511,
+      "regime": "clean",
+      "spellF1": 0.3556714471968709,
+      "spellF1_bootstrap_5_95": [
+        0.3170534550195567,
+        0.3942633637548892
+      ]
+    },
+    {
+      "candidate": "l2-0.001_joint",
+      "dead_precision": 0.9163849765258216,
+      "dead_recall": 0.9663190204297172,
+      "macroF1": 0.8549746969236086,
+      "match": "J03WMX",
+      "predicted_spells": 258,
+      "prediction_sha256": "a5a66431996d340eb78c3817b490bab2f6f56ecec53ea2fe8d46cca155fdfb80",
+      "reference_spells": 511,
+      "regime": "clean",
+      "spellF1": 0.39375812743823146,
+      "spellF1_bootstrap_5_95": [
+        0.35422626788036415,
+        0.43485045513654097
+      ]
+    },
+    {
+      "candidate": "baseline",
+      "dead_precision": 0.9902989333216277,
+      "dead_recall": 0.37228951450542924,
+      "macroF1": 0.5969379221586453,
+      "match": "J03WMX",
+      "predicted_spells": 335,
+      "prediction_sha256": "20dd6e674b9d2e22e7db894b13f03bd283ca22aaf5c5bca8eabfd1772c87cf9e",
+      "reference_spells": 511,
+      "regime": "degraded",
+      "spellF1": 0.18770685579196217,
+      "spellF1_bootstrap_5_95": [
+        0.1588416075650118,
+        0.21702127659574466
+      ]
+    },
+    {
+      "candidate": "l2-0.001_joint",
+      "dead_precision": 0.8590906387534197,
+      "dead_recall": 0.9534803128816133,
+      "macroF1": 0.7771719301583296,
+      "match": "J03WMX",
+      "predicted_spells": 256,
+      "prediction_sha256": "8fc102f16b7381312970b9c13b63a461b2fc1e5cb835d6b9fda347135c106963",
+      "reference_spells": 511,
+      "regime": "degraded",
+      "spellF1": 0.258148631029987,
+      "spellF1_bootstrap_5_95": [
+        0.22477183833116038,
+        0.293089960886571
+      ]
+    }
+  ],
+  "final_gate": {
+    "maximum_regime_drop": 0.02,
+    "mean_spellF1_gain": 0.054264227739692694,
+    "passed": true,
+    "regime_gains": {
+      "clean": 0.03808668024136058,
+      "degraded": 0.0704417752380248
+    },
+    "required_mean_gain": 0.02
+  },
+  "final_test_match": "J03WMX",
+  "full_match_accuracy_known": false,
+  "historical_heuristic_public_check": {
+    "applies_to_current_csv": false,
+    "csv_sha256": "e8c36ef12681bb078d2d2d721fca2cc52b60623cba6881e32e864c79da1fb1f5",
+    "macroF1": 0.550668,
+    "spellF1": 0.342857
+  },
+  "model_sha256": "3759734a29a07eafc11723029800d30863d00c0a9e478bea3fcafaf6805c2867",
+  "pinned_dependencies_verified": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "python-dateutil": "3.0.0",
+    "six": "1.17.0",
+    "tzdata": "2026.6"
+  },
+  "portable_windows_launcher_verified_from_clean_source": true,
+  "promoted_after_external_final_test": true,
+  "public_repository_published": false,
+  "selected_model": "l2-0.001_joint",
+  "selection_evidence_sha256": "731b052104a6bfa4280558650b6323efc298620ecf5c61ee153c415b1f2b3622",
+  "solution_version": "1.1.0",
+  "team_name": "Xtension Labs",
+  "training_matches": [
+    "J03WOH",
+    "J03WOY"
+  ],
+  "training_rows_with_augmentation": 111902,
+  "validation_match": "J03WN1"
+}

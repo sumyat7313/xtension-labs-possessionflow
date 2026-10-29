@@ -1,5 +1,5 @@
 {
-  "candidate_id": "l2-0.001_joint",
+  "candidate_id": "control-spell-balanced-l2-0.001-cost-1",
   "coefficients": [
     0.2351865665287011,
     0.2351865665287011,
@@ -60,7 +60,222 @@
     -0.653991126928524,
     -0.3466494362206501
   ],
+  "control_model": {
+    "coefficients": [
+      -0.03448830618874901,
+      0.14731725737297457,
+      0.1861077096135866,
+      -0.07637267462060217,
+      0.09642771993194664,
+      -0.049785851636104224,
+      0.05901713706759551,
+      0.17029614899254641,
+      -0.043019551805934225,
+      -0.10443864764839851,
+      0.00960267629177861,
+      -0.052781411802644757,
+      0.08956721243544985,
+      0.05924773175857093,
+      0.2892098368536553,
+      -0.14799648387699182,
+      -0.09088043537015679,
+      0.0526759169709787,
+      -0.05112509000210776,
+      0.03765447394154054,
+      -0.06908859335129801,
+      -0.11099017013659426,
+      -0.18741140658516298,
+      -0.03584633754603613,
+      0.07280596199266347,
+      0.012025942920384199,
+      0.6186006016600597,
+      -0.13117926291408893,
+      -0.3007198638777026,
+      -0.027103933112060895,
+      0.04185653948035647,
+      -0.24809240210822903,
+      -0.11293236016629545,
+      -0.23994867113011653,
+      0.1877280874835511,
+      -0.06216465213271421,
+      -0.2938254883355745,
+      0.3744506171385174,
+      0.310007434815367,
+      -0.23147326383412808,
+      -0.06689272786641981,
+      -0.04038972493745434,
+      -0.03595023786749408,
+      -0.3702554922349834,
+      0.5139720358262421,
+      -0.09486637196385568,
+      -0.5747296430869333,
+      0.5264517946488888,
+      0.08672438656793616,
+      -0.28543309359331404,
+      1.56742555858318,
+      0.6631176391436789
+    ],
+    "feature_names": [
+      "nearest_margin",
+      "nearest_log_ratio",
+      "near_1p5m",
+      "near_3m",
+      "near_6m",
+      "second_margin",
+      "third_margin",
+      "local_density",
+      "geometric_control",
+      "slow_ball_control",
+      "fast_ball_control",
+      "ball_contact_control",
+      "nearest_margin_mean_0.3s",
+      "nearest_log_ratio_mean_0.3s",
+      "near_1p5m_mean_0.3s",
+      "near_3m_mean_0.3s",
+      "near_6m_mean_0.3s",
+      "second_margin_mean_0.3s",
+      "third_margin_mean_0.3s",
+      "local_density_mean_0.3s",
+      "geometric_control_mean_0.3s",
+      "slow_ball_control_mean_0.3s",
+      "fast_ball_control_mean_0.3s",
+      "ball_contact_control_mean_0.3s",
+      "nearest_margin_mean_0.8s",
+      "nearest_log_ratio_mean_0.8s",
+      "near_1p5m_mean_0.8s",
+      "near_3m_mean_0.8s",
+      "near_6m_mean_0.8s",
+      "second_margin_mean_0.8s",
+      "third_margin_mean_0.8s",
+      "local_density_mean_0.8s",
+      "geometric_control_mean_0.8s",
+      "slow_ball_control_mean_0.8s",
+      "fast_ball_control_mean_0.8s",
+      "ball_contact_control_mean_0.8s",
+      "nearest_margin_mean_2s",
+      "nearest_log_ratio_mean_2s",
+      "near_1p5m_mean_2s",
+      "near_3m_mean_2s",
+      "near_6m_mean_2s",
+      "second_margin_mean_2s",
+      "third_margin_mean_2s",
+      "local_density_mean_2s",
+      "geometric_control_mean_2s",
+      "slow_ball_control_mean_2s",
+      "fast_ball_control_mean_2s",
+      "ball_contact_control_mean_2s",
+      "near_3m_past_0.4s",
+      "near_3m_future_0.4s",
+      "near_3m_past_1.2s",
+      "near_3m_future_1.2s"
+    ],
+    "intercept": 0.0,
+    "kind": "symmetric_logistic_control",
+    "metadata": {
+      "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "protocol_sha256": "f6f810eb6522f9db3b36bbc8374df862ec66ba8e3cc0f27a369917c5105a4e24",
+      "training_matches": {
+        "J03WOH": {
+          "inputs": {
+            "J03WOH_metadata.xml": {
+              "bytes": 11745,
+              "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+            },
+            "J03WOH_tracking.xml": {
+              "bytes": 348945715,
+              "sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+            }
+          },
+          "reference_sha256": "4d06f48193bca461f7b85d710edce004b56cb4a6d3b150fba20fc3c3989589bb"
+        },
+        "J03WOY": {
+          "inputs": {
+            "J03WOY_metadata.xml": {
+              "bytes": 11952,
+              "sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9"
+            },
+            "J03WOY_tracking.xml": {
+              "bytes": 362567859,
+              "sha256": "a228ef0e676d009cefff1580fcb721b53f598454eb120ec347e0a628a3a4646b"
+            }
+          },
+          "reference_sha256": "eac9d72f3af3316964e95cdda04054215639e5dec4c60f6ef9042b02c4042f4a"
+        }
+      },
+      "weighting": "spell-balanced"
+    },
+    "scale": [
+      0.6290454984360764,
+      0.3419723585876577,
+      0.3190159323402787,
+      0.3500944378637205,
+      0.3195950370996693,
+      0.5255883983312312,
+      0.5473974500552753,
+      0.19983129943239747,
+      0.40465113746334597,
+      0.26759116637171176,
+      0.12592436861619452,
+      0.13548445224244354,
+      0.6076335312626373,
+      0.331093388377478,
+      0.30378076252306085,
+      0.3376912292218037,
+      0.3105516568906277,
+      0.5144430081559029,
+      0.5380369380543784,
+      0.19506855458532074,
+      0.3937421570094098,
+      0.26058327980309537,
+      0.11234605398033432,
+      0.10656904968574282,
+      0.5694599614899656,
+      0.3146422237500452,
+      0.2839399365871769,
+      0.31848069547252283,
+      0.2952905006278177,
+      0.4938755494600727,
+      0.5206679193650314,
+      0.18662536782247796,
+      0.37495177667294843,
+      0.24919317571565194,
+      0.09596597251273109,
+      0.092396562574053,
+      0.5087444683847387,
+      0.2863385799128853,
+      0.2535685407555951,
+      0.28670354634075884,
+      0.26827433789423527,
+      0.44903573034295186,
+      0.4804940950040959,
+      0.16955962889582743,
+      0.33847248105813754,
+      0.2262364353662514,
+      0.07812712696327172,
+      0.0789773903907152,
+      0.33578255310431465,
+      0.3364177918465831,
+      0.3063309774460751,
+      0.31056123070161207
+    ],
+    "schema_version": 1,
+    "training": {
+      "away_rows": 28516,
+      "converged": true,
+      "excluded_rows": 52614,
+      "gradient_max_abs": 1.9208203007759633e-12,
+      "home_rows": 30772,
+      "iterations": 7,
+      "l2": 0.001,
+      "objective": 0.49497094006044556,
+      "rows": 59288
+    }
+  },
   "decoder_mode": "joint",
+  "decoder_settings": {
+    "team_switch_cost": 1.0
+  },
   "feature_names": [
     "ball_observed",
     "ball_reliability",
@@ -184,6 +399,34 @@
     0.02342298863973577
   ],
   "metadata": {
+    "control_training_matches": {
+      "J03WOH": {
+        "inputs": {
+          "J03WOH_metadata.xml": {
+            "bytes": 11745,
+            "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+          },
+          "J03WOH_tracking.xml": {
+            "bytes": 348945715,
+            "sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+          }
+        },
+        "reference_sha256": "4d06f48193bca461f7b85d710edce004b56cb4a6d3b150fba20fc3c3989589bb"
+      },
+      "J03WOY": {
+        "inputs": {
+          "J03WOY_metadata.xml": {
+            "bytes": 11952,
+            "sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9"
+          },
+          "J03WOY_tracking.xml": {
+            "bytes": 362567859,
+            "sha256": "a228ef0e676d009cefff1580fcb721b53f598454eb120ec347e0a628a3a4646b"
+          }
+        },
+        "reference_sha256": "eac9d72f3af3316964e95cdda04054215639e5dec4c60f6ef9042b02c4042f4a"
+      }
+    },
     "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
     "final_test_matches": [
       "J03WMX"
@@ -240,6 +483,16 @@
         }
       }
     },
+    "v2_final_test_matches": [
+      "J03WPY",
+      "J03WQQ",
+      "J03WR9"
+    ],
+    "v2_protocol_sha256": "f6f810eb6522f9db3b36bbc8374df862ec66ba8e3cc0f27a369917c5105a4e24",
+    "v2_validation_matches": [
+      "J03WN1",
+      "J03WMX"
+    ],
     "validation_matches": [
       "J03WN1"
     ]

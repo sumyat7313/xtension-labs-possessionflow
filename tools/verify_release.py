@@ -30,6 +30,21 @@ def main():
     if digest.hexdigest() != manifest["code_sha256"]:
         failures.append("inference source")
     print(f"{'FAIL' if 'inference source' in failures else 'OK'}  inference source")
+    selection_path = ROOT / "models/control-selection.json"
+    if selection_path.exists():
+        selection = json.loads(selection_path.read_text(encoding="utf-8"))
+        if selection["release_model_sha256"] != manifest["learned_model"]["sha256"]:
+            failures.append("selected release model")
+        for name, expected in selection["source_hashes"].items():
+            if hashlib.sha256((ROOT / name).read_bytes()).hexdigest() != expected:
+                failures.append(f"campaign source: {name}")
+        selected = selection["release_candidate"]
+        if selected != "release-1.1":
+            if not selection["promoted"] or not selection["final_gate"]["passed"]:
+                failures.append("promotion evidence")
+            if selection["final_set_retuning"] or selection["competition_public_labels_used"]:
+                failures.append("evaluation separation")
+        print(f"{'FAIL' if len(failures) else 'OK'}  campaign and release provenance")
     if failures:
         print("Release bytes changed; regenerate the matching artifacts and provenance.", file=sys.stderr)
         return 1

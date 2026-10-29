@@ -68,4 +68,44 @@ preserved without claiming this campaign validates its contribution. No pretrain
 PathCRF checkpoints, competition labels, manual target annotations, raw target
 uploads, or competition-score-driven tuning are used.
 
-Campaign outcome and independent review will be recorded after the frozen run.
+See the recorded outcome below and [independent review](REVIEW_V2.md).
+
+## Recorded outcome
+
+**Promotion gate passed for control-spell-balanced-l2-0.001-cost-1.** The equal-cell final mean rose from
+0.3670 to 0.4419 (+0.0748). All six individual cell gains
+are recorded below. Weights were not refitted after validation or final testing.
+
+| Fresh final match | Tracking | v1.1 spell F1 | v1.2 spell F1 | Gain |
+| :--- | :--- | ---: | ---: | ---: |
+| J03WPY | clean | 0.4207 | **0.4985** | +0.0778 |
+| J03WPY | degraded | 0.2847 | **0.3369** | +0.0522 |
+| J03WQQ | clean | 0.4610 | **0.5542** | +0.0932 |
+| J03WQQ | degraded | 0.3171 | **0.3974** | +0.0803 |
+| J03WR9 | clean | 0.4343 | **0.5245** | +0.0902 |
+| J03WR9 | degraded | 0.2844 | **0.3397** | +0.0553 |
+| **Equal-cell mean** | **6 conditions** | **0.3670** | **0.4419** | **+0.0748** |
+
+
+The repository README includes a chart of this frozen final comparison.
+
+### Control and stoppage diagnostics
+
+| Match / regime | Macro F1 before → after | D precision before → after | D recall before → after | Turnover recall before → after | <2s spell recall before → after |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| J03WPY / clean | 0.8569 → 0.8824 | 0.9437 → 0.9478 | 0.9738 → 0.9761 | 0.1605 → 0.3148 | 0.0403 → 0.0887 |
+| J03WPY / degraded | 0.7642 → 0.7961 | 0.8834 → 0.8891 | 0.9612 → 0.9606 | 0.0926 → 0.1698 | 0.0161 → 0.0161 |
+| J03WQQ / clean | 0.8480 → 0.8750 | 0.9169 → 0.9209 | 0.9378 → 0.9333 | 0.1987 → 0.4205 | 0.0198 → 0.0891 |
+| J03WQQ / degraded | 0.7638 → 0.8030 | 0.8644 → 0.8738 | 0.9257 → 0.9207 | 0.1026 → 0.2616 | 0.0198 → 0.0297 |
+| J03WR9 / clean | 0.8518 → 0.8790 | 0.9155 → 0.9180 | 0.9609 → 0.9607 | 0.1942 → 0.3813 | 0.0638 → 0.1277 |
+| J03WR9 / degraded | 0.7523 → 0.7773 | 0.8136 → 0.8196 | 0.9420 → 0.9388 | 0.1079 → 0.2050 | 0.0319 → 0.0638 |
+
+
+The complete 60 validation records, 12 final records, input/source hashes,
+training protocol and paired bootstrap diagnostics are in
+[control-selection.json](../models/control-selection.json). The initial experiment
+source is preserved in commit `30d8c61`; the frozen protocol's scientific hashes
+remain authoritative.
+
+Short possessions and missing-ball behavior remain imperfect. These results
+support this release among the declared candidates, not a hidden-match rank.

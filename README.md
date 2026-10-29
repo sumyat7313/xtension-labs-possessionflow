@@ -5,10 +5,10 @@
 <p align="center">
   <a href="https://github.com/likalight1/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/verification.json"><img src="https://img.shields.io/badge/tests-53%20verified-31b88a" alt="53 tests verified locally"></a>
+  <a href="docs/verification.json"><img src="https://img.shields.io/badge/tests-93%20verified-31b88a" alt="93 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
-  <img src="https://img.shields.io/badge/release-1.1.0-112b36" alt="Release 1.1.0">
+  <img src="https://img.shields.io/badge/release-1.2.0-112b36" alt="Release 1.2.0">
 </p>
 
 <p align="center">
@@ -26,12 +26,12 @@
 
 ## What is PossessionFlow?
 
-PossessionFlow assigns a possession label to every video frame using tactical player and ball tracking plus automatic event tags. A learned live/dead-ball classifier detects stoppages, geometry estimates team control, and temporal decoding turns noisy observations into coherent possession intervals.
+PossessionFlow assigns a possession label to every video frame using tactical player and ball tracking plus automatic event tags. A learned live/dead-ball classifier detects stoppages, a symmetric control model identifies the team in possession, and temporal decoding turns noisy observations into coherent possession intervals.
 
-The selected **`l2-0.001_joint`** model is included. Inference runs locally on a CPU with no API keys or retraining. The release contains the complete **199,319-frame BAR–ATH prediction**, its provenance, and the evidence behind model selection.
+The selected **1.2 model** includes frozen stoppage weights and the new spell-balanced team-control head. Inference runs locally on a CPU with no API keys or retraining. The release contains the complete **199,319-frame BAR–ATH prediction**, its provenance, and the evidence behind model selection.
 
-- **Learned stoppages:** 58 features trained on two external matches, with separate validation and final-test matches.
-- **Temporal consistency:** duration-aware Viterbi decoding combines stoppages and team control.
+- **Learned control and stoppages:** 52 team-control features plus 58 live/dead features, trained on two external matches with separate development and final matches.
+- **Short-possession sensitivity:** training-only spell balancing and validated transition costs reduce missed control changes.
 - **Reproducibility:** frozen weights, pinned dependencies, input/output hashes, and a verified byte-identical clean-source reproduction.
 - **Auditable evaluation:** clean and degraded tracking benchmarks, leakage checks, and explicit release gates.
 - **Portable delivery:** Python CLI, Windows launcher, synthetic demo, and dataset-free CI.
@@ -74,16 +74,23 @@ Windows users can also run `./run-challenge.ps1 -Action Predict`; pass `-PythonP
 
 ## Results
 
-The model was trained on **J03WOH + J03WOY**, selected on **J03WN1**, and then evaluated on untouched **J03WMX**. Six learned candidates were compared against the heuristic baseline. Competition public labels were not used for training or model selection.
+Release **1.2** was selected from 15 fixed candidates on J03WN1 and the previously exposed J03WMX. Training used J03WOH + J03WOY. The frozen winner then passed the release gate on **three fresh final matches**, compared with the exact released v1.1 model.
 
-| Untouched final test | Baseline spell F1 | PossessionFlow spell F1 | Baseline macro F1 | PossessionFlow macro F1 | Dead-ball recall, before → after |
-| :--- | ---: | ---: | ---: | ---: | ---: |
-| Clean tracking | 0.3557 | **0.3938** | 0.7199 | **0.8550** | 0.5520 → **0.9663** |
-| Degraded tracking | 0.1877 | **0.2581** | 0.5969 | **0.7772** | 0.3723 → **0.9535** |
+| Fresh final match | Tracking | v1.1 spell F1 | v1.2 spell F1 | Gain |
+| :--- | :--- | ---: | ---: | ---: |
+| J03WPY | clean | 0.4207 | **0.4985** | +0.0778 |
+| J03WPY | degraded | 0.2847 | **0.3369** | +0.0522 |
+| J03WQQ | clean | 0.4610 | **0.5542** | +0.0932 |
+| J03WQQ | degraded | 0.3171 | **0.3974** | +0.0803 |
+| J03WR9 | clean | 0.4343 | **0.5245** | +0.0902 |
+| J03WR9 | degraded | 0.2844 | **0.3397** | +0.0553 |
+| **Equal-cell mean** | **6 conditions** | **0.3670** | **0.4419** | **+0.0748** |
 
-Mean spell-F1 gain was **+0.0543**, passing the predeclared release gate. Higher stoppage recall comes with lower dead-ball precision: **0.9164** on clean and **0.8591** on degraded tracking. Control transitions remain a limitation: the selected model predicts 258/256 possession spells against 511 reference spells.
+![Independent final-test comparison](assets/control-benchmark.png)
 
-These are external-match results, not a hackathon leaderboard score. The hidden competition score is unknown. See the [training campaign](docs/TRAINING_CAMPAIGN.md), [independent model review](docs/MODEL_REVIEW.md), and [machine-readable verification](docs/verification.json).
+Mean spell-F1 gain was **+0.0748**. Every match/regime cell met the predeclared non-regression gate. Short possessions remain difficult, and clean/degraded variants are correlated observations of each match. These are external results, not a hackathon leaderboard score; the hidden competition score is unknown.
+
+See the [full campaign and diagnostic tables](docs/CONTROL_CAMPAIGN.md), [independent review](docs/REVIEW_V2.md), and [machine-readable evidence](models/control-selection.json). The [v1.1 campaign](docs/TRAINING_CAMPAIGN.md) remains available for historical comparison.
 
 ## How it works
 
@@ -92,7 +99,7 @@ flowchart LR
     A[Tactical tracking] --> C[Aligned observations]
     B[Automatic event tags] --> C
     C --> D[58-feature live/dead model]
-    C --> E[Geometric team control]
+    C --> E[52-feature symmetric control model]
     D --> F[Duration-aware joint decoding]
     E --> F
     F --> G[Frame labels and possession intervals]
@@ -104,10 +111,10 @@ The pipeline separates match halves, checks physical scaling, handles missing ob
 To reproduce the external training campaign:
 
 ```bash
-python tools/train_stoppages.py --download --out runs/campaign-reproduction
+python tools/train_control.py --download --out runs/campaign-reproduction
 ```
 
-This downloads approximately 1.52 GB of external match data. It is an optional research step; inference uses the packaged weights. The [experiment protocol](docs/EXPERIMENT_PROTOCOL.md) records match separation, degradation, selection, and release gates.
+This downloads approximately 2.62 GB of external match data. It is an optional research step; inference uses the packaged weights. The [campaign protocol](docs/CONTROL_CAMPAIGN.md) records match separation, degradation, selection, and release gates.
 
 ## Submission artifacts
 
@@ -116,14 +123,14 @@ This downloads approximately 1.52 GB of external match data. It is an optional r
 | [Xtension Labs.csv](submission/Xtension%20Labs.csv) | Validated prediction for all 199,319 video frames |
 | [Xtension Labs.md](submission/Xtension%20Labs.md) | Technical submission document |
 | [models/submission.json](models/submission.json) | Frozen selected model and training provenance |
-| [models/selection.json](models/selection.json) | Candidate selection evidence |
+| [models/control-selection.json](models/control-selection.json) | Candidate selection evidence |
 | [submission/manifest.json](submission/manifest.json) | Input, code, model, configuration, and output hashes |
 | [submission/verification.json](submission/verification.json) | Recorded release checks and final-test results |
 
 CSV SHA-256:
 
 ```text
-ea2807bbe4b15d25f1d1ec4494fea42a85bee215f2d1f43a417642d5bd60ac96
+005773891ee98672c89b9bb280aa60a03adf3bdbf2eb0194523b635a2b69e590
 ```
 
 Check the committed release without downloading any match data:
@@ -141,8 +148,8 @@ python -m possession validate "submission/Xtension Labs.csv"
 | :--- | :--- |
 | [Solution guide](SOLUTION.md) | CLI usage, reproduction, training and packaging |
 | [Technical report](docs/TECHNICAL_REPORT.md) | Features, model, decoding, assumptions and limitations |
-| [Training campaign](docs/TRAINING_CAMPAIGN.md) | Candidate comparisons and external final-test results |
-| [Model review](docs/MODEL_REVIEW.md) | Independent checks and remaining weaknesses |
+| [Training campaign](docs/CONTROL_CAMPAIGN.md) | Candidate comparisons and external final-test results |
+| [Model review](docs/REVIEW_V2.md) | Independent checks and remaining weaknesses |
 | [Algorithm audit](docs/ALGORITHM_AUDIT.md) | Engineering findings and validation coverage |
 | [Challenge](CHALLENGE.md) · [Evaluation](EVALUATION.md) | Organizer task definition and scoring |
 | [Data terms](DATA.md) · [Rules](RULES.md) | Authorized data use and competition requirements |
@@ -152,7 +159,7 @@ python -m possession validate "submission/Xtension Labs.csv"
 
 Core inference lives in `possession/`, research commands in `tools/`, and the organizer's evaluator in `evaluation/`. Tests exercise parsing, alignment, leakage prevention, deterministic training, temporal decoding, release gates, and packaging.
 
-Run `python -m unittest discover -s tests -v` before changing the pipeline. CI also validates the committed submission and its checksums. Changes to inference code require regenerated predictions and provenance; the release verification intentionally detects stale outputs. Git preserves source bytes so the recorded code hash remains stable across clones.
+Run `python -m unittest discover -s tests -v` before changing the pipeline. CI runs on Linux and Windows and validates the committed submission, campaign provenance, and checksums. Changes to inference code require regenerated predictions and provenance; the release verification intentionally detects stale outputs. Git preserves source bytes so the recorded code hash remains stable across clones.
 
 ## Credits and license
 
