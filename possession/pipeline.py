@@ -73,8 +73,9 @@ def predict(data_dir=None, out_dir="runs/possessionflow", config_path=None,
     config = load_config(config_path)
     model = None
     if model_path is not None:
-        from .learned import load_model
+        from .learned import load_model, resolve_config
         model = load_model(model_path)
+        config = resolve_config(config, model)
     paths = {name: Path(path) for name, path in asset_paths(data_dir=data_dir).items()}
     root = paths["atd_raw"].parent.parent
     synthetic = (root / ".synthetic-fixture.json").is_file()

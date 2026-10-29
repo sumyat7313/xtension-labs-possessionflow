@@ -25,6 +25,11 @@ def source_files():
     paths += list((ROOT / "tests").glob("*.py"))
     if (ROOT / "models/selection.json").is_file():
         paths.append(ROOT / "models/selection.json")
+    for name in ("tools/train_control.py", "tools/control_diagnostics.py", "tools/verify_release.py",
+                 "docs/RESEARCH_V2.md", "docs/REVIEW_V2.md", "docs/CONTROL_CAMPAIGN.md",
+                 "models/baselines/v1.1.json", "configs/baselines/v1.1.json", "models/control-selection.json"):
+        if (ROOT / name).is_file():
+            paths.append(ROOT / name)
     missing = [path.name for path in paths if not path.is_file()]
     if missing:
         raise FileNotFoundError(f"Source bundle incomplete: {missing}")

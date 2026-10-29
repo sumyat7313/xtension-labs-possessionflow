@@ -183,6 +183,16 @@ def validate_model(model):
         raise ValueError("Learned model feature schema differs from implementation")
     if model.get("decoder_mode", "joint") not in ("joint", "separate"):
         raise ValueError("Unknown learned decoder mode")
+    settings = model.get("decoder_settings", {})
+    if not isinstance(settings, dict) or set(settings) - {"team_switch_cost", "min_team_seconds"}:
+        raise ValueError("Unsupported learned decoder settings")
+    if settings:
+        from dataclasses import replace
+        from .config import Config
+        replace(Config(), **settings).validate()
+    if "control_model" in model:
+        from .control import validate_model as validate_control
+        validate_control(model["control_model"])
     for key in ("mean", "scale", "coefficients"):
         a = np.asarray(model.get(key), dtype=float)
         if a.shape != (len(FEATURE_NAMES),) or not np.isfinite(a).all():
@@ -257,14 +267,37 @@ def _decode_binary(probabilities, durations, costs, evidence_scale):
     return path
 
 
-def decode_learned(features, tags, X, blocks, fps, config, model, mode=None):
+def resolve_config(config, model):
+    """Apply validated model-selected decoding settings to the recorded config."""
+    from dataclasses import replace
+    validate_model(model)
+    return replace(config, **model.get("decoder_settings", {})).validate()
+
+
+def learned_probabilities(features, tags, X, model, control_matrix=None):
+    """Observation-only emissions shared by campaign and production inference."""
+    dead = predict_dead(X, model)
+    if "control_model" in model:
+        from .control import predict_home
+        if control_matrix is None or len(control_matrix) != len(dead):
+            raise ValueError("Combined model requires a matching control feature matrix")
+        home = np.clip(predict_home(model["control_model"], control_matrix), 1e-8, 1 - 1e-8)
+        team_logit = np.log(home) - np.log1p(-home)
+    else:
+        team_logit = features.team_log_odds
+    home = _sigmoid(np.clip(team_logit + tags.team_log_odds, -8, 8))
+    return np.column_stack(((1 - dead) * home, (1 - dead) * (1 - home), dead))
+
+
+def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, control_matrix=None):
     """Reuse an extracted feature matrix across fixed candidate comparisons."""
     mode = model.get("decoder_mode", "joint") if mode is None else mode
     if mode not in ("joint", "separate"):
         raise ValueError("Learned decoder mode must be joint or separate")
-    dead = predict_dead(X, model)
-    home = _sigmoid(np.clip(features.team_log_odds + tags.team_log_odds, -8, 8))
-    probabilities = np.column_stack(((1 - dead) * home, (1 - dead) * (1 - home), dead))
+    config = resolve_config(config, model)
+    probabilities = learned_probabilities(features, tags, X, model, control_matrix)
+    dead = probabilities[:, 2]
+    home = np.divide(probabilities[:, 0], 1 - dead, out=np.full(len(dead), 0.5), where=dead < 1)
     labels = np.full(len(dead), "X", dtype="<U1")
     warnings = []
     team_duration = max(1, round(config.min_team_seconds * fps))
@@ -294,8 +327,14 @@ def decode_learned(features, tags, X, blocks, fps, config, model, mode=None):
 
 
 def infer_learned(tracking, events, blocks, pitch, fps, config, model, mode=None):
+    config = resolve_config(config, model)
     features = extract(tracking, pitch, blocks, fps, config)
     tags = build(events, features, tracking.team_names, len(tracking.ball), fps, blocks, config)
     X = feature_matrix(tracking, features, blocks, pitch, fps)
-    labels, probabilities, warnings = decode_learned(features, tags, X, blocks, fps, config, model, mode)
+    control_matrix = None
+    if "control_model" in model:
+        from .control import feature_matrix as control_features
+        control_matrix = control_features(tracking, features, blocks, pitch, fps)
+    labels, probabilities, warnings = decode_learned(features, tags, X, blocks, fps, config, model, mode,
+                                                    control_matrix=control_matrix)
     return labels, probabilities, features, tags, warnings

@@ -10,8 +10,12 @@ permissions:
 
 jobs:
   verify:
-    name: Tests and release integrity
-    runs-on: ubuntu-latest
+    name: Tests and release integrity (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     steps:
       - name: Check out source
