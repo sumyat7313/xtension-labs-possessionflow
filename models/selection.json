@@ -1,0 +1,554 @@
+{
+  "competition_public_labels_used": false,
+  "final_gate": {
+    "maximum_regime_drop": 0.02,
+    "mean_spellF1_gain": 0.054264227739692694,
+    "passed": true,
+    "regime_gains": {
+      "clean": 0.03808668024136058,
+      "degraded": 0.0704417752380248
+    },
+    "required_mean_gain": 0.02
+  },
+  "final_records": [
+    {
+      "candidate": "baseline",
+      "dead_precision": 0.9881536189069424,
+      "dead_recall": 0.5519819135945081,
+      "macroF1": 0.7198797291206348,
+      "match": "J03WMX",
+      "predicted_spells": 256,
+      "prediction_sha256": "86b5498312f579de93fdada2375edaf55c0badfbf764bad812afe9e1c5fe7bf3",
+      "reference_spells": 511,
+      "regime": "clean",
+      "spellF1": 0.3556714471968709,
+      "spellF1_bootstrap_5_95": [
+        0.3170534550195567,
+        0.3942633637548892
+      ]
+    },
+    {
+      "candidate": "l2-0.001_joint",
+      "dead_precision": 0.9163849765258216,
+      "dead_recall": 0.9663190204297172,
+      "macroF1": 0.8549746969236086,
+      "match": "J03WMX",
+      "predicted_spells": 258,
+      "prediction_sha256": "a5a66431996d340eb78c3817b490bab2f6f56ecec53ea2fe8d46cca155fdfb80",
+      "reference_spells": 511,
+      "regime": "clean",
+      "spellF1": 0.39375812743823146,
+      "spellF1_bootstrap_5_95": [
+        0.35422626788036415,
+        0.43485045513654097
+      ]
+    },
+    {
+      "candidate": "baseline",
+      "dead_precision": 0.9902989333216277,
+      "dead_recall": 0.37228951450542924,
+      "macroF1": 0.5969379221586453,
+      "match": "J03WMX",
+      "predicted_spells": 335,
+      "prediction_sha256": "20dd6e674b9d2e22e7db894b13f03bd283ca22aaf5c5bca8eabfd1772c87cf9e",
+      "reference_spells": 511,
+      "regime": "degraded",
+      "spellF1": 0.18770685579196217,
+      "spellF1_bootstrap_5_95": [
+        0.1588416075650118,
+        0.21702127659574466
+      ]
+    },
+    {
+      "candidate": "l2-0.001_joint",
+      "dead_precision": 0.8590906387534197,
+      "dead_recall": 0.9534803128816133,
+      "macroF1": 0.7771719301583296,
+      "match": "J03WMX",
+      "predicted_spells": 256,
+      "prediction_sha256": "8fc102f16b7381312970b9c13b63a461b2fc1e5cb835d6b9fda347135c106963",
+      "reference_spells": 511,
+      "regime": "degraded",
+      "spellF1": 0.258148631029987,
+      "spellF1_bootstrap_5_95": [
+        0.22477183833116038,
+        0.293089960886571
+      ]
+    }
+  ],
+  "final_set_retuning": false,
+  "paired_final_uncertainty": {
+    "clean": {
+      "draws": 1000,
+      "mean_delta": 0.03827424159451226,
+      "percentiles_5_95": [
+        0.017691612568516323,
+        0.06099050053999245
+      ],
+      "seed": 62171
+    },
+    "degraded": {
+      "draws": 1000,
+      "mean_delta": 0.0700559392925062,
+      "percentiles_5_95": [
+        0.04651292530845362,
+        0.09442690658702199
+      ],
+      "seed": 62171
+    }
+  },
+  "promoted": true,
+  "protocol": {
+    "baseline_is_candidate": true,
+    "candidate_decoders": [
+      "joint",
+      "separate"
+    ],
+    "candidate_l2": [
+      0.001,
+      0.01,
+      0.1
+    ],
+    "competition_public_labels_used": false,
+    "config": {
+      "control_decay_m": 2.0,
+      "control_radius_m": 1.5,
+      "dead_logit_bias": -2.0,
+      "distance_margin_m": 1.5,
+      "effective_observations_per_second": 5.0,
+      "evidence_window_seconds": 0.6,
+      "fast_ball_mps": 14.0,
+      "interpolated_weight": 0.45,
+      "interpolation_seconds": 0.32,
+      "max_ball_speed_mps": 45.0,
+      "min_dead_seconds": 0.6,
+      "min_team_seconds": 0.4,
+      "missing_still_weight": 1.5,
+      "motion_live_weight": 1.5,
+      "outside_dead_weight": 5.5,
+      "outside_margin_m": 0.4,
+      "phase_live_weight": 1.2,
+      "restart_after_seconds": 0.4,
+      "restart_before_seconds": 0.6,
+      "restart_context_seconds": 3.0,
+      "restart_cost": 2.8,
+      "restart_dead_weight": 4.0,
+      "restart_moving_mps": 2.0,
+      "restart_stationary_mps": 1.2,
+      "stationary_ball_mps": 0.8,
+      "still_dead_weight": 2.4,
+      "still_players_mps": 1.0,
+      "stop_cost": 3.0,
+      "tag_log_odds": 2.0,
+      "tag_taper_seconds": 0.8,
+      "team_switch_cost": 4.0
+    },
+    "config_sha256": "8d190bec7b92ae61157f6b41fbc839bc6d400e6f626908d4a6d8bdacc7dd76cf",
+    "corruption": {
+      "ball_missing_seconds": [
+        0.4,
+        6
+      ],
+      "ball_visible_seconds": [
+        2,
+        8
+      ],
+      "player_absent_blocks_seconds": 12,
+      "player_absent_probability": 0.15,
+      "position_noise_metres_sd": 0.15,
+      "speed_noise_mps_sd": 0.3
+    },
+    "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
+    "feature_names": [
+      "ball_observed",
+      "ball_reliability",
+      "ball_log_speed",
+      "ball_speed_known",
+      "nearest_distance",
+      "nearest_known",
+      "outside_support",
+      "boundary_distance",
+      "boundary_known",
+      "player_coverage",
+      "player_p25_speed",
+      "player_median_speed",
+      "player_p75_speed",
+      "player_mean_speed",
+      "players_below_1mps",
+      "players_below_2mps",
+      "players_below_3mps",
+      "stationary_support",
+      "missing_support",
+      "ball_observed_mean_0.6s",
+      "ball_log_speed_mean_0.6s",
+      "nearest_distance_mean_0.6s",
+      "outside_support_mean_0.6s",
+      "boundary_distance_mean_0.6s",
+      "player_coverage_mean_0.6s",
+      "player_median_speed_mean_0.6s",
+      "player_p75_speed_mean_0.6s",
+      "player_mean_speed_mean_0.6s",
+      "players_below_1mps_mean_0.6s",
+      "players_below_2mps_mean_0.6s",
+      "players_below_3mps_mean_0.6s",
+      "stationary_support_mean_0.6s",
+      "ball_observed_mean_2s",
+      "ball_log_speed_mean_2s",
+      "nearest_distance_mean_2s",
+      "outside_support_mean_2s",
+      "boundary_distance_mean_2s",
+      "player_coverage_mean_2s",
+      "player_median_speed_mean_2s",
+      "player_p75_speed_mean_2s",
+      "player_mean_speed_mean_2s",
+      "players_below_1mps_mean_2s",
+      "players_below_2mps_mean_2s",
+      "players_below_3mps_mean_2s",
+      "stationary_support_mean_2s",
+      "ball_observed_mean_6s",
+      "ball_log_speed_mean_6s",
+      "nearest_distance_mean_6s",
+      "outside_support_mean_6s",
+      "boundary_distance_mean_6s",
+      "player_coverage_mean_6s",
+      "player_median_speed_mean_6s",
+      "player_p75_speed_mean_6s",
+      "player_mean_speed_mean_6s",
+      "players_below_1mps_mean_6s",
+      "players_below_2mps_mean_6s",
+      "players_below_3mps_mean_6s",
+      "stationary_support_mean_6s"
+    ],
+    "final_policy": "Freeze winner after validation, compare only winner and baseline on untouched final; same gate. Failure retains baseline; no runner-up search.",
+    "input_catalog": {
+      "J03WMX": {
+        "metadata": [
+          51643475,
+          11930,
+          "bc5d5b21dbcf36aa30f4cd0428309f6b"
+        ],
+        "tracking": [
+          51643514,
+          418524833,
+          "e4273a2adf5dbd9d4ec42def2f01905c"
+        ]
+      },
+      "J03WN1": {
+        "metadata": [
+          51643472,
+          11722,
+          "37b0f85588c0acfb995fe633c7ac2e0d"
+        ],
+        "split": "held_out",
+        "tracking": [
+          51643517,
+          391722803,
+          "bacb2f609c1d1b0bfc906f6b9d4109f2"
+        ]
+      },
+      "J03WOH": {
+        "metadata": [
+          51643478,
+          11745,
+          "b9710781d400dd812f62b0a6e3d7bce8"
+        ],
+        "split": "development",
+        "tracking": [
+          51643520,
+          348945715,
+          "3efff25a86a61768e7d253b4bba137a3"
+        ]
+      },
+      "J03WOY": {
+        "metadata": [
+          51643481,
+          11952,
+          "7b021e577fca917a63111d55cc29ae5b"
+        ],
+        "tracking": [
+          51643523,
+          362567859,
+          "4e1063e0a0ae499920cf68ac1aa3ab4e"
+        ]
+      }
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "promotion_gate": {
+      "maximum_any_regime_drop": 0.02,
+      "minimum_mean_spellF1_gain": 0.02
+    },
+    "regimes": [
+      "clean",
+      "degraded"
+    ],
+    "seeds": {
+      "J03WMX": 61021,
+      "J03WN1": 51021,
+      "J03WOH": 41021,
+      "J03WOY": 41039
+    },
+    "selection": "Gate each validation candidate first (baseline always eligible); rank eligible by mean spellF1 over clean/degraded, then mean macroF1, then lexical ID",
+    "source_hashes": {
+      "evaluation/possession_metrics.py": "32c878630c74fb52a90c301485d6dff806509d8e933b1177b6035ee8e8f42b80",
+      "possession/config.py": "8ae2fa6a1a14af35a092190020952a5504a399a4f8655def5e38367f30e425ce",
+      "possession/decoder.py": "6d3f64a35469711d52ad0a02247f7f5da8932ca744ace05fbaddaf6f183fe99e",
+      "possession/features.py": "02e065ecf1ab78a4a5d86d097755d93bdb474c09e2ced30e24bb4fda09e0b3e3",
+      "possession/io.py": "f9f82b31f96c913020075a6bffaae97a06e1d4c14801c8f2496a8a587f874604",
+      "possession/learned.py": "902aa7258de686740a4e2c1f356ee7842c18be70417b00920668bcbdc5ee8ba0",
+      "possession/tags.py": "b2f4fd4e7236759d5231e8b2bbbda60b83074ef19a510fe162ac30ea20463dbb",
+      "tools/external_benchmark.py": "3b3fe9ee56172f0d4bda737194e60782d7f25b5ef9243d187102dafe7fdcdc0a",
+      "tools/train_stoppages.py": "e34f9a9ccf298a52877ec1dcfc62e9339b59ff44f6480ed15bd23e0ec0586f57"
+    },
+    "splits": {
+      "final": [
+        "J03WMX"
+      ],
+      "train": [
+        "J03WOH",
+        "J03WOY"
+      ],
+      "validation": [
+        "J03WN1"
+      ]
+    },
+    "tagging": "No external automatic tags; trained dead model has no tag features. Competition team tags remain separate.",
+    "target_separation": "BallStatus/Possession are training targets or scoring only; corruption, features and decoding blocks never consume them.",
+    "train_stride": 5
+  },
+  "protocol_sha256": "a68503fb926e439275a365dc0d39c904509c5fecbcc65ac7f11f81a7df869731",
+  "release_model": "l2-0.001_joint",
+  "release_model_sha256": "3759734a29a07eafc11723029800d30863d00c0a9e478bea3fcafaf6805c2867",
+  "selected_on_validation": "l2-0.001_joint",
+  "source_hashes": {
+    "evaluation/possession_metrics.py": "32c878630c74fb52a90c301485d6dff806509d8e933b1177b6035ee8e8f42b80",
+    "possession/config.py": "8ae2fa6a1a14af35a092190020952a5504a399a4f8655def5e38367f30e425ce",
+    "possession/decoder.py": "6d3f64a35469711d52ad0a02247f7f5da8932ca744ace05fbaddaf6f183fe99e",
+    "possession/features.py": "02e065ecf1ab78a4a5d86d097755d93bdb474c09e2ced30e24bb4fda09e0b3e3",
+    "possession/io.py": "f9f82b31f96c913020075a6bffaae97a06e1d4c14801c8f2496a8a587f874604",
+    "possession/learned.py": "902aa7258de686740a4e2c1f356ee7842c18be70417b00920668bcbdc5ee8ba0",
+    "possession/tags.py": "b2f4fd4e7236759d5231e8b2bbbda60b83074ef19a510fe162ac30ea20463dbb",
+    "tools/external_benchmark.py": "3b3fe9ee56172f0d4bda737194e60782d7f25b5ef9243d187102dafe7fdcdc0a",
+    "tools/train_stoppages.py": "e34f9a9ccf298a52877ec1dcfc62e9339b59ff44f6480ed15bd23e0ec0586f57"
+  },
+  "training_matches": {
+    "J03WOH": {
+      "inputs": {
+        "J03WOH_metadata.xml": {
+          "bytes": 11745,
+          "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+        },
+        "J03WOH_tracking.xml": {
+          "bytes": 348945715,
+          "sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+        }
+      },
+      "known_frames": 137214,
+      "reference_sha256": "4d06f48193bca461f7b85d710edce004b56cb4a6d3b150fba20fc3c3989589bb",
+      "regimes": {
+        "clean": {
+          "rows_before_unknown_mask": 27443,
+          "seed": null
+        },
+        "degraded": {
+          "rows_before_unknown_mask": 27443,
+          "seed": 41021
+        }
+      }
+    },
+    "J03WOY": {
+      "inputs": {
+        "J03WOY_metadata.xml": {
+          "bytes": 11952,
+          "sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9"
+        },
+        "J03WOY_tracking.xml": {
+          "bytes": 362567859,
+          "sha256": "a228ef0e676d009cefff1580fcb721b53f598454eb120ec347e0a628a3a4646b"
+        }
+      },
+      "known_frames": 142536,
+      "reference_sha256": "eac9d72f3af3316964e95cdda04054215639e5dec4c60f6ef9042b02c4042f4a",
+      "regimes": {
+        "clean": {
+          "rows_before_unknown_mask": 28508,
+          "seed": null
+        },
+        "degraded": {
+          "rows_before_unknown_mask": 28508,
+          "seed": 41039
+        }
+      }
+    }
+  },
+  "validation_records": [
+    {
+      "candidate": "baseline",
+      "dead_precision": 0.9872995856602415,
+      "dead_recall": 0.4493195233930914,
+      "macroF1": 0.6140689859214167,
+      "match": "J03WN1",
+      "predicted_spells": 272,
+      "prediction_sha256": "d035e0d8c48d938a1b8d35bd36858c2a9a8e28a6d42b5e820cd5d360f954c33e",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.3150259067357513
+    },
+    {
+      "candidate": "l2-0.001_joint",
+      "dead_precision": 0.9197413117324275,
+      "dead_recall": 0.9619179055531264,
+      "macroF1": 0.8074381429600822,
+      "match": "J03WN1",
+      "predicted_spells": 278,
+      "prediction_sha256": "daeed7023e71abc65c3d004f8d60836c23d12e06e31367206fd222f1d995239c",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.36452442159383036
+    },
+    {
+      "candidate": "l2-0.001_separate",
+      "dead_precision": 0.9301223792555818,
+      "dead_recall": 0.9523256449497158,
+      "macroF1": 0.8071409114513854,
+      "match": "J03WN1",
+      "predicted_spells": 283,
+      "prediction_sha256": "e559429ce5769ef193be786c0c8b86eae39209ee21d81ca4d50e6edac819f967",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.3540229885057471
+    },
+    {
+      "candidate": "l2-0.01_joint",
+      "dead_precision": 0.9114116221215793,
+      "dead_recall": 0.9761833187581985,
+      "macroF1": 0.8107468091816946,
+      "match": "J03WN1",
+      "predicted_spells": 261,
+      "prediction_sha256": "d0b955e820c9d2714c1787772d1b0b546028f507d030c024753032f7b7952f17",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.3590013140604468
+    },
+    {
+      "candidate": "l2-0.01_separate",
+      "dead_precision": 0.9259624357609453,
+      "dead_recall": 0.962642107564495,
+      "macroF1": 0.8129523926588149,
+      "match": "J03WN1",
+      "predicted_spells": 272,
+      "prediction_sha256": "9dc1bc79881847ecfb4b707985e93835cc75274601bc08f30b338fbcdee702b3",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.36373056994818653
+    },
+    {
+      "candidate": "l2-0.1_joint",
+      "dead_precision": 0.8821399888799654,
+      "dead_recall": 0.9755684302579799,
+      "macroF1": 0.7979316902355956,
+      "match": "J03WN1",
+      "predicted_spells": 250,
+      "prediction_sha256": "56f8edff59895366aa0d54d0f705d4a06242c0d1074e5f04a16ae92f2adc8e98",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.35466666666666674
+    },
+    {
+      "candidate": "l2-0.1_separate",
+      "dead_precision": 0.9176115485564305,
+      "dead_recall": 0.9554274158285964,
+      "macroF1": 0.8071124043110971,
+      "match": "J03WN1",
+      "predicted_spells": 264,
+      "prediction_sha256": "e32a71b7623b7fbce3785f2dde33ba2d99ea86f544c524989d6055c4c4cd11c8",
+      "reference_spells": 500,
+      "regime": "clean",
+      "spellF1": 0.35392670157068057
+    },
+    {
+      "candidate": "baseline",
+      "dead_precision": 0.9911504424778761,
+      "dead_recall": 0.2907739396589418,
+      "macroF1": 0.4958215457794799,
+      "match": "J03WN1",
+      "predicted_spells": 310,
+      "prediction_sha256": "c8560ad5f8cd899b89b5a7518181f37f6e83479b3a9f570ed9ed7b26ee7baeb4",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.16098765432098766
+    },
+    {
+      "candidate": "l2-0.001_joint",
+      "dead_precision": 0.8747572455252773,
+      "dead_recall": 0.9663041101880192,
+      "macroF1": 0.7274414555687193,
+      "match": "J03WN1",
+      "predicted_spells": 224,
+      "prediction_sha256": "e4ad391adde764fa5ca57a07798ee72f1f6846e84527b6a994f35bf35338f778",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.22541436464088402
+    },
+    {
+      "candidate": "l2-0.001_separate",
+      "dead_precision": 0.906838466866171,
+      "dead_recall": 0.9482127240926979,
+      "macroF1": 0.7398623697722789,
+      "match": "J03WN1",
+      "predicted_spells": 233,
+      "prediction_sha256": "e0908382645eb57ce292ad2b34c79fece1305643be611826c03ab926a80262e8",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.22319236016371077
+    },
+    {
+      "candidate": "l2-0.01_joint",
+      "dead_precision": 0.8591988776546853,
+      "dead_recall": 0.9707313073895933,
+      "macroF1": 0.7199191942539326,
+      "match": "J03WN1",
+      "predicted_spells": 224,
+      "prediction_sha256": "eb69c2a6974f507ac5c47adb19e1a873a5a075e3b1698bfd6bb6d856a98bd71b",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.22099447513812157
+    },
+    {
+      "candidate": "l2-0.01_separate",
+      "dead_precision": 0.8924160221632229,
+      "dead_recall": 0.9507405990380411,
+      "macroF1": 0.7306679591904546,
+      "match": "J03WN1",
+      "predicted_spells": 230,
+      "prediction_sha256": "6277c6a4bea9811e2276c5d13b830b7b6be78a7e139e436fc276725474f3b7e9",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.21972602739726027
+    },
+    {
+      "candidate": "l2-0.1_joint",
+      "dead_precision": 0.8177771643490562,
+      "dead_recall": 0.9715238303454307,
+      "macroF1": 0.7010223146969311,
+      "match": "J03WN1",
+      "predicted_spells": 220,
+      "prediction_sha256": "805891b8c95d805f40e1e2e334b78983f516394b7718452042d1549b8a2a1dfe",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.21888888888888886
+    },
+    {
+      "candidate": "l2-0.1_separate",
+      "dead_precision": 0.8743488436469788,
+      "dead_recall": 0.9494971578487101,
+      "macroF1": 0.7209235456269357,
+      "match": "J03WN1",
+      "predicted_spells": 232,
+      "prediction_sha256": "c0f461d0aa6557d4df1a093d650f35690db2acca0f8b9b52160f6124b73f7a3f",
+      "reference_spells": 500,
+      "regime": "degraded",
+      "spellF1": 0.22240437158469945
+    }
+  ],
+  "winner_frozen_before_final_sha256": "9661eebdf012795e99229efe3de487c68caeab5ab9dec354d401ebc03babee20"
+}

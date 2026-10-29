@@ -1,0 +1,5 @@
+# Preserve exact release bytes for the recorded source/model/output SHA-256 hashes.
+* -text
+*.png binary
+*.jpg binary
+*.zip binary

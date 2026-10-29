@@ -1,0 +1,102 @@
+{
+  "code_sha256": "8c69979d0235a1e99d98561e92e353af3a0475a79f1c99b17e705cfe35f1937e",
+  "config_sha256": "8d190bec7b92ae61157f6b41fbc839bc6d400e6f626908d4a6d8bdacc7dd76cf",
+  "game": "BAR-ATH",
+  "ground_truth_used_for_inference": false,
+  "inputs": {
+    "atd_meta": {
+      "bytes": 59057,
+      "filename": "BAR-ATH_tactical_atd.xml",
+      "sha256": "327e35e32e46a647389b88f883d4f9a2ab931e3e6148aef2fcf8f22b1e93c43a"
+    },
+    "atd_raw": {
+      "bytes": 195714285,
+      "filename": "BAR-ATH_tactical_atd.txt",
+      "sha256": "f130e350d2bfdf734b7e32f072931fccc6d015c1e837d082064875fe0a700431"
+    },
+    "smart_tagging": {
+      "bytes": 261055,
+      "filename": "BAR-ATH_tactical_smart_tagging.xml",
+      "sha256": "0594d35e3df01b9c5002372d8615e2e8ef5379ac8f4e84c5ef7a53f4304c9019"
+    }
+  },
+  "learned_model": {
+    "decoder_mode": "joint",
+    "filename": "model.json",
+    "sha256": "3759734a29a07eafc11723029800d30863d00c0a9e478bea3fcafaf6805c2867"
+  },
+  "output": {
+    "filename": "predictions.csv",
+    "rows": 199319,
+    "sha256": "ea2807bbe4b15d25f1d1ec4494fea42a85bee215f2d1f43a417642d5bd60ac96"
+  },
+  "runtime": {
+    "numpy": "2.5.4",
+    "python": "3.12.14"
+  },
+  "schema_version": 1,
+  "solution_version": "1.1.0",
+  "synthetic": false,
+  "tracking_only": false,
+  "training_data": {
+    "dataset": "https://doi.org/10.6084/m9.figshare.28196177",
+    "final_test_matches": [
+      "J03WMX"
+    ],
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "protocol_sha256": "a68503fb926e439275a365dc0d39c904509c5fecbcc65ac7f11f81a7df869731",
+    "training_matches": {
+      "J03WOH": {
+        "inputs": {
+          "J03WOH_metadata.xml": {
+            "bytes": 11745,
+            "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+          },
+          "J03WOH_tracking.xml": {
+            "bytes": 348945715,
+            "sha256": "ec4dcf30200aad694dea263d5289485fcd0ca42badddaeb7c81f5cd5a4229d4f"
+          }
+        },
+        "known_frames": 137214,
+        "reference_sha256": "4d06f48193bca461f7b85d710edce004b56cb4a6d3b150fba20fc3c3989589bb",
+        "regimes": {
+          "clean": {
+            "rows_before_unknown_mask": 27443,
+            "seed": null
+          },
+          "degraded": {
+            "rows_before_unknown_mask": 27443,
+            "seed": 41021
+          }
+        }
+      },
+      "J03WOY": {
+        "inputs": {
+          "J03WOY_metadata.xml": {
+            "bytes": 11952,
+            "sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9"
+          },
+          "J03WOY_tracking.xml": {
+            "bytes": 362567859,
+            "sha256": "a228ef0e676d009cefff1580fcb721b53f598454eb120ec347e0a628a3a4646b"
+          }
+        },
+        "known_frames": 142536,
+        "reference_sha256": "eac9d72f3af3316964e95cdda04054215639e5dec4c60f6ef9042b02c4042f4a",
+        "regimes": {
+          "clean": {
+            "rows_before_unknown_mask": 28508,
+            "seed": null
+          },
+          "degraded": {
+            "rows_before_unknown_mask": 28508,
+            "seed": 41039
+          }
+        }
+      }
+    },
+    "validation_matches": [
+      "J03WN1"
+    ]
+  }
+}
