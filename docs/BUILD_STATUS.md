@@ -1,21 +1,9 @@
-# Xtension Labs — release 1.5.0
+# Xtension Labs — 1.5.1
 
-Promoted joint-state after passing both the fixed development gates and the one-shot three-match fresh audit.
+Retained v1.5: experimental combined did not pass both fixed gates (development=False, fresh=False).
 
-- 230 engineering tests pass locally and from a clean source extraction.
-- Clean-source inference reproduces all 199,319 target rows, model and configuration bytes exactly.
-- The preselected experimental refit reproduces exactly.
-- Four procedures scored in 20 development cells each; one frozen experiment audited on three fresh matches.
-- Fresh-audit outcome: passed.
-- No fresh human dense H/A/D truth or hidden competition score is claimed.
+Development gate: **fail**. Fresh audit gate: **fail**. Deployed model: **v1.5 joint-state**.
 
-CSV SHA-256: `1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb`
+290 engineering tests pass. Complete inference and clean-source verification are recorded in verification.json. All new scientific procedures were fixed before scoring; no fresh-label retuning occurred.
 
-Model SHA-256: `3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0`
-
-See [joint campaign](JOINT_CAMPAIGN.md), [fresh-data provenance](FRESH_DATA.md),
-[technical report](TECHNICAL_REPORT.md) and [verification](verification.json).
-Exact v1.4 fallback artifacts remain under models/baselines/.
-
-The repository remains private under likalight. The competition form has not
-been submitted; public-source access and team eligibility remain outstanding.
+The repository remains private. The official competition form is not submitted.

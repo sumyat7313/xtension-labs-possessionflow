@@ -215,6 +215,12 @@ def validate_model(model):
         if "robust_control_model" not in model or model.get("decoder_mode", "joint") != "joint":
             raise ValueError("Boundary model requires robust control and joint decoding")
         validate_boundary(model["boundary_model"])
+    if "transition_model" in model:
+        from .transition import validate_model as validate_transition
+        if ("robust_control_model" not in model or model.get("decoder_mode", "joint") != "joint"
+                or "boundary_model" in model):
+            raise ValueError("Transition model requires robust control, joint decoding and no legacy boundary model")
+        validate_transition(model["transition_model"])
     for key in ("mean", "scale", "coefficients"):
         a = np.asarray(model.get(key), dtype=float)
         if a.shape != (len(FEATURE_NAMES),) or not np.isfinite(a).all():
@@ -352,10 +358,16 @@ def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, con
     config = resolve_config(config, model)
     probabilities = learned_probabilities(features, tags, X, model, control_matrix, blocks, fps)
     costs = None
+    early = None
     if "boundary_model" in model:
         from .boundary import switch_costs
         if mode != "joint": raise ValueError("Boundary model is supported only by joint decoding")
         costs = switch_costs(model["boundary_model"], control_matrix, probabilities, blocks, fps, config.team_switch_cost)
+    if "transition_model" in model:
+        from .transition import evidence
+        if mode != "joint": raise ValueError("Transition model requires joint decoding")
+        signals = evidence(model["transition_model"], control_matrix, probabilities, blocks, fps, config.team_switch_cost)
+        costs, early = signals["team_switch_costs"], signals["early_exit_allowed"]
     dead = probabilities[:, 2]
     home = np.divide(probabilities[:, 0], 1 - dead, out=np.full(len(dead), 0.5), where=dead < 1)
     labels = np.full(len(dead), "X", dtype="<U1")
@@ -372,7 +384,8 @@ def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, con
             continue
         if mode == "joint":
             labels[start:stop] = np.array(["H", "A", "D"])[decode(probabilities[start:stop], fps, config,
-                team_switch_costs=None if costs is None else costs[start:stop])]
+                team_switch_costs=None if costs is None else costs[start:stop],
+                early_exit_allowed=None if early is None else early[start:stop])]
             continue
         is_dead = _decode_binary(np.column_stack((1 - dead[start:stop], dead[start:stop])),
                                  [team_duration, dead_duration],

@@ -15,6 +15,8 @@ V13_MODEL_SHA256 = "f4feb096face6a2a3eb1214079a5f34ea8b495147478b7a92b6b224a42dc
 V13_SOURCE_SHA256 = "6bba5e359ec0c425aba15a764bf8c7e76c42ee804004de6eca311e2af7d2decb"
 V14_MODEL_SHA256 = "7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c316688653"
 V14_SOURCE_SHA256 = "04c5341978660a52fc32148221508ddb3db291921ff19d8fb1bfbf3e5cafeeb9"
+V15_MODEL_SHA256 = "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0"
+V15_SOURCE_SHA256 = "9ff7b8103355d8fdf3160112f78019fc01b001e34fb438a581d23193ad0964fb"
 
 
 def sha256(path):
@@ -217,6 +219,156 @@ def verify_v5_decision(evidence, release_model_sha256, audit=None):
     return recomputed
 
 
+def _valid_digest(value):
+    return isinstance(value, str) and len(value) == 64 and all(c in "0123456789abcdef" for c in value)
+
+
+def _valid_rate(value):
+    return not isinstance(value, bool) and isinstance(value, (int, float)) and math.isfinite(value) and 0 <= value <= 1
+
+
+def _verify_event_rates(value):
+    counts = [value[k] for k in ("n_gt", "n_pred", "n_matched")]
+    if any(type(n) is not int or n < 0 for n in counts) or counts[2] > min(counts[:2]):
+        raise ValueError("Invalid temporal event counts")
+    gt, pred, hits = counts
+    expected = {"precision": hits/pred if pred else 0., "recall": hits/gt if gt else 0.,
+                "f1": 2*hits/(gt+pred) if gt+pred else 0.}
+    if any(not _valid_rate(value[k]) or not same_evidence(value[k], v) for k, v in expected.items()):
+        raise ValueError("Temporal event rates disagree with counts")
+
+
+def verify_fresh_audit_v6(wrapper, candidate_sha256, config_sha256):
+    """Authenticate the one-shot dense-provider/silver audit and recompute gates."""
+    from tools.fresh_benchmark_v6 import SPLIT, POLICY, WCSF, GEOMETRY_TOLERANCE_METRES, decide
+    audit, policy = wrapper["audit"], wrapper["policy"]
+    protocol = audit["protocol"]
+    if not same_evidence(policy, POLICY) or not same_evidence(policy, protocol["policy"]):
+        raise ValueError("V6 fresh policy differs from the fixed protocol")
+    if (wrapper["baseline_model_sha256"] != V15_MODEL_SHA256
+            or wrapper["candidate_model_sha256"] != candidate_sha256 or not _valid_digest(candidate_sha256)):
+        raise ValueError("V6 fresh audit compares different model bytes")
+    if (protocol["schema_version"] != 1 or protocol["selection_frozen_before_reference_access"] is not True
+            or protocol["no_training_or_retuning"] is not True or protocol["dense_human_had_validation"] is not False
+            or audit["reference_fields_used_for_inference"] is not False or audit["dense_human_had_validation"] is not False
+            or type(audit["reference_match_read_count"]) is not int or audit["reference_match_read_count"] != 3
+            or protocol["geometry_tolerance_metres"] != GEOMETRY_TOLERANCE_METRES):
+        raise ValueError("V6 fresh audit separation or scope changed")
+    if not protocol_matches_hash(protocol, wrapper["audit_protocol_sha256"]):
+        raise ValueError("V6 frozen fresh protocol hash changed")
+    encoded = wrapper["split_file_base64"]
+    if not isinstance(encoded, str): raise ValueError("V6 split requires exact original bytes")
+    split_bytes = base64.b64decode(encoded, validate=True)
+    if (protocol["split"] != SPLIT or json.loads(split_bytes.decode("utf-8-sig")) != SPLIT
+            or hashlib.sha256(split_bytes).hexdigest() != protocol["split_sha256"]):
+        raise ValueError("V6 fresh match split changed")
+    if set(protocol["artifacts"]) != {"baseline", "candidate"}:
+        raise ValueError("V6 audit must freeze exactly two models")
+    for name, expected in (("baseline", V15_MODEL_SHA256), ("candidate", candidate_sha256)):
+        artifact = protocol["artifacts"][name]
+        if artifact["model_sha256"] != expected or artifact["config_sha256"] != config_sha256:
+            raise ValueError("V6 fresh frozen model/configuration differs")
+    matches = {"wcsf2023", *[f"skillcorner{m}" for m in SPLIT["final_silver_matches"]]}
+    if any(set(audit[k]) != matches for k in ("scores", "references", "reference_counts")):
+        raise ValueError("V6 audit requires all three reserved matches")
+    predictions = {f"{m}-{which}.csv" for m in matches for which in ("baseline", "candidate")}
+    if (set(audit["prediction_sha256"]) != predictions
+            or any(not _valid_digest(v) for v in audit["prediction_sha256"].values())):
+        raise ValueError("V6 audit requires hashes for all six frozen predictions")
+    dense_counts = audit["reference_counts"]["wcsf2023"]
+    if (set(dense_counts["class_counts"]) != set("HADX")
+            or any(type(v) is not int or v < 0 for v in dense_counts["class_counts"].values())
+            or dense_counts["annotation_method"] != "undocumented_provider_flags"
+            or dense_counts["scored_frames"] != sum(dense_counts["class_counts"][c] for c in "HAD")):
+        raise ValueError("V6 dense reference support or provenance differs")
+    if (set(audit["references"]["wcsf2023"]) != set(WCSF)
+            or any(not _valid_digest(v) for v in audit["references"]["wcsf2023"].values())):
+        raise ValueError("V6 dense reference hashes missing")
+    dense = audit["scores"]["wcsf2023"]
+    if set(dense) != {"baseline", "candidate"}: raise ValueError("V6 dense scores are not paired")
+    for value in dense.values():
+        if (value["reference_quality"] != "dense_provider_flags_annotation_unverified"
+                or value["dense_human_had_truth"] is not False or value["fps"] != 10
+                or type(value["n"]) is not int or value["n"] <= 0 or value["n"] != dense_counts["scored_frames"]
+                or value["class_counts"] != {c:dense_counts["class_counts"][c] for c in "HAD"}):
+            raise ValueError("V6 dense score misrepresents its reference support")
+        for metric in ("spellF1", "macroF1", "dead_precision", "dead_recall", "dead_f1"):
+            if not _valid_rate(value[metric]): raise ValueError("Invalid V6 dense score")
+        temporal = value["temporal"]
+        for key in ("dead_segments", "dead_onsets", "dead_offsets"):
+            _verify_event_rates(temporal[key])
+            if temporal[key]["n_gt"] != dense["baseline"]["temporal"][key]["n_gt"]:
+                raise ValueError("V6 dense models scored different reference events")
+        short = temporal["short_possessions"]
+        if (type(short["n_gt"]) is not int or type(short["n_matched"]) is not int
+                or not 0 <= short["n_matched"] <= short["n_gt"]
+                or short["n_gt"] != dense["baseline"]["temporal"]["short_possessions"]["n_gt"]
+                or not same_evidence(short["recall"], short["n_matched"]/short["n_gt"] if short["n_gt"] else None)):
+            raise ValueError("V6 short-possession support/rate mismatch")
+    for match in matches - {"wcsf2023"}:
+        pair, counts, ref = audit["scores"][match], audit["reference_counts"][match], audit["references"][match]
+        if (set(pair) != {"baseline", "candidate"} or ref["quality"] != "provider_silver"
+                or not _valid_digest(ref["sha256"]) or counts["gap_frames_are_unknown"] is not True
+                or counts["dead_reference_frames"] != 0):
+            raise ValueError("V6 silver reference gaps cannot become dead truth")
+        for value in pair.values():
+            if (value["reference_quality"] != "provider_silver" or value["metric"] != "phase_present_team_accuracy"
+                    or value["dense_had_truth"] is not False or value["dense_possession_truth"] is not False
+                    or value["spellF1"] is not None or type(value["n"]) is not int or value["n"] <= 0
+                    or value["n"] != counts["scored_frames"]):
+                raise ValueError("V6 silver score misrepresents its reference scope")
+            for key in ("accuracy", "balanced_team_recall", "predicted_live_coverage", "predicted_dead_fraction", "predicted_unknown_fraction"):
+                if not _valid_rate(value[key]): raise ValueError("Invalid V6 silver score")
+    recomputed = decide(audit["scores"])
+    if (not same_evidence(recomputed, audit["gate"]) or type(wrapper["passed"]) is not bool
+            or wrapper["passed"] != recomputed["passed"]):
+        raise ValueError("V6 fresh gate differs from its scores")
+    return recomputed["passed"]
+
+
+def verify_v6_candidate_artifact(evidence, path):
+    """Keep the exact audited experiment available even when release falls back."""
+    if sha256(path) != evidence["release_candidate_model_sha256"]:
+        raise ValueError("V6 stored experimental model hash differs from its audit")
+    model = json.loads(Path(path).read_text(encoding="utf-8"))
+    if model.get("candidate_id") != evidence["selection"]["audit_candidate"]:
+        raise ValueError("V6 stored experiment is not the development-selected audit candidate")
+
+
+def verify_v6_decision(evidence, release_model_sha256, audit=None):
+    """Both gates are mandatory; failed development still requires one audit."""
+    from tools.train_temporal_v6 import BASELINE, CONFIG_SHA256, GATE, select
+    recomputed = select(evidence["records"])
+    if not same_evidence(recomputed, evidence["selection"]):
+        raise ValueError("V6 temporal selection recomputation changed")
+    selected = recomputed["selected"] != BASELINE
+    if (evidence["development_candidate_selected"] is not selected
+            or evidence["competition_labels_used"] is not False or evidence["independent_test_claimed"] is not False
+            or evidence["incumbent_historical_predictions_reproduced"] is not True
+            or evidence["protocol"]["fresh_audit_used_for_selection"] is not False):
+        raise ValueError("V6 temporal evaluation separation changed")
+    if (evidence["protocol"]["config_sha256"] != CONFIG_SHA256
+            or evidence["protocol"]["baseline_sha256"] != V15_MODEL_SHA256
+            or evidence["protocol"]["archive_sha256"] != V15_SOURCE_SHA256
+            or not same_evidence(evidence["protocol"]["gate"], GATE)):
+        raise ValueError("V6 fixed baseline, configuration or gate changed")
+    decision = evidence["release_decision"]
+    if (type(decision["promoted"]) is not bool or decision["model_sha256"] != release_model_sha256
+            or not isinstance(decision["reason"], str) or not decision["reason"].strip()):
+        raise ValueError("Invalid V6 release decision")
+    candidate = evidence["release_candidate_model_sha256"]
+    if recomputed["audit_candidate"] == BASELINE or candidate == V15_MODEL_SHA256 or not _valid_digest(candidate):
+        raise ValueError("V6 must audit one preselected experimental winner")
+    if audit is None: raise ValueError("V6 requires a fresh audit even if development rejected its experiment")
+    passed = verify_fresh_audit_v6(audit, candidate, CONFIG_SHA256)
+    promoted = selected and passed
+    status = "failed-development-retained-baseline" if not selected else ("passed" if passed else "failed-retained-baseline")
+    if (decision["promoted"] != promoted or decision["independent_audit_status"] != status
+            or release_model_sha256 != (candidate if promoted else V15_MODEL_SHA256)):
+        raise ValueError("V6 promotion/fallback does not follow both gates")
+    return recomputed
+
+
 def same_evidence(actual, expected):
     """Preserve decisions exactly; tolerate only floating summation roundoff.
 
@@ -261,6 +413,7 @@ def main():
     robust_path = ROOT / "models/robust-selection.json"
     multimodal_path = ROOT / "models/multimodal-selection.json"
     joint_path = ROOT / "models/joint-selection.json"
+    temporal_path = ROOT / "models/temporal-selection.json"
     if selection_path.exists():
         selection = json.loads(selection_path.read_text(encoding="utf-8"))
         historical_model = ROOT / "models/baselines/v1.2.json"
@@ -362,10 +515,19 @@ def main():
         audit = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.exists() else None
         try:
             if not multimodal_path.exists(): raise ValueError("Historical v1.4 selection evidence is missing")
-            verify_v5_decision(evidence, manifest["learned_model"]["sha256"], audit)
-            current_sources = scientific_hashes()
-            if current_sources != evidence["source_hashes"] or current_sources != evidence["protocol"]["source_hashes"]:
-                raise ValueError("Joint/boundary scientific source hashes changed")
+            v5_release_sha = sha256(ROOT / "models/baselines/v1.5.json") if temporal_path.exists() else manifest["learned_model"]["sha256"]
+            verify_v5_decision(evidence, v5_release_sha, audit)
+            if temporal_path.exists():
+                if v5_release_sha != V15_MODEL_SHA256: raise ValueError("Historical v1.5 model changed")
+                if evidence["source_hashes"] != evidence["protocol"]["source_hashes"]:
+                    raise ValueError("Historical v5 source maps disagree")
+                verify_archived_sources(evidence["source_hashes"], ROOT / "models/baselines/v1.5-source.zip", V15_SOURCE_SHA256)
+                if sha256(ROOT / "tools/train_joint_campaign.py") != evidence["source_hashes"]["tools/train_joint_campaign.py"]:
+                    raise ValueError("Historical v5 selector changed")
+            else:
+                current_sources = scientific_hashes()
+                if current_sources != evidence["source_hashes"] or current_sources != evidence["protocol"]["source_hashes"]:
+                    raise ValueError("Joint/boundary scientific source hashes changed")
             if not protocol_matches_hash(evidence["protocol"], evidence["protocol_sha256"]):
                 raise ValueError("Joint/boundary embedded protocol hash changed")
             if evidence["protocol"]["baseline_sha256"] != V14_MODEL_SHA256:
@@ -374,13 +536,42 @@ def main():
                 sources = {p.relative_to(ROOT).as_posix(): sha256(p) for p in [
                     ROOT / "tools/fresh_benchmark.py", ROOT / "tools/independent_benchmark.py",
                     *sorted((ROOT / "possession").glob("*.py"))]}
-                if sources != audit["audit"]["protocol"]["sources"]:
+                if temporal_path.exists():
+                    verify_archived_sources(audit["audit"]["protocol"]["sources"], ROOT / "models/baselines/v1.5-source.zip", V15_SOURCE_SHA256)
+                elif sources != audit["audit"]["protocol"]["sources"]:
                     raise ValueError("Fresh-audit inference source hashes changed")
                 if manifest["config_sha256"] != audit["audit"]["protocol"]["artifacts"]["baseline"]["config_sha256"]:
                     raise ValueError("Fresh audit configuration differs from release")
         except (ValueError, KeyError, TypeError) as error:
             failures.append(f"joint/boundary release evidence: {error}")
         print(f"{'FAIL' if failures else 'OK'}  joint/boundary development CV and fresh audit decision")
+    if temporal_path.exists():
+        from tools.train_temporal_v6 import scientific_hashes, CONFIG_SHA256
+        evidence = json.loads(temporal_path.read_text(encoding="utf-8"))
+        audit_path = ROOT / "models/fresh-audit-v6.json"
+        audit = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.exists() else None
+        try:
+            if not joint_path.exists(): raise ValueError("Historical v1.5 selection evidence is missing")
+            verify_v6_decision(evidence, manifest["learned_model"]["sha256"], audit)
+            verify_v6_candidate_artifact(evidence, ROOT / "models/experiments/v6-candidate.json")
+            sources = scientific_hashes()
+            if sources != evidence["source_hashes"] or sources != evidence["protocol"]["source_hashes"]:
+                raise ValueError("V6 temporal scientific sources changed")
+            if not protocol_matches_hash(evidence["protocol"], evidence["protocol_sha256"]):
+                raise ValueError("V6 embedded campaign protocol hash changed")
+            if sha256(ROOT / "models/baselines/v1.5.json") != V15_MODEL_SHA256:
+                raise ValueError("V6 historical baseline model changed")
+            if sha256(ROOT / "configs/baselines/v1.5.json") != CONFIG_SHA256 or manifest["config_sha256"] != CONFIG_SHA256:
+                raise ValueError("V6 historical/release configuration changed")
+            names = ("tools/fresh_benchmark_v6.py", "tools/fresh_benchmark.py", "tools/independent_benchmark.py",
+                     "tools/temporal_diagnostics_v6.py", "tools/control_diagnostics.py", "evaluation/possession_metrics.py")
+            fresh_sources = {p.relative_to(ROOT).as_posix(): sha256(p) for p in [
+                *[ROOT / n for n in names], *sorted((ROOT / "possession").glob("*.py"))]}
+            if fresh_sources != audit["audit"]["protocol"]["sources"]:
+                raise ValueError("V6 fresh audit scientific sources changed")
+        except (ValueError, KeyError, TypeError, OSError, zipfile.BadZipFile) as error:
+            failures.append(f"v6 temporal release evidence: {error}")
+        print(f"{'FAIL' if failures else 'OK'}  v6 temporal development and fresh audit decision")
     if failures:
         for failure in failures:
             print(f"FAIL  {failure}", file=sys.stderr)

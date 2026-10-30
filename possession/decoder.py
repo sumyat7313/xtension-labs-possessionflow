@@ -3,7 +3,8 @@
 import numpy as np
 
 
-def decode(probabilities, fps, config, team_switch_costs=None):
+def decode(probabilities, fps, config, team_switch_costs=None, *, early_exit_allowed=None,
+           min_short_team_seconds=.16, early_exit_penalty=1.):
     probabilities = np.asarray(probabilities, dtype=np.float64)
     if probabilities.ndim != 2 or probabilities.shape[1] != 3 or not len(probabilities):
         raise ValueError("Decoder expects a nonempty n by 3 probability matrix")
@@ -14,6 +15,14 @@ def decode(probabilities, fps, config, team_switch_costs=None):
         if (team_switch_costs.shape != (len(probabilities),) or not np.isfinite(team_switch_costs).all()
                 or (team_switch_costs < 0).any()):
             raise ValueError("Team switch costs must be a finite nonnegative per-frame vector")
+    if early_exit_allowed is not None:
+        early_exit_allowed = np.asarray(early_exit_allowed)
+        if early_exit_allowed.shape != (len(probabilities),) or early_exit_allowed.dtype != np.bool_:
+            raise ValueError("Early exits must be a per-frame boolean vector")
+        if (isinstance(min_short_team_seconds, bool) or not np.isfinite(min_short_team_seconds)
+                or not 0 < min_short_team_seconds <= config.min_team_seconds
+                or isinstance(early_exit_penalty, bool) or not np.isfinite(early_exit_penalty) or early_exit_penalty < 0):
+            raise ValueError("Invalid short-possession floor or early-exit penalty")
     durations = np.maximum(1, np.rint(np.array([config.min_team_seconds, config.min_team_seconds,
                                               config.min_dead_seconds]) * fps).astype(int))
     starts = np.r_[0, np.cumsum(durations)[:-1]]
@@ -31,6 +40,7 @@ def decode(probabilities, fps, config, team_switch_costs=None):
     previous[ends] = emission[0]
     back = np.zeros((len(probabilities), size), dtype=np.uint8)
     age_destinations = np.array([j for j in range(size) if j not in starts], dtype=int)
+    short_duration = max(1, int(np.ceil(min_short_team_seconds * fps))) if early_exit_allowed is not None else 0
     for frame in range(1, len(probabilities)):
         if team_switch_costs is not None:
             switch[0, 1] = switch[1, 0] = team_switch_costs[frame]
@@ -49,6 +59,17 @@ def decode(probabilities, fps, config, team_switch_costs=None):
             if value < current[starts[state]]:
                 current[starts[state]] = value
                 back[frame, starts[state]] = ends[winner]
+            if state < 2 and early_exit_allowed is not None and early_exit_allowed[frame]:
+                # Only H<->A may leave a short state early. D entry/exit retains
+                # the original duration constraints and penalties.
+                source = 1 - state
+                eligible = np.arange(starts[source] + short_duration - 1, ends[source])
+                if len(eligible):
+                    origin = int(eligible[np.argmin(previous[eligible])])
+                    value = previous[origin] + switch[source, state] + early_exit_penalty + emission[frame, state]
+                    if value < current[starts[state]]:
+                        current[starts[state]] = value
+                        back[frame, starts[state]] = origin
         # Subtract a shared offset to bound accumulated floating point error.
         current -= np.min(current)
         previous = current
