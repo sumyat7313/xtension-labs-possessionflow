@@ -1,5 +1,5 @@
 {
-  "code_sha256": "4268bc4a41569891f172b21c24a4f4556b667a7650d0380f8412ecd593513d57",
+  "code_sha256": "c63b6e89eb178dba00e7ddf48f0b4d8ce3cb053f5e14e23993d6c1f3a52cc46a",
   "config_sha256": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
   "game": "BAR-ATH",
   "ground_truth_used_for_inference": false,

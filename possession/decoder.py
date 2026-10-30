@@ -4,7 +4,7 @@ import numpy as np
 
 
 def decode(probabilities, fps, config, team_switch_costs=None, *, early_exit_allowed=None,
-           min_short_team_seconds=.16, early_exit_penalty=1.):
+           min_short_team_seconds=.16, early_exit_penalty=1., stop_costs=None, restart_costs=None):
     probabilities = np.asarray(probabilities, dtype=np.float64)
     if probabilities.ndim != 2 or probabilities.shape[1] != 3 or not len(probabilities):
         raise ValueError("Decoder expects a nonempty n by 3 probability matrix")
@@ -15,6 +15,14 @@ def decode(probabilities, fps, config, team_switch_costs=None, *, early_exit_all
         if (team_switch_costs.shape != (len(probabilities),) or not np.isfinite(team_switch_costs).all()
                 or (team_switch_costs < 0).any()):
             raise ValueError("Team switch costs must be a finite nonnegative per-frame vector")
+    typed_costs = []
+    for name, values in (("Stop", stop_costs), ("Restart", restart_costs)):
+        if values is not None:
+            values = np.asarray(values, dtype=float)
+            if values.shape != (len(probabilities),) or not np.isfinite(values).all() or (values < 0).any():
+                raise ValueError(f"{name} costs must be a finite nonnegative per-frame vector")
+        typed_costs.append(values)
+    stop_costs, restart_costs = typed_costs
     if early_exit_allowed is not None:
         early_exit_allowed = np.asarray(early_exit_allowed)
         if early_exit_allowed.shape != (len(probabilities),) or early_exit_allowed.dtype != np.bool_:
@@ -44,6 +52,10 @@ def decode(probabilities, fps, config, team_switch_costs=None, *, early_exit_all
     for frame in range(1, len(probabilities)):
         if team_switch_costs is not None:
             switch[0, 1] = switch[1, 0] = team_switch_costs[frame]
+        if stop_costs is not None:
+            switch[0, 2] = switch[1, 2] = stop_costs[frame]
+        if restart_costs is not None:
+            switch[2, 0] = switch[2, 1] = restart_costs[frame]
         current = np.full(size, np.inf)
         current[age_destinations] = previous[age_destinations - 1] + emission[frame, owners[age_destinations]]
         back[frame, age_destinations] = age_destinations - 1

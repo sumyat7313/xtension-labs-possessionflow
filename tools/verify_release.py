@@ -17,6 +17,7 @@ V14_MODEL_SHA256 = "7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c31668
 V14_SOURCE_SHA256 = "04c5341978660a52fc32148221508ddb3db291921ff19d8fb1bfbf3e5cafeeb9"
 V15_MODEL_SHA256 = "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0"
 V15_SOURCE_SHA256 = "9ff7b8103355d8fdf3160112f78019fc01b001e34fb438a581d23193ad0964fb"
+V151_SOURCE_SHA256 = "ee6da5f6ba376ca70bdf4c1f34f53b8452925b2b81009382cb02e40879afd536"
 
 
 def sha256(path):
@@ -369,6 +370,182 @@ def verify_v6_decision(evidence, release_model_sha256, audit=None):
     return recomputed
 
 
+def verify_fresh_audit_v7(wrapper, candidate_sha256, config_sha256):
+    """Authenticate limited phase evidence without allowing stoppage promotion."""
+    from tools.fresh_benchmark_v7 import SPLIT, POLICY, SC, decide, scientific_hashes
+    audit = wrapper['audit']; protocol = audit['protocol']
+    if not same_evidence(wrapper['policy'], POLICY) or not same_evidence(protocol['policy'], POLICY):
+        raise ValueError('V7 fresh policy changed')
+    if (wrapper['baseline_model_sha256'] != V15_MODEL_SHA256 or wrapper['candidate_model_sha256'] != candidate_sha256
+            or not _valid_digest(candidate_sha256)):
+        raise ValueError('V7 frozen models differ')
+    if not protocol_matches_hash(protocol, wrapper['audit_protocol_sha256']):
+        raise ValueError('V7 frozen audit protocol hash changed')
+    for kind, value in (('split', SPLIT), ('policy', POLICY)):
+        raw = base64.b64decode(wrapper[kind + '_file_base64'], validate=True)
+        if (json.loads(raw.decode('utf-8-sig')) != value or protocol[kind] != value
+                or hashlib.sha256(raw).hexdigest() != protocol[kind + '_sha256']):
+            raise ValueError('V7 frozen split/policy bytes differ')
+    if (protocol['schema_version'] != 1 or protocol['selection_frozen_before_reference_access'] is not True
+            or protocol['no_training_or_retuning'] is not True or protocol['dense_human_had_validation'] is not False
+            or protocol['fresh_stoppage_validation_available'] is not False
+            or audit['reference_fields_used_for_inference'] is not False
+            or audit['dense_human_had_validation'] is not False or audit['fresh_stoppage_validation_available'] is not False
+            or type(audit['reference_read_count']) is not int or audit['reference_read_count'] != 2):
+        raise ValueError('V7 audit scope/separation changed')
+    if protocol['sources'] != scientific_hashes():
+        raise ValueError('V7 fresh scientific sources changed')
+    if set(protocol['artifacts']) != {'baseline', 'candidate'}:
+        raise ValueError('V7 requires exactly two frozen models')
+    for name, expected in (('baseline', V15_MODEL_SHA256), ('candidate', candidate_sha256)):
+        if protocol['artifacts'][name] != {'model_sha256': expected, 'config_sha256': config_sha256}:
+            raise ValueError('V7 model/configuration changed')
+    data_names = {f'{m}_{suffix}' for m, files in SC.items() for suffix in files}
+    if set(protocol['data']) != data_names or any(not _valid_digest(v) for v in protocol['data'].values()):
+        raise ValueError('V7 input hash manifest incomplete')
+    for match, files in SC.items():
+        if protocol['data'][f'{match}_tracking_extrapolated.jsonl'] != files['tracking_extrapolated.jsonl'][1]:
+            raise ValueError('V7 tracking differs from pinned LFS identity')
+    marker = wrapper['access_marker']
+    if (marker['protocol_sha256'] != wrapper['audit_protocol_sha256'] or marker['status'] != 'access_started'
+            or not isinstance(marker['audit_directory'], str) or not marker['audit_directory']):
+        raise ValueError('V7 one-shot access provenance changed')
+    matches = {f'skillcorner{m}' for m in SC}
+    predictions = {f'{m}-{k}.csv' for m in matches for k in ('baseline', 'candidate')}
+    if (set(audit['prediction_sha256']) != predictions
+            or any(not _valid_digest(v) for v in audit['prediction_sha256'].values())
+            or wrapper['predictions_before_reference_access'] != audit['prediction_sha256']):
+        raise ValueError('V7 predictions were not sealed as a complete pair')
+    if set(audit['scores']) != matches or set(audit['reference_counts']) != matches:
+        raise ValueError('V7 reserved matches differ')
+    for match in matches:
+        counts = audit['reference_counts'][match]
+        if counts['gap_frames_are_unknown'] is not True or type(counts['dead_reference_frames']) is not int or counts['dead_reference_frames'] != 0:
+            raise ValueError('V7 gaps cannot become dead-ball truth')
+        for value in audit['scores'][match].values():
+            if (value['metric'] != 'phase_present_team_accuracy' or value['dense_possession_truth'] is not False
+                    or value['spellF1'] is not None or type(value['n']) is not int or value['n'] <= 0
+                    or value['n'] != counts['scored_frames']):
+                raise ValueError('V7 phase reference support/scope differs')
+            for key in ('accuracy', 'balanced_team_recall', 'predicted_live_coverage', 'predicted_dead_fraction', 'predicted_unknown_fraction'):
+                if not _valid_rate(value[key]): raise ValueError('Invalid V7 phase score')
+    recomputed = decide(audit['scores'])
+    if (not same_evidence(recomputed, audit['gate']) or wrapper['passed'] is not False
+            or type(wrapper['phase_regression_passed']) is not bool
+            or wrapper['phase_regression_passed'] != recomputed['phase_regression_passed']):
+        raise ValueError('V7 gate differs; phase-only evidence cannot promote')
+    return False
+
+
+def verify_v7_candidate_artifact(evidence, path):
+    from possession.learned import validate_model
+    from possession import typed_boundary
+    from tools.train_control import CATALOG
+    from tools.train_boundary_campaign_v7 import REGIMES
+    if sha256(path) != evidence['release_candidate_model_sha256']:
+        raise ValueError('V7 candidate bytes differ')
+    model = json.loads(Path(path).read_text(encoding='utf-8'))
+    validate_model(model)
+    chosen = evidence['selection']['audit_candidate']; typed = model['typed_boundary_model']
+    if (model['candidate_id'] != chosen or typed['contact_features'] is not (chosen == 'typed-contact')
+            or not same_evidence(typed['policy'], typed_boundary.POLICY)):
+        raise ValueError('V7 typed candidate or policy differs')
+    metadata = typed['metadata']
+    if (metadata['protocol_sha256'] != evidence['protocol_sha256'] or metadata['stage'] != 'all-seven-refit'
+            or metadata['development_cv_selection'] != chosen or metadata['training_matches'] != sorted(CATALOG)
+            or metadata['training_regimes'] != list(REGIMES)):
+        raise ValueError('V7 candidate training provenance differs')
+
+
+def verify_v7_decision(evidence, release_model_sha256, audit=None):
+    from tools.train_boundary_campaign_v7 import BASELINE, CONFIG_SHA256, GATE, FOLDS, REGIMES, PRIMARY_REGIMES, CANDIDATES, select, scientific_hashes
+    from possession import typed_boundary, contact_evidence
+    recomputed = select(evidence['records'])
+    if not same_evidence(recomputed, evidence['selection']):
+        raise ValueError('V7 selection recomputation differs')
+    protocol = evidence['protocol']
+    if (evidence['development_candidate_selected'] is not (recomputed['selected'] != BASELINE)
+            or evidence['competition_labels_used'] is not False or evidence['independent_test_claimed'] is not False
+            or evidence['incumbent_historical_predictions_reproduced'] is not True
+            or protocol['fresh_audit_used_for_selection'] is not False or protocol['competition_labels_used'] is not False
+            or protocol['contact_truth_claimed'] is not False or protocol['video_evidence_active'] is not False):
+        raise ValueError('V7 development separation/scope differs')
+    expected = {'schema_version': 7, 'baseline_sha256': V15_MODEL_SHA256, 'config_sha256': CONFIG_SHA256,
+                'previous_release_source_sha256': V151_SOURCE_SHA256, 'v5_source_sha256': V15_SOURCE_SHA256,
+                'folds': FOLDS, 'regimes': REGIMES, 'primary_regimes': PRIMARY_REGIMES,
+                'candidates': [BASELINE, *CANDIDATES], 'gate': GATE,
+                'typed_policy': typed_boundary.POLICY, 'contact_policy': contact_evidence.POLICY}
+    # JSON changes tuples to lists; compare their serialized representations.
+    expected = json.loads(json.dumps(expected))
+    if any(not same_evidence(protocol[k], v) for k, v in expected.items()):
+        raise ValueError('V7 fixed protocol or typed policies differ')
+    if (not protocol_matches_hash(protocol, evidence['protocol_sha256'])
+            or evidence['source_hashes'] != scientific_hashes() or evidence['source_hashes'] != protocol['source_hashes']):
+        raise ValueError('V7 campaign source/protocol hashes differ')
+    candidate = evidence['release_candidate_model_sha256']
+    if candidate == V15_MODEL_SHA256 or not _valid_digest(candidate) or recomputed['audit_candidate'] not in CANDIDATES:
+        raise ValueError('V7 requires one selected experiment')
+    if audit is None: raise ValueError('V7 requires its single limited fresh audit')
+    verify_fresh_audit_v7(audit, candidate, CONFIG_SHA256)
+    decision = evidence['release_decision']
+    if (decision['promoted'] is not False or decision['model_sha256'] != V15_MODEL_SHA256
+            or release_model_sha256 != V15_MODEL_SHA256
+            or decision['independent_audit_status'] != 'insufficient-fresh-stoppage-validation-retained-baseline'
+            or not isinstance(decision['reason'], str) or not decision['reason'].strip()):
+        raise ValueError('V7 insufficient fresh truth must retain the incumbent')
+    return recomputed
+
+
+def verify_contact_audit_v7(evidence):
+    from tools.contact_restart_v7 import MATCHES, REGIMES, AUDIT_POLICY
+    from possession.contact_evidence import FEATURE_NAMES, POLICY
+    wrapper = evidence
+    evidence = wrapper['underlying_summary']
+    provenance = wrapper['provenance']
+    if (wrapper['schema_version'] != 1 or wrapper['evidence_kind'] != 'previously-exposed-development-boundary-alignment'
+            or any(wrapper[k] is not False for k in ('fresh_test', 'hard_overrides_active', 'independent_video_evidence',
+                                                   'verified_contact', 'verified_restart', 'reliability_passed'))
+            or provenance['candidate_generation_preceded_reference_loading'] is not True
+            or provenance['source_hashes_verified_at_export'] is not True
+            or provenance['thresholds_changed_after_scoring'] is not False
+            or not protocol_matches_hash(evidence, provenance['underlying_summary_sha256'])):
+        raise ValueError('V7 contact wrapper provenance/scope differs')
+    protocol = evidence['protocol']
+    if (provenance['protocol_sha256'] != evidence['protocol_sha256']
+            or provenance['source_hashes'] != protocol['source_hashes']):
+        raise ValueError('V7 contact wrapper contradicts underlying evidence')
+    if (not protocol_matches_hash(protocol, evidence['protocol_sha256'])
+            or protocol['matches'] != list(MATCHES) or protocol['regimes'] != list(REGIMES)
+            or protocol['feature_names'] != list(FEATURE_NAMES)
+            or not same_evidence(protocol['cue_policy'], POLICY) or not same_evidence(protocol['audit_policy'], AUDIT_POLICY)
+            or protocol['all_matches_previously_exposed'] is not True):
+        raise ValueError('V7 contact audit protocol changed')
+    names = ('possession/contact_evidence.py', 'tools/contact_restart_v7.py', 'evaluation/possession_metrics.py')
+    if protocol['source_hashes'] != {n: sha256(ROOT / n) for n in names}:
+        raise ValueError('V7 contact audit source hashes differ')
+    if any(evidence[k] is not False for k in ('hard_event_activation_allowed', 'independent_video_channel_enabled', 'physical_contact_precision_established')):
+        raise ValueError('V7 geometric cues cannot claim independent contact evidence')
+    rows = evidence['records']; cells = {(m, r) for m in MATCHES for r in REGIMES}
+    if len(rows) != len(cells) or {(r['match'], r['regime']) for r in rows} != cells:
+        raise ValueError('V7 contact audit cells differ')
+    for row in rows:
+        for kind in ('contact', 'restart'):
+            v = row[kind]; ng, npred, hits = (v[k] for k in ('n_reference_boundaries', 'n_candidates', 'n_matched'))
+            if (any(type(n) is not int or n < 0 for n in (ng, npred, hits)) or hits > min(ng, npred)
+                    or not same_evidence(v['boundary_alignment_precision'], hits / npred if npred else None)
+                    or not same_evidence(v['boundary_recall'], hits / ng if ng else None)
+                    or v['physical_contact_precision'] is not None or v['reference_is_independent_contact_truth'] is not False):
+                raise ValueError('V7 cue alignment counts/scope differ')
+    expected = {}
+    for regime in REGIMES:
+        selected = [r['restart'] for r in rows if r['regime'] == regime]
+        n = sum(r['n_candidates'] for r in selected); hits = sum(r['n_matched'] for r in selected)
+        expected[regime] = {'n_candidates': n, 'n_matched': hits, 'alignment_precision': hits / n if n else None,
+                            'passed_alignment_requirement': n >= 20 and hits / n >= .9}
+    if not same_evidence(evidence['restart_by_regime'], expected):
+        raise ValueError('V7 contact audit aggregate differs')
+
+
 def same_evidence(actual, expected):
     """Preserve decisions exactly; tolerate only floating summation roundoff.
 
@@ -414,6 +591,7 @@ def main():
     multimodal_path = ROOT / "models/multimodal-selection.json"
     joint_path = ROOT / "models/joint-selection.json"
     temporal_path = ROOT / "models/temporal-selection.json"
+    boundary_path = ROOT / "models/boundary-selection-v7.json"
     if selection_path.exists():
         selection = json.loads(selection_path.read_text(encoding="utf-8"))
         historical_model = ROOT / "models/baselines/v1.2.json"
@@ -555,7 +733,15 @@ def main():
             verify_v6_decision(evidence, manifest["learned_model"]["sha256"], audit)
             verify_v6_candidate_artifact(evidence, ROOT / "models/experiments/v6-candidate.json")
             sources = scientific_hashes()
-            if sources != evidence["source_hashes"] or sources != evidence["protocol"]["source_hashes"]:
+            if boundary_path.exists():
+                if evidence['source_hashes'] != evidence['protocol']['source_hashes']:
+                    raise ValueError('Historical V6 source maps disagree')
+                verify_archived_sources(evidence['source_hashes'], ROOT / 'models/baselines/v1.5.1-source.zip', V151_SOURCE_SHA256)
+                # Recompute historical decisions only with unchanged selector and metrics code.
+                for name in ('tools/train_temporal_v6.py', 'tools/train_joint_campaign.py', 'tools/train_transition_v6.py'):
+                    if sha256(ROOT / name) != evidence['source_hashes'][name]:
+                        raise ValueError('Historical V6 selector changed')
+            elif sources != evidence["source_hashes"] or sources != evidence["protocol"]["source_hashes"]:
                 raise ValueError("V6 temporal scientific sources changed")
             if not protocol_matches_hash(evidence["protocol"], evidence["protocol_sha256"]):
                 raise ValueError("V6 embedded campaign protocol hash changed")
@@ -567,11 +753,28 @@ def main():
                      "tools/temporal_diagnostics_v6.py", "tools/control_diagnostics.py", "evaluation/possession_metrics.py")
             fresh_sources = {p.relative_to(ROOT).as_posix(): sha256(p) for p in [
                 *[ROOT / n for n in names], *sorted((ROOT / "possession").glob("*.py"))]}
-            if fresh_sources != audit["audit"]["protocol"]["sources"]:
+            if boundary_path.exists():
+                verify_archived_sources(audit['audit']['protocol']['sources'], ROOT / 'models/baselines/v1.5.1-source.zip', V151_SOURCE_SHA256)
+                for name in names:
+                    if sha256(ROOT / name) != audit['audit']['protocol']['sources'][name]:
+                        raise ValueError('Historical V6 audit selector changed')
+            elif fresh_sources != audit["audit"]["protocol"]["sources"]:
                 raise ValueError("V6 fresh audit scientific sources changed")
         except (ValueError, KeyError, TypeError, OSError, zipfile.BadZipFile) as error:
             failures.append(f"v6 temporal release evidence: {error}")
         print(f"{'FAIL' if failures else 'OK'}  v6 temporal development and fresh audit decision")
+    if boundary_path.exists():
+        try:
+            if not temporal_path.exists(): raise ValueError('Historical V6 evidence missing')
+            evidence = json.loads(boundary_path.read_text(encoding='utf-8'))
+            audit = json.loads((ROOT / 'models/fresh-audit-v7.json').read_text(encoding='utf-8'))
+            contact = json.loads((ROOT / 'models/contact-audit-v7.json').read_text(encoding='utf-8'))
+            verify_v7_decision(evidence, manifest['learned_model']['sha256'], audit)
+            verify_v7_candidate_artifact(evidence, ROOT / 'models/experiments/v7-candidate.json')
+            verify_contact_audit_v7(contact)
+        except (ValueError, KeyError, TypeError, OSError, zipfile.BadZipFile) as error:
+            failures.append(f'v7 typed boundary release evidence: {error}')
+        print(f"{'FAIL' if failures else 'OK'}  v7 typed boundary, contact and limited fresh audit evidence")
     if failures:
         for failure in failures:
             print(f"FAIL  {failure}", file=sys.stderr)

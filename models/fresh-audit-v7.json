@@ -1,0 +1,282 @@
+{
+  "access_marker": {
+    "audit_directory": "C:\\Users\\tkala\\Documents\\Codex\\2026-10-29\\https-github-com-metrica-sports-more\\outputs\\xtension-labs-possessionflow\\runs\\fresh-audit-v7",
+    "protocol_sha256": "39811b89d88c7081a51cb36a45dbffa0ec0cbde1d206aee40638b45234150897",
+    "status": "access_started"
+  },
+  "audit": {
+    "dense_human_had_validation": false,
+    "fresh_stoppage_validation_available": false,
+    "gate": {
+      "candidate_minus_baseline": {
+        "skillcorner1953632": {
+          "accuracy": -0.0007636152600873913,
+          "balanced_team_recall": -0.0007336696192008496
+        },
+        "skillcorner1959846": {
+          "accuracy": -0.00010067789784551362,
+          "balanced_team_recall": -0.00010050906573666474
+        }
+      },
+      "fresh_short_possession_validation_available": false,
+      "fresh_stoppage_validation_available": false,
+      "passed": false,
+      "phase_regression_passed": false,
+      "policy": {
+        "fresh_short_possession_validation_available": false,
+        "fresh_stoppage_validation_available": false,
+        "promotion_eligible": false,
+        "rule": "Phase regression gate is descriptive only. Without fresh explicit stoppage and short-possession truth the v7 candidate cannot replace the submission, even if this gate passes.",
+        "silver_maximum_match_accuracy_drop": 0.01,
+        "silver_mean_accuracy_minimum_delta": 0.0,
+        "silver_mean_balanced_recall_minimum_delta": 0.0
+      },
+      "promotion_eligible": false,
+      "silver_mean_accuracy_delta": -0.0004321465789664525,
+      "silver_mean_balanced_recall_delta": -0.0004170893424687572
+    },
+    "prediction_sha256": {
+      "skillcorner1953632-baseline.csv": "dd1c6c4e2c700ed8130a76b63d505ca63da364a04b70cea78e3604e8a6627ad0",
+      "skillcorner1953632-candidate.csv": "907752325368b9a54c4b4e3e0d78a84a5385a50956449f1c4ad8ce6b7e9b665f",
+      "skillcorner1959846-baseline.csv": "df46e1cae53cb7052c95beed168f9df26377421d9123ff7b71f13fdf4f870397",
+      "skillcorner1959846-candidate.csv": "90566feb518793b5d8f601279dc220aa65a3c787eb279e450b0ee6b06794bc7e"
+    },
+    "protocol": {
+      "artifacts": {
+        "baseline": {
+          "config_sha256": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
+          "model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0"
+        },
+        "candidate": {
+          "config_sha256": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
+          "model_sha256": "abaa8ec8cf953e86bd3eb081a18a6a7a1a68fc35e232d82ac2b0318797307a52"
+        }
+      },
+      "data": {
+        "1953632_match.json": "366c8dd6b504d4f4ace5685040648b0f30081043a44f01663b8b7e077e6bfde8",
+        "1953632_phases_of_play.csv": "9243e4be8efcc1922fe46f9cda56c781584329f1febe84a74ee808c8f4ff0b93",
+        "1953632_tracking_extrapolated.jsonl": "1c2014f97c3eff1ce2475203512c9d126930d7599c036105c9ac442d1de1667e",
+        "1959846_match.json": "4bbe2058af53edd42d5e3acd7fb28ecb8c79e4afb16cb9b77a6fe9b58f6e516b",
+        "1959846_phases_of_play.csv": "63b33ce9c020cfd54be6e957cd01a42cebec2acacd1345c338196fff5ecd9a9f",
+        "1959846_tracking_extrapolated.jsonl": "5ba2d87f6fd1ba3138301b369bd9266be69416a2d799a3fba5b5ec8a52e1284b"
+      },
+      "dense_human_had_validation": false,
+      "fresh_stoppage_validation_available": false,
+      "no_training_or_retuning": true,
+      "policy": {
+        "fresh_short_possession_validation_available": false,
+        "fresh_stoppage_validation_available": false,
+        "promotion_eligible": false,
+        "rule": "Phase regression gate is descriptive only. Without fresh explicit stoppage and short-possession truth the v7 candidate cannot replace the submission, even if this gate passes.",
+        "silver_maximum_match_accuracy_drop": 0.01,
+        "silver_mean_accuracy_minimum_delta": 0.0,
+        "silver_mean_balanced_recall_minimum_delta": 0.0
+      },
+      "policy_sha256": "22e3589212cc16805f888c9f284112efc397545353bfc629bae9fad5846a86dc",
+      "reference_order": "All four paired prediction CSVs sealed before any phase reference parsing. Access marker precedes loading JSON with embedded ignored possession fields.",
+      "schema_version": 1,
+      "selection_frozen_before_reference_access": true,
+      "sources": {
+        "possession/__init__.py": "707b027b6093517b8b140c7e37bf0422d4ee4929ebbd4624cba7834f14879e2d",
+        "possession/__main__.py": "ab0da9eb9352136326b7a2c8cdbad6be6314c35d3f598449eaae9b95a5cf0ab8",
+        "possession/boundary.py": "121ad4405309960f9b7dace405afdd11d0ee7db8af924549b0ab5828db6fb7c7",
+        "possession/bundle.py": "046a3762df7676ea927644991dfe659988853e6131f033076d5378eac019840a",
+        "possession/changes.py": "bb5e58ec445b6163114cad781e65d2ac383cbaa310f892e2420ebc431f31d457",
+        "possession/config.py": "8ae2fa6a1a14af35a092190020952a5504a399a4f8655def5e38367f30e425ce",
+        "possession/contact_evidence.py": "22af27ab7d8860adba310808332a4a68365ac4fd8427d56f29244dc43729a7ed",
+        "possession/control.py": "c0aac6c6d5b2a67eea0f81348a51589cb692af91ba0bd8232fa4e5360be53eae",
+        "possession/decoder.py": "cd4a38906dcd2660370aa4db9183434df31df9685b3e05a4db9891ab588ff731",
+        "possession/features.py": "02e065ecf1ab78a4a5d86d097755d93bdb474c09e2ced30e24bb4fda09e0b3e3",
+        "possession/fixture.py": "7943502fe80612782543b23fb07c3449065e5395ba0a90e55ba77dc558692c97",
+        "possession/io.py": "f9f82b31f96c913020075a6bffaae97a06e1d4c14801c8f2496a8a587f874604",
+        "possession/joint_temporal.py": "a6200685a1b6929f5a21abd7a28f6b94c5487837206519b511b9eff3e6d401ce",
+        "possession/learned.py": "d2b0ac714e700b07644cf8fcc4dee4df5782d9e68bc2fc24d4a24a6fee4f47c3",
+        "possession/missing_ball.py": "01f5fb186d83ccc896218ced834a03c5ada984216fa1bc845232234d19ccdfe2",
+        "possession/pipeline.py": "46e449ecb07b1415b9c2a704d10f84264122fc5f4b4176471c73c9b61820c7fd",
+        "possession/robust_control.py": "e220e29fe830dd93f1dffded6b3047e24b47512415456d4f4d7e748c3e0af6f0",
+        "possession/tags.py": "b2f4fd4e7236759d5231e8b2bbbda60b83074ef19a510fe162ac30ea20463dbb",
+        "possession/temporal.py": "e43edd6711b21a592e5f2cd52bb9f8d9cf4ae609fb314bb56708ffeadc0e0c5b",
+        "possession/transition.py": "e2c590c218275ab04d2bd2742afc9ca8441fc3a0ad605df9c6ba0749673f0fb4",
+        "possession/typed_boundary.py": "fcadef46d8cc7228ec04247f56f11f291480a8f0b669d09cc22b8480b307d3a5",
+        "possession/video_recovery.py": "540a4d2f4c8357cd5e23246cc3672962f902d9e7d0699677a6f7f4c35db21afc",
+        "tools/fresh_benchmark.py": "d60151296cc903090a15f44951d158e9c137e7f674e5a16eb9bbbdf6b468f5b9",
+        "tools/fresh_benchmark_v7.py": "67386bb2c2de0042fe358f2e7282e7bc6995b5d2652f1c24baa611c43b47892f",
+        "tools/independent_benchmark.py": "af1fc1b7b3c88660e836917392495db83173dd9ca71348c2e54fb562d5739f64"
+      },
+      "split": {
+        "adapter_development": "Synthetic fixtures and previously exposed 1874553 only.",
+        "already_exposed_skillcorner": [
+          1874553,
+          1886347,
+          1899585,
+          1925299,
+          1927964
+        ],
+        "final_dense_matches": [],
+        "final_silver_matches": [
+          1953632,
+          1959846
+        ],
+        "rule": "One frozen candidate and baseline; no training, runner-up, retuning or repeated audit. Moving files does not restore freshness.",
+        "schema_version": 1,
+        "skillcorner_commit": "4340d274572876239c154c90bc507a9b3250a656"
+      },
+      "split_sha256": "b638b36ac8981ca8eae1b6b4990890b1c8bd9533529a26569491aedff841e477"
+    },
+    "reference_counts": {
+      "skillcorner1953632": {
+        "contradictory_frames_excluded": 0,
+        "dead_reference_frames": 0,
+        "gap_frames_are_unknown": true,
+        "period_or_range_misaligned_intervals_excluded": 1,
+        "phase_intervals": 418,
+        "scored_frames": 32739
+      },
+      "skillcorner1959846": {
+        "contradictory_frames_excluded": 0,
+        "dead_reference_frames": 0,
+        "gap_frames_are_unknown": true,
+        "period_or_range_misaligned_intervals_excluded": 1,
+        "phase_intervals": 468,
+        "scored_frames": 29798
+      }
+    },
+    "reference_fields_used_for_inference": false,
+    "reference_read_count": 2,
+    "scores": {
+      "skillcorner1953632": {
+        "baseline": {
+          "accuracy": 0.8690247105898165,
+          "balanced_team_recall": 0.8659386277408085,
+          "conditional_live_team_accuracy": 0.9270446399478658,
+          "dense_had_truth": false,
+          "dense_possession_truth": false,
+          "metric": "phase_present_team_accuracy",
+          "n": 32739,
+          "per_team": {
+            "A": {
+              "n": 21882,
+              "recall": 0.8751028242391007
+            },
+            "H": {
+              "n": 10857,
+              "recall": 0.8567744312425164
+            }
+          },
+          "predicted_dead_fraction": 0.06258590671675983,
+          "predicted_live_coverage": 0.9374140932832402,
+          "predicted_unknown_fraction": 0.0,
+          "reference_quality": "provider_silver",
+          "spellF1": null
+        },
+        "candidate": {
+          "accuracy": 0.8682610953297291,
+          "balanced_team_recall": 0.8652049581216077,
+          "conditional_live_team_accuracy": 0.9275296113812118,
+          "dense_had_truth": false,
+          "dense_possession_truth": false,
+          "metric": "phase_present_team_accuracy",
+          "n": 32739,
+          "per_team": {
+            "A": {
+              "n": 21882,
+              "recall": 0.8742802303262955
+            },
+            "H": {
+              "n": 10857,
+              "recall": 0.85612968591692
+            }
+          },
+          "predicted_dead_fraction": 0.06389932496411008,
+          "predicted_live_coverage": 0.9361006750358899,
+          "predicted_unknown_fraction": 0.0,
+          "reference_quality": "provider_silver",
+          "spellF1": null
+        }
+      },
+      "skillcorner1959846": {
+        "baseline": {
+          "accuracy": 0.8630109403315659,
+          "balanced_team_recall": 0.8629978273355612,
+          "conditional_live_team_accuracy": 0.910397564343116,
+          "dense_had_truth": false,
+          "dense_possession_truth": false,
+          "metric": "phase_present_team_accuracy",
+          "n": 29798,
+          "per_team": {
+            "A": {
+              "n": 14914,
+              "recall": 0.8760225291672254
+            },
+            "H": {
+              "n": 14884,
+              "recall": 0.8499731255038968
+            }
+          },
+          "predicted_dead_fraction": 0.052050473186119876,
+          "predicted_live_coverage": 0.9479495268138801,
+          "predicted_unknown_fraction": 0.0,
+          "reference_quality": "provider_silver",
+          "spellF1": null
+        },
+        "candidate": {
+          "accuracy": 0.8629102624337204,
+          "balanced_team_recall": 0.8628973182698245,
+          "conditional_live_team_accuracy": 0.9108395324123273,
+          "dense_had_truth": false,
+          "dense_possession_truth": false,
+          "metric": "phase_present_team_accuracy",
+          "n": 29798,
+          "per_team": {
+            "A": {
+              "n": 14914,
+              "recall": 0.8757543247954942
+            },
+            "H": {
+              "n": 14884,
+              "recall": 0.8500403117441548
+            }
+          },
+          "predicted_dead_fraction": 0.052620981273911,
+          "predicted_live_coverage": 0.947379018726089,
+          "predicted_unknown_fraction": 0.0,
+          "reference_quality": "provider_silver",
+          "spellF1": null
+        }
+      }
+    },
+    "warnings": {
+      "skillcorner1953632": {
+        "baseline": [],
+        "candidate": []
+      },
+      "skillcorner1959846": {
+        "baseline": [],
+        "candidate": []
+      }
+    }
+  },
+  "audit_protocol_sha256": "39811b89d88c7081a51cb36a45dbffa0ec0cbde1d206aee40638b45234150897",
+  "baseline_model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "candidate_model_sha256": "abaa8ec8cf953e86bd3eb081a18a6a7a1a68fc35e232d82ac2b0318797307a52",
+  "passed": false,
+  "phase_regression_passed": false,
+  "policy": {
+    "fresh_short_possession_validation_available": false,
+    "fresh_stoppage_validation_available": false,
+    "promotion_eligible": false,
+    "rule": "Phase regression gate is descriptive only. Without fresh explicit stoppage and short-possession truth the v7 candidate cannot replace the submission, even if this gate passes.",
+    "silver_maximum_match_accuracy_drop": 0.01,
+    "silver_mean_accuracy_minimum_delta": 0.0,
+    "silver_mean_balanced_recall_minimum_delta": 0.0
+  },
+  "policy_file_base64": "ew0KICAiZnJlc2hfc2hvcnRfcG9zc2Vzc2lvbl92YWxpZGF0aW9uX2F2YWlsYWJsZSI6IGZhbHNlLA0KICAiZnJlc2hfc3RvcHBhZ2VfdmFsaWRhdGlvbl9hdmFpbGFibGUiOiBmYWxzZSwNCiAgInByb21vdGlvbl9lbGlnaWJsZSI6IGZhbHNlLA0KICAicnVsZSI6ICJQaGFzZSByZWdyZXNzaW9uIGdhdGUgaXMgZGVzY3JpcHRpdmUgb25seS4gV2l0aG91dCBmcmVzaCBleHBsaWNpdCBzdG9wcGFnZSBhbmQgc2hvcnQtcG9zc2Vzc2lvbiB0cnV0aCB0aGUgdjcgY2FuZGlkYXRlIGNhbm5vdCByZXBsYWNlIHRoZSBzdWJtaXNzaW9uLCBldmVuIGlmIHRoaXMgZ2F0ZSBwYXNzZXMuIiwNCiAgInNpbHZlcl9tYXhpbXVtX21hdGNoX2FjY3VyYWN5X2Ryb3AiOiAwLjAxLA0KICAic2lsdmVyX21lYW5fYWNjdXJhY3lfbWluaW11bV9kZWx0YSI6IDAuMCwNCiAgInNpbHZlcl9tZWFuX2JhbGFuY2VkX3JlY2FsbF9taW5pbXVtX2RlbHRhIjogMC4wDQp9DQo=",
+  "predictions_before_reference_access": {
+    "skillcorner1953632-baseline.csv": "dd1c6c4e2c700ed8130a76b63d505ca63da364a04b70cea78e3604e8a6627ad0",
+    "skillcorner1953632-candidate.csv": "907752325368b9a54c4b4e3e0d78a84a5385a50956449f1c4ad8ce6b7e9b665f",
+    "skillcorner1959846-baseline.csv": "df46e1cae53cb7052c95beed168f9df26377421d9123ff7b71f13fdf4f870397",
+    "skillcorner1959846-candidate.csv": "90566feb518793b5d8f601279dc220aa65a3c787eb279e450b0ee6b06794bc7e"
+  },
+  "promotion_eligible": false,
+  "split_file_base64": "ew0KICAiYWRhcHRlcl9kZXZlbG9wbWVudCI6ICJTeW50aGV0aWMgZml4dHVyZXMgYW5kIHByZXZpb3VzbHkgZXhwb3NlZCAxODc0NTUzIG9ubHkuIiwNCiAgImFscmVhZHlfZXhwb3NlZF9za2lsbGNvcm5lciI6IFsNCiAgICAxODc0NTUzLA0KICAgIDE4ODYzNDcsDQogICAgMTg5OTU4NSwNCiAgICAxOTI1Mjk5LA0KICAgIDE5Mjc5NjQNCiAgXSwNCiAgImZpbmFsX2RlbnNlX21hdGNoZXMiOiBbXSwNCiAgImZpbmFsX3NpbHZlcl9tYXRjaGVzIjogWw0KICAgIDE5NTM2MzIsDQogICAgMTk1OTg0Ng0KICBdLA0KICAicnVsZSI6ICJPbmUgZnJvemVuIGNhbmRpZGF0ZSBhbmQgYmFzZWxpbmU7IG5vIHRyYWluaW5nLCBydW5uZXItdXAsIHJldHVuaW5nIG9yIHJlcGVhdGVkIGF1ZGl0LiBNb3ZpbmcgZmlsZXMgZG9lcyBub3QgcmVzdG9yZSBmcmVzaG5lc3MuIiwNCiAgInNjaGVtYV92ZXJzaW9uIjogMSwNCiAgInNraWxsY29ybmVyX2NvbW1pdCI6ICI0MzQwZDI3NDU3Mjg3NjIzOWMxNTRjOTBiYzUwN2E5YjMyNTBhNjU2Ig0KfQ0K"
+}

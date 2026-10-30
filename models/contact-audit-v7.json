@@ -1,0 +1,601 @@
+{
+  "decision": "Reject hard contact/restart rules. Optional geometric covariates require separate frozen learned-ablation evaluation.",
+  "evidence_kind": "previously-exposed-development-boundary-alignment",
+  "experiment_id": "contact-restart-v7-development-audit",
+  "fresh_test": false,
+  "hard_overrides_active": false,
+  "independent_video_evidence": false,
+  "limitations": [
+    "H/A/D references annotate possession/state boundaries, not all physical touches.",
+    "Boundary alignment precision is not physical-contact precision or calibrated cue confidence.",
+    "All five matches were previously exposed; four observation regimes are correlated views of the same matches.",
+    "Zero accepted candidates do not establish precision.",
+    "The native XY extractor has behavioral tests, not independently annotated physical-contact validation."
+  ],
+  "provenance": {
+    "candidate_generation_preceded_reference_loading": true,
+    "local_run": "runs/contact-v7-development-audit",
+    "protocol_sha256": "4039462b76f9c879f8e51ca4363f956d05a9b9b2e82770f126f31e6ff1864292",
+    "source_hashes": {
+      "evaluation/possession_metrics.py": "32c878630c74fb52a90c301485d6dff806509d8e933b1177b6035ee8e8f42b80",
+      "possession/contact_evidence.py": "22af27ab7d8860adba310808332a4a68365ac4fd8427d56f29244dc43729a7ed",
+      "tools/contact_restart_v7.py": "bc4ba6d25d95008088c36571675d8b69007d7e60207f0baff960dc4c32dc5bb4"
+    },
+    "source_hashes_verified_at_export": true,
+    "thresholds_changed_after_scoring": false,
+    "underlying_summary_sha256": "aea7dc9ef6b7541cea4bce123c8e213d3159a22bdfbd8682447de71f06021dfa"
+  },
+  "publication_scope": "Derived aggregate counts, rates, timing statistics and provenance only; no raw coordinates, frame labels, candidate timestamps, images or video.",
+  "reliability_passed": false,
+  "schema_version": 1,
+  "underlying_summary": {
+    "hard_event_activation_allowed": false,
+    "independent_video_channel_enabled": false,
+    "physical_contact_precision_established": false,
+    "protocol": {
+      "all_matches_previously_exposed": true,
+      "audit_policy": {
+        "event_tolerance_seconds": 1.0,
+        "hard_event_activation_allowed": false,
+        "independent_contact_annotation_available": false,
+        "minimum_peak_separation_seconds": 0.5,
+        "minimum_restart_candidates_per_regime": 20,
+        "restart_alignment_precision_required": 0.9,
+        "strength_threshold": 0.5
+      },
+      "cue_policy": {
+        "calibrated_contact_probability": false,
+        "contact_context_seconds": 0.2,
+        "independent_video_evidence": false,
+        "launch_context_seconds": 0.2,
+        "maximum_ball_speed_mps": 45.0,
+        "maximum_near_distance_metres": 2.0,
+        "maximum_stationary_speed_mps": 0.8,
+        "minimum_launch_speed_mps": 3.0,
+        "minimum_team_distance_margin_metres": 1.0,
+        "stationary_context_seconds": 0.6
+      },
+      "feature_names": [
+        "observed_context",
+        "uncontested_contact",
+        "uncontested_deceleration",
+        "stationary_launch",
+        "boundary_stationary_launch",
+        "outside_return",
+        "player_motion_launch",
+        "stationary_near_ball"
+      ],
+      "matches": [
+        "J03WN1",
+        "J03WMX",
+        "J03WPY",
+        "J03WQQ",
+        "J03WR9"
+      ],
+      "order": "Save every observation-only cue candidate before loading references; no threshold tuning.",
+      "reference_scope": "Explicit Sportec possession/state references annotate boundaries, not all physical contacts.",
+      "regimes": [
+        "clean",
+        "degraded",
+        "camera",
+        "calibrated"
+      ],
+      "source_hashes": {
+        "evaluation/possession_metrics.py": "32c878630c74fb52a90c301485d6dff806509d8e933b1177b6035ee8e8f42b80",
+        "possession/contact_evidence.py": "22af27ab7d8860adba310808332a4a68365ac4fd8427d56f29244dc43729a7ed",
+        "tools/contact_restart_v7.py": "bc4ba6d25d95008088c36571675d8b69007d7e60207f0baff960dc4c32dc5bb4"
+      }
+    },
+    "protocol_sha256": "4039462b76f9c879f8e51ca4363f956d05a9b9b2e82770f126f31e6ff1864292",
+    "records": [
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.17990654205607476,
+          "boundary_recall": 0.19543147208121828,
+          "mean_matched_absolute_error_seconds": 0.27896103896103897,
+          "n_candidates": 428,
+          "n_matched": 77,
+          "n_reference_boundaries": 394,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WN1",
+        "regime": "clean",
+        "restart": {
+          "boundary_alignment_precision": 0.625,
+          "boundary_recall": 0.047619047619047616,
+          "mean_matched_absolute_error_seconds": 0.08,
+          "n_candidates": 8,
+          "n_matched": 5,
+          "n_reference_boundaries": 105,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.1529051987767584,
+          "boundary_recall": 0.12690355329949238,
+          "mean_matched_absolute_error_seconds": 0.2584,
+          "n_candidates": 327,
+          "n_matched": 50,
+          "n_reference_boundaries": 394,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WN1",
+        "regime": "degraded",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 105,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.19365079365079366,
+          "boundary_recall": 0.1548223350253807,
+          "mean_matched_absolute_error_seconds": 0.2865573770491803,
+          "n_candidates": 315,
+          "n_matched": 61,
+          "n_reference_boundaries": 394,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WN1",
+        "regime": "camera",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 105,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.22935779816513763,
+          "boundary_recall": 0.12690355329949238,
+          "mean_matched_absolute_error_seconds": 0.25520000000000004,
+          "n_candidates": 218,
+          "n_matched": 50,
+          "n_reference_boundaries": 394,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WN1",
+        "regime": "calibrated",
+        "restart": {
+          "boundary_alignment_precision": 0.5,
+          "boundary_recall": 0.009523809523809525,
+          "mean_matched_absolute_error_seconds": 0.08,
+          "n_candidates": 2,
+          "n_matched": 1,
+          "n_reference_boundaries": 105,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.09796437659033079,
+          "boundary_recall": 0.18872549019607843,
+          "mean_matched_absolute_error_seconds": 0.28779220779220777,
+          "n_candidates": 786,
+          "n_matched": 77,
+          "n_reference_boundaries": 408,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WMX",
+        "regime": "clean",
+        "restart": {
+          "boundary_alignment_precision": 0.3333333333333333,
+          "boundary_recall": 0.019801980198019802,
+          "mean_matched_absolute_error_seconds": 0.06,
+          "n_candidates": 6,
+          "n_matched": 2,
+          "n_reference_boundaries": 101,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.1195079086115993,
+          "boundary_recall": 0.16666666666666666,
+          "mean_matched_absolute_error_seconds": 0.2223529411764706,
+          "n_candidates": 569,
+          "n_matched": 68,
+          "n_reference_boundaries": 408,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WMX",
+        "regime": "degraded",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 101,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.13957934990439771,
+          "boundary_recall": 0.17892156862745098,
+          "mean_matched_absolute_error_seconds": 0.31726027397260276,
+          "n_candidates": 523,
+          "n_matched": 73,
+          "n_reference_boundaries": 408,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WMX",
+        "regime": "camera",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 101,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.10683760683760683,
+          "boundary_recall": 0.12254901960784313,
+          "mean_matched_absolute_error_seconds": 0.2576,
+          "n_candidates": 468,
+          "n_matched": 50,
+          "n_reference_boundaries": 408,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WMX",
+        "regime": "calibrated",
+        "restart": {
+          "boundary_alignment_precision": 0.2,
+          "boundary_recall": 0.009900990099009901,
+          "mean_matched_absolute_error_seconds": 0.04,
+          "n_candidates": 5,
+          "n_matched": 1,
+          "n_reference_boundaries": 101,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.13372093023255813,
+          "boundary_recall": 0.1419753086419753,
+          "mean_matched_absolute_error_seconds": 0.20434782608695648,
+          "n_candidates": 344,
+          "n_matched": 46,
+          "n_reference_boundaries": 324,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WPY",
+        "regime": "clean",
+        "restart": {
+          "boundary_alignment_precision": 0.2,
+          "boundary_recall": 0.010526315789473684,
+          "mean_matched_absolute_error_seconds": 0.0,
+          "n_candidates": 5,
+          "n_matched": 1,
+          "n_reference_boundaries": 95,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.09523809523809523,
+          "boundary_recall": 0.1111111111111111,
+          "mean_matched_absolute_error_seconds": 0.26222222222222213,
+          "n_candidates": 378,
+          "n_matched": 36,
+          "n_reference_boundaries": 324,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WPY",
+        "regime": "degraded",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 95,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.15384615384615385,
+          "boundary_recall": 0.14814814814814814,
+          "mean_matched_absolute_error_seconds": 0.20000000000000004,
+          "n_candidates": 312,
+          "n_matched": 48,
+          "n_reference_boundaries": 324,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WPY",
+        "regime": "camera",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 95,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.12571428571428572,
+          "boundary_recall": 0.06790123456790123,
+          "mean_matched_absolute_error_seconds": 0.23999999999999996,
+          "n_candidates": 175,
+          "n_matched": 22,
+          "n_reference_boundaries": 324,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WPY",
+        "regime": "calibrated",
+        "restart": {
+          "boundary_alignment_precision": 0.3333333333333333,
+          "boundary_recall": 0.010526315789473684,
+          "mean_matched_absolute_error_seconds": 0.0,
+          "n_candidates": 3,
+          "n_matched": 1,
+          "n_reference_boundaries": 95,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.15501519756838905,
+          "boundary_recall": 0.16887417218543047,
+          "mean_matched_absolute_error_seconds": 0.2454901960784314,
+          "n_candidates": 329,
+          "n_matched": 51,
+          "n_reference_boundaries": 302,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WQQ",
+        "regime": "clean",
+        "restart": {
+          "boundary_alignment_precision": 0.1111111111111111,
+          "boundary_recall": 0.010309278350515464,
+          "mean_matched_absolute_error_seconds": 0.08,
+          "n_candidates": 9,
+          "n_matched": 1,
+          "n_reference_boundaries": 97,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.11779448621553884,
+          "boundary_recall": 0.15562913907284767,
+          "mean_matched_absolute_error_seconds": 0.2825531914893617,
+          "n_candidates": 399,
+          "n_matched": 47,
+          "n_reference_boundaries": 302,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WQQ",
+        "regime": "degraded",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 97,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.1797752808988764,
+          "boundary_recall": 0.2119205298013245,
+          "mean_matched_absolute_error_seconds": 0.269375,
+          "n_candidates": 356,
+          "n_matched": 64,
+          "n_reference_boundaries": 302,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WQQ",
+        "regime": "camera",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 97,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.1837837837837838,
+          "boundary_recall": 0.11258278145695365,
+          "mean_matched_absolute_error_seconds": 0.2623529411764706,
+          "n_candidates": 185,
+          "n_matched": 34,
+          "n_reference_boundaries": 302,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WQQ",
+        "regime": "calibrated",
+        "restart": {
+          "boundary_alignment_precision": 0.0,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 3,
+          "n_matched": 0,
+          "n_reference_boundaries": 97,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.125,
+          "boundary_recall": 0.17266187050359713,
+          "mean_matched_absolute_error_seconds": 0.16583333333333336,
+          "n_candidates": 384,
+          "n_matched": 48,
+          "n_reference_boundaries": 278,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WR9",
+        "regime": "clean",
+        "restart": {
+          "boundary_alignment_precision": 0.2727272727272727,
+          "boundary_recall": 0.03333333333333333,
+          "mean_matched_absolute_error_seconds": 0.05333333333333334,
+          "n_candidates": 11,
+          "n_matched": 3,
+          "n_reference_boundaries": 90,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.08185840707964602,
+          "boundary_recall": 0.13309352517985612,
+          "mean_matched_absolute_error_seconds": 0.1718918918918919,
+          "n_candidates": 452,
+          "n_matched": 37,
+          "n_reference_boundaries": 278,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WR9",
+        "regime": "degraded",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 90,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.10144927536231885,
+          "boundary_recall": 0.12589928057553956,
+          "mean_matched_absolute_error_seconds": 0.17600000000000002,
+          "n_candidates": 345,
+          "n_matched": 35,
+          "n_reference_boundaries": 278,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WR9",
+        "regime": "camera",
+        "restart": {
+          "boundary_alignment_precision": null,
+          "boundary_recall": 0.0,
+          "mean_matched_absolute_error_seconds": null,
+          "n_candidates": 0,
+          "n_matched": 0,
+          "n_reference_boundaries": 90,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      },
+      {
+        "contact": {
+          "boundary_alignment_precision": 0.1497584541062802,
+          "boundary_recall": 0.11151079136690648,
+          "mean_matched_absolute_error_seconds": 0.1767741935483871,
+          "n_candidates": 207,
+          "n_matched": 31,
+          "n_reference_boundaries": 278,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        },
+        "match": "J03WR9",
+        "regime": "calibrated",
+        "restart": {
+          "boundary_alignment_precision": 0.2857142857142857,
+          "boundary_recall": 0.022222222222222223,
+          "mean_matched_absolute_error_seconds": 0.04,
+          "n_candidates": 7,
+          "n_matched": 2,
+          "n_reference_boundaries": 90,
+          "physical_contact_precision": null,
+          "reference_is_independent_contact_truth": false
+        }
+      }
+    ],
+    "restart_by_regime": {
+      "calibrated": {
+        "alignment_precision": 0.25,
+        "n_candidates": 20,
+        "n_matched": 5,
+        "passed_alignment_requirement": false
+      },
+      "camera": {
+        "alignment_precision": null,
+        "n_candidates": 0,
+        "n_matched": 0,
+        "passed_alignment_requirement": false
+      },
+      "clean": {
+        "alignment_precision": 0.3076923076923077,
+        "n_candidates": 39,
+        "n_matched": 12,
+        "passed_alignment_requirement": false
+      },
+      "degraded": {
+        "alignment_precision": null,
+        "n_candidates": 0,
+        "n_matched": 0,
+        "passed_alignment_requirement": false
+      }
+    }
+  },
+  "verified_contact": false,
+  "verified_restart": false
+}

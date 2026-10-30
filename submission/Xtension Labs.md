@@ -1,49 +1,42 @@
-# Xtension Labs — PossessionFlow 1.5.1
+# Xtension Labs — PossessionFlow 1.5.2
 
-Retained v1.5: experimental combined did not pass both fixed gates (development=False, fresh=False).
+Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.
 
-Development gate: **fail**. Fresh audit gate: **fail**. Deployed model: **v1.5 joint-state**.
+Development promotion gate: **fail**. Fresh phase regression gate: **fail**. Fresh stoppage/short-possession validation: **unavailable**. Deployed model: **original v1.5 joint-state**.
 
-## Method
+## Method and release scope
 
-The pipeline combines observation-only tracking geometry, camera/missing-ball robust control, half-local temporal H/A/D learning, bounded tactical-tag evidence and duration-aware decoding. Inference is offline CPU-only. H/A/D/X labels preserve the required frame order and the known halftime/unknown regions.
+Observation-only tracking geometry feeds camera/missing-ball robust control and half-local joint possession/stoppage learning. Bounded tactical-tag evidence and duration-aware decoding produce H/A/D/X labels while preserving frame order and unknown regions. Inference uses NumPy on CPU. V7 adds explicit boundary learning and confidence-gated geometric research candidates; their presence in source does not activate them in the retained submission model. No reliable independent video/contact channel is claimed.
 
-V6 implemented stoppage-focused loss weighting and evidence-gated short-possession transitions. Active deployment is **v1.5 joint-state**. Rejected experiments remain in the repository with their measured outcomes; they are not silently enabled. Video recovery and broadcast fusion remain inactive.
+## Measured results
 
-## Evidence
-
-| Candidate | Spell F1 (primary) | Short recall | Short precision | D segment F1 | D boundary F1 | Gate |
+| Candidate | Spell F1 (primary) | Short recall | Short precision | D segment F1 | D boundary F1 | Development gate |
 | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| combined | 0.6216 | 0.2970 | 0.3978 | 0.9031 | 0.7947 | fail |
-| transition | 0.6203 | 0.2912 | 0.3810 | 0.9163 | 0.7979 | fail |
-| stoppage-loss | 0.6239 | 0.2877 | 0.4163 | 0.9031 | 0.7950 | fail |
 | baseline-v1.5 | 0.6233 | 0.2784 | 0.3962 | 0.9163 | 0.7979 | incumbent |
+| typed-boundary | 0.6222 | 0.2899 | 0.3849 | 0.9134 | 0.7966 | fail |
+| typed-contact | 0.6221 | 0.2899 | 0.3846 | 0.9134 | 0.7966 | fail |
 
 
-| Dense provider metric | v1.5 | Frozen experiment | Change |
-| --- | ---: | ---: | ---: |
-| Possession spell F1 | 0.7091 | 0.7222 | +0.0132 |
-| Frame macro F1 | 0.9428 | 0.9445 | +0.0017 |
-| D precision | 0.9889 | 0.9884 | -0.0005 |
-| D recall | 0.9693 | 0.9760 | +0.0068 |
-| D segment F1, IoU .5 | 0.9032 | 0.8909 | -0.0123 |
-| D onset F1, +/-1s | 0.7487 | 0.7701 | +0.0214 |
-| D offset F1, +/-1s | 0.8272 | 0.8677 | +0.0405 |
-| Short H/A recall, <2s | 0.4750 | 0.4917 | +0.0167 |
+Frozen experimental audit candidate: **typed-boundary**.
+
+| Fresh phase match | Scored frames | v1.5 accuracy | Experiment accuracy | Change (percentage points) | v1.5 balanced recall | Experiment balanced recall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| skillcorner1953632 | 32,739 | 86.90% | 86.83% | -0.076 | 86.59% | 86.52% |
+| skillcorner1959846 | 29,798 | 86.30% | 86.29% | -0.010 | 86.30% | 86.29% |
 
 
-| Fresh phase match | Scored frames | v1.5 accuracy | Experiment accuracy |
-| --- | ---: | ---: | ---: |
-| skillcorner1925299 | 35,640 | 84.26% | 82.82% |
-| skillcorner1927964 | 37,111 | 87.21% | 85.49% |
+| Observation regime | Restart candidates | Matched D-to-live boundaries | Alignment precision | Reliability gate |
+| --- | ---: | ---: | ---: | --- |
+| clean | 39 | 12 | 30.8% | Failed |
+| degraded | 0 | 0 | Not estimable | Failed |
+| camera | 0 | 0 | Not estimable | Failed |
+| calibrated | 20 | 5 | 25.0% | Failed |
 
 
-All seven Sportec matches are previously exposed development data. WCSF is an unused, anonymized provider sample with explicit AliveFlag/PossessionFlag references; annotation method and cross-provider fixture independence cannot be verified. Its two halves count as one match. SkillCorner phases are automatic labels and may bridge short disruptions; missing phases remain unknown, never D. The three audited sources are now consumed and cannot be reused as untouched final tests. No human-gold or hidden competition score is claimed.
+All seven Sportec matches are previously exposed development data; five matches are scored under four correlated observation conditions, not twenty independent matches. The two new SkillCorner matches have automatic phase labels, not dense independent H/A/D truth. Missing phases remain unknown, never dead-ball labels. They cannot establish stoppage boundaries, short-possession quality, or physical contacts. These audited sources are now consumed and cannot be reused as untouched final tests. No hidden competition score, human-gold validation, or winning probability is claimed.
 
-## Reproducibility
+## Reproducibility and submission status
 
-The release contains frozen weights, config, exact frame CSV, source, tests, both selection records and reference provenance. 290 engineering tests pass. Clean-source inference and artifact hashes are verified in verification.json; Linux/Windows CI checks are linked from the release. No challenge reference labels were used for v6 training, selection or inference.
+342 engineering tests passed. Follow SOLUTION.md for inference and research reproduction. The release includes frozen weights, the original deployment configuration, source, tests, aggregate selection/audit evidence and a team-named submission CSV. Restricted source data, frame-level references and local experiment caches remain excluded. Current clean-source/output verification is recorded in docs/verification.json.
 
-The repository remains private under likalight. The official competition form has not been submitted; organizer source-access and eligibility requirements remain outstanding.
-
-Detailed fixed protocol and results: docs/TEMPORAL_CAMPAIGN_V6.md. Source provenance: docs/FRESH_DATA_V6.md.
+The private repository is under likalight. The organizer's submission form has not been submitted; organizer access and eligibility remain outstanding. See docs/BOUNDARY_CAMPAIGN_V7.md for the complete research outcome and docs/FRESH_DATA_V7.md for label limitations.

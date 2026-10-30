@@ -1,8 +1,8 @@
-# Reproduce Xtension Labs — PossessionFlow 1.5.1
+# Reproduce Xtension Labs — PossessionFlow 1.5.2
 
-Retained v1.5: experimental combined did not pass both fixed gates (development=False, fresh=False).
+Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.
 
-Use Python 3.12. Inference requires only requirements-solution.txt; no GPU or external API.
+Use Python 3.12. Production inference needs only requirements-solution.txt, NumPy on CPU, and authorized challenge inputs.
 
 ```bash
 python -m pip install -r requirements-solution.txt
@@ -11,26 +11,26 @@ python -m possession validate runs/reproduction/predictions.csv
 python tools/verify_release.py
 ```
 
-Place authorized BAR-ATH_tactical_atd.xml, BAR-ATH_tactical_atd.txt and BAR-ATH_tactical_smart_tagging.xml under data/tactical/. The files remain local. `python -m possession doctor --data-dir data` validates inputs. `python -m possession demo` creates synthetic demonstration data only. On Windows the packaged run-challenge.ps1 accepts an explicit PythonPath.
+Place authorized BAR-ATH_tactical_atd.xml, BAR-ATH_tactical_atd.txt and BAR-ATH_tactical_smart_tagging.xml in data/tactical/. `python -m possession doctor --data-dir data` checks inputs; `python -m possession demo` uses synthetic demonstration data only. The Windows run-challenge.ps1 wrapper accepts an explicit PythonPath.
 
 ```bash
+python -m pip install scipy==1.18.1
 python -m unittest discover -s tests -v
-python tools/package_temporal_v6.py --run runs/reproduction --out dist/reproduction --team "Xtension Labs"
+python tools/package_boundary_v7.py --run runs/reproduction --out dist/reproduction --team "Xtension Labs"
 ```
 
-The v6 packaging wrapper adds new research evidence to the frozen inference source allowlist. Optional video tests require requirements-video.txt; four optional training tests require CPU PyTorch from requirements-training.txt. Core inference does not require either.
+The typed-boundary tests require SciPy 1.18.1, installed above. Optional neural training tests require CPU PyTorch from requirements-training.txt; optional video tests use requirements-video.txt (CI uses OpenCV 5.0.0.93). These test dependencies do not activate video or change NumPy-only CPU production inference. The v7 packaging wrapper adds explicit research evidence to the source allowlist and excludes restricted raw data/local runs.
 
 ## Research reproduction
 
-The fixed campaign requires original v4/v5 caches and fold models from authorized external data. These raw-data-derived files remain local. The archived baseline sources authenticate the historical procedure; changing an old trainer and rerunning it is not equivalent provenance.
+Original authorized v4/v5 caches, whole-match fold models and checksum-verified historical archives are required. They are not published. Rebuilding an old trainer with changed code does not reproduce its original provenance.
 
 ```bash
 python -m pip install -r requirements-training.txt
-python tools/train_temporal_v6.py --previous runs/multimodal-campaign-v4 --previous-v5 runs/joint-campaign-v5 --cache runs/joint-cache-v5 --out runs/temporal-reproduction --workers 2
-python tools/fresh_benchmark_v6.py download --data-dir runs/fresh-v6-reproduction-data
-python tools/fresh_benchmark_v6.py evaluate-pair --data-dir runs/fresh-v6-reproduction-data --model models/experiments/v6-candidate.json --baseline-model models/baselines/v1.5.json --config configs/default.json --out runs/fresh-v6-reproduction
+python tools/train_boundary_campaign_v7.py --previous runs/multimodal-campaign-v4 --previous-v5 runs/joint-campaign-v5 --cache runs/joint-cache-v5 --out runs/boundary-v7-reproduction --workers 2
+python tools/contact_restart_v7.py --out runs/contact-v7-reproduction
 ```
 
-The last command reproduces an already consumed audit. A new directory does not make these sources untouched. Fresh results must never trigger candidate retuning or runner-up searches. See docs/TEMPORAL_CAMPAIGN_V6.md and docs/FRESH_DATA_V6.md for limitations, fixed gates and outcome.
+The sealed phase audit used `tools/fresh_benchmark_v7.py evaluate-pair`, the frozen models/experiments/v7-candidate.json, models/baselines/v1.5.json, baseline configuration and two checksum-pinned matches. Its final-reference access marker intentionally prevents rerunning the source directory as an untouched test. A copied directory does not restore freshness. Consult docs/FRESH_DATA_V7.md before any historical replay; never retune or try a runner-up against these consumed references.
 
-Submission is prepared locally and stored privately; the organizer's form has not been submitted.
+The complete fixed protocol, measured comparison and rejected reliability claims are in docs/BOUNDARY_CAMPAIGN_V7.md. Submission is prepared locally; the official organizer form has not been submitted.
