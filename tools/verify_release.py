@@ -1,6 +1,7 @@
 """Verify committed release bytes without loading restricted match assets."""
 
 import hashlib
+import base64
 import json
 import math
 from pathlib import Path
@@ -12,6 +13,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 V13_MODEL_SHA256 = "f4feb096face6a2a3eb1214079a5f34ea8b495147478b7a92b6b224a42dc0573"
 V13_SOURCE_SHA256 = "6bba5e359ec0c425aba15a764bf8c7e76c42ee804004de6eca311e2af7d2decb"
+V14_MODEL_SHA256 = "7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c316688653"
+V14_SOURCE_SHA256 = "04c5341978660a52fc32148221508ddb3db291921ff19d8fb1bfbf3e5cafeeb9"
 
 
 def sha256(path):
@@ -23,6 +26,18 @@ def protocol_matches_hash(protocol, expected):
     value = json.dumps(protocol, indent=2, sort_keys=True, allow_nan=False) + "\n"
     return expected in {hashlib.sha256(value.encode()).hexdigest(),
                        hashlib.sha256(value.replace("\n", "\r\n").encode()).hexdigest()}
+
+
+def verify_archived_sources(source_hashes, archive_path, expected_archive_sha256):
+    """Authenticate historical source bytes without comparing them to new code."""
+    if sha256(archive_path) != expected_archive_sha256:
+        raise ValueError("Historical source archive hash changed")
+    if not isinstance(source_hashes, dict) or not source_hashes:
+        raise ValueError("Historical source map is empty")
+    with zipfile.ZipFile(archive_path) as archive:
+        for name, expected in source_hashes.items():
+            if hashlib.sha256(archive.read(name)).hexdigest() != expected:
+                raise ValueError(f"Historical source differs: {name}")
 
 
 def verify_paired_audit(wrapper, candidate_sha256):
@@ -105,6 +120,103 @@ def verify_v4_decision(evidence, release_model_sha256, audit=None):
     return recomputed
 
 
+def verify_fresh_audit(wrapper, candidate_sha256, config_sha256):
+    """Require fresh sparse and provider-silver results without relabeling gaps."""
+    from tools.fresh_benchmark import SPLIT, decide
+    policy, audit = wrapper["policy"], wrapper["audit"]
+    fixed = {"metrica_accuracy_minimum_delta": 0., "metrica_balanced_recall_minimum_delta": 0.,
+             "silver_mean_accuracy_minimum_delta": 0., "silver_maximum_match_accuracy_drop": .02,
+             "no_dense_human_or_dead_ball_validation": True}
+    if any(isinstance(policy.get(key), bool) for key in fixed if key != "no_dense_human_or_dead_ball_validation"):
+        raise ValueError("Fresh audit policy uses invalid threshold types")
+    if any(policy.get(key) != value for key, value in fixed.items()) or policy["no_dense_human_or_dead_ball_validation"] is not True:
+        raise ValueError("Fresh audit policy changed")
+    if wrapper["baseline_model_sha256"] != V14_MODEL_SHA256 or wrapper["candidate_model_sha256"] != candidate_sha256:
+        raise ValueError("Fresh audit compares different model bytes")
+    protocol = audit["protocol"]
+    if (protocol["selection_frozen_before_reference_access"] is not True
+            or protocol["no_training_or_retuning"] is not True
+            or protocol["dense_human_had_validation"] is not False
+            or audit["reference_fields_used_for_inference"] is not False
+            or audit["dense_human_had_validation"] is not False
+            or audit["reference_read_count"] != 3):
+        raise ValueError("Fresh audit separation or scope changed")
+    encoded_split = wrapper["split_file_base64"]
+    if not isinstance(encoded_split, str):
+        raise ValueError("Fresh split evidence must contain the original encoded bytes")
+    split_bytes = base64.b64decode(encoded_split, validate=True)
+    if (protocol["split"] != SPLIT
+            or hashlib.sha256(split_bytes).hexdigest() != protocol["split_sha256"]
+            or json.loads(split_bytes.decode("utf-8-sig")) != SPLIT):
+        raise ValueError("Fresh match split changed")
+    if not same_evidence(policy, protocol["policy"]):
+        raise ValueError("Fresh audit policy differs from frozen protocol")
+    for name, expected in (("baseline", V14_MODEL_SHA256), ("candidate", candidate_sha256)):
+        artifact = protocol["artifacts"][name]
+        if artifact["model_sha256"] != expected or artifact["config_sha256"] != config_sha256:
+            raise ValueError("Fresh audit frozen model/configuration differs")
+    expected_matches = {"metrica3", "skillcorner1886347", "skillcorner1899585"}
+    if set(audit["scores"]) != expected_matches or set(audit["references"]) != expected_matches:
+        raise ValueError("Fresh audit must include the three fixed matches")
+    for match, scores in audit["scores"].items():
+        silver = match != "metrica3"
+        quality = "provider_silver" if silver else "provider_sparse_events"
+        metric = "phase_present_team_accuracy" if silver else "sparse_pass_origin_team_accuracy"
+        if set(scores) != {"baseline", "candidate"} or audit["references"][match]["quality"] != quality:
+            raise ValueError("Fresh audit reference provenance differs")
+        counts = audit["reference_counts"][match]
+        if silver and (counts["gap_frames_are_unknown"] is not True or counts["dead_reference_frames"] != 0):
+            raise ValueError("Silver phase gaps cannot become dead-ball truth")
+        for value in scores.values():
+            if (value["reference_quality"] != quality or value["metric"] != metric
+                    or value["dense_had_truth"] is not False or value["dense_possession_truth"] is not False
+                    or value["spellF1"] is not None or type(value["n"]) is not int or value["n"] <= 0
+                    or value["n"] != counts["scored_frames"]):
+                raise ValueError("Fresh audit scores misrepresent the reference scope")
+            for name in ("accuracy", "balanced_team_recall", "predicted_live_coverage", "predicted_dead_fraction", "predicted_unknown_fraction"):
+                number = value[name]
+                if isinstance(number, bool) or not isinstance(number, (int, float)) or not math.isfinite(number) or not 0 <= number <= 1:
+                    raise ValueError("Invalid fresh audit score")
+    recomputed = decide(audit["scores"])
+    if not same_evidence(recomputed, audit["gate"]) or not same_evidence(policy, recomputed["policy"]):
+        raise ValueError("Fresh audit gate differs from its scores")
+    if type(wrapper["passed"]) is not bool or wrapper["passed"] != recomputed["passed"]:
+        raise ValueError("Fresh audit gate decision changed")
+    return recomputed["passed"]
+
+
+def verify_v5_decision(evidence, release_model_sha256, audit=None):
+    """Audit one frozen experimental winner; require BOTH gates for promotion."""
+    from tools.train_joint_campaign import BASELINE, CONFIG_SHA256, select
+    recomputed = select(evidence["records"])
+    if not same_evidence(recomputed, evidence["selection"]):
+        raise ValueError("Joint/boundary selection recomputation changed")
+    selected = recomputed["selected"] != BASELINE
+    if (evidence["development_candidate_selected"] is not selected
+            or evidence["competition_labels_used"] is not False
+            or evidence["independent_test_claimed"] is not False
+            or evidence["incumbent_historical_predictions_reproduced"] is not True
+            or evidence["protocol"]["fresh_audit_used_for_selection"] is not False):
+        raise ValueError("Joint/boundary evaluation separation changed")
+    if evidence["protocol"]["config_sha256"] != CONFIG_SHA256:
+        raise ValueError("Joint/boundary fixed configuration changed")
+    decision = evidence["release_decision"]
+    if (type(decision["promoted"]) is not bool or decision["model_sha256"] != release_model_sha256
+            or not isinstance(decision["reason"], str) or not decision["reason"].strip()):
+        raise ValueError("Invalid joint/boundary release decision")
+    candidate = evidence["release_candidate_model_sha256"]
+    if recomputed["audit_candidate"] == BASELINE or candidate == V14_MODEL_SHA256:
+        raise ValueError("V5 must audit the single preselected experimental winner")
+    if audit is None: raise ValueError("V5 requires the fixed fresh-match audit, including rejected development candidates")
+    passed = verify_fresh_audit(audit, candidate, CONFIG_SHA256)
+    promoted = selected and passed
+    status = "failed-development-retained-baseline" if not selected else ("passed" if passed else "failed-retained-baseline")
+    if (decision["promoted"] != promoted or decision["independent_audit_status"] != status
+            or release_model_sha256 != (candidate if promoted else V14_MODEL_SHA256)):
+        raise ValueError("Joint/boundary release does not follow the fresh audit")
+    return recomputed
+
+
 def same_evidence(actual, expected):
     """Preserve decisions exactly; tolerate only floating summation roundoff.
 
@@ -148,6 +260,7 @@ def main():
     selection_path = ROOT / "models/control-selection.json"
     robust_path = ROOT / "models/robust-selection.json"
     multimodal_path = ROOT / "models/multimodal-selection.json"
+    joint_path = ROOT / "models/joint-selection.json"
     if selection_path.exists():
         selection = json.loads(selection_path.read_text(encoding="utf-8"))
         historical_model = ROOT / "models/baselines/v1.2.json"
@@ -206,29 +319,68 @@ def main():
             failures.append("baseline fallback bytes")
         print(f"{'FAIL' if failures else 'OK'}  robust development CV and release provenance")
     if multimodal_path.exists():
-        from tools.train_multimodal import scientific_hashes
         evidence = json.loads(multimodal_path.read_text(encoding="utf-8"))
         audit_path = ROOT / "models/independent-audit.json"
         audit = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.exists() else None
         try:
             if not robust_path.exists():
                 raise ValueError("Historical v1.3 selection evidence is missing")
-            verify_v4_decision(evidence, manifest["learned_model"]["sha256"], audit)
-            current_sources = scientific_hashes()
-            if current_sources != evidence["source_hashes"] or current_sources != evidence["protocol"]["source_hashes"]:
-                raise ValueError("Multimodal scientific source hashes changed")
+            v4_release_sha = sha256(ROOT / "models/baselines/v1.4.json") if joint_path.exists() else manifest["learned_model"]["sha256"]
+            verify_v4_decision(evidence, v4_release_sha, audit)
+            if joint_path.exists():
+                if v4_release_sha != V14_MODEL_SHA256:
+                    raise ValueError("Historical v1.4 model changed")
+                if evidence["source_hashes"] != evidence["protocol"]["source_hashes"]:
+                    raise ValueError("Historical v4 source maps disagree")
+                verify_archived_sources(evidence["source_hashes"], ROOT / "models/baselines/v1.4-source.zip", V14_SOURCE_SHA256)
+                if sha256(ROOT / "tools/train_multimodal.py") != evidence["source_hashes"]["tools/train_multimodal.py"]:
+                    raise ValueError("Historical multimodal selector changed")
+            else:
+                from tools.train_multimodal import scientific_hashes
+                current_sources = scientific_hashes()
+                if current_sources != evidence["source_hashes"] or current_sources != evidence["protocol"]["source_hashes"]:
+                    raise ValueError("Multimodal scientific source hashes changed")
             if not protocol_matches_hash(evidence["protocol"], evidence["protocol_sha256"]):
                 raise ValueError("Multimodal embedded protocol hash changed")
             if evidence["protocol"]["baseline_sha256"] != V13_MODEL_SHA256:
                 raise ValueError("Multimodal baseline changed")
             if audit is not None:
-                sources = {p.relative_to(ROOT).as_posix(): sha256(p)
-                           for p in [ROOT / "tools/independent_benchmark.py", *sorted((ROOT / "possession").glob("*.py"))]}
-                if sources != audit["audit"]["protocol"]["sources"]:
-                    raise ValueError("Paired-audit inference source hashes changed")
+                if joint_path.exists():
+                    verify_archived_sources(audit["audit"]["protocol"]["sources"], ROOT / "models/baselines/v1.4-source.zip", V14_SOURCE_SHA256)
+                else:
+                    sources = {p.relative_to(ROOT).as_posix(): sha256(p)
+                               for p in [ROOT / "tools/independent_benchmark.py", *sorted((ROOT / "possession").glob("*.py"))]}
+                    if sources != audit["audit"]["protocol"]["sources"]:
+                        raise ValueError("Paired-audit inference source hashes changed")
         except (ValueError, KeyError, TypeError) as error:
             failures.append(f"multimodal release evidence: {error}")
         print(f"{'FAIL' if failures else 'OK'}  multimodal development CV and release decision")
+    if joint_path.exists():
+        from tools.train_joint_campaign import scientific_hashes
+        evidence = json.loads(joint_path.read_text(encoding="utf-8"))
+        audit_path = ROOT / "models/fresh-audit.json"
+        audit = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.exists() else None
+        try:
+            if not multimodal_path.exists(): raise ValueError("Historical v1.4 selection evidence is missing")
+            verify_v5_decision(evidence, manifest["learned_model"]["sha256"], audit)
+            current_sources = scientific_hashes()
+            if current_sources != evidence["source_hashes"] or current_sources != evidence["protocol"]["source_hashes"]:
+                raise ValueError("Joint/boundary scientific source hashes changed")
+            if not protocol_matches_hash(evidence["protocol"], evidence["protocol_sha256"]):
+                raise ValueError("Joint/boundary embedded protocol hash changed")
+            if evidence["protocol"]["baseline_sha256"] != V14_MODEL_SHA256:
+                raise ValueError("Joint/boundary baseline changed")
+            if audit is not None:
+                sources = {p.relative_to(ROOT).as_posix(): sha256(p) for p in [
+                    ROOT / "tools/fresh_benchmark.py", ROOT / "tools/independent_benchmark.py",
+                    *sorted((ROOT / "possession").glob("*.py"))]}
+                if sources != audit["audit"]["protocol"]["sources"]:
+                    raise ValueError("Fresh-audit inference source hashes changed")
+                if manifest["config_sha256"] != audit["audit"]["protocol"]["artifacts"]["baseline"]["config_sha256"]:
+                    raise ValueError("Fresh audit configuration differs from release")
+        except (ValueError, KeyError, TypeError) as error:
+            failures.append(f"joint/boundary release evidence: {error}")
+        print(f"{'FAIL' if failures else 'OK'}  joint/boundary development CV and fresh audit decision")
     if failures:
         for failure in failures:
             print(f"FAIL  {failure}", file=sys.stderr)

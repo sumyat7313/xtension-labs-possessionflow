@@ -35,7 +35,11 @@ def source_files():
                  "requirements-training.txt", "requirements-video.txt", "tools/calibrated_camera.py",
                  "tools/train_sequence.py", "tools/train_multimodal.py", "tools/independent_benchmark.py",
                  "tools/recover_video_ball.py", "docs/INDEPENDENT_DATA.md", "docs/VIDEO_RECOVERY.md",
-                 "docs/MULTIMODAL_CAMPAIGN.md"):
+                 "docs/MULTIMODAL_CAMPAIGN.md", "models/baselines/v1.4.json", "configs/baselines/v1.4.json",
+                 "models/baselines/v1.4-source.zip", "models/joint-selection.json", "models/fresh-audit.json",
+                 "tools/train_joint.py", "tools/train_boundary.py", "tools/train_joint_campaign.py",
+                 "tools/prepare_joint_cache.py", "tools/fresh_benchmark.py", "docs/FRESH_DATA.md",
+                 "docs/JOINT_CAMPAIGN.md"):
         if (ROOT / name).is_file():
             paths.append(ROOT / name)
     missing = [path.name for path in paths if not path.is_file()]

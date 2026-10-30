@@ -3,12 +3,17 @@
 import numpy as np
 
 
-def decode(probabilities, fps, config):
+def decode(probabilities, fps, config, team_switch_costs=None):
     probabilities = np.asarray(probabilities, dtype=np.float64)
     if probabilities.ndim != 2 or probabilities.shape[1] != 3 or not len(probabilities):
         raise ValueError("Decoder expects a nonempty n by 3 probability matrix")
     if not np.isfinite(probabilities).all() or (probabilities < 0).any() or not np.allclose(probabilities.sum(axis=1), 1):
         raise ValueError("Decoder probabilities must be finite, nonnegative, and sum to one")
+    if team_switch_costs is not None:
+        team_switch_costs = np.asarray(team_switch_costs, dtype=float)
+        if (team_switch_costs.shape != (len(probabilities),) or not np.isfinite(team_switch_costs).all()
+                or (team_switch_costs < 0).any()):
+            raise ValueError("Team switch costs must be a finite nonnegative per-frame vector")
     durations = np.maximum(1, np.rint(np.array([config.min_team_seconds, config.min_team_seconds,
                                               config.min_dead_seconds]) * fps).astype(int))
     starts = np.r_[0, np.cumsum(durations)[:-1]]
@@ -27,6 +32,8 @@ def decode(probabilities, fps, config):
     back = np.zeros((len(probabilities), size), dtype=np.uint8)
     age_destinations = np.array([j for j in range(size) if j not in starts], dtype=int)
     for frame in range(1, len(probabilities)):
+        if team_switch_costs is not None:
+            switch[0, 1] = switch[1, 0] = team_switch_costs[frame]
         current = np.full(size, np.inf)
         current[age_destinations] = previous[age_destinations - 1] + emission[frame, owners[age_destinations]]
         back[frame, age_destinations] = age_destinations - 1

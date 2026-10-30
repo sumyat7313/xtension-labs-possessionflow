@@ -1,22 +1,21 @@
-# Xtension Labs — release 1.4.0
+# Xtension Labs — release 1.5.0
 
-Promoted gated-temporal after passing the fixed development gates and one-shot sparse independent audit.
+Promoted joint-state after passing both the fixed development gates and the one-shot three-match fresh audit.
 
-- 181 engineering tests passed in the workspace and clean source extraction.
-- All 199,319 target rows pass the organizer's CSV contract.
-- Clean-source inference reproduces CSV, model and configuration bytes exactly.
-- Four candidates were scored in 20 whole-match/condition development cells each.
-- Independent audit status: passed.
-- Video recovery and broadcast fusion are implemented research tools, inactive in production.
+- 230 engineering tests pass locally and from a clean source extraction.
+- Clean-source inference reproduces all 199,319 target rows, model and configuration bytes exactly.
+- The preselected experimental refit reproduces exactly.
+- Four procedures scored in 20 development cells each; one frozen experiment audited on three fresh matches.
+- Fresh-audit outcome: passed.
+- No fresh human dense H/A/D truth or hidden competition score is claimed.
 
-CSV SHA-256: `f044c553e8007a3dcffa5931f06f0dcf32beb6453e947b9f5eabdfa594e7827f`
+CSV SHA-256: `1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb`
 
-Model SHA-256: `7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c316688653`
+Model SHA-256: `3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0`
 
-See [campaign evidence](MULTIMODAL_CAMPAIGN.md), [technical report](TECHNICAL_REPORT.md)
-and [verification](verification.json). Historical model/source archives remain in
-`models/baselines/`. No hidden competition score or winning probability is known.
+See [joint campaign](JOINT_CAMPAIGN.md), [fresh-data provenance](FRESH_DATA.md),
+[technical report](TECHNICAL_REPORT.md) and [verification](verification.json).
+Exact v1.4 fallback artifacts remain under models/baselines/.
 
-The repository remains private under `likalight`. Prepared files are not a
-submitted competition form. Public-source access, the emailed form and team
-eligibility remain outstanding.
+The repository remains private under likalight. The competition form has not
+been submitted; public-source access and team eligibility remain outstanding.

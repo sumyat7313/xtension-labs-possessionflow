@@ -1,36 +1,39 @@
 {
-  "actual_match_csv_sha256": "f044c553e8007a3dcffa5931f06f0dcf32beb6453e947b9f5eabdfa594e7827f",
+  "actual_match_csv_sha256": "1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb",
   "actual_match_rows": 199319,
-  "campaign_protocol_sha256": "ac19d0766537e16fb30cedb6cc87e32495d8987ca251938e3b7e1609bfda8145",
+  "audit_candidate": "joint-state",
+  "campaign_protocol_sha256": "6b42774237a87fe6f85d3b72a9185e6f7159a9dfc23ea17514d88abf22081c9f",
   "candidates_including_baseline": 4,
-  "clean_source_extraction_tests_passed": 181,
+  "clean_source_extraction_tests_passed": 230,
   "clean_source_model_byte_identical": true,
   "clean_source_reproduction_byte_identical": true,
-  "code_sha256": "a475d5342fa589150a366a9c3c7530311fd610934589207235ef7b77c7bcc913",
+  "code_sha256": "ce958c43e9bc5c90df06abb5d8f366b31b72e527c88278395ab65525c181da27",
   "competition_form_submitted": false,
   "competition_public_ground_truth_re_evaluated_for_this_release": false,
   "competition_public_labels_used_for_training_or_selection": false,
   "config_sha256": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
   "date": "2026-10-30",
   "development_cv_cells_per_candidate": 20,
-  "engineering_tests_passed": 181,
-  "independent_audit_status": "passed",
-  "independent_dense_test_claimed": false,
-  "limitations": [
-    "All seven Sportec matches previously exposed; development CV only.",
-    "Independent Metrica audit labels only pass origins, not dense spells or stoppages.",
-    "Video recovery and broadcast fusion remain inactive after unsuccessful pilots.",
-    "Private repository retained; public-source requirement and organizer form remain outstanding."
-  ],
-  "model_sha256": "7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c316688653",
-  "new_model_promoted": true,
-  "release": "1.4.0",
-  "selected": "gated-temporal",
-  "selected_refit_reproduced_exactly": {
+  "development_selected": "joint-state",
+  "engineering_tests_passed": 230,
+  "experimental_refit_reproduced_exactly": {
     "exact_model_bytes_reproduced": true,
     "exact_model_dictionary_reproduced": true,
-    "model_sha256": "7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c316688653"
+    "model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0"
   },
-  "v1_3_full_target_compatibility_byte_identical": true,
+  "fresh_human_dense_had_test_claimed": false,
+  "fresh_matches_audited": 3,
+  "independent_audit_status": "passed",
+  "limitations": [
+    "All seven Sportec matches exposed; development CV only.",
+    "Metrica Game 3 has sparse provider events; annotation method unverified.",
+    "SkillCorner references are automatic phase-present H/A labels, gaps unknown; no fresh dead-ball truth.",
+    "Fresh references were consumed once and are no longer untouched.",
+    "Private source retained; public-source requirement, organizer form and eligibility remain outstanding."
+  ],
+  "model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "new_model_promoted": true,
+  "release": "1.5.0",
+  "v1_4_full_target_compatibility_byte_identical": true,
   "video_recovery_active": false
 }

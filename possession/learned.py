@@ -205,6 +205,16 @@ def validate_model(model):
         from .temporal import validate_gate
         if "temporal_model" not in model: raise ValueError("Expert gate requires a temporal expert")
         validate_gate(model["expert_gate"])
+    if "joint_model" in model:
+        from .joint_temporal import validate_model as validate_joint
+        if "robust_control_model" not in model:
+            raise ValueError("Joint temporal model requires robust control observations")
+        validate_joint(model["joint_model"])
+    if "boundary_model" in model:
+        from .boundary import validate_model as validate_boundary
+        if "robust_control_model" not in model or model.get("decoder_mode", "joint") != "joint":
+            raise ValueError("Boundary model requires robust control and joint decoding")
+        validate_boundary(model["boundary_model"])
     for key in ("mean", "scale", "coefficients"):
         a = np.asarray(model.get(key), dtype=float)
         if a.shape != (len(FEATURE_NAMES),) or not np.isfinite(a).all():
@@ -311,12 +321,27 @@ def learned_probabilities(features, tags, X, model, control_matrix=None, blocks=
             if blocks is None or fps is None: raise ValueError("Temporal model requires half boundaries and FPS")
             base_logit = (control_matrix / np.asarray(control_model["scale"])) @ np.asarray(control_model["coefficients"])
             home = temporal_home(base_logit, control_matrix, blocks, fps, model["temporal_model"], model.get("expert_gate"))
-            return fuse_control_probabilities(dead, home, tags.team_log_odds)
-        return fuse_control_probabilities(dead, predict_home(control_model, control_matrix), tags.team_log_odds)
+        else:
+            home = predict_home(control_model, control_matrix)
+        if "joint_model" in model:
+            if blocks is None or fps is None: raise ValueError("Joint model requires half boundaries and FPS")
+            return joint_probabilities(dead, home, control_matrix, X, blocks, fps, model["joint_model"], tags.team_log_odds)
+        return fuse_control_probabilities(dead, home, tags.team_log_odds)
     else:
         team_logit = features.team_log_odds
     home = _sigmoid(np.clip(team_logit + tags.team_log_odds, -8, 8))
     return np.column_stack(((1 - dead) * home, (1 - dead) * (1 - home), dead))
+
+
+def joint_probabilities(dead, home, control_matrix, dead_matrix, blocks, fps, joint_model, team_log_odds):
+    """Shared joint residual and tag fusion used by production and evaluation."""
+    from .joint_temporal import residual
+    adjustment = residual(joint_model, control_matrix, dead_matrix, blocks, fps)
+    def logit(value):
+        value = np.clip(value, 1e-8, 1 - 1e-8)
+        return np.log(value) - np.log1p(-value)
+    return fuse_control_probabilities(_sigmoid(logit(dead) + adjustment[:, 1]),
+                                     _sigmoid(logit(home) + adjustment[:, 0]), team_log_odds)
 
 
 def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, control_matrix=None):
@@ -326,6 +351,11 @@ def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, con
         raise ValueError("Learned decoder mode must be joint or separate")
     config = resolve_config(config, model)
     probabilities = learned_probabilities(features, tags, X, model, control_matrix, blocks, fps)
+    costs = None
+    if "boundary_model" in model:
+        from .boundary import switch_costs
+        if mode != "joint": raise ValueError("Boundary model is supported only by joint decoding")
+        costs = switch_costs(model["boundary_model"], control_matrix, probabilities, blocks, fps, config.team_switch_cost)
     dead = probabilities[:, 2]
     home = np.divide(probabilities[:, 0], 1 - dead, out=np.full(len(dead), 0.5), where=dead < 1)
     labels = np.full(len(dead), "X", dtype="<U1")
@@ -341,7 +371,8 @@ def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, con
             warnings.append(f"Half {half} has no usable ball or tactical evidence; returned X")
             continue
         if mode == "joint":
-            labels[start:stop] = np.array(["H", "A", "D"])[decode(probabilities[start:stop], fps, config)]
+            labels[start:stop] = np.array(["H", "A", "D"])[decode(probabilities[start:stop], fps, config,
+                team_switch_costs=None if costs is None else costs[start:stop])]
             continue
         is_dead = _decode_binary(np.column_stack((1 - dead[start:stop], dead[start:stop])),
                                  [team_duration, dead_duration],
