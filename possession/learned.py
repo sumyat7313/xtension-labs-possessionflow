@@ -196,6 +196,15 @@ def validate_model(model):
     if "robust_control_model" in model:
         from .robust_control import validate_model as validate_robust
         validate_robust(model["robust_control_model"])
+    if "temporal_model" in model:
+        from .temporal import validate_model as validate_temporal
+        if "robust_control_model" not in model:
+            raise ValueError("Temporal residual requires a robust control base")
+        validate_temporal(model["temporal_model"])
+    if "expert_gate" in model:
+        from .temporal import validate_gate
+        if "temporal_model" not in model: raise ValueError("Expert gate requires a temporal expert")
+        validate_gate(model["expert_gate"])
     for key in ("mean", "scale", "coefficients"):
         a = np.asarray(model.get(key), dtype=float)
         if a.shape != (len(FEATURE_NAMES),) or not np.isfinite(a).all():
@@ -285,7 +294,7 @@ def fuse_control_probabilities(dead, home, team_log_odds):
     return np.column_stack(((1 - dead) * home, (1 - dead) * (1 - home), dead))
 
 
-def learned_probabilities(features, tags, X, model, control_matrix=None):
+def learned_probabilities(features, tags, X, model, control_matrix=None, blocks=None, fps=None):
     """Observation-only emissions shared by campaign and production inference."""
     dead = predict_dead(X, model)
     if "robust_control_model" in model or "control_model" in model:
@@ -297,6 +306,12 @@ def learned_probabilities(features, tags, X, model, control_matrix=None):
             control_model = model["control_model"]
         if control_matrix is None or len(control_matrix) != len(dead):
             raise ValueError("Combined model requires a matching control feature matrix")
+        if "temporal_model" in model:
+            from .temporal import predict_home as temporal_home
+            if blocks is None or fps is None: raise ValueError("Temporal model requires half boundaries and FPS")
+            base_logit = (control_matrix / np.asarray(control_model["scale"])) @ np.asarray(control_model["coefficients"])
+            home = temporal_home(base_logit, control_matrix, blocks, fps, model["temporal_model"], model.get("expert_gate"))
+            return fuse_control_probabilities(dead, home, tags.team_log_odds)
         return fuse_control_probabilities(dead, predict_home(control_model, control_matrix), tags.team_log_odds)
     else:
         team_logit = features.team_log_odds
@@ -310,7 +325,7 @@ def decode_learned(features, tags, X, blocks, fps, config, model, mode=None, con
     if mode not in ("joint", "separate"):
         raise ValueError("Learned decoder mode must be joint or separate")
     config = resolve_config(config, model)
-    probabilities = learned_probabilities(features, tags, X, model, control_matrix)
+    probabilities = learned_probabilities(features, tags, X, model, control_matrix, blocks, fps)
     dead = probabilities[:, 2]
     home = np.divide(probabilities[:, 0], 1 - dead, out=np.full(len(dead), 0.5), where=dead < 1)
     labels = np.full(len(dead), "X", dtype="<U1")

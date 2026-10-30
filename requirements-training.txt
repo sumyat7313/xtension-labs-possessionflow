@@ -1,0 +1,4 @@
+-r requirements-solution.txt
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.15.0+cpu
+scipy==1.18.1

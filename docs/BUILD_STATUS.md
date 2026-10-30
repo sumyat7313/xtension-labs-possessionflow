@@ -1,21 +1,22 @@
-# Xtension Labs — release 1.3.0
+# Xtension Labs — release 1.4.0
 
-Promoted camera-context after passing every predeclared development gate.
+Promoted gated-temporal after passing the fixed development gates and one-shot sparse independent audit.
 
-- 125 engineering tests pass in the workspace and clean source extraction.
+- 181 engineering tests passed in the workspace and clean source extraction.
 - All 199,319 target rows pass the organizer's CSV contract.
-- Clean-source inference reproduces CSV, model and config bytes exactly.
-- Five candidates were scored in 15 whole-match/regime development cells each.
-- The seven external matches are previously exposed; no untouched test is claimed.
-- No competition reference labels were used for fitting, selection or rescoring.
+- Clean-source inference reproduces CSV, model and configuration bytes exactly.
+- Four candidates were scored in 20 whole-match/condition development cells each.
+- Independent audit status: passed.
+- Video recovery and broadcast fusion are implemented research tools, inactive in production.
 
-CSV SHA-256: `d00ec38ac1980eca8631e5ce96eb669625ca19999d2e951582969d99a3c81271`
+CSV SHA-256: `f044c553e8007a3dcffa5931f06f0dcf32beb6453e947b9f5eabdfa594e7827f`
 
-Model SHA-256: `f4feb096face6a2a3eb1214079a5f34ea8b495147478b7a92b6b224a42dc0573`
+Model SHA-256: `7f72b108801a9c6029a2543ceaccd2ef9f27947c256ab59265df47c316688653`
 
-See [campaign evidence](ROBUST_CAMPAIGN.md), [technical report](TECHNICAL_REPORT.md)
-and [verification](verification.json). The original v1.2 source and model remain
-under `models/baselines/`; historical reports remain under `docs/releases/v1.2/`.
+See [campaign evidence](MULTIMODAL_CAMPAIGN.md), [technical report](TECHNICAL_REPORT.md)
+and [verification](verification.json). Historical model/source archives remain in
+`models/baselines/`. No hidden competition score or winning probability is known.
 
-The repository remains private. Prepared files are not a submitted competition
-form. Public-source access, the emailed form and team eligibility remain outstanding.
+The repository remains private under `likalight`. Prepared files are not a
+submitted competition form. Public-source access, the emailed form and team
+eligibility remain outstanding.
