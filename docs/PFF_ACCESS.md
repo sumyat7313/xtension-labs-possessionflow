@@ -1,6 +1,12 @@
 # PFF dataset access and fresh-match plan
 
-Prepared 2026-11-01 for Xtension Labs. Status: **application prepared; not submitted; access not obtained**. No dataset terms accepted. The active v1.5 model and submission remain unchanged.
+Prepared 2026-11-01 for Xtension Labs. Status: **dataset form submitted; official delivery folder opened successfully**. The user supplied the contact details for this request; they are not stored in this repository. No separate dataset agreement was presented or accepted during the observed form flow. Usage rights and reference quality remain to be established. The active v1.5 model and submission remain unchanged.
+
+## Access result
+
+The form displayed **You're Almost There** and an immediate Google Drive access link. The supplied folder opened without an additional access request and contains Event Data, Metadata, Rosters and Tracking Data subfolders, plus competitions.csv, players.csv and a PFF FC Change Log. The tracking listing exposes per-game compressed JSONL archives. Only folder/file names and the change log were inspected; match labels were not opened, no split has been frozen and no PFF training or scoring has occurred.
+
+The change log records initial-touch events and possession-sequence identifiers added in May 2025, along with later field changes. Their definitions, completeness and annotation provenance still need validation. The folder root and change log did not establish the dataset licence. The prepared support enquiry remains unsent. The official delivery URL and confirmation screenshot are retained locally rather than adding the gated delivery link or contact details to git.
 
 ## Verified access route
 
@@ -8,9 +14,9 @@ Open the [official World Cup dataset page](https://www.blog.fc.pff.com/blog/pff-
 
 | Form field | Prepared value or information needed |
 | --- | --- |
-| First Name | User to provide |
-| Last Name | User to provide |
-| Email | User to provide an inbox they can access |
+| First Name | Provided by user and submitted; omitted from git |
+| Last Name | Provided by user and submitted; omitted from git |
+| Email | Provided by user and submitted; omitted from git |
 | Organization | Xtension Labs |
 
 The dataset form's submit button reads **SIGN ME UP!**. Separate PFF/Gradient newsletter popups also appear; these are distinct from the dataset form. No project statement, phone, payment details or password was requested in the observed dataset form. Later delivery/consent screens have not been inspected, so this does not establish their requirements or the dataset licence. Do not enter personal contact details into this repository.

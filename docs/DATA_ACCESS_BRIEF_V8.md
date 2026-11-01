@@ -1,6 +1,6 @@
 # Xtension Labs data-access brief
 
-This brief is prepared for an access application. It has not been sent, and no access terms have been accepted on the team's behalf.
+This brief is prepared for data-access enquiries. The PFF dataset access form was submitted on 2026-11-01 using user-provided details, and its supplied Drive folder was opened successfully. This prose brief and the support enquiry have not been sent; no separate dataset agreement has been accepted on the team's behalf.
 
 The [PFF access packet](PFF_ACCESS.md) now includes the verified live form fields, a ready-to-send support enquiry, and the proposed ingestion and fresh-match validation plan.
 
@@ -18,7 +18,7 @@ We will reserve complete unseen fixtures before model selection, exclude all ref
 
 ## Primary access routes
 
-- [PFF FC World Cup 2022 release](https://www.blog.fc.pff.com/blog/pff-fc-release-2022-world-cup-data): official form for 64 fixtures of paired tracking/events. Complete it using the team's own contact details and review the supplied terms. Ask explicitly whether both live and dead frames and reliable state references are included.
+- [PFF FC World Cup 2022 release](https://www.blog.fc.pff.com/blog/pff-fc-release-2022-world-cup-data): official form completed and delivery folder accessible. Usage rights, live/dead coverage and reliable state-reference provenance still need verification before model training and independent evaluation.
 - [BEPRO sample](https://bepro.ai/free-data-example): request a full-match event/tracking sample, confirming ball coverage and annotation provenance.
 - [SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR) or [FOOTPASS](https://github.com/JeremieOchin/FOOTPASS): follow the official reviewed-access process for richer contact/action supervision. Their access agreements require the applicant's own review.
 
