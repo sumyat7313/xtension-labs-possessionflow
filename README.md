@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/likalight/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/verification.json"><img src="https://img.shields.io/badge/tests-342%20verified-31b88a" alt="342 tests verified locally"></a>
+  <a href="docs/refinement-verification-v8.json"><img src="https://img.shields.io/badge/tests-395%20verified-31b88a" alt="395 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
   <img src="https://img.shields.io/badge/release-1.5.2-112b36" alt="Release 1.5.2">
@@ -29,6 +29,10 @@
 PossessionFlow assigns H/A/D/X labels to every football video frame using automatic tactical tracking and event tags. Built by **Xtension Labs** for More Than A Hack 2027.
 
 Research release **1.5.2** retains the original v1.5 submission and adds explicit boundary learning, contact-cue reliability checks, and a fresh two-match phase audit. **Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.**
+
+## V8 research update
+
+We obtained [corrected human event timestamps](research/annotations/elastic/README.md) and tested isolated precision and stoppage refinements. Development selection: **baseline-v1.5**. The original v1.5 deployment and v1.5.2 submission bundle remain unchanged; sufficient fresh dense validation is unavailable. See [the complete V8 results](docs/REFINEMENT_V8.md) and [the concrete data-access plan](docs/DATA_ACCESS_BRIEF_V8.md). 395 engineering tests passed in this research revision.
 
 ## Quick start
 

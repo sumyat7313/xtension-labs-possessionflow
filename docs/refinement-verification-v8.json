@@ -1,0 +1,18 @@
+{
+  "deployed_model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "deployed_model_unchanged": true,
+  "development_selected": "baseline-v1.5",
+  "engineering_tests_passed": 395,
+  "experimental_refit": {
+    "exact_model_bytes_reproduced": true,
+    "exact_model_dictionary_reproduced": true,
+    "model_sha256": "a7dc4c9020dfd40e08efb95ce8b5cfd27375608baeebae82f851bd04cf2f97b8"
+  },
+  "fresh_dense_stoppage_validation_available": false,
+  "fresh_phase_matches_consumed": 0,
+  "production_inference_unchanged": true,
+  "promoted": false,
+  "protocol_sha256": "5294556287c49f0da9eac52164a1815e53e44bf37429b734fd017b3411b1ea4f",
+  "research_only": true,
+  "submission_csv_sha256": "1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb"
+}

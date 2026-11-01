@@ -1,0 +1,113 @@
+{
+  "dataset": {
+    "code_license": "MPL-2.0",
+    "commit": "e245224aad7450961eca40954ae2bc85e1e6e696",
+    "data_license": "CC-BY-4.0",
+    "dataset": "ELASTIC corrected Sportec events",
+    "files": {
+      "README.md": {
+        "bytes": 8949,
+        "git_blob_sha1": "243a89adbd6fe285a4ef0b17bdb674658bd273bd",
+        "sha256": "b855cda0ab84710f9a73fb091f4d5d4e9ef259238bd94c66f464ea02eb7e3089",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/README.md"
+      },
+      "benchmark/gt/J03WMX.parquet": {
+        "bytes": 40537,
+        "git_blob_sha1": "d70d1ce21778ab0511c22a055e3cc4e183360e36",
+        "sha256": "3bf246033e8df7028563f8b90ecf338212063b6aed9ac6772741d429feded52b",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/benchmark/gt/J03WMX.parquet"
+      },
+      "benchmark/gt/J03WN1.parquet": {
+        "bytes": 32285,
+        "git_blob_sha1": "6c2ffe8cddc54c22823886a711cf41da49d9cc18",
+        "sha256": "20cf64b5169099ed3577c30a6bf23eda316fea6f5927e1061496f5f6dccf7681",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/benchmark/gt/J03WN1.parquet"
+      },
+      "benchmark/gt/J03WPY.parquet": {
+        "bytes": 37462,
+        "git_blob_sha1": "1125bb08c765f0570814adb07fdf01b4622c2b0a",
+        "sha256": "8ba1df509b68f1e2081b520f87f43ad39218436538023de2abeb31287bfc6dad",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/benchmark/gt/J03WPY.parquet"
+      },
+      "experiments/benchmark.py": {
+        "bytes": 16957,
+        "git_blob_sha1": "22226a0dfa0c485b27d1c6c0e0876947308dda63",
+        "sha256": "3051e67d2132287edae54ec16feec100a28541dc88a9ca17b481e0e1e428b2de",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/experiments/benchmark.py"
+      },
+      "sync/config.py": {
+        "bytes": 2205,
+        "git_blob_sha1": "767c410350227d0c308be88718e36b9abbbc2123",
+        "sha256": "ab489cf2a7fec15d72d2b784963b5c3974e09b0885c95708945dfcc0adac25fd",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/sync/config.py"
+      },
+      "sync/utils.py": {
+        "bytes": 12961,
+        "git_blob_sha1": "5ee078e9b635054902a1df7fe56cfcbc27cb35a1",
+        "sha256": "d1f7ee5bd11d991a2ed73fef5f509e0ead10093ccebfe36bf70ec5e349835c68",
+        "url": "https://raw.githubusercontent.com/hyunsungkim-ds/elastic/e245224aad7450961eca40954ae2bc85e1e6e696/sync/utils.py"
+      }
+    },
+    "fresh_holdout": false,
+    "labels_parsed_by_download": false,
+    "matches": [
+      "J03WMX",
+      "J03WN1",
+      "J03WPY"
+    ],
+    "role": "exposed-development-only"
+  },
+  "fresh_stoppage_validation_available": false,
+  "intake_source_sha256": "43b5ad1071d12aa0e843bd197a2e9d8b980085f067fdebda245cc9a9a09e9609",
+  "promotion_eligible": false,
+  "schema_version": 1,
+  "summary": {
+    "J03WMX": {
+      "events": 1329,
+      "point_counts": {
+        "ball_out": 52,
+        "event": 1232,
+        "goal": 3,
+        "reception": 1048,
+        "restart": 97
+      },
+      "points_sha256": "96c3262205e892c539f3ed387b42d4e2aedd928b4a174b1825f159fe81bc2d61",
+      "quarantined_rows": [],
+      "source_rows": 1329,
+      "source_sha256": "3bf246033e8df7028563f8b90ecf338212063b6aed9ac6772741d429feded52b"
+    },
+    "J03WN1": {
+      "events": 1030,
+      "point_counts": {
+        "ball_out": 51,
+        "event": 935,
+        "goal": 3,
+        "reception": 779,
+        "restart": 95
+      },
+      "points_sha256": "6b927d2a43b4198e1f63451b658a2d4952eb52ed08df380a1bb3c67ab9e8ef1e",
+      "quarantined_rows": [],
+      "source_rows": 1030,
+      "source_sha256": "20cf64b5169099ed3577c30a6bf23eda316fea6f5927e1061496f5f6dccf7681"
+    },
+    "J03WPY": {
+      "events": 1201,
+      "point_counts": {
+        "ball_out": 47,
+        "event": 1111,
+        "goal": 1,
+        "reception": 963,
+        "restart": 90
+      },
+      "points_sha256": "290a57da682e587bbc77131fa0581334e3a80fdbb989dad4564d40bf71423e72",
+      "quarantined_rows": [
+        {
+          "reason": "Reception precedes event",
+          "source_event_id": 718
+        }
+      ],
+      "source_rows": 1202,
+      "source_sha256": "8ba1df509b68f1e2081b520f87f43ad39218436538023de2abeb31287bfc6dad"
+    }
+  }
+}
