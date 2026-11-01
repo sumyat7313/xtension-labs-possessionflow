@@ -1,0 +1,20 @@
+Draft only - not sent
+To: fchelp@pff.com
+Subject: 2022 World Cup dataset access and annotation coverage - Xtension Labs
+
+Hello PFF FC team,
+
+We are Xtension Labs, developing PossessionFlow for the More Than A Hack 2027 football analytics challenge. We would like access to your 2022 World Cup tracking/event release to train and independently evaluate possession-boundary and stoppage models on complete unseen fixtures.
+
+Could you confirm the current access process and the following points?
+
+1. Do the tracking files retain all periods of play, including dead-ball intervals, with observed ball positions and missing/extrapolated flags? Are camera cuts and off-screen intervals identified?
+2. Are live/dead state, possession ownership, ball-out/whistle and actual restart timestamps available? How are they annotated or inferred, how are they synchronized to tracking, and what timing uncertainty or known gaps should we expect? Our possession definition distinguishes controlled acquisition from a deflection or one-touch contact.
+3. Is synchronized video available or separately licensable for blinded annotation review? Are any ball trajectories derived from event labels rather than independent observations?
+4. May we use the data for this hackathon, train derived models, submit those models and aggregate results to the judges, and publish permitted code/metrics? What attribution, access-sharing, retention and redistribution restrictions apply?
+5. Could you provide the current data specification, licence and any known quality/coverage notes with access instructions?
+
+Our development repository is private. Raw provider files and restricted reference labels will remain local; any sharing will follow your terms. We will reserve whole fixtures for final testing before model selection and will keep our existing submission unless a replacement demonstrates a reliable improvement on adequate independent labels.
+
+Thank you,
+Xtension Labs

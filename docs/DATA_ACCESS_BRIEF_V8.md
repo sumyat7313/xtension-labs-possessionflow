@@ -2,6 +2,8 @@
 
 This brief is prepared for an access application. It has not been sent, and no access terms have been accepted on the team's behalf.
 
+The [PFF access packet](PFF_ACCESS.md) now includes the verified live form fields, a ready-to-send support enquiry, and the proposed ingestion and fresh-match validation plan.
+
 ## Project description
 
 Xtension Labs is developing PossessionFlow for the More Than A Hack 2027 football analytics challenge. The system estimates home possession, away possession, stoppages and unknown periods from player/ball observations. We seek permission to use synchronized tracking and event/video annotations for research, training and independent evaluation in this challenge. The development repository is private.
