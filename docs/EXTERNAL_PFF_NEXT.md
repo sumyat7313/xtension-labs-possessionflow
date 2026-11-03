@@ -1,6 +1,6 @@
 # Next bounded study: clean-candidate PFF development comparison
 
-**Planning checkpoint only. No evaluator has been implemented or run for this candidate.** This is the next task after the verified completion of `external-rebuild-001`; do not rerun that completed training trial.
+**Historical planning checkpoint, now completed.** The evaluator was implemented and its fixed comparison failed the unchanged gates; see [results](EXTERNAL_PFF_RESULTS.md). The next task is the [training-only diagnosis](CLEAN_PFF_TRAINING_DIAGNOSIS.md). Preserve the plan below as the pre-experiment specification; do not rerun either completed trial.
 
 Evaluate one fixed candidate, with no fitting, calibration, parameter grid or new threshold selection. Use exactly the already-exposed development fixtures: 3813, 3816, 3818, 3823, 3831, 3844, 3850, 3854, 3858, 10502, 10514, 10517. Reject all other IDs before I/O. Do not expose final preparation or scoring entry points.
 
