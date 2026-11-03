@@ -25,6 +25,8 @@ The exact v1.2 external dead head is the only permitted parentless learned ances
 
 The durable harness root is `runs/continuous-improvement/`. It is ignored local state, not a provider-data publication channel. The executable harness restricts commands to the external reconstruction workflow and cannot run a final audit or promote a model. Its success state only means that the declared engineering job completed.
 
+The completed reconstruction remains in that original ledger. Its next experiment uses the separate versioned `tools/development_harness.py` and `runs/external-pff-development-v1/` for the single fixed external candidate's PFF development comparison. When that directory exists, inspect its status and lock before any new job; the old ledger being complete does not mean the development evaluator is idle. Read `runs/continuous-improvement/next-action.json` for the current handoff. Never rerun the completed reconstruction to advance the evaluator.
+
 The harness writes `harness.json`, an authoritative hash-chained `ledger.jsonl`, and a derived `checkpoint.json`. Example operator commands, from the repository root with the project Python environment active:
 
 ```powershell

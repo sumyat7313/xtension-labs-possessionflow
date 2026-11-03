@@ -8,7 +8,8 @@ Evaluate one fixed candidate, with no fitting, calibration, parameter grid or ne
 | --- | --- |
 | Candidate | `7d79dc50cfc16a7f64c37b65908be90e588d3bfdec35f599071b25180089bf47` |
 | Candidate configuration | `2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b` |
-| Candidate lineage canonical digest | `3d31772a8821e869b8569563ab43fcca3b7b2afe11159072ebfd76c1620f0e8c` |
+| Candidate lineage file | `3d31772a8821e869b8569563ab43fcca3b7b2afe11159072ebfd76c1620f0e8c` |
+| Candidate lineage canonical digest | `9051b999f5c3b76fad879614d9157590a7e736ba95c7057278097a3834d16a56` |
 | Rebuild protocol file | `0cd152ae7105f4561b5fa6f97f23fc71f1dd2afde49fe32301fb7d57dca6f31f` |
 | Rebuild summary file | `c605d16d3550b36db281c95ecee964ffe8e97538d096f9dbef6c6e4b8d5cdb34` |
 | Original PFF aggregate bundle | `46e49be1e4fcbcc75a6ae7193d73886738a76d0bdd5a622f2f9c8f1c5a980654` |

@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/likalight/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/continuous-verification.json"><img src="https://img.shields.io/badge/tests-656%20verified-31b88a" alt="656 tests verified locally"></a>
+  <a href="docs/external-pff-development-verification.json"><img src="https://img.shields.io/badge/tests-720%20verified-31b88a" alt="720 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
   <img src="https://img.shields.io/badge/release-1.5.2-112b36" alt="Release 1.5.2">
@@ -35,6 +35,8 @@ PossessionFlow assigns H/A/D/X labels to every football video frame using automa
 An hourly continuation coordinates training and independent review agents through a [bounded experiment harness](docs/CONTINUOUS_IMPROVEMENT.md). Immutable recipes, an append-only attempt ledger, locks and stage checkpoints preserve failed experiments and prevent silent retries. The [first declared trial](configs/experiments/external-rebuild-001.json) rebuilds control and joint-state models from licensed external Sportec data and fixed synthetic camera variation. No final-test or submission-promotion command is available in the harness. See the [research backlog](docs/IMPROVEMENT_BACKLOG.md) and [rebuild method](docs/EXTERNAL_REBUILD.md).
 
 **First rebuild completed:** all eleven stages passed artifact verification. The joint model beat the newly fitted control model on the exposed Sportec development comparison (spell F1 **0.4776 → 0.6162**). This has not yet demonstrated a win over v1.5. Final twelve PFF matches remain untouched and no submission was replaced. [Complete results and next experiment](docs/EXTERNAL_REBUILD_RESULTS.md).
+
+**PFF transfer comparison completed:** the fixed rebuilt candidate failed the unchanged development gate against v1.5: spell F1 **0.4355 → 0.4002**, stoppage precision **93.33% → 89.04%**. Both historical controls reproduced exactly. The full negative result is preserved; no replacement or final access occurred. **720 engineering tests passed.** [Complete comparison and next training-only diagnosis](docs/EXTERNAL_PFF_RESULTS.md).
 
 Research release **1.5.2** retains the original v1.5 submission and adds explicit boundary learning, contact-cue reliability checks, and a fresh two-match phase audit. **Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.**
 

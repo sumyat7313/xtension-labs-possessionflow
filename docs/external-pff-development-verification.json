@@ -1,0 +1,22 @@
+{
+  "aggregate_bundle_sha256": "3fe814aa70479d5e68f1ba0d266bca44060ecb86ce557f67466bdb8d191d5f8c",
+  "candidate_sha256": "7d79dc50cfc16a7f64c37b65908be90e588d3bfdec35f599071b25180089bf47",
+  "completed_stages": 15,
+  "development_gate_passed": false,
+  "development_summary_sha256": "611fcdf5bb0f751ecb61eb6cd2071ec8d630d7bf22aa77ce7b8d0a9597c9a3c3",
+  "engineering_tests": {
+    "count": 720,
+    "log_sha256": "e06827e1ae21e3c92003acec7434adf672137511e786a6550593d16405528450",
+    "result": "OK",
+    "seconds": 127.059
+  },
+  "final_evaluated": false,
+  "historical_controls_reproduced": true,
+  "local_artifact_bytes_verified": true,
+  "promoted": false,
+  "schema_version": 1,
+  "scope": "Previously consumed development fixtures; no fresh-final or hidden-challenge claim.",
+  "study_protocol_file_sha256": "b84c9e978d089eb4adab49e2ae54c98fea5f526d3f98c361034fc6850f73d5a3",
+  "study_protocol_sha256": "9be74addb409f341f5fcfb9c9b0e49b246600dca333bd857e61e13778582a080",
+  "submission_hold": true
+}

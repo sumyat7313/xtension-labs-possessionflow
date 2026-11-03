@@ -43,5 +43,7 @@ jobs:
         run: python tools/verify_pff_precision.py
       - name: Verify PFF context correction and retained deployment
         run: python tools/verify_pff_context.py
+      - name: Verify fixed external-only PFF development comparison
+        run: python tools/verify_external_pff_development.py
       - name: Validate submission format
         run: python -m possession validate "submission/Xtension Labs.csv"
