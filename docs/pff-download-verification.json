@@ -1,0 +1,28 @@
+{
+  "bytes": 3927535878,
+  "complete": true,
+  "files": 261,
+  "fixtures": 64,
+  "inventory_sha256": "1c23c8b00ee30a7cefecfa37a1107ffbd870edcd58e985887cb91ad03d574b69",
+  "inventory_source_sha256": "732109613609b078682f105d36d190283c6dfc43d7849b4d80276e2367e01e87",
+  "raw_labels_included": false,
+  "receipt_comparison": {
+    "all_verified": true,
+    "exact_path_set": true,
+    "extra_inventory_paths": [],
+    "inventory_entries": 261,
+    "inventory_sha256": "1c23c8b00ee30a7cefecfa37a1107ffbd870edcd58e985887cb91ad03d574b69",
+    "matched_sha256_size_count": 261,
+    "mismatched_paths": [],
+    "missing_inventory_paths": [],
+    "provider_signature_verified": false,
+    "raw_match_semantics_read": false,
+    "receipt_entries": 261,
+    "receipt_error_count": 0,
+    "receipt_sha256": "0b001515a619dada2d85aaaa422671ee0b59648efd36a24535dcc7f2bed7f78c",
+    "schema_version": 1,
+    "unique_paths": true
+  },
+  "tracking_archives_crc_checked": 64,
+  "tracking_decompressed_bytes": 52320523091
+}

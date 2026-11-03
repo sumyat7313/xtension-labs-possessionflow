@@ -1,0 +1,53 @@
+{
+  "active_model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "candidate_sha256": "0ab133743c593466d8ae92ea94937e8c6bf22510f6b64053e3e69c7b467dcf3f",
+  "development_matches": 12,
+  "download_verification": {
+    "bytes": 3927535878,
+    "complete": true,
+    "files": 261,
+    "fixtures": 64,
+    "inventory_sha256": "1c23c8b00ee30a7cefecfa37a1107ffbd870edcd58e985887cb91ad03d574b69",
+    "inventory_source_sha256": "732109613609b078682f105d36d190283c6dfc43d7849b4d80276e2367e01e87",
+    "raw_labels_included": false,
+    "receipt_comparison": {
+      "all_verified": true,
+      "exact_path_set": true,
+      "extra_inventory_paths": [],
+      "inventory_entries": 261,
+      "inventory_sha256": "1c23c8b00ee30a7cefecfa37a1107ffbd870edcd58e985887cb91ad03d574b69",
+      "matched_sha256_size_count": 261,
+      "mismatched_paths": [],
+      "missing_inventory_paths": [],
+      "provider_signature_verified": false,
+      "raw_match_semantics_read": false,
+      "receipt_entries": 261,
+      "receipt_error_count": 0,
+      "receipt_sha256": "0b001515a619dada2d85aaaa422671ee0b59648efd36a24535dcc7f2bed7f78c",
+      "schema_version": 1,
+      "unique_paths": true
+    },
+    "tracking_archives_crc_checked": 64,
+    "tracking_decompressed_bytes": 52320523091
+  },
+  "engineering_tests_passed": 477,
+  "exact_pilot_parity": {
+    "adapter_sha256": "432317243dc656ba14427337eb507808be63cc4c6942aebb6f0fb142c7036a5e",
+    "elapsed_seconds": 85.9960181999486,
+    "exact_alignment": true,
+    "exact_baseline_labels": true,
+    "exact_features": true,
+    "exact_observations": true,
+    "exact_upstream_probabilities": true,
+    "match_id": 3812,
+    "old_cache_manifest_sha256": "3035ce4f539db68df1bef0337b56526530dc9c9d494a6b5b96f35c3b7b3ff40d",
+    "peak_working_set_mib": 755.52734375,
+    "references_used": false,
+    "rows": 154201
+  },
+  "final_matches_evaluated": 0,
+  "fitted_weights_published": false,
+  "production_inference_unchanged": true,
+  "promoted": false,
+  "submission_csv_sha256": "1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb"
+}

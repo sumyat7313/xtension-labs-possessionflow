@@ -1,0 +1,157 @@
+{
+  "challenge": {
+    "evidence": "Barcelona versus Athletic Club; club fixture, not national-team World Cup.",
+    "file_name_field": "Bar\u00e7a - Athletic Club 2-1_FifaData",
+    "metadata_file": "BAR-ATH_broadcast_atd.xml",
+    "sha256": "53d387bcdef718c2034ee2e05c3036c7edfa3cfcd5bbe8270a43695bd252dbe9"
+  },
+  "metrica": {
+    "evidence": "Upstream README dates Game3 addition 2021-04-15; prior games already present. All predate World Cup 2022.",
+    "sample_ids": [
+      1,
+      2,
+      3
+    ],
+    "source": "https://github.com/metrica-sports/sample-data/blob/e706dd506b360d69d9d123d5b8026e7294b13996/README.md"
+  },
+  "reference_values_read": false,
+  "result": "No prior consumed source can be the same World Cup2022 fixture based on competition/date evidence; subject to authentic PFF metadata.",
+  "schema_version": 1,
+  "scope": "PFF national-team FIFA World Cup 2022 versus previously consumed sources",
+  "skillcorner": [
+    {
+      "away": "Adelaide United Football Club",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2024-11-23T06:00:00Z",
+      "home": "Brisbane Roar FC",
+      "match_id": 1874553,
+      "metadata_file": "1874553_match.json",
+      "sha256": "e6974e402779d8be44e75bf88ef2a3acfd4d025b87b3fc57f518fa826a645ad8"
+    },
+    {
+      "away": "Newcastle United Jets FC",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2024-11-30T04:00:00Z",
+      "home": "Auckland FC",
+      "match_id": 1886347,
+      "metadata_file": "1886347_match.json",
+      "sha256": "30c608e78663e9f490b3545479a3ce67b171f418c5133d5609cb249a2466abb2"
+    },
+    {
+      "away": "Wellington Phoenix FC",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2024-12-07T04:00:00Z",
+      "home": "Auckland FC",
+      "match_id": 1899585,
+      "metadata_file": "1899585_match.json",
+      "sha256": "41de8cb74a0512fcf0cbaaa5c615ae3e7dcaaf6745b9c78a050b59b906b1cb06"
+    },
+    {
+      "away": "Perth Glory Football Club",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2024-12-21T06:00:00Z",
+      "home": "Brisbane Roar FC",
+      "match_id": 1925299,
+      "metadata_file": "1925299_match.json",
+      "sha256": "f4345b32c0fdd7c9990df70050b3a74f57b1992cf762e20f2a4d309bd2fba7d2"
+    },
+    {
+      "away": "Wellington Phoenix FC",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2024-12-22T06:00:00Z",
+      "home": "Western Sydney Wanderers FC",
+      "match_id": 1927964,
+      "metadata_file": "1927964_match.json",
+      "sha256": "f967f911c20f5c5f8c89bbe2020a30c92731173616d5a1e4bafeb65435278b76"
+    },
+    {
+      "away": "Melbourne City FC",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2024-12-31T08:00:00Z",
+      "home": "Central Coast Mariners Football Club",
+      "match_id": 1953632,
+      "metadata_file": "1953632_match.json",
+      "sha256": "366c8dd6b504d4f4ace5685040648b0f30081043a44f01663b8b7e077e6bfde8"
+    },
+    {
+      "away": "Western United",
+      "competition": "AUS - A-League - 2024/2025",
+      "date": "2025-01-10T08:35:00Z",
+      "home": "Melbourne Victory Football Club",
+      "match_id": 1959846,
+      "metadata_file": "1959846_match.json",
+      "sha256": "4bbe2058af53edd42d5e3acd7fb28ecb8c79e4afb16cb9b77a6fe9b58f6e516b"
+    }
+  ],
+  "sportec": [
+    {
+      "away": "FC Bayern M\u00fcnchen",
+      "competition": "Bundesliga",
+      "date": "2023-05-27T13:30:00.000+00:00",
+      "home": "1. FC K\u00f6ln",
+      "match_id": "DFL-MAT-J03WMX",
+      "metadata_file": "J03WMX_metadata.xml",
+      "sha256": "a884728647a564cf8b20e5223a1d04a5da6f6725e1e506c8651505327c197ba9"
+    },
+    {
+      "away": "Bayer 04 Leverkusen",
+      "competition": "Bundesliga",
+      "date": "2023-05-27T13:30:00.000+00:00",
+      "home": "VfL Bochum 1848",
+      "match_id": "DFL-MAT-J03WN1",
+      "metadata_file": "J03WN1_metadata.xml",
+      "sha256": "5490286436c86e6f80a538d2b1b379d0efd016e0defcaf594bc59d9ef5079f4c"
+    },
+    {
+      "away": "SSV Jahn Regensburg",
+      "competition": "2. Bundesliga",
+      "date": "2022-08-26T16:30:00.000+00:00",
+      "home": "Fortuna D\u00fcsseldorf",
+      "match_id": "DFL-MAT-J03WOH",
+      "metadata_file": "J03WOH_metadata.xml",
+      "sha256": "f23b3ee13b988b1ff9a0bce438c416dac47e71355bbc7ee1dab21aaf3e33c18c"
+    },
+    {
+      "away": "F.C. Hansa Rostock",
+      "competition": "2. Bundesliga",
+      "date": "2022-09-10T18:30:00.000+00:00",
+      "home": "Fortuna D\u00fcsseldorf",
+      "match_id": "DFL-MAT-J03WOY",
+      "metadata_file": "J03WOY_metadata.xml",
+      "sha256": "4c497fac683eee8292901c18ca02c0be1d9609d0b9d4bd8aa092c61f9e0b19e9"
+    },
+    {
+      "away": "1. FC N\u00fcrnberg",
+      "competition": "2. Bundesliga",
+      "date": "2022-10-15T11:00:00.000+00:00",
+      "home": "Fortuna D\u00fcsseldorf",
+      "match_id": "DFL-MAT-J03WPY",
+      "metadata_file": "J03WPY_metadata.xml",
+      "sha256": "566dd5e4c86e124ab90fcdba51100881f0436e22afa71832945a451a2d95a420"
+    },
+    {
+      "away": "FC St. Pauli",
+      "competition": "2. Bundesliga",
+      "date": "2022-11-05T12:00:00.000+00:00",
+      "home": "Fortuna D\u00fcsseldorf",
+      "match_id": "DFL-MAT-J03WQQ",
+      "metadata_file": "J03WQQ_metadata.xml",
+      "sha256": "e976aa0c5dba862cfa898ea57ec226efce9d1bc04b23b8d775908db86aa6fa41"
+    },
+    {
+      "away": "1. FC Kaiserslautern",
+      "competition": "2. Bundesliga",
+      "date": "2022-11-11T17:30:00.000+00:00",
+      "home": "Fortuna D\u00fcsseldorf",
+      "match_id": "DFL-MAT-J03WR9",
+      "metadata_file": "J03WR9_metadata.xml",
+      "sha256": "429b584e89df3e3e8b81f4bd0d004b38bd0b4298bb390b8fb43efccb60963e01"
+    }
+  ],
+  "wcsf": {
+    "competition_family": "professional European football league",
+    "evidence": "Pinned upstream README Data Guide explicitly describes a professional European league match; therefore not a national-team World Cup fixture. Exact fixture remains unknown, but the competition class suffices for this exclusion.",
+    "exact_fixture_identity": "anonymized",
+    "source": "https://github.com/MatKempeGroningen/WCSF_SolutionRoom/blob/1c9ba798f98a9fffb16081a5d3965774d4e5662c/README.md"
+  }
+}

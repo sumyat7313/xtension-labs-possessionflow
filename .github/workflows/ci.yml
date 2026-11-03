@@ -37,5 +37,7 @@ jobs:
         run: python tools/verify_release.py
       - name: Verify isolated refinement research and retained deployment
         run: python tools/verify_refinement_v8.py
+      - name: Verify PFF research evidence and retained deployment
+        run: python tools/verify_pff_research.py
       - name: Validate submission format
         run: python -m possession validate "submission/Xtension Labs.csv"

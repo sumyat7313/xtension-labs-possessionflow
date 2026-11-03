@@ -2,7 +2,9 @@
 
 This brief is prepared for data-access enquiries. The PFF dataset access form was submitted on 2026-11-01 using user-provided details, and its supplied Drive folder was opened successfully. This prose brief and the support enquiry have not been sent; no separate dataset agreement has been accepted on the team's behalf.
 
-The [PFF access packet](PFF_ACCESS.md) now includes the verified live form fields, a ready-to-send support enquiry, and the proposed ingestion and fresh-match validation plan.
+Updated 2026-11-03: the complete **261-file PFF release covering 64 fixtures is downloaded**. The metadata-only **40 training / 12 development / 12 locked final** split is frozen, and the isolated fixed training/evaluation campaign is complete. v1.5 remains active because the development comparison regressed stoppage precision. The final 12 matches remain untouched. See the [PFF results report](PFF_RESULTS.md).
+
+The [PFF access packet](PFF_ACCESS.md) retains the verified form details and ready-to-send support enquiry. The [terms and label review](PFF_TERMS_AND_LABELS.md), [validation protocol](PFF_VALIDATION.md) and [training/adapter design](PFF_TRAINING.md) document the completed intake checks and remaining promotion requirements. Local analytical research is distinct from unverified rights to redistribute provider data or fitted PFF artifacts; the support enquiry remains unsent.
 
 ## Project description
 
@@ -14,11 +16,11 @@ We need identifiable full fixtures, both halves and all frames including stoppag
 
 ## Evaluation plan
 
-We will reserve complete unseen fixtures before model selection, exclude all reference fields from inference, and publish only permitted code, derived metrics and models. A final test will assess stoppage precision/recall, onset/restart timing, short-possession precision/recall and complete possession-spell accuracy against the frozen current model. Reference gaps remain unknown. No model replaces the current submission without adequate independent evidence.
+Complete PFF fixtures were reserved before model selection. The completed experiment excludes all reference fields and event-derived smoothed ball positions from inference, using raw visible observations instead. Its carried event references are provider-silver labels, with uncertainty retained as unknown. The locked final test is accessed only if the fixed development gate passes; it then compares stoppage precision/recall, onset/restart timing, short-possession precision/recall and complete possession-spell accuracy against v1.5. Raw files, reconstructed labels and fitted PFF weights remain local. No model replaces the submission without adequate independent evidence and established sharing rights.
 
 ## Primary access routes
 
-- [PFF FC World Cup 2022 release](https://www.blog.fc.pff.com/blog/pff-fc-release-2022-world-cup-data): official form completed and delivery folder accessible. Usage rights, live/dead coverage and reliable state-reference provenance still need verification before model training and independent evaluation.
+- [PFF FC World Cup 2022 release](https://www.blog.fc.pff.com/blog/pff-fc-release-2022-world-cup-data): complete release downloaded; terms, raw-observation semantics and event-reference definitions reviewed; isolated research completed on the frozen fixture split; v1.5 retained after a failed development gate. Independent dense truth and rights to distribute fitted artifacts remain unresolved, so access or a numerical gain alone cannot authorize promotion.
 - [BEPRO sample](https://bepro.ai/free-data-example): request a full-match event/tracking sample, confirming ball coverage and annotation provenance.
 - [SoccerNet-GAR](https://huggingface.co/datasets/OpenSportsLab/SoccerNet-GAR) or [FOOTPASS](https://github.com/JeremieOchin/FOOTPASS): follow the official reviewed-access process for richer contact/action supervision. Their access agreements require the applicant's own review.
 

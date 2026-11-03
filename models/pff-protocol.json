@@ -1,0 +1,777 @@
+{
+  "baseline_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "conditions": [
+    "native"
+  ],
+  "freshness_unit": "whole fixture including extra time",
+  "identity_audit_sha256": "aa1476624be478a40d80e43f73b4a999a46d5e178a1f10c88c2a5c6cc7020608",
+  "labels_used_for_split": false,
+  "metadata": [
+    {
+      "away_team": "Netherlands",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-21",
+      "home_team": "Senegal",
+      "match_id": 3812,
+      "stage": "group"
+    },
+    {
+      "away_team": "Iran",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-21",
+      "home_team": "England",
+      "match_id": 3813,
+      "stage": "group"
+    },
+    {
+      "away_team": "Ecuador",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-20",
+      "home_team": "Qatar",
+      "match_id": 3814,
+      "stage": "group"
+    },
+    {
+      "away_team": "Wales",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-21",
+      "home_team": "United States",
+      "match_id": 3815,
+      "stage": "group"
+    },
+    {
+      "away_team": "Saudi Arabia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-22",
+      "home_team": "Argentina",
+      "match_id": 3816,
+      "stage": "group"
+    },
+    {
+      "away_team": "Tunisia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-22",
+      "home_team": "Denmark",
+      "match_id": 3817,
+      "stage": "group"
+    },
+    {
+      "away_team": "Poland",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-22",
+      "home_team": "Mexico",
+      "match_id": 3818,
+      "stage": "group"
+    },
+    {
+      "away_team": "Australia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-22",
+      "home_team": "France",
+      "match_id": 3819,
+      "stage": "group"
+    },
+    {
+      "away_team": "Croatia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-23",
+      "home_team": "Morocco",
+      "match_id": 3820,
+      "stage": "group"
+    },
+    {
+      "away_team": "Japan",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-23",
+      "home_team": "Germany",
+      "match_id": 3821,
+      "stage": "group"
+    },
+    {
+      "away_team": "Costa Rica",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-23",
+      "home_team": "Spain",
+      "match_id": 3822,
+      "stage": "group"
+    },
+    {
+      "away_team": "Canada",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-23",
+      "home_team": "Belgium",
+      "match_id": 3823,
+      "stage": "group"
+    },
+    {
+      "away_team": "Cameroon",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-24",
+      "home_team": "Switzerland",
+      "match_id": 3824,
+      "stage": "group"
+    },
+    {
+      "away_team": "South Korea",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-24",
+      "home_team": "Uruguay",
+      "match_id": 3825,
+      "stage": "group"
+    },
+    {
+      "away_team": "Ghana",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-24",
+      "home_team": "Portugal",
+      "match_id": 3826,
+      "stage": "group"
+    },
+    {
+      "away_team": "Serbia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-24",
+      "home_team": "Brazil",
+      "match_id": 3827,
+      "stage": "group"
+    },
+    {
+      "away_team": "Iran",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-25",
+      "home_team": "Wales",
+      "match_id": 3828,
+      "stage": "group"
+    },
+    {
+      "away_team": "Senegal",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-25",
+      "home_team": "Qatar",
+      "match_id": 3829,
+      "stage": "group"
+    },
+    {
+      "away_team": "Ecuador",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-25",
+      "home_team": "Netherlands",
+      "match_id": 3830,
+      "stage": "group"
+    },
+    {
+      "away_team": "United States",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-25",
+      "home_team": "England",
+      "match_id": 3831,
+      "stage": "group"
+    },
+    {
+      "away_team": "Australia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-26",
+      "home_team": "Tunisia",
+      "match_id": 3832,
+      "stage": "group"
+    },
+    {
+      "away_team": "Saudi Arabia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-26",
+      "home_team": "Poland",
+      "match_id": 3833,
+      "stage": "group"
+    },
+    {
+      "away_team": "Denmark",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-26",
+      "home_team": "France",
+      "match_id": 3834,
+      "stage": "group"
+    },
+    {
+      "away_team": "Mexico",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-26",
+      "home_team": "Argentina",
+      "match_id": 3835,
+      "stage": "group"
+    },
+    {
+      "away_team": "Costa Rica",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-27",
+      "home_team": "Japan",
+      "match_id": 3836,
+      "stage": "group"
+    },
+    {
+      "away_team": "Morocco",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-27",
+      "home_team": "Belgium",
+      "match_id": 3837,
+      "stage": "group"
+    },
+    {
+      "away_team": "Canada",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-27",
+      "home_team": "Croatia",
+      "match_id": 3838,
+      "stage": "group"
+    },
+    {
+      "away_team": "Germany",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-27",
+      "home_team": "Spain",
+      "match_id": 3839,
+      "stage": "group"
+    },
+    {
+      "away_team": "Serbia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-28",
+      "home_team": "Cameroon",
+      "match_id": 3840,
+      "stage": "group"
+    },
+    {
+      "away_team": "Ghana",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-28",
+      "home_team": "South Korea",
+      "match_id": 3841,
+      "stage": "group"
+    },
+    {
+      "away_team": "Switzerland",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-28",
+      "home_team": "Brazil",
+      "match_id": 3842,
+      "stage": "group"
+    },
+    {
+      "away_team": "Uruguay",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-28",
+      "home_team": "Portugal",
+      "match_id": 3843,
+      "stage": "group"
+    },
+    {
+      "away_team": "Senegal",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-29",
+      "home_team": "Ecuador",
+      "match_id": 3844,
+      "stage": "group"
+    },
+    {
+      "away_team": "Qatar",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-29",
+      "home_team": "Netherlands",
+      "match_id": 3845,
+      "stage": "group"
+    },
+    {
+      "away_team": "England",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-29",
+      "home_team": "Wales",
+      "match_id": 3846,
+      "stage": "group"
+    },
+    {
+      "away_team": "United States",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-29",
+      "home_team": "Iran",
+      "match_id": 3847,
+      "stage": "group"
+    },
+    {
+      "away_team": "Denmark",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-30",
+      "home_team": "Australia",
+      "match_id": 3848,
+      "stage": "group"
+    },
+    {
+      "away_team": "France",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-30",
+      "home_team": "Tunisia",
+      "match_id": 3849,
+      "stage": "group"
+    },
+    {
+      "away_team": "Argentina",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-30",
+      "home_team": "Poland",
+      "match_id": 3850,
+      "stage": "group"
+    },
+    {
+      "away_team": "Mexico",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-11-30",
+      "home_team": "Saudi Arabia",
+      "match_id": 3851,
+      "stage": "group"
+    },
+    {
+      "away_team": "Belgium",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-01",
+      "home_team": "Croatia",
+      "match_id": 3852,
+      "stage": "group"
+    },
+    {
+      "away_team": "Morocco",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-01",
+      "home_team": "Canada",
+      "match_id": 3853,
+      "stage": "group"
+    },
+    {
+      "away_team": "Spain",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-01",
+      "home_team": "Japan",
+      "match_id": 3854,
+      "stage": "group"
+    },
+    {
+      "away_team": "Germany",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-01",
+      "home_team": "Costa Rica",
+      "match_id": 3855,
+      "stage": "group"
+    },
+    {
+      "away_team": "Uruguay",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-02",
+      "home_team": "Ghana",
+      "match_id": 3856,
+      "stage": "group"
+    },
+    {
+      "away_team": "Portugal",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-02",
+      "home_team": "South Korea",
+      "match_id": 3857,
+      "stage": "group"
+    },
+    {
+      "away_team": "Switzerland",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-02",
+      "home_team": "Serbia",
+      "match_id": 3858,
+      "stage": "group"
+    },
+    {
+      "away_team": "Brazil",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-02",
+      "home_team": "Cameroon",
+      "match_id": 3859,
+      "stage": "group"
+    },
+    {
+      "away_team": "United States",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-03",
+      "home_team": "Netherlands",
+      "match_id": 10502,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Australia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-03",
+      "home_team": "Argentina",
+      "match_id": 10503,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Poland",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-04",
+      "home_team": "France",
+      "match_id": 10504,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Senegal",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-04",
+      "home_team": "England",
+      "match_id": 10505,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Croatia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-05",
+      "home_team": "Japan",
+      "match_id": 10506,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "South Korea",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-05",
+      "home_team": "Brazil",
+      "match_id": 10507,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Spain",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-06",
+      "home_team": "Morocco",
+      "match_id": 10508,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Switzerland",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-06",
+      "home_team": "Portugal",
+      "match_id": 10509,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Brazil",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-09",
+      "home_team": "Croatia",
+      "match_id": 10510,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Argentina",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-09",
+      "home_team": "Netherlands",
+      "match_id": 10511,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Portugal",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-10",
+      "home_team": "Morocco",
+      "match_id": 10512,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "France",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-10",
+      "home_team": "England",
+      "match_id": 10513,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Croatia",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-13",
+      "home_team": "Argentina",
+      "match_id": 10514,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Morocco",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-14",
+      "home_team": "France",
+      "match_id": 10515,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "Morocco",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-17",
+      "home_team": "Croatia",
+      "match_id": 10516,
+      "stage": "knockout"
+    },
+    {
+      "away_team": "France",
+      "competition": "FIFA World Cup 2022",
+      "date": "2022-12-18",
+      "home_team": "Argentina",
+      "match_id": 10517,
+      "stage": "knockout"
+    }
+  ],
+  "metadata_sha256": {
+    "10502": "b4b121e8e81c8c25bfb985e70c11ba43512f33a8d49df643c4aef9b9523e1e46",
+    "10503": "589c3998594bb59dd5dd80c12f45e1d801209085a48b3a7f926d0661b266c460",
+    "10504": "27c93c1fe35b370e130806f8b8a973e012692cd16bed11b0fc9901eda317b3c4",
+    "10505": "ad5df7809235696008727f431161f8ac2bc86ede452a6b1bb32a8adeada26ff7",
+    "10506": "94c37503e2c329f1f33aef3130e508ddb38b2d88d575b7cf280562802513ce11",
+    "10507": "097d70bd7b3dca46d0ad18f3f8c291ca17bbc578a28042bb9cd8351c8ac1aeef",
+    "10508": "8586c7242dde72efb3c60a1a25e00ad56e01278c56e0d4fc98e99a430d6a56c8",
+    "10509": "2b47197f7925e1408d396c49a779986b5aee02ac8c2777bfead34c3de09b9198",
+    "10510": "4ae9d5cde65ec4e26738f9f66f04982e0d9d2e97a0cfbd819425f00ff3e91eaa",
+    "10511": "ce8cb53e1999e862f2949f875e4e036b49fd2099765240376ab577a7553352e6",
+    "10512": "df97043d3ad1d1e3ddbf31589b1312759ee711414297f750b3d7cc5ae1476927",
+    "10513": "d4dda4248b2e88257431faf90d58fe593ec14a31394798e1c5e3f9c8a46a1fc9",
+    "10514": "a84474d6bb7df1f565030c24a55224d7d929be6fcac29be292cb97b875e223c7",
+    "10515": "2e7f76327b64a149edf37bf93d44e76eabf890356ce1d397447bb3992eeb9bb7",
+    "10516": "d0f3c85fc79d576e47f1ce44de2ea98f9aa7f1ad8ada003422b29546a3836edf",
+    "10517": "9416812b85807dc9c02a2e86e6269a5ef9def47d7ca353c70994626bcc5d417a",
+    "3812": "fc3789d268e7c3e418980e234079f7a595bb30cde7089b30b2d5e91eaae7836c",
+    "3813": "a71afff466ac489108dbd773c260b58a504b86c0a2e12a677077025cd4b46ead",
+    "3814": "0105fe2f7971c19bb9f04e7aa04dcba73f851e2e09778d05f3791089559758b2",
+    "3815": "0da996e2ca7dbc873e43df24cd8ddff94e8c43a70432138c7c27275b7e801de1",
+    "3816": "991040955ce536a7c22c20ff597f360f1402db945e1941320ba66806ed74794d",
+    "3817": "de78e952d80d325109596ddae41c04a7597fd177fd1bedb9086e64eeab04a951",
+    "3818": "5edda42ffd3853d2fdd2ba15e6fff54691b8be230367d9273f116864644d62e3",
+    "3819": "19d6c414653bcf8851dce5962d463e70a4e1421b387751eed9998dca768d5eaf",
+    "3820": "7f5bb9cd1159103a82fbf2b6f9a5dbe9bc28eb9afaa8c58fb5179a4bf606c7c2",
+    "3821": "9ac48e5e6f8c6c25deb15a8883c16430d516b5760ec3500d32de1a560152ddb7",
+    "3822": "69a78c4e1fbf368bd06f5685182eb85fa4710259be6ae570966fb5b2f152c95e",
+    "3823": "c258c9428e3ec596e4e8c09f21f04e29eb880a0053384bf9b294939951ce4296",
+    "3824": "da7116270916ed18bea8f58756d2bc54cd629d3da3405a98586211b46fd3e316",
+    "3825": "7697c957c6fa4dbe1a2c9c28c26ae2cc127f24ab320143f7d58d2a016c1b4f18",
+    "3826": "7f5231a80bd845f240b352c90658f6eac64c1349b69de57515b9fe7d4ce59074",
+    "3827": "d52868be3f95526c3aaacbdf08619e4028baf72db99a6585e10246f3281cab80",
+    "3828": "8cf369595a3d2d1cd99d3dd79408c71224fc61a1458a5ff4d46f3cd9da35c962",
+    "3829": "624669a61a4e14efb9c576f877d23ed87dbcf2a40196d22c372ecc984d9525a2",
+    "3830": "5697de3f4447bbef90c31e1e2ce2cd2fb7b5def214483285e92dce0988e28919",
+    "3831": "05a72fac3fe52bb7ce3d87926f8f9e087aa2ed7599eb0af253bb5005e773b72b",
+    "3832": "cad63a885b0d5f5dac2ac766df1ed1074ff87c802fb37367fb2a0cb25eb87734",
+    "3833": "3b26840fd9bdd6df25833e034f684eb7ff964a26e292ad3d98c03e231293e31f",
+    "3834": "0678a253b5111fe1037c374f0781ae2e096ad562635d0a2f9c4f55c5db356989",
+    "3835": "e5170a0b7b918f519a66031aec7f856738ca9c3320313cb12ccc7910645e7c63",
+    "3836": "bb3d0a42379fa4e65cded6e17969c47a338c3821068a83cf1442123aa5a2d65e",
+    "3837": "0994fa90559465994d788410d44ca6c18cac097a17c34653e571f8649f3b182d",
+    "3838": "2b6c4c6a3581f681a7e5176a58084a7cb433f20a451ac6d018e15e7782793866",
+    "3839": "83456f051fa78f88837704bfd7a0360b405b4c5a5cd303be1924c57b1b87d43a",
+    "3840": "b98faec64855cdb41371fa7368ce24369610cc1eae6d57b0a853a6e4cb1597d6",
+    "3841": "8bdebe6064d825d999004de76692686f436a307cca4db487281a4af765d89eed",
+    "3842": "63ec5ef6852c0900ff27c107756bb4c0e9dc5bb1a46a3c8734e03a9b0b4bef16",
+    "3843": "57f8998a8339f4d5b6acab6a89fa12e1e309e933c14e96c3d444f44f41430521",
+    "3844": "df55c810f7a0e4e8052fc22496822b29ef9d6192121da8bca0ac3692ed3929e2",
+    "3845": "ddd2dd89fb0df273482264bd68b19532fd233fded4ed76f687d7e9ec8972c5fd",
+    "3846": "71cd908951545244fe37c2fbc8b3f209e7e8b599d8bbdcad2effd435e6677394",
+    "3847": "8b12b8da5e92e628c913e3127455d6dfb9d7f1c8ec83bc98d489b7dd4d4a7bef",
+    "3848": "3a6a3f8adc0deee7bc640217c43cbc0901103d8dbfa697282e6a11ec8736fec1",
+    "3849": "5cba97ea553cfe46a9fc851071cc21efca5944547011600f216ab33946792529",
+    "3850": "69df22d9710cb879be09b599754e9e2310d8a7330ceeb096a24e7bd2f54ce6ad",
+    "3851": "fe2c960b23225be049c8fd093dd64dfa8313f8d2ebf23e62e6aa14e642fe6a27",
+    "3852": "a62536f0f00c88ad72c28f77cfdc7fc0113b393cc40e6482dd93443a5bf4e2b7",
+    "3853": "baf8f30d6bd07014f241d644101317f63252a3f90aab69c40d771ab8b8a384fc",
+    "3854": "96128da72d8f727b44c1e206858b5aa8a01f3a37cdfdc5b8d458102198a001be",
+    "3855": "c54f155039a43a45f361c8705ad4c8f8f61b7cb876d4147632ded49c4bebf054",
+    "3856": "e06e341d6f1f228068a101b5d0f906a652e7d6650eadf62e4319184b692a4604",
+    "3857": "7e9254ee5306c9417294d6a325c06fa4ffea8ef753d98f48077b5bf062d1eb91",
+    "3858": "6d093858986add1a4ba949f4b5b5d3facd0101f55a3084fa5114cc070fe43219",
+    "3859": "080065929986102fcfd986a0b2a1d5da95ab834a318b36b79eeedb171c75fe1d"
+  },
+  "pilot_train_match": 3812,
+  "policy": {
+    "bootstrap_quantiles": [
+      0.05,
+      0.95
+    ],
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 20261101,
+    "inference_conditions": [
+      "native"
+    ],
+    "maximum_cell_dead_recall_drop": 0.005,
+    "maximum_cell_spell_drop": 0.01,
+    "minimum_macro_gain": -0.001,
+    "minimum_reference_dead_segments": 100,
+    "minimum_reference_short_spells": 100,
+    "minimum_spell_gain": 0.005,
+    "minimum_targeted_gain": 0.01,
+    "minimum_test_matches": 12,
+    "reference_requirement": "validated dense H/A/D with uncertainty gaps preserved"
+  },
+  "protocol_sha256": "4475cf6cf95de433a49a1c03ab93838be96f05059eee15a09a73e1673557e980",
+  "schema_version": 1,
+  "seed": "xtension-pff-v1-2026-11-01",
+  "split": {
+    "development": [
+      3813,
+      3816,
+      3818,
+      3823,
+      3831,
+      3844,
+      3850,
+      3854,
+      3858,
+      10502,
+      10514,
+      10517
+    ],
+    "final": [
+      3814,
+      3815,
+      3824,
+      3830,
+      3837,
+      3840,
+      3841,
+      3848,
+      3852,
+      10506,
+      10510,
+      10511
+    ],
+    "train": [
+      3812,
+      3817,
+      3819,
+      3820,
+      3821,
+      3822,
+      3825,
+      3826,
+      3827,
+      3828,
+      3829,
+      3832,
+      3833,
+      3834,
+      3835,
+      3836,
+      3838,
+      3839,
+      3842,
+      3843,
+      3845,
+      3846,
+      3847,
+      3849,
+      3851,
+      3853,
+      3855,
+      3856,
+      3857,
+      3859,
+      10503,
+      10504,
+      10505,
+      10507,
+      10508,
+      10509,
+      10512,
+      10513,
+      10515,
+      10516
+    ]
+  },
+  "team_overlap_train_final": [
+    "Argentina",
+    "Australia",
+    "Brazil",
+    "Cameroon",
+    "Croatia",
+    "Denmark",
+    "Ghana",
+    "Japan",
+    "Morocco",
+    "Netherlands",
+    "Qatar",
+    "Serbia",
+    "South Korea",
+    "Switzerland",
+    "United States",
+    "Wales"
+  ],
+  "teams": {
+    "development": [
+      "Argentina",
+      "Belgium",
+      "Canada",
+      "Croatia",
+      "Ecuador",
+      "England",
+      "France",
+      "Iran",
+      "Japan",
+      "Mexico",
+      "Netherlands",
+      "Poland",
+      "Saudi Arabia",
+      "Senegal",
+      "Serbia",
+      "Spain",
+      "Switzerland",
+      "United States"
+    ],
+    "final": [
+      "Argentina",
+      "Australia",
+      "Belgium",
+      "Brazil",
+      "Cameroon",
+      "Croatia",
+      "Denmark",
+      "Ecuador",
+      "Ghana",
+      "Japan",
+      "Morocco",
+      "Netherlands",
+      "Qatar",
+      "Serbia",
+      "South Korea",
+      "Switzerland",
+      "United States",
+      "Wales"
+    ],
+    "train": [
+      "Argentina",
+      "Australia",
+      "Brazil",
+      "Cameroon",
+      "Canada",
+      "Costa Rica",
+      "Croatia",
+      "Denmark",
+      "England",
+      "France",
+      "Germany",
+      "Ghana",
+      "Iran",
+      "Japan",
+      "Mexico",
+      "Morocco",
+      "Netherlands",
+      "Poland",
+      "Portugal",
+      "Qatar",
+      "Saudi Arabia",
+      "Senegal",
+      "Serbia",
+      "South Korea",
+      "Spain",
+      "Switzerland",
+      "Tunisia",
+      "United States",
+      "Uruguay",
+      "Wales"
+    ]
+  }
+}
