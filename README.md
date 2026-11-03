@@ -38,6 +38,8 @@ An hourly continuation coordinates training and independent review agents throug
 
 **PFF transfer comparison completed:** the fixed rebuilt candidate failed the unchanged development gate against v1.5: spell F1 **0.4355 → 0.4002**, stoppage precision **93.33% → 89.04%**. Both historical controls reproduced exactly. The full negative result is preserved; no replacement or final access occurred. **720 engineering tests passed.** [Complete comparison and next training-only diagnosis](docs/EXTERNAL_PFF_RESULTS.md).
 
+**Training-only diagnosis completed:** all 83 stages and forty matches were independently audited. The joint correction reduced false-stoppage frames from **350,501 to 262,398** versus clean base heads, but short-possession precision fell as unmatched short predictions increased. This is component diagnosis, not a win over v1.5. No model was fitted or replaced. [Full findings and next bounded adaptation](docs/CLEAN_PFF_DIAGNOSIS_RESULTS.md).
+
 Research release **1.5.2** retains the original v1.5 submission and adds explicit boundary learning, contact-cue reliability checks, and a fresh two-match phase audit. **Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.**
 
 ## V8 research update

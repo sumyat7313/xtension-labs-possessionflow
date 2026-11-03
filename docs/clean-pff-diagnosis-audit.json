@@ -1,0 +1,163 @@
+{
+  "ablations": 3,
+  "candidate_sha256": "7d79dc50cfc16a7f64c37b65908be90e588d3bfdec35f599071b25180089bf47",
+  "checks": 47666,
+  "development_accessed": false,
+  "diagnosis_summary_sha256": "c3f3ff3804ecde020d0c389f6e76c396100d19366f737857e7da76ec15ece7b4",
+  "final_accessed": false,
+  "fitted": false,
+  "fixtures": 40,
+  "frame_count_totals": {
+    "base": {
+      "conditional_team_accuracy": 0.8502409739813167,
+      "conditional_team_correct": 2822505,
+      "dead_precision": 0.8685247202829205,
+      "dead_recall": 0.9245385706391013,
+      "decoded_live_coverage": 0.8944163742415246,
+      "decoded_live_on_reference_live": 2969152,
+      "decoded_live_team_accuracy": 0.8807662928674584,
+      "decoded_team_accuracy": 0.787771794220661,
+      "decoded_team_correct": 2615129,
+      "false_dead": 350501,
+      "known_frames": 5824045,
+      "missed_dead": 188985,
+      "predicted_dead": 2665908,
+      "predicted_unknown": 0,
+      "reference_dead": 2504392,
+      "reference_live": 3319653,
+      "true_dead": 2315407
+    },
+    "full": {
+      "conditional_team_accuracy": 0.851309157914999,
+      "conditional_team_correct": 2826051,
+      "dead_precision": 0.89667669718875,
+      "dead_recall": 0.9092761836006503,
+      "decoded_live_coverage": 0.9209561963253389,
+      "decoded_live_on_reference_live": 3057255,
+      "decoded_live_team_accuracy": 0.8790375680144443,
+      "decoded_team_accuracy": 0.8095550950656589,
+      "decoded_team_correct": 2687442,
+      "false_dead": 262398,
+      "known_frames": 5824045,
+      "missed_dead": 227208,
+      "predicted_dead": 2539582,
+      "predicted_unknown": 0,
+      "reference_dead": 2504392,
+      "reference_live": 3319653,
+      "true_dead": 2277184
+    },
+    "ha_only": {
+      "conditional_team_accuracy": 0.851309157914999,
+      "conditional_team_correct": 2826051,
+      "dead_precision": 0.871317206279474,
+      "dead_recall": 0.9218321253222339,
+      "decoded_live_coverage": 0.8972916747623924,
+      "decoded_live_on_reference_live": 2978697,
+      "decoded_live_team_accuracy": 0.8796829620468278,
+      "decoded_team_accuracy": 0.7893321982749402,
+      "decoded_team_correct": 2620309,
+      "false_dead": 340956,
+      "known_frames": 5824045,
+      "missed_dead": 195763,
+      "predicted_dead": 2649585,
+      "predicted_unknown": 0,
+      "reference_dead": 2504392,
+      "reference_live": 3319653,
+      "true_dead": 2308629
+    }
+  },
+  "ledger_sha256": "acdc4d2c0d1041bd63629a9850d780628fa5eb7fdd6b47ff95f46b33077453a9",
+  "ledger_tip_sha256": "3fb6a23e621c73b7fde357ba91e1154f5035a2c8931b7bbb3e934a9a3464d2d5",
+  "limitations": [
+    "Training-partition fixed-output ablation, not fresh validation or retraining causality.",
+    "Provider event-derived silver references; dense truth and delivery rights not established.",
+    "Hashes and ordered durable ledger establish consistency, not independent tamper-proof timestamps.",
+    "No frame-level scientific recomputation was performed in this aggregate audit."
+  ],
+  "mean_metrics": {
+    "base": {
+      "dead_boundary": 0.30824091560921535,
+      "dead_precision": 0.8683759326469828,
+      "dead_recall": 0.9250975723265628,
+      "dead_segment": 0.6035888866352981,
+      "macro": 0.8297259246555384,
+      "short_precision": 0.09051997275824748,
+      "short_recall": 0.08336923383235069,
+      "spell": 0.40579771554011695
+    },
+    "full": {
+      "dead_boundary": 0.32419183564112025,
+      "dead_precision": 0.8957554811049114,
+      "dead_recall": 0.9102100180784248,
+      "dead_segment": 0.6437494608790149,
+      "macro": 0.8366479020754773,
+      "short_precision": 0.07581427317637118,
+      "short_recall": 0.09123368373631432,
+      "spell": 0.4192846400295996
+    },
+    "ha_only": {
+      "dead_boundary": 0.3098449348835068,
+      "dead_precision": 0.8711368288585435,
+      "dead_recall": 0.9224294949836299,
+      "dead_segment": 0.6055438139377012,
+      "macro": 0.8296489805434408,
+      "short_precision": 0.0780270603276192,
+      "short_recall": 0.08949854861530895,
+      "spell": 0.3974094014048871
+    }
+  },
+  "paired_totals": {
+    "base->full": {
+      "added_false_dead": 28717,
+      "lost_true_dead": 74355,
+      "recovered_true_dead": 36132,
+      "removed_false_dead": 116820
+    },
+    "base->ha_only": {
+      "added_false_dead": 4449,
+      "lost_true_dead": 11661,
+      "recovered_true_dead": 4883,
+      "removed_false_dead": 13994
+    },
+    "ha_only->full": {
+      "added_false_dead": 29915,
+      "lost_true_dead": 69268,
+      "recovered_true_dead": 37823,
+      "removed_false_dead": 108473
+    }
+  },
+  "promoted": false,
+  "protocol_file_sha256": "031c6a3af84b7645f269c24ed6970578df4f2265be2b3d3c917a2395ba709b34",
+  "protocol_sha256": "f92a95fc3a59c8daa3adc3997b4f85708a5baa25e79daf0bad37290241957d33",
+  "schema_version": 1,
+  "scope": "Independent completed-run artifact authentication and aggregate reconciliation; no inference, fitting, raw/frame/reference reads, or held-out access",
+  "short_model_totals": {
+    "base": {
+      "false_dead_frames": 17918,
+      "spells_erased_by_dead": 435,
+      "spells_with_any_dead": 937
+    },
+    "full": {
+      "false_dead_frames": 12925,
+      "spells_erased_by_dead": 339,
+      "spells_with_any_dead": 726
+    },
+    "ha_only": {
+      "false_dead_frames": 17068,
+      "spells_erased_by_dead": 412,
+      "spells_with_any_dead": 899
+    }
+  },
+  "short_reference_support": {
+    "censored_reference_frames": 12720,
+    "n_gt": 3404,
+    "reference_frames": 100588,
+    "touches_scored_run_edge": 412
+  },
+  "source_files": 63,
+  "stages": 83,
+  "state_sha256": "71829dc411e32ebeb72fe3f2a97afffc45a25354ccec30e78198575bba62bcf0",
+  "status": "passed",
+  "submission_eligible": false,
+  "summary_sha256": "db07aad7436722a8da2e6838f9cfe56d83d3f4e4ffce5527aae2867863621fc6"
+}
