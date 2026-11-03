@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "trial_id": "external-rebuild-001",
+  "action": "run",
+  "parameters": {
+    "schema_version": 1,
+    "seed": 10527,
+    "epochs": 8,
+    "control_l2": 0.001,
+    "transition_weight": 1.5
+  }
+}

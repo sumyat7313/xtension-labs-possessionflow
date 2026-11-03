@@ -39,5 +39,9 @@ jobs:
         run: python tools/verify_refinement_v8.py
       - name: Verify PFF research evidence and retained deployment
         run: python tools/verify_pff_research.py
+      - name: Verify PFF precision refinement and locked-cohort evidence
+        run: python tools/verify_pff_precision.py
+      - name: Verify PFF context correction and retained deployment
+        run: python tools/verify_pff_context.py
       - name: Validate submission format
         run: python -m possession validate "submission/Xtension Labs.csv"

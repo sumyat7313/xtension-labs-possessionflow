@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-11-04",
+  "engineering_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "count": 656,
+    "result": "OK",
+    "seconds": 105.092,
+    "log_sha256": "bbe408683427022099dfea1ac8bd13755e4f73019b0ea84736c5aab2cd9ea23a"
+  },
+  "implementation_sha256": {
+    "tools/experiment_harness.py": "abb48beea404f5a18ae98f1c97df9640b76f4395c125ca3286f6905255a68109",
+    "tools/external_rebuild.py": "9b724f0f9d65813455012a49185101cc2eb39660f6d47bb46da398f8ee5a23d5",
+    "tools/improvement_policy.py": "37b6f4379fe3b78b0787cc9582e5f7d83c4493181da32beb6d479657bf577c1f"
+  },
+  "initial_trial_id": "external-rebuild-001",
+  "initial_recipe_sha256": "8977f28bbbf455943419e1e105a2e3d188b9099c998584b0d24c85e945722f8d",
+  "external_input_files_preflight_verified": 14,
+  "rebuild_stages": 11,
+  "fresh_final_matches_accessed": 0,
+  "automatic_final_access_enabled": false,
+  "automatic_promotion_enabled": false,
+  "submission_hold": true,
+  "production_model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "production_csv_sha256": "1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb",
+  "scope": "Engineering and initialization checkpoint only; live stage status is maintained in the local harness ledger. No new model-performance result is claimed."
+}

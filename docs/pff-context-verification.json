@@ -1,0 +1,13 @@
+{
+  "development_passed": false,
+  "engineering_tests_passed": 580,
+  "evidence_sha256": "ef06773af703d7adff33858e16a0e2e35aa68daf516adf3d7c2e9301fea01251",
+  "final_matches_evaluated": 0,
+  "head_sha256": "41e4f239be88fa69b9ed4dac899a55e4dfaabc74858b932df407cff1847279de",
+  "promoted": false,
+  "protocol_sha256": "2bfd883b2bfa0107c591e3363dabd9336287a8d8ba4ba9a5ed189b9eaf7d8951",
+  "retained_model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "selected_candidate_id": null,
+  "submission_csv_sha256": "1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb",
+  "weights_published": false
+}

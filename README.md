@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/likalight/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/pff-verification.json"><img src="https://img.shields.io/badge/tests-477%20verified-31b88a" alt="477 tests verified locally"></a>
+  <a href="docs/continuous-verification.json"><img src="https://img.shields.io/badge/tests-656%20verified-31b88a" alt="656 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
   <img src="https://img.shields.io/badge/release-1.5.2-112b36" alt="Release 1.5.2">
@@ -26,7 +26,13 @@
 
 ## What is PossessionFlow?
 
+**Submission hold (2026-11-04):** The organiser's latest clarification requires external-only training and tuning. A provenance audit found that v1.5 inherits a camera profile fitted from challenge observations. Its artifacts remain unchanged for comparison, but neither v1.5 nor its PFF descendants are cleared for submission. The final twelve PFF matches remain untouched. See the [rules review and current status](docs/INITIAL_CHALLENGE_RULES_REVIEW.md); this notice supersedes earlier readiness claims below.
+
 PossessionFlow assigns H/A/D/X labels to every football video frame using automatic tactical tracking and event tags. Built by **Xtension Labs** for More Than A Hack 2027.
+
+### Persistent external-only rebuild
+
+An hourly continuation coordinates training and independent review agents through a [bounded experiment harness](docs/CONTINUOUS_IMPROVEMENT.md). Immutable recipes, an append-only attempt ledger, locks and stage checkpoints preserve failed experiments and prevent silent retries. The [first declared trial](configs/experiments/external-rebuild-001.json) rebuilds control and joint-state models from licensed external Sportec data and fixed synthetic camera variation. No final-test or submission-promotion command is available in the harness. See the [research backlog](docs/IMPROVEMENT_BACKLOG.md) and [rebuild method](docs/EXTERNAL_REBUILD.md).
 
 Research release **1.5.2** retains the original v1.5 submission and adds explicit boundary learning, contact-cue reliability checks, and a fresh two-match phase audit. **Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.**
 
@@ -37,6 +43,14 @@ We obtained [corrected human event timestamps](research/annotations/elastic/READ
 ## PFF fresh-fixture research
 
 Downloaded and checked the current 64-match PFF World Cup release; trained a fixed mixed-data candidate and evaluated 12 reserved development matches. **v1.5 remains deployed.** See [actual results and limitations](docs/PFF_RESULTS.md), [split protocol](docs/PFF_VALIDATION.md), and [terms/label provenance](docs/PFF_TERMS_AND_LABELS.md). 477 engineering tests passed. PFF raw data and fitted weights remain local.
+
+## PFF precision refinement
+
+Implemented and tested a bounded false-stoppage correction on the fixed eight-setting development grid. **v1.5 remains deployed.** No fixed-grid setting passed development; the final 12 fixtures remain untouched. See [results and limitations](docs/PFF_PRECISION_RESULTS.md) and [training diagnosis](docs/PFF_FALSE_STOPPAGE_DIAGNOSTICS.md). 532 engineering tests passed locally.
+
+## PFF context correction
+
+Trained a targeted stoppage correction on 40 PFF fixtures and tested six fixed blends after the global calibration study. **v1.5 remains deployed.** No context setting passed all development checks. The final 12 matches remain untouched. See [complete results](docs/PFF_CONTEXT_RESULTS.md). 580 engineering tests passed locally.
 
 ## Quick start
 

@@ -1,0 +1,24 @@
+{
+  "development_passed": false,
+  "engineering_tests_passed": 532,
+  "evidence_sha256": "4f89a00c1fd5e092b89b17681f046b9d02dbafd9480e743b91401af5362eca10",
+  "final_matches_evaluated": 0,
+  "parent_parity": {
+    "cache_manifest_sha256": "4f2d3b6d96852cfbf64ae61d142127cf95b70a943a8c8c6534ab6985baff6aaa",
+    "correction_source_sha256": "cfd0df4ee4ffb0f65cf1e4528978f4c3f0ada112cb7f5eedfa514c6595a5d0ae",
+    "decoder_config_sha256": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
+    "exact_joint_probabilities": true,
+    "exact_zero_penalty_labels": true,
+    "exact_zero_penalty_probabilities": true,
+    "match_id": 3812,
+    "partition": "train",
+    "pff_candidate_sha256": "0ab133743c593466d8ae92ea94937e8c6bf22510f6b64053e3e69c7b467dcf3f",
+    "references_read": false,
+    "rows": 154201
+  },
+  "promoted": false,
+  "protocol_sha256": "555656e96cdaf5039b42180ca185abf72d2a5d17b37797a507204c20d66237bb",
+  "retained_model_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "selected_candidate_id": null,
+  "submission_csv_sha256": "1ddbe062fb0ff0bbb2f47fccda472953fee399629b3b88af9b23554b5f7a3ceb"
+}

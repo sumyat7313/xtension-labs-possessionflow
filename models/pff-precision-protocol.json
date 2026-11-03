@@ -1,0 +1,153 @@
+{
+  "baseline_sha256": "3af2dea11261e0454c54ce6791f3c5f0f55f488962da91579addb32a9aea24f0",
+  "candidates": [
+    {
+      "artifact_sha256": "3aecb611d9553cfca038dc9ef25ca39598f804679f9384c59a0a95b1e5a7980d",
+      "candidate_id": "penalty-00",
+      "parameters": {
+        "dead_logit_penalty": 0.0
+      }
+    },
+    {
+      "artifact_sha256": "e861018fc364e574d2a194f11c870a19fa926a6521dc335c9709fda044d9ca1d",
+      "candidate_id": "penalty-01",
+      "parameters": {
+        "dead_logit_penalty": 0.125
+      }
+    },
+    {
+      "artifact_sha256": "f2cc0cbc2b5696bde06ca9c928fea2611627ca3d17243c43dcd75e42a0bc0ddd",
+      "candidate_id": "penalty-02",
+      "parameters": {
+        "dead_logit_penalty": 0.25
+      }
+    },
+    {
+      "artifact_sha256": "eeeb3c127cccf29cba28c1333beb73e531d7fadc5d845a3cd7aac6aebe62701f",
+      "candidate_id": "penalty-03",
+      "parameters": {
+        "dead_logit_penalty": 0.375
+      }
+    },
+    {
+      "artifact_sha256": "bb5cba823dcc75c6b916ee36b41d361035ca39d442a64c5f44aa560d8abbe8e0",
+      "candidate_id": "penalty-04",
+      "parameters": {
+        "dead_logit_penalty": 0.5
+      }
+    },
+    {
+      "artifact_sha256": "ab30041f5d1124689b0b93ffd8a40f78b4e2d2412c79f2ee0eb569fd4189ec87",
+      "candidate_id": "penalty-05",
+      "parameters": {
+        "dead_logit_penalty": 0.75
+      }
+    },
+    {
+      "artifact_sha256": "6559afdf483ddfd502057bf0e801b9220ab9e69981462d55ee8fcb3d3dac65a9",
+      "candidate_id": "penalty-06",
+      "parameters": {
+        "dead_logit_penalty": 1.0
+      }
+    },
+    {
+      "artifact_sha256": "4128b4373f9b96a128df838e04c8af8aabe950e5af527fa0ddea74eb7163c9b7",
+      "candidate_id": "penalty-07",
+      "parameters": {
+        "dead_logit_penalty": 1.25
+      }
+    }
+  ],
+  "parent_candidate_sha256": "0ab133743c593466d8ae92ea94937e8c6bf22510f6b64053e3e69c7b467dcf3f",
+  "policy": {
+    "automatic_replacement": false,
+    "dead_logit_penalties": [
+      0.0,
+      0.125,
+      0.25,
+      0.375,
+      0.5,
+      0.75,
+      1.0,
+      1.25
+    ],
+    "development_scope": "previously consumed development; tuning only, not a fresh confirmation",
+    "final_scope": "one selected candidate; complete paired cohort predictions before references",
+    "minimum_dead_precision_gain": 0.002,
+    "minimum_retained_positive_gain_fraction": 0.9,
+    "retained_metrics": [
+      "spell",
+      "macro",
+      "short_precision",
+      "short_recall",
+      "dead_segment",
+      "dead_boundary",
+      "dead_recall"
+    ],
+    "schema_version": 1,
+    "selection": "passing candidates: highest mean spell gain, then dead-boundary gain, then declared grid order"
+  },
+  "prior_development_records_sha256": "502bfef18b1d693392d9b22d5e22bb0d560eebab178586be6886a78be0d7a39a",
+  "protocol_sha256": "555656e96cdaf5039b42180ca185abf72d2a5d17b37797a507204c20d66237bb",
+  "reservation_sha256": "4475cf6cf95de433a49a1c03ab93838be96f05059eee15a09a73e1673557e980",
+  "schema_version": 1,
+  "source_hashes": {
+    "configs/baselines/v1.5.json": "2755c140130f4ef9821e7909f8da794d6e4c8d4a7691b75de77eada7c866612b",
+    "evaluation/possession_metrics.py": "32c878630c74fb52a90c301485d6dff806509d8e933b1177b6035ee8e8f42b80",
+    "possession/__init__.py": "707b027b6093517b8b140c7e37bf0422d4ee4929ebbd4624cba7834f14879e2d",
+    "possession/__main__.py": "ab0da9eb9352136326b7a2c8cdbad6be6314c35d3f598449eaae9b95a5cf0ab8",
+    "possession/boundary.py": "121ad4405309960f9b7dace405afdd11d0ee7db8af924549b0ab5828db6fb7c7",
+    "possession/bundle.py": "046a3762df7676ea927644991dfe659988853e6131f033076d5378eac019840a",
+    "possession/changes.py": "bb5e58ec445b6163114cad781e65d2ac383cbaa310f892e2420ebc431f31d457",
+    "possession/config.py": "8ae2fa6a1a14af35a092190020952a5504a399a4f8655def5e38367f30e425ce",
+    "possession/contact_evidence.py": "22af27ab7d8860adba310808332a4a68365ac4fd8427d56f29244dc43729a7ed",
+    "possession/control.py": "c0aac6c6d5b2a67eea0f81348a51589cb692af91ba0bd8232fa4e5360be53eae",
+    "possession/decoder.py": "cd4a38906dcd2660370aa4db9183434df31df9685b3e05a4db9891ab588ff731",
+    "possession/features.py": "02e065ecf1ab78a4a5d86d097755d93bdb474c09e2ced30e24bb4fda09e0b3e3",
+    "possession/fixture.py": "7943502fe80612782543b23fb07c3449065e5395ba0a90e55ba77dc558692c97",
+    "possession/io.py": "f9f82b31f96c913020075a6bffaae97a06e1d4c14801c8f2496a8a587f874604",
+    "possession/joint_temporal.py": "a6200685a1b6929f5a21abd7a28f6b94c5487837206519b511b9eff3e6d401ce",
+    "possession/learned.py": "d2b0ac714e700b07644cf8fcc4dee4df5782d9e68bc2fc24d4a24a6fee4f47c3",
+    "possession/missing_ball.py": "01f5fb186d83ccc896218ced834a03c5ada984216fa1bc845232234d19ccdfe2",
+    "possession/pipeline.py": "46e449ecb07b1415b9c2a704d10f84264122fc5f4b4176471c73c9b61820c7fd",
+    "possession/robust_control.py": "e220e29fe830dd93f1dffded6b3047e24b47512415456d4f4d7e748c3e0af6f0",
+    "possession/tags.py": "b2f4fd4e7236759d5231e8b2bbbda60b83074ef19a510fe162ac30ea20463dbb",
+    "possession/temporal.py": "e43edd6711b21a592e5f2cd52bb9f8d9cf4ae609fb314bb56708ffeadc0e0c5b",
+    "possession/transition.py": "e2c590c218275ab04d2bd2742afc9ca8441fc3a0ad605df9c6ba0749673f0fb4",
+    "possession/typed_boundary.py": "fcadef46d8cc7228ec04247f56f11f291480a8f0b669d09cc22b8480b307d3a5",
+    "possession/video_recovery.py": "540a4d2f4c8357cd5e23246cc3672962f902d9e7d0699677a6f7f4c35db21afc",
+    "research/__init__.py": "eed66771191c364b1c1de63ddf57acb03b5adb6e9790af31897e26c1c4107f60",
+    "research/precision_v8.py": "95a62b4097646a13822f8041e28ecbbca0cea2b2eb153d8a14cdb54929a94bab",
+    "research/stoppage_v8.py": "6d1dd237fd236680c81c814fa1587657650ee4022c0b2e615fac08473c887e61",
+    "tools/calibrated_camera.py": "c9f04db51583f90566771f19f1be302a2338b4aa37fea2e62026d826bab3a774",
+    "tools/camera_augmentation.py": "2295dace2145d6392b5de4f1243ce8b098b009d7ca7ab2f1a3c8e7bba699cd3a",
+    "tools/control_diagnostics.py": "d5efe3e9ca9bb428896f4832ff03bbdfce9eba02930e6801ecb30e76357f3205",
+    "tools/data_intake_v8.py": "43b5ad1071d12aa0e843bd197a2e9d8b980085f067fdebda245cc9a9a09e9609",
+    "tools/external_benchmark.py": "3b3fe9ee56172f0d4bda737194e60782d7f25b5ef9243d187102dafe7fdcdc0a",
+    "tools/pff_adapter.py": "52fbbc13347261230389b048eb1108b801077f7cd84058fdd470353ec9493f15",
+    "tools/pff_campaign.py": "94b30ab0553978695a166a9c54ca1567a45a903b464b9f286cc4ac3b44776a98",
+    "tools/pff_false_stoppage_diagnostics.py": "fa350c1cebed4082359e0205e03ff3e2676dc299f2e1a7126b0b9bfb9a5c6462",
+    "tools/pff_precision_campaign.py": "2ad809c6337890dbbab929a32305b4dfdd1b5ea29373e30b7eab69baf99ecfa1",
+    "tools/pff_precision_model.py": "cfd0df4ee4ffb0f65cf1e4528978f4c3f0ada112cb7f5eedfa514c6595a5d0ae",
+    "tools/pff_precision_validation.py": "560733b69ed62705da921fd8561d57e55ffb9df2ee8731f12c1fb979608bbb45",
+    "tools/pff_training.py": "c2ed732aef87ed95a68032b4e364afe125c859114f4c1212be4a6bcedf4a3611",
+    "tools/pff_validation.py": "a12fcaf0b74b0fb3879d8f3354544a4b1cf888c78ee6c1c1f5a0991e5093bbac",
+    "tools/prepare_joint_cache.py": "bf4627be74cd1626a5f7a390a0f18ab046cf8e1c4a421ee078af948928f704fe",
+    "tools/sparse_timing_v8.py": "08f49b5c475b43f98380b1c8a716ceaa039b48f932bf9ef2134305e879b05dba",
+    "tools/temporal_diagnostics_v6.py": "88f23abb47d9949a0811953a0be07f9e1efe82fdcfea1a0af6ec006b6c866838",
+    "tools/train_boundary.py": "5ce383f5e583f781e679e04335e72e9e3ae00e16152dacb3b97ce2fdc75b88f6",
+    "tools/train_boundary_campaign_v7.py": "c4e0f529dc9ae480e7d2132d285094cef041eb452b5ec1f8d7165a7ca0814de5",
+    "tools/train_control.py": "39351d58e66552267e6663586d8e50e47674896aa41b6274b8ff6131a0c79436",
+    "tools/train_joint.py": "3bdaabcdf7bbb533d8fe67b3b047e3fabc53ed0d32a6d7a0a5a56b6ff1c5b7bd",
+    "tools/train_joint_campaign.py": "9329295c39db7c6fba439c28c6105b685987f023428b127e69e3452b256fcd48",
+    "tools/train_precision_v8.py": "5ee81b53e624d5f31cc446eede5a3a9e024942ff5c69743cfafa722fe45b54c8",
+    "tools/train_refinement_v8.py": "9e0534808db1267ff1e592fcd73a4661673c609b337562cff4e78bc287d5acbd",
+    "tools/train_sequence.py": "ff3158fbd89a8d07bdca3c6dc23a71fe76ff3e4d25be55b4166881b2e6285a47",
+    "tools/train_stoppage_v6.py": "c1e15dc831b7108ec087a6b2c5cf603b7126258c26ad3c37933511c82de96c8a",
+    "tools/train_stoppage_v8.py": "8d2a707f39d0ea7b8817183e04adfae3d7b221c6c675cd541ffed79504396425",
+    "tools/train_stoppages.py": "e34f9a9ccf298a52877ec1dcfc62e9339b59ff44f6480ed15bd23e0ec0586f57",
+    "tools/train_temporal_v6.py": "93d4fc9257d9839f2e748961deb23bafab805c1760e93f4cc9fc54afe28cad88",
+    "tools/train_transition_v6.py": "2171454be898e6da3f2b0c32b9603e45e86a1492971ceccccf592ceada42c812",
+    "tools/train_typed_boundary_v7.py": "645db8b789260b0315af33d7bcea653312479e348e1dc34d6db0797ba0eaf1cf"
+  }
+}

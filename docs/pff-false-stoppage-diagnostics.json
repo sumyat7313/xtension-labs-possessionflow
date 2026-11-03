@@ -1,0 +1,3583 @@
+{
+  "candidate_sha256": "0ab133743c593466d8ae92ea94937e8c6bf22510f6b64053e3e69c7b467dcf3f",
+  "completed_matches": 40,
+  "diagnostic_source_sha256": "fa350c1cebed4082359e0205e03ff3e2676dc299f2e1a7126b0b9bfb9a5c6462",
+  "expected_matches": 40,
+  "fitted_weights_included": false,
+  "frame_labels_included": false,
+  "held_out_references_read": false,
+  "local_detailed_report_sha256": "376894ff0c26db10ffdfc7ab51d0412d3393b5c267d394990b8811885d9367b0",
+  "match_ids": [
+    3812,
+    3817,
+    3819,
+    3820,
+    3821,
+    3822,
+    3825,
+    3826,
+    3827,
+    3828,
+    3829,
+    3832,
+    3833,
+    3834,
+    3835,
+    3836,
+    3838,
+    3839,
+    3842,
+    3843,
+    3845,
+    3846,
+    3847,
+    3849,
+    3851,
+    3853,
+    3855,
+    3856,
+    3857,
+    3859,
+    10503,
+    10504,
+    10505,
+    10507,
+    10508,
+    10509,
+    10512,
+    10513,
+    10515,
+    10516
+  ],
+  "protocol_sha256": "4475cf6cf95de433a49a1c03ab93838be96f05059eee15a09a73e1673557e980",
+  "records": [
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1498,
+          "far_from_direct_boundary": 1260,
+          "moving_ball_observed": 247,
+          "observed_contact_1p5m": 314,
+          "outside_support": 3,
+          "players_median_above_2mps": 459,
+          "post_restart_within_2s": 341,
+          "pre_onset_within_2s": 377,
+          "raw_ball_observed": 552
+        },
+        "dead_probability_below": {
+          "0.5": 537,
+          "0.6": 925,
+          "0.7": 1247,
+          "0.8": 1499,
+          "0.9": 1770,
+          "0.95": 1904
+        },
+        "frames": 1978
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3532,
+          "far_from_direct_boundary": 2590,
+          "moving_ball_observed": 291,
+          "observed_contact_1p5m": 327,
+          "outside_support": 25,
+          "players_median_above_2mps": 533,
+          "post_restart_within_2s": 837,
+          "pre_onset_within_2s": 747,
+          "raw_ball_observed": 616
+        },
+        "dead_probability_below": {
+          "0.5": 734,
+          "0.6": 1558,
+          "0.7": 2263,
+          "0.8": 2766,
+          "0.9": 3220,
+          "0.95": 3460
+        },
+        "frames": 4040
+      },
+      "baseline_false_dead": 2348,
+      "baseline_true_dead": 60031,
+      "candidate_false_dead": 4040,
+      "candidate_true_dead": 67022,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 658,
+        "2_to_5s": 1814,
+        "at_least_5s": 1387,
+        "under_0p5s": 181
+      },
+      "known_dead": 69979,
+      "known_live": 76026,
+      "match_id": 3812,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 15,
+        "overlap_reference_dead": 60
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 5196,
+          "far_from_direct_boundary": 7040,
+          "moving_ball_observed": 844,
+          "observed_contact_1p5m": 855,
+          "outside_support": 78,
+          "players_median_above_2mps": 1851,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1943
+        },
+        "dead_probability_below": {
+          "0.5": 897,
+          "0.6": 1496,
+          "0.7": 2272,
+          "0.8": 3238,
+          "0.9": 4548,
+          "0.95": 5472
+        },
+        "frames": 7040
+      },
+      "removed_false_dead": 286
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1708,
+          "far_from_direct_boundary": 1900,
+          "moving_ball_observed": 508,
+          "observed_contact_1p5m": 648,
+          "outside_support": 3,
+          "players_median_above_2mps": 943,
+          "post_restart_within_2s": 470,
+          "pre_onset_within_2s": 603,
+          "raw_ball_observed": 1239
+        },
+        "dead_probability_below": {
+          "0.5": 761,
+          "0.6": 1177,
+          "0.7": 1646,
+          "0.8": 2168,
+          "0.9": 2678,
+          "0.95": 2914
+        },
+        "frames": 2961
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 5562,
+          "far_from_direct_boundary": 5262,
+          "moving_ball_observed": 633,
+          "observed_contact_1p5m": 720,
+          "outside_support": 35,
+          "players_median_above_2mps": 1153,
+          "post_restart_within_2s": 915,
+          "pre_onset_within_2s": 1075,
+          "raw_ball_observed": 1629
+        },
+        "dead_probability_below": {
+          "0.5": 974,
+          "0.6": 1741,
+          "0.7": 2819,
+          "0.8": 3933,
+          "0.9": 5111,
+          "0.95": 5826
+        },
+        "frames": 7167
+      },
+      "baseline_false_dead": 6249,
+      "baseline_true_dead": 52123,
+      "candidate_false_dead": 7167,
+      "candidate_true_dead": 57628,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 961,
+        "2_to_5s": 1617,
+        "at_least_5s": 4369,
+        "under_0p5s": 220
+      },
+      "known_dead": 60164,
+      "known_live": 85060,
+      "match_id": 3817,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 28,
+        "overlap_reference_dead": 68
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4317,
+          "far_from_direct_boundary": 5647,
+          "moving_ball_observed": 669,
+          "observed_contact_1p5m": 484,
+          "outside_support": 22,
+          "players_median_above_2mps": 1828,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1401
+        },
+        "dead_probability_below": {
+          "0.5": 750,
+          "0.6": 1215,
+          "0.7": 1808,
+          "0.8": 2583,
+          "0.9": 3761,
+          "0.95": 4728
+        },
+        "frames": 5647
+      },
+      "removed_false_dead": 2043
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1372,
+          "far_from_direct_boundary": 1560,
+          "moving_ball_observed": 314,
+          "observed_contact_1p5m": 456,
+          "outside_support": 0,
+          "players_median_above_2mps": 431,
+          "post_restart_within_2s": 254,
+          "pre_onset_within_2s": 308,
+          "raw_ball_observed": 790
+        },
+        "dead_probability_below": {
+          "0.5": 557,
+          "0.6": 935,
+          "0.7": 1213,
+          "0.8": 1499,
+          "0.9": 1853,
+          "0.95": 2016
+        },
+        "frames": 2099
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3784,
+          "far_from_direct_boundary": 3322,
+          "moving_ball_observed": 419,
+          "observed_contact_1p5m": 495,
+          "outside_support": 66,
+          "players_median_above_2mps": 597,
+          "post_restart_within_2s": 549,
+          "pre_onset_within_2s": 892,
+          "raw_ball_observed": 1015
+        },
+        "dead_probability_below": {
+          "0.5": 794,
+          "0.6": 1501,
+          "0.7": 2154,
+          "0.8": 2851,
+          "0.9": 3608,
+          "0.95": 4278
+        },
+        "frames": 4727
+      },
+      "baseline_false_dead": 3437,
+      "baseline_true_dead": 50353,
+      "candidate_false_dead": 4727,
+      "candidate_true_dead": 53108,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 750,
+        "2_to_5s": 1419,
+        "at_least_5s": 2374,
+        "under_0p5s": 184
+      },
+      "known_dead": 54351,
+      "known_live": 94749,
+      "match_id": 3819,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 16,
+        "overlap_reference_dead": 54
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2146,
+          "far_from_direct_boundary": 2854,
+          "moving_ball_observed": 245,
+          "observed_contact_1p5m": 451,
+          "outside_support": 0,
+          "players_median_above_2mps": 698,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 713
+        },
+        "dead_probability_below": {
+          "0.5": 349,
+          "0.6": 560,
+          "0.7": 883,
+          "0.8": 1261,
+          "0.9": 1847,
+          "0.95": 2201
+        },
+        "frames": 2854
+      },
+      "removed_false_dead": 809
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 931,
+          "far_from_direct_boundary": 579,
+          "moving_ball_observed": 251,
+          "observed_contact_1p5m": 299,
+          "outside_support": 0,
+          "players_median_above_2mps": 507,
+          "post_restart_within_2s": 294,
+          "pre_onset_within_2s": 603,
+          "raw_ball_observed": 522
+        },
+        "dead_probability_below": {
+          "0.5": 499,
+          "0.6": 733,
+          "0.7": 966,
+          "0.8": 1200,
+          "0.9": 1386,
+          "0.95": 1447
+        },
+        "frames": 1450
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1634,
+          "far_from_direct_boundary": 892,
+          "moving_ball_observed": 389,
+          "observed_contact_1p5m": 360,
+          "outside_support": 57,
+          "players_median_above_2mps": 643,
+          "post_restart_within_2s": 570,
+          "pre_onset_within_2s": 937,
+          "raw_ball_observed": 760
+        },
+        "dead_probability_below": {
+          "0.5": 663,
+          "0.6": 1046,
+          "0.7": 1413,
+          "0.8": 1791,
+          "0.9": 2151,
+          "0.95": 2312
+        },
+        "frames": 2373
+      },
+      "baseline_false_dead": 1324,
+      "baseline_true_dead": 51569,
+      "candidate_false_dead": 2373,
+      "candidate_true_dead": 56449,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1029,
+        "2_to_5s": 990,
+        "at_least_5s": 171,
+        "under_0p5s": 183
+      },
+      "known_dead": 58092,
+      "known_live": 81984,
+      "match_id": 3820,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 6,
+        "overlap_reference_dead": 61
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3526,
+          "far_from_direct_boundary": 5057,
+          "moving_ball_observed": 473,
+          "observed_contact_1p5m": 683,
+          "outside_support": 41,
+          "players_median_above_2mps": 1529,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1573
+        },
+        "dead_probability_below": {
+          "0.5": 609,
+          "0.6": 977,
+          "0.7": 1494,
+          "0.8": 2236,
+          "0.9": 3450,
+          "0.95": 4280
+        },
+        "frames": 5057
+      },
+      "removed_false_dead": 401
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 866,
+          "far_from_direct_boundary": 429,
+          "moving_ball_observed": 149,
+          "observed_contact_1p5m": 144,
+          "outside_support": 16,
+          "players_median_above_2mps": 475,
+          "post_restart_within_2s": 240,
+          "pre_onset_within_2s": 485,
+          "raw_ball_observed": 307
+        },
+        "dead_probability_below": {
+          "0.5": 408,
+          "0.6": 567,
+          "0.7": 740,
+          "0.8": 938,
+          "0.9": 1089,
+          "0.95": 1138
+        },
+        "frames": 1145
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2462,
+          "far_from_direct_boundary": 1419,
+          "moving_ball_observed": 362,
+          "observed_contact_1p5m": 370,
+          "outside_support": 104,
+          "players_median_above_2mps": 712,
+          "post_restart_within_2s": 573,
+          "pre_onset_within_2s": 1217,
+          "raw_ball_observed": 798
+        },
+        "dead_probability_below": {
+          "0.5": 612,
+          "0.6": 1035,
+          "0.7": 1504,
+          "0.8": 2178,
+          "0.9": 2646,
+          "0.95": 2841
+        },
+        "frames": 3181
+      },
+      "baseline_false_dead": 3185,
+      "baseline_true_dead": 59320,
+      "candidate_false_dead": 3181,
+      "candidate_true_dead": 63032,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1009,
+        "2_to_5s": 1123,
+        "at_least_5s": 801,
+        "under_0p5s": 248
+      },
+      "known_dead": 65341,
+      "known_live": 82046,
+      "match_id": 3821,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 8,
+        "overlap_reference_dead": 70
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2958,
+          "far_from_direct_boundary": 3914,
+          "moving_ball_observed": 370,
+          "observed_contact_1p5m": 619,
+          "outside_support": 29,
+          "players_median_above_2mps": 1127,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1001
+        },
+        "dead_probability_below": {
+          "0.5": 566,
+          "0.6": 873,
+          "0.7": 1273,
+          "0.8": 1856,
+          "0.9": 2745,
+          "0.95": 3344
+        },
+        "frames": 3914
+      },
+      "removed_false_dead": 1149
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 905,
+          "far_from_direct_boundary": 540,
+          "moving_ball_observed": 140,
+          "observed_contact_1p5m": 77,
+          "outside_support": 4,
+          "players_median_above_2mps": 270,
+          "post_restart_within_2s": 200,
+          "pre_onset_within_2s": 395,
+          "raw_ball_observed": 261
+        },
+        "dead_probability_below": {
+          "0.5": 403,
+          "0.6": 631,
+          "0.7": 842,
+          "0.8": 986,
+          "0.9": 1066,
+          "0.95": 1105
+        },
+        "frames": 1121
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2535,
+          "far_from_direct_boundary": 1751,
+          "moving_ball_observed": 288,
+          "observed_contact_1p5m": 142,
+          "outside_support": 73,
+          "players_median_above_2mps": 419,
+          "post_restart_within_2s": 553,
+          "pre_onset_within_2s": 664,
+          "raw_ball_observed": 501
+        },
+        "dead_probability_below": {
+          "0.5": 695,
+          "0.6": 1343,
+          "0.7": 1809,
+          "0.8": 2239,
+          "0.9": 2637,
+          "0.95": 2801
+        },
+        "frames": 2942
+      },
+      "baseline_false_dead": 2705,
+      "baseline_true_dead": 45476,
+      "candidate_false_dead": 2942,
+      "candidate_true_dead": 49250,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 718,
+        "2_to_5s": 1234,
+        "at_least_5s": 860,
+        "under_0p5s": 130
+      },
+      "known_dead": 52390,
+      "known_live": 97618,
+      "match_id": 3822,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 10,
+        "overlap_reference_dead": 52
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2714,
+          "far_from_direct_boundary": 3908,
+          "moving_ball_observed": 304,
+          "observed_contact_1p5m": 738,
+          "outside_support": 22,
+          "players_median_above_2mps": 1048,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1263
+        },
+        "dead_probability_below": {
+          "0.5": 629,
+          "0.6": 1052,
+          "0.7": 1465,
+          "0.8": 2052,
+          "0.9": 2813,
+          "0.95": 3405
+        },
+        "frames": 3908
+      },
+      "removed_false_dead": 884
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1743,
+          "far_from_direct_boundary": 1499,
+          "moving_ball_observed": 311,
+          "observed_contact_1p5m": 319,
+          "outside_support": 3,
+          "players_median_above_2mps": 980,
+          "post_restart_within_2s": 381,
+          "pre_onset_within_2s": 643,
+          "raw_ball_observed": 802
+        },
+        "dead_probability_below": {
+          "0.5": 579,
+          "0.6": 890,
+          "0.7": 1243,
+          "0.8": 1654,
+          "0.9": 2078,
+          "0.95": 2395
+        },
+        "frames": 2508
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4357,
+          "far_from_direct_boundary": 3321,
+          "moving_ball_observed": 613,
+          "observed_contact_1p5m": 503,
+          "outside_support": 85,
+          "players_median_above_2mps": 1419,
+          "post_restart_within_2s": 847,
+          "pre_onset_within_2s": 1564,
+          "raw_ball_observed": 1368
+        },
+        "dead_probability_below": {
+          "0.5": 1030,
+          "0.6": 1750,
+          "0.7": 2415,
+          "0.8": 3221,
+          "0.9": 4125,
+          "0.95": 4680
+        },
+        "frames": 5693
+      },
+      "baseline_false_dead": 4275,
+      "baseline_true_dead": 55448,
+      "candidate_false_dead": 5693,
+      "candidate_true_dead": 59971,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1145,
+        "2_to_5s": 1557,
+        "at_least_5s": 2798,
+        "under_0p5s": 193
+      },
+      "known_dead": 61716,
+      "known_live": 83113,
+      "match_id": 3825,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 12,
+        "overlap_reference_dead": 71
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4149,
+          "far_from_direct_boundary": 4852,
+          "moving_ball_observed": 353,
+          "observed_contact_1p5m": 400,
+          "outside_support": 46,
+          "players_median_above_2mps": 1383,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 888
+        },
+        "dead_probability_below": {
+          "0.5": 490,
+          "0.6": 845,
+          "0.7": 1297,
+          "0.8": 1942,
+          "0.9": 3226,
+          "0.95": 4109
+        },
+        "frames": 4852
+      },
+      "removed_false_dead": 1090
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1051,
+          "far_from_direct_boundary": 846,
+          "moving_ball_observed": 417,
+          "observed_contact_1p5m": 303,
+          "outside_support": 11,
+          "players_median_above_2mps": 608,
+          "post_restart_within_2s": 331,
+          "pre_onset_within_2s": 508,
+          "raw_ball_observed": 624
+        },
+        "dead_probability_below": {
+          "0.5": 540,
+          "0.6": 809,
+          "0.7": 1099,
+          "0.8": 1357,
+          "0.9": 1584,
+          "0.95": 1665
+        },
+        "frames": 1685
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4099,
+          "far_from_direct_boundary": 3429,
+          "moving_ball_observed": 697,
+          "observed_contact_1p5m": 332,
+          "outside_support": 38,
+          "players_median_above_2mps": 1072,
+          "post_restart_within_2s": 830,
+          "pre_onset_within_2s": 985,
+          "raw_ball_observed": 1117
+        },
+        "dead_probability_below": {
+          "0.5": 978,
+          "0.6": 1702,
+          "0.7": 2375,
+          "0.8": 3040,
+          "0.9": 3743,
+          "0.95": 4205
+        },
+        "frames": 5234
+      },
+      "baseline_false_dead": 5455,
+      "baseline_true_dead": 55773,
+      "candidate_false_dead": 5234,
+      "candidate_true_dead": 61257,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 843,
+        "2_to_5s": 1196,
+        "at_least_5s": 2979,
+        "under_0p5s": 216
+      },
+      "known_dead": 62655,
+      "known_live": 83827,
+      "match_id": 3826,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 13,
+        "overlap_reference_dead": 59
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3666,
+          "far_from_direct_boundary": 5609,
+          "moving_ball_observed": 777,
+          "observed_contact_1p5m": 799,
+          "outside_support": 24,
+          "players_median_above_2mps": 1494,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1923
+        },
+        "dead_probability_below": {
+          "0.5": 471,
+          "0.6": 822,
+          "0.7": 1289,
+          "0.8": 2059,
+          "0.9": 3305,
+          "0.95": 4253
+        },
+        "frames": 5609
+      },
+      "removed_false_dead": 1906
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1653,
+          "far_from_direct_boundary": 1256,
+          "moving_ball_observed": 289,
+          "observed_contact_1p5m": 271,
+          "outside_support": 0,
+          "players_median_above_2mps": 782,
+          "post_restart_within_2s": 430,
+          "pre_onset_within_2s": 563,
+          "raw_ball_observed": 533
+        },
+        "dead_probability_below": {
+          "0.5": 667,
+          "0.6": 999,
+          "0.7": 1324,
+          "0.8": 1683,
+          "0.9": 1998,
+          "0.95": 2117
+        },
+        "frames": 2180
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3791,
+          "far_from_direct_boundary": 2669,
+          "moving_ball_observed": 369,
+          "observed_contact_1p5m": 305,
+          "outside_support": 10,
+          "players_median_above_2mps": 925,
+          "post_restart_within_2s": 703,
+          "pre_onset_within_2s": 1150,
+          "raw_ball_observed": 652
+        },
+        "dead_probability_below": {
+          "0.5": 848,
+          "0.6": 1413,
+          "0.7": 1978,
+          "0.8": 2636,
+          "0.9": 3300,
+          "0.95": 3675
+        },
+        "frames": 4415
+      },
+      "baseline_false_dead": 2803,
+      "baseline_true_dead": 48428,
+      "candidate_false_dead": 4415,
+      "candidate_true_dead": 52893,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 822,
+        "2_to_5s": 1687,
+        "at_least_5s": 1703,
+        "under_0p5s": 203
+      },
+      "known_dead": 55015,
+      "known_live": 83456,
+      "match_id": 3827,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 13,
+        "overlap_reference_dead": 64
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3713,
+          "far_from_direct_boundary": 4546,
+          "moving_ball_observed": 434,
+          "observed_contact_1p5m": 462,
+          "outside_support": 10,
+          "players_median_above_2mps": 1145,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1000
+        },
+        "dead_probability_below": {
+          "0.5": 475,
+          "0.6": 834,
+          "0.7": 1326,
+          "0.8": 1959,
+          "0.9": 2956,
+          "0.95": 3738
+        },
+        "frames": 4546
+      },
+      "removed_false_dead": 568
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1633,
+          "far_from_direct_boundary": 1268,
+          "moving_ball_observed": 244,
+          "observed_contact_1p5m": 211,
+          "outside_support": 13,
+          "players_median_above_2mps": 650,
+          "post_restart_within_2s": 223,
+          "pre_onset_within_2s": 535,
+          "raw_ball_observed": 461
+        },
+        "dead_probability_below": {
+          "0.5": 534,
+          "0.6": 782,
+          "0.7": 1099,
+          "0.8": 1411,
+          "0.9": 1758,
+          "0.95": 1937
+        },
+        "frames": 2026
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4289,
+          "far_from_direct_boundary": 3079,
+          "moving_ball_observed": 491,
+          "observed_contact_1p5m": 239,
+          "outside_support": 127,
+          "players_median_above_2mps": 979,
+          "post_restart_within_2s": 764,
+          "pre_onset_within_2s": 1290,
+          "raw_ball_observed": 927
+        },
+        "dead_probability_below": {
+          "0.5": 1007,
+          "0.6": 1602,
+          "0.7": 2235,
+          "0.8": 3023,
+          "0.9": 3909,
+          "0.95": 4421
+        },
+        "frames": 5085
+      },
+      "baseline_false_dead": 3911,
+      "baseline_true_dead": 68219,
+      "candidate_false_dead": 5085,
+      "candidate_true_dead": 73555,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 601,
+        "2_to_5s": 2142,
+        "at_least_5s": 2149,
+        "under_0p5s": 193
+      },
+      "known_dead": 76955,
+      "known_live": 77932,
+      "match_id": 3828,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 14,
+        "overlap_reference_dead": 63
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3408,
+          "far_from_direct_boundary": 5575,
+          "moving_ball_observed": 738,
+          "observed_contact_1p5m": 1101,
+          "outside_support": 41,
+          "players_median_above_2mps": 1287,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 2198
+        },
+        "dead_probability_below": {
+          "0.5": 702,
+          "0.6": 1153,
+          "0.7": 1683,
+          "0.8": 2367,
+          "0.9": 3350,
+          "0.95": 4208
+        },
+        "frames": 5575
+      },
+      "removed_false_dead": 852
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1344,
+          "far_from_direct_boundary": 1180,
+          "moving_ball_observed": 212,
+          "observed_contact_1p5m": 257,
+          "outside_support": 1,
+          "players_median_above_2mps": 673,
+          "post_restart_within_2s": 261,
+          "pre_onset_within_2s": 493,
+          "raw_ball_observed": 682
+        },
+        "dead_probability_below": {
+          "0.5": 520,
+          "0.6": 817,
+          "0.7": 1124,
+          "0.8": 1433,
+          "0.9": 1740,
+          "0.95": 1885
+        },
+        "frames": 1923
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4159,
+          "far_from_direct_boundary": 3125,
+          "moving_ball_observed": 507,
+          "observed_contact_1p5m": 317,
+          "outside_support": 36,
+          "players_median_above_2mps": 991,
+          "post_restart_within_2s": 792,
+          "pre_onset_within_2s": 1405,
+          "raw_ball_observed": 1149
+        },
+        "dead_probability_below": {
+          "0.5": 1073,
+          "0.6": 1813,
+          "0.7": 2578,
+          "0.8": 3370,
+          "0.9": 4222,
+          "0.95": 4601
+        },
+        "frames": 5169
+      },
+      "baseline_false_dead": 4690,
+      "baseline_true_dead": 58485,
+      "candidate_false_dead": 5169,
+      "candidate_true_dead": 62998,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 866,
+        "2_to_5s": 1418,
+        "at_least_5s": 2622,
+        "under_0p5s": 263
+      },
+      "known_dead": 65453,
+      "known_live": 83401,
+      "match_id": 3829,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 14,
+        "overlap_reference_dead": 63
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3162,
+          "far_from_direct_boundary": 4785,
+          "moving_ball_observed": 569,
+          "observed_contact_1p5m": 688,
+          "outside_support": 51,
+          "players_median_above_2mps": 1335,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1616
+        },
+        "dead_probability_below": {
+          "0.5": 480,
+          "0.6": 837,
+          "0.7": 1282,
+          "0.8": 1833,
+          "0.9": 2853,
+          "0.95": 3682
+        },
+        "frames": 4785
+      },
+      "removed_false_dead": 1444
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1695,
+          "far_from_direct_boundary": 878,
+          "moving_ball_observed": 267,
+          "observed_contact_1p5m": 111,
+          "outside_support": 5,
+          "players_median_above_2mps": 776,
+          "post_restart_within_2s": 329,
+          "pre_onset_within_2s": 831,
+          "raw_ball_observed": 409
+        },
+        "dead_probability_below": {
+          "0.5": 656,
+          "0.6": 1032,
+          "0.7": 1377,
+          "0.8": 1679,
+          "0.9": 1932,
+          "0.95": 2005
+        },
+        "frames": 2038
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3627,
+          "far_from_direct_boundary": 1970,
+          "moving_ball_observed": 424,
+          "observed_contact_1p5m": 153,
+          "outside_support": 108,
+          "players_median_above_2mps": 1018,
+          "post_restart_within_2s": 663,
+          "pre_onset_within_2s": 1572,
+          "raw_ball_observed": 649
+        },
+        "dead_probability_below": {
+          "0.5": 987,
+          "0.6": 1672,
+          "0.7": 2395,
+          "0.8": 3030,
+          "0.9": 3570,
+          "0.95": 3798
+        },
+        "frames": 4198
+      },
+      "baseline_false_dead": 4525,
+      "baseline_true_dead": 61031,
+      "candidate_false_dead": 4198,
+      "candidate_true_dead": 64851,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1080,
+        "2_to_5s": 1957,
+        "at_least_5s": 872,
+        "under_0p5s": 289
+      },
+      "known_dead": 67139,
+      "known_live": 74091,
+      "match_id": 3832,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 9,
+        "overlap_reference_dead": 79
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3004,
+          "far_from_direct_boundary": 4076,
+          "moving_ball_observed": 413,
+          "observed_contact_1p5m": 618,
+          "outside_support": 13,
+          "players_median_above_2mps": 1328,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1097
+        },
+        "dead_probability_below": {
+          "0.5": 632,
+          "0.6": 1031,
+          "0.7": 1538,
+          "0.8": 2124,
+          "0.9": 2947,
+          "0.95": 3576
+        },
+        "frames": 4076
+      },
+      "removed_false_dead": 2365
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1338,
+          "far_from_direct_boundary": 524,
+          "moving_ball_observed": 175,
+          "observed_contact_1p5m": 141,
+          "outside_support": 0,
+          "players_median_above_2mps": 505,
+          "post_restart_within_2s": 543,
+          "pre_onset_within_2s": 622,
+          "raw_ball_observed": 338
+        },
+        "dead_probability_below": {
+          "0.5": 451,
+          "0.6": 706,
+          "0.7": 979,
+          "0.8": 1260,
+          "0.9": 1513,
+          "0.95": 1591
+        },
+        "frames": 1663
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4351,
+          "far_from_direct_boundary": 2681,
+          "moving_ball_observed": 300,
+          "observed_contact_1p5m": 170,
+          "outside_support": 42,
+          "players_median_above_2mps": 638,
+          "post_restart_within_2s": 1109,
+          "pre_onset_within_2s": 1105,
+          "raw_ball_observed": 562
+        },
+        "dead_probability_below": {
+          "0.5": 628,
+          "0.6": 1090,
+          "0.7": 1632,
+          "0.8": 2121,
+          "0.9": 2623,
+          "0.95": 2827
+        },
+        "frames": 4867
+      },
+      "baseline_false_dead": 4025,
+      "baseline_true_dead": 72226,
+      "candidate_false_dead": 4867,
+      "candidate_true_dead": 79144,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1117,
+        "2_to_5s": 1002,
+        "at_least_5s": 2545,
+        "under_0p5s": 203
+      },
+      "known_dead": 81271,
+      "known_live": 73299,
+      "match_id": 3833,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 3,
+        "overlap_reference_dead": 75
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 5117,
+          "far_from_direct_boundary": 7140,
+          "moving_ball_observed": 772,
+          "observed_contact_1p5m": 1075,
+          "outside_support": 5,
+          "players_median_above_2mps": 2058,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 2090
+        },
+        "dead_probability_below": {
+          "0.5": 811,
+          "0.6": 1433,
+          "0.7": 2205,
+          "0.8": 3252,
+          "0.9": 4848,
+          "0.95": 6069
+        },
+        "frames": 7140
+      },
+      "removed_false_dead": 821
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1701,
+          "far_from_direct_boundary": 1539,
+          "moving_ball_observed": 394,
+          "observed_contact_1p5m": 417,
+          "outside_support": 0,
+          "players_median_above_2mps": 549,
+          "post_restart_within_2s": 428,
+          "pre_onset_within_2s": 394,
+          "raw_ball_observed": 709
+        },
+        "dead_probability_below": {
+          "0.5": 734,
+          "0.6": 1146,
+          "0.7": 1543,
+          "0.8": 1881,
+          "0.9": 2192,
+          "0.95": 2289
+        },
+        "frames": 2319
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4618,
+          "far_from_direct_boundary": 3337,
+          "moving_ball_observed": 519,
+          "observed_contact_1p5m": 457,
+          "outside_support": 32,
+          "players_median_above_2mps": 738,
+          "post_restart_within_2s": 856,
+          "pre_onset_within_2s": 1215,
+          "raw_ball_observed": 889
+        },
+        "dead_probability_below": {
+          "0.5": 1023,
+          "0.6": 1853,
+          "0.7": 2794,
+          "0.8": 3581,
+          "0.9": 4656,
+          "0.95": 5093
+        },
+        "frames": 5357
+      },
+      "baseline_false_dead": 4061,
+      "baseline_true_dead": 50297,
+      "candidate_false_dead": 5357,
+      "candidate_true_dead": 54582,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 726,
+        "2_to_5s": 2246,
+        "at_least_5s": 2197,
+        "under_0p5s": 188
+      },
+      "known_dead": 56549,
+      "known_live": 88086,
+      "match_id": 3834,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 14,
+        "overlap_reference_dead": 60
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3139,
+          "far_from_direct_boundary": 4402,
+          "moving_ball_observed": 430,
+          "observed_contact_1p5m": 808,
+          "outside_support": 13,
+          "players_median_above_2mps": 1153,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1299
+        },
+        "dead_probability_below": {
+          "0.5": 388,
+          "0.6": 687,
+          "0.7": 1044,
+          "0.8": 1561,
+          "0.9": 2427,
+          "0.95": 3207
+        },
+        "frames": 4402
+      },
+      "removed_false_dead": 1023
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1595,
+          "far_from_direct_boundary": 1182,
+          "moving_ball_observed": 524,
+          "observed_contact_1p5m": 275,
+          "outside_support": 13,
+          "players_median_above_2mps": 691,
+          "post_restart_within_2s": 447,
+          "pre_onset_within_2s": 708,
+          "raw_ball_observed": 775
+        },
+        "dead_probability_below": {
+          "0.5": 718,
+          "0.6": 1123,
+          "0.7": 1486,
+          "0.8": 1855,
+          "0.9": 2166,
+          "0.95": 2280
+        },
+        "frames": 2334
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3440,
+          "far_from_direct_boundary": 2859,
+          "moving_ball_observed": 717,
+          "observed_contact_1p5m": 319,
+          "outside_support": 77,
+          "players_median_above_2mps": 873,
+          "post_restart_within_2s": 554,
+          "pre_onset_within_2s": 1246,
+          "raw_ball_observed": 1253
+        },
+        "dead_probability_below": {
+          "0.5": 977,
+          "0.6": 1672,
+          "0.7": 2362,
+          "0.8": 2972,
+          "0.9": 3504,
+          "0.95": 3786
+        },
+        "frames": 4656
+      },
+      "baseline_false_dead": 3357,
+      "baseline_true_dead": 60252,
+      "candidate_false_dead": 4656,
+      "candidate_true_dead": 68013,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 985,
+        "2_to_5s": 1537,
+        "at_least_5s": 1951,
+        "under_0p5s": 183
+      },
+      "known_dead": 71801,
+      "known_live": 74800,
+      "match_id": 3835,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 14,
+        "overlap_reference_dead": 64
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 5515,
+          "far_from_direct_boundary": 8031,
+          "moving_ball_observed": 971,
+          "observed_contact_1p5m": 1322,
+          "outside_support": 0,
+          "players_median_above_2mps": 1910,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 2574
+        },
+        "dead_probability_below": {
+          "0.5": 846,
+          "0.6": 1428,
+          "0.7": 2142,
+          "0.8": 3184,
+          "0.9": 4917,
+          "0.95": 6222
+        },
+        "frames": 8031
+      },
+      "removed_false_dead": 1035
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1356,
+          "far_from_direct_boundary": 1132,
+          "moving_ball_observed": 351,
+          "observed_contact_1p5m": 329,
+          "outside_support": 5,
+          "players_median_above_2mps": 563,
+          "post_restart_within_2s": 510,
+          "pre_onset_within_2s": 524,
+          "raw_ball_observed": 733
+        },
+        "dead_probability_below": {
+          "0.5": 612,
+          "0.6": 966,
+          "0.7": 1284,
+          "0.8": 1591,
+          "0.9": 1855,
+          "0.95": 2006
+        },
+        "frames": 2091
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3300,
+          "far_from_direct_boundary": 2396,
+          "moving_ball_observed": 489,
+          "observed_contact_1p5m": 350,
+          "outside_support": 104,
+          "players_median_above_2mps": 672,
+          "post_restart_within_2s": 759,
+          "pre_onset_within_2s": 1133,
+          "raw_ball_observed": 921
+        },
+        "dead_probability_below": {
+          "0.5": 753,
+          "0.6": 1271,
+          "0.7": 1914,
+          "0.8": 2563,
+          "0.9": 3196,
+          "0.95": 3718
+        },
+        "frames": 4210
+      },
+      "baseline_false_dead": 3643,
+      "baseline_true_dead": 47472,
+      "candidate_false_dead": 4210,
+      "candidate_true_dead": 52521,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 893,
+        "2_to_5s": 1444,
+        "at_least_5s": 1708,
+        "under_0p5s": 165
+      },
+      "known_dead": 54186,
+      "known_live": 86248,
+      "match_id": 3836,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 13,
+        "overlap_reference_dead": 57
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3317,
+          "far_from_direct_boundary": 5110,
+          "moving_ball_observed": 557,
+          "observed_contact_1p5m": 1029,
+          "outside_support": 17,
+          "players_median_above_2mps": 1226,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1806
+        },
+        "dead_probability_below": {
+          "0.5": 571,
+          "0.6": 983,
+          "0.7": 1547,
+          "0.8": 2335,
+          "0.9": 3399,
+          "0.95": 4073
+        },
+        "frames": 5110
+      },
+      "removed_false_dead": 1524
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 946,
+          "far_from_direct_boundary": 522,
+          "moving_ball_observed": 220,
+          "observed_contact_1p5m": 124,
+          "outside_support": 28,
+          "players_median_above_2mps": 363,
+          "post_restart_within_2s": 302,
+          "pre_onset_within_2s": 478,
+          "raw_ball_observed": 389
+        },
+        "dead_probability_below": {
+          "0.5": 341,
+          "0.6": 590,
+          "0.7": 796,
+          "0.8": 981,
+          "0.9": 1173,
+          "0.95": 1247
+        },
+        "frames": 1287
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3355,
+          "far_from_direct_boundary": 1919,
+          "moving_ball_observed": 419,
+          "observed_contact_1p5m": 206,
+          "outside_support": 119,
+          "players_median_above_2mps": 569,
+          "post_restart_within_2s": 813,
+          "pre_onset_within_2s": 1250,
+          "raw_ball_observed": 690
+        },
+        "dead_probability_below": {
+          "0.5": 559,
+          "0.6": 1078,
+          "0.7": 1683,
+          "0.8": 2256,
+          "0.9": 3071,
+          "0.95": 3411
+        },
+        "frames": 3941
+      },
+      "baseline_false_dead": 3874,
+      "baseline_true_dead": 51130,
+      "candidate_false_dead": 3941,
+      "candidate_true_dead": 55857,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1084,
+        "2_to_5s": 1320,
+        "at_least_5s": 1308,
+        "under_0p5s": 229
+      },
+      "known_dead": 58516,
+      "known_live": 85134,
+      "match_id": 3838,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 9,
+        "overlap_reference_dead": 60
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3154,
+          "far_from_direct_boundary": 4910,
+          "moving_ball_observed": 580,
+          "observed_contact_1p5m": 946,
+          "outside_support": 59,
+          "players_median_above_2mps": 1416,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1777
+        },
+        "dead_probability_below": {
+          "0.5": 661,
+          "0.6": 1105,
+          "0.7": 1660,
+          "0.8": 2272,
+          "0.9": 3193,
+          "0.95": 3880
+        },
+        "frames": 4910
+      },
+      "removed_false_dead": 1220
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 934,
+          "far_from_direct_boundary": 789,
+          "moving_ball_observed": 223,
+          "observed_contact_1p5m": 410,
+          "outside_support": 5,
+          "players_median_above_2mps": 449,
+          "post_restart_within_2s": 323,
+          "pre_onset_within_2s": 382,
+          "raw_ball_observed": 548
+        },
+        "dead_probability_below": {
+          "0.5": 333,
+          "0.6": 502,
+          "0.7": 723,
+          "0.8": 928,
+          "0.9": 1171,
+          "0.95": 1324
+        },
+        "frames": 1455
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1701,
+          "far_from_direct_boundary": 1273,
+          "moving_ball_observed": 365,
+          "observed_contact_1p5m": 497,
+          "outside_support": 77,
+          "players_median_above_2mps": 627,
+          "post_restart_within_2s": 429,
+          "pre_onset_within_2s": 823,
+          "raw_ball_observed": 788
+        },
+        "dead_probability_below": {
+          "0.5": 490,
+          "0.6": 819,
+          "0.7": 1239,
+          "0.8": 1583,
+          "0.9": 1912,
+          "0.95": 2110
+        },
+        "frames": 2473
+      },
+      "baseline_false_dead": 2017,
+      "baseline_true_dead": 53230,
+      "candidate_false_dead": 2473,
+      "candidate_true_dead": 59340,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 484,
+        "2_to_5s": 813,
+        "at_least_5s": 995,
+        "under_0p5s": 181
+      },
+      "known_dead": 60914,
+      "known_live": 79414,
+      "match_id": 3839,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 7,
+        "overlap_reference_dead": 52
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4429,
+          "far_from_direct_boundary": 6234,
+          "moving_ball_observed": 711,
+          "observed_contact_1p5m": 1139,
+          "outside_support": 21,
+          "players_median_above_2mps": 1493,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1882
+        },
+        "dead_probability_below": {
+          "0.5": 650,
+          "0.6": 1109,
+          "0.7": 1809,
+          "0.8": 2560,
+          "0.9": 3928,
+          "0.95": 4903
+        },
+        "frames": 6234
+      },
+      "removed_false_dead": 999
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1021,
+          "far_from_direct_boundary": 1111,
+          "moving_ball_observed": 354,
+          "observed_contact_1p5m": 513,
+          "outside_support": 1,
+          "players_median_above_2mps": 439,
+          "post_restart_within_2s": 286,
+          "pre_onset_within_2s": 472,
+          "raw_ball_observed": 829
+        },
+        "dead_probability_below": {
+          "0.5": 434,
+          "0.6": 741,
+          "0.7": 1021,
+          "0.8": 1273,
+          "0.9": 1512,
+          "0.95": 1663
+        },
+        "frames": 1840
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3813,
+          "far_from_direct_boundary": 3048,
+          "moving_ball_observed": 471,
+          "observed_contact_1p5m": 554,
+          "outside_support": 19,
+          "players_median_above_2mps": 620,
+          "post_restart_within_2s": 569,
+          "pre_onset_within_2s": 1182,
+          "raw_ball_observed": 992
+        },
+        "dead_probability_below": {
+          "0.5": 763,
+          "0.6": 1453,
+          "0.7": 2020,
+          "0.8": 2506,
+          "0.9": 3030,
+          "0.95": 3390
+        },
+        "frames": 4753
+      },
+      "baseline_false_dead": 4008,
+      "baseline_true_dead": 46956,
+      "candidate_false_dead": 4753,
+      "candidate_true_dead": 51207,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 769,
+        "2_to_5s": 1440,
+        "at_least_5s": 2354,
+        "under_0p5s": 190
+      },
+      "known_dead": 52864,
+      "known_live": 88048,
+      "match_id": 3842,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 15,
+        "overlap_reference_dead": 65
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2704,
+          "far_from_direct_boundary": 4454,
+          "moving_ball_observed": 504,
+          "observed_contact_1p5m": 1234,
+          "outside_support": 1,
+          "players_median_above_2mps": 917,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1778
+        },
+        "dead_probability_below": {
+          "0.5": 363,
+          "0.6": 690,
+          "0.7": 1098,
+          "0.8": 1674,
+          "0.9": 2458,
+          "0.95": 3102
+        },
+        "frames": 4454
+      },
+      "removed_false_dead": 1095
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1203,
+          "far_from_direct_boundary": 1174,
+          "moving_ball_observed": 231,
+          "observed_contact_1p5m": 437,
+          "outside_support": 0,
+          "players_median_above_2mps": 460,
+          "post_restart_within_2s": 132,
+          "pre_onset_within_2s": 453,
+          "raw_ball_observed": 586
+        },
+        "dead_probability_below": {
+          "0.5": 414,
+          "0.6": 728,
+          "0.7": 1029,
+          "0.8": 1321,
+          "0.9": 1568,
+          "0.95": 1665
+        },
+        "frames": 1759
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 5280,
+          "far_from_direct_boundary": 4360,
+          "moving_ball_observed": 490,
+          "observed_contact_1p5m": 499,
+          "outside_support": 68,
+          "players_median_above_2mps": 655,
+          "post_restart_within_2s": 766,
+          "pre_onset_within_2s": 1150,
+          "raw_ball_observed": 999
+        },
+        "dead_probability_below": {
+          "0.5": 637,
+          "0.6": 1452,
+          "0.7": 2238,
+          "0.8": 3069,
+          "0.9": 3962,
+          "0.95": 4387
+        },
+        "frames": 6215
+      },
+      "baseline_false_dead": 5732,
+      "baseline_true_dead": 56147,
+      "candidate_false_dead": 6215,
+      "candidate_true_dead": 60553,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 662,
+        "2_to_5s": 2432,
+        "at_least_5s": 2995,
+        "under_0p5s": 126
+      },
+      "known_dead": 62389,
+      "known_live": 81276,
+      "match_id": 3843,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 16,
+        "overlap_reference_dead": 56
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3115,
+          "far_from_direct_boundary": 4517,
+          "moving_ball_observed": 563,
+          "observed_contact_1p5m": 688,
+          "outside_support": 45,
+          "players_median_above_2mps": 1360,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1524
+        },
+        "dead_probability_below": {
+          "0.5": 580,
+          "0.6": 1035,
+          "0.7": 1584,
+          "0.8": 2241,
+          "0.9": 3081,
+          "0.95": 3714
+        },
+        "frames": 4517
+      },
+      "removed_false_dead": 1276
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 493,
+          "far_from_direct_boundary": 1075,
+          "moving_ball_observed": 389,
+          "observed_contact_1p5m": 591,
+          "outside_support": 0,
+          "players_median_above_2mps": 313,
+          "post_restart_within_2s": 141,
+          "pre_onset_within_2s": 253,
+          "raw_ball_observed": 900
+        },
+        "dead_probability_below": {
+          "0.5": 372,
+          "0.6": 555,
+          "0.7": 778,
+          "0.8": 1054,
+          "0.9": 1237,
+          "0.95": 1353
+        },
+        "frames": 1443
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2685,
+          "far_from_direct_boundary": 3609,
+          "moving_ball_observed": 943,
+          "observed_contact_1p5m": 684,
+          "outside_support": 14,
+          "players_median_above_2mps": 909,
+          "post_restart_within_2s": 425,
+          "pre_onset_within_2s": 954,
+          "raw_ball_observed": 2230
+        },
+        "dead_probability_below": {
+          "0.5": 768,
+          "0.6": 1257,
+          "0.7": 1842,
+          "0.8": 2522,
+          "0.9": 3191,
+          "0.95": 3562
+        },
+        "frames": 4960
+      },
+      "baseline_false_dead": 15421,
+      "baseline_true_dead": 44279,
+      "candidate_false_dead": 4960,
+      "candidate_true_dead": 45502,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 760,
+        "2_to_5s": 1962,
+        "at_least_5s": 2077,
+        "under_0p5s": 161
+      },
+      "known_dead": 47336,
+      "known_live": 92709,
+      "match_id": 3845,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 24,
+        "overlap_reference_dead": 46
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 841,
+          "far_from_direct_boundary": 1615,
+          "moving_ball_observed": 187,
+          "observed_contact_1p5m": 545,
+          "outside_support": 12,
+          "players_median_above_2mps": 309,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 737
+        },
+        "dead_probability_below": {
+          "0.5": 204,
+          "0.6": 336,
+          "0.7": 488,
+          "0.8": 692,
+          "0.9": 995,
+          "0.95": 1294
+        },
+        "frames": 1615
+      },
+      "removed_false_dead": 11904
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 729,
+          "far_from_direct_boundary": 546,
+          "moving_ball_observed": 212,
+          "observed_contact_1p5m": 111,
+          "outside_support": 0,
+          "players_median_above_2mps": 300,
+          "post_restart_within_2s": 250,
+          "pre_onset_within_2s": 341,
+          "raw_ball_observed": 394
+        },
+        "dead_probability_below": {
+          "0.5": 358,
+          "0.6": 539,
+          "0.7": 741,
+          "0.8": 906,
+          "0.9": 1033,
+          "0.95": 1072
+        },
+        "frames": 1101
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1670,
+          "far_from_direct_boundary": 1139,
+          "moving_ball_observed": 407,
+          "observed_contact_1p5m": 125,
+          "outside_support": 39,
+          "players_median_above_2mps": 472,
+          "post_restart_within_2s": 559,
+          "pre_onset_within_2s": 773,
+          "raw_ball_observed": 778
+        },
+        "dead_probability_below": {
+          "0.5": 442,
+          "0.6": 799,
+          "0.7": 1236,
+          "0.8": 1619,
+          "0.9": 1974,
+          "0.95": 2154
+        },
+        "frames": 2391
+      },
+      "baseline_false_dead": 2558,
+      "baseline_true_dead": 61198,
+      "candidate_false_dead": 2391,
+      "candidate_true_dead": 66339,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 533,
+        "2_to_5s": 848,
+        "at_least_5s": 775,
+        "under_0p5s": 235
+      },
+      "known_dead": 69049,
+      "known_live": 74201,
+      "match_id": 3846,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 7,
+        "overlap_reference_dead": 52
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3643,
+          "far_from_direct_boundary": 5425,
+          "moving_ball_observed": 705,
+          "observed_contact_1p5m": 1081,
+          "outside_support": 33,
+          "players_median_above_2mps": 1265,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1811
+        },
+        "dead_probability_below": {
+          "0.5": 716,
+          "0.6": 1245,
+          "0.7": 1878,
+          "0.8": 2646,
+          "0.9": 3747,
+          "0.95": 4465
+        },
+        "frames": 5425
+      },
+      "removed_false_dead": 1268
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1784,
+          "far_from_direct_boundary": 1501,
+          "moving_ball_observed": 248,
+          "observed_contact_1p5m": 247,
+          "outside_support": 0,
+          "players_median_above_2mps": 701,
+          "post_restart_within_2s": 210,
+          "pre_onset_within_2s": 609,
+          "raw_ball_observed": 535
+        },
+        "dead_probability_below": {
+          "0.5": 789,
+          "0.6": 1117,
+          "0.7": 1440,
+          "0.8": 1791,
+          "0.9": 2090,
+          "0.95": 2253
+        },
+        "frames": 2298
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4733,
+          "far_from_direct_boundary": 3458,
+          "moving_ball_observed": 463,
+          "observed_contact_1p5m": 301,
+          "outside_support": 46,
+          "players_median_above_2mps": 905,
+          "post_restart_within_2s": 515,
+          "pre_onset_within_2s": 1633,
+          "raw_ball_observed": 898
+        },
+        "dead_probability_below": {
+          "0.5": 1083,
+          "0.6": 1996,
+          "0.7": 2969,
+          "0.8": 3965,
+          "0.9": 4695,
+          "0.95": 5146
+        },
+        "frames": 5556
+      },
+      "baseline_false_dead": 4587,
+      "baseline_true_dead": 56491,
+      "candidate_false_dead": 5556,
+      "candidate_true_dead": 63207,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 901,
+        "2_to_5s": 1896,
+        "at_least_5s": 2620,
+        "under_0p5s": 139
+      },
+      "known_dead": 65623,
+      "known_live": 86853,
+      "match_id": 3847,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 17,
+        "overlap_reference_dead": 64
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4508,
+          "far_from_direct_boundary": 6785,
+          "moving_ball_observed": 726,
+          "observed_contact_1p5m": 1230,
+          "outside_support": 26,
+          "players_median_above_2mps": 1629,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 2431
+        },
+        "dead_probability_below": {
+          "0.5": 717,
+          "0.6": 1258,
+          "0.7": 1931,
+          "0.8": 2763,
+          "0.9": 4104,
+          "0.95": 5225
+        },
+        "frames": 6785
+      },
+      "removed_false_dead": 1329
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1266,
+          "far_from_direct_boundary": 618,
+          "moving_ball_observed": 294,
+          "observed_contact_1p5m": 258,
+          "outside_support": 4,
+          "players_median_above_2mps": 598,
+          "post_restart_within_2s": 390,
+          "pre_onset_within_2s": 818,
+          "raw_ball_observed": 551
+        },
+        "dead_probability_below": {
+          "0.5": 515,
+          "0.6": 810,
+          "0.7": 1133,
+          "0.8": 1432,
+          "0.9": 1733,
+          "0.95": 1810
+        },
+        "frames": 1826
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4017,
+          "far_from_direct_boundary": 2430,
+          "moving_ball_observed": 397,
+          "observed_contact_1p5m": 276,
+          "outside_support": 94,
+          "players_median_above_2mps": 823,
+          "post_restart_within_2s": 746,
+          "pre_onset_within_2s": 1573,
+          "raw_ball_observed": 733
+        },
+        "dead_probability_below": {
+          "0.5": 709,
+          "0.6": 1195,
+          "0.7": 1711,
+          "0.8": 2274,
+          "0.9": 2950,
+          "0.95": 3256
+        },
+        "frames": 4727
+      },
+      "baseline_false_dead": 3888,
+      "baseline_true_dead": 62160,
+      "candidate_false_dead": 4727,
+      "candidate_true_dead": 67635,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1187,
+        "2_to_5s": 1308,
+        "at_least_5s": 1944,
+        "under_0p5s": 288
+      },
+      "known_dead": 69888,
+      "known_live": 80065,
+      "match_id": 3849,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 10,
+        "overlap_reference_dead": 79
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4483,
+          "far_from_direct_boundary": 5605,
+          "moving_ball_observed": 571,
+          "observed_contact_1p5m": 624,
+          "outside_support": 1,
+          "players_median_above_2mps": 1671,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1270
+        },
+        "dead_probability_below": {
+          "0.5": 619,
+          "0.6": 1058,
+          "0.7": 1669,
+          "0.8": 2452,
+          "0.9": 3731,
+          "0.95": 4714
+        },
+        "frames": 5605
+      },
+      "removed_false_dead": 987
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1848,
+          "far_from_direct_boundary": 915,
+          "moving_ball_observed": 277,
+          "observed_contact_1p5m": 197,
+          "outside_support": 0,
+          "players_median_above_2mps": 781,
+          "post_restart_within_2s": 501,
+          "pre_onset_within_2s": 848,
+          "raw_ball_observed": 431
+        },
+        "dead_probability_below": {
+          "0.5": 677,
+          "0.6": 995,
+          "0.7": 1299,
+          "0.8": 1623,
+          "0.9": 1990,
+          "0.95": 2118
+        },
+        "frames": 2155
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 5392,
+          "far_from_direct_boundary": 3520,
+          "moving_ball_observed": 382,
+          "observed_contact_1p5m": 200,
+          "outside_support": 58,
+          "players_median_above_2mps": 959,
+          "post_restart_within_2s": 995,
+          "pre_onset_within_2s": 1482,
+          "raw_ball_observed": 576
+        },
+        "dead_probability_below": {
+          "0.5": 914,
+          "0.6": 1683,
+          "0.7": 2384,
+          "0.8": 3156,
+          "0.9": 4146,
+          "0.95": 4691
+        },
+        "frames": 5820
+      },
+      "baseline_false_dead": 4238,
+      "baseline_true_dead": 67461,
+      "candidate_false_dead": 5820,
+      "candidate_true_dead": 76623,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1139,
+        "2_to_5s": 1823,
+        "at_least_5s": 2652,
+        "under_0p5s": 206
+      },
+      "known_dead": 81389,
+      "known_live": 64326,
+      "match_id": 3851,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 19,
+        "overlap_reference_dead": 68
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 6925,
+          "far_from_direct_boundary": 9448,
+          "moving_ball_observed": 1199,
+          "observed_contact_1p5m": 1379,
+          "outside_support": 39,
+          "players_median_above_2mps": 2519,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 2676
+        },
+        "dead_probability_below": {
+          "0.5": 1194,
+          "0.6": 2032,
+          "0.7": 3081,
+          "0.8": 4470,
+          "0.9": 6404,
+          "0.95": 7839
+        },
+        "frames": 9448
+      },
+      "removed_false_dead": 573
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1071,
+          "far_from_direct_boundary": 592,
+          "moving_ball_observed": 177,
+          "observed_contact_1p5m": 124,
+          "outside_support": 1,
+          "players_median_above_2mps": 399,
+          "post_restart_within_2s": 342,
+          "pre_onset_within_2s": 436,
+          "raw_ball_observed": 337
+        },
+        "dead_probability_below": {
+          "0.5": 519,
+          "0.6": 805,
+          "0.7": 1026,
+          "0.8": 1209,
+          "0.9": 1332,
+          "0.95": 1364
+        },
+        "frames": 1370
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3100,
+          "far_from_direct_boundary": 1997,
+          "moving_ball_observed": 380,
+          "observed_contact_1p5m": 269,
+          "outside_support": 48,
+          "players_median_above_2mps": 676,
+          "post_restart_within_2s": 633,
+          "pre_onset_within_2s": 1216,
+          "raw_ball_observed": 803
+        },
+        "dead_probability_below": {
+          "0.5": 822,
+          "0.6": 1509,
+          "0.7": 2060,
+          "0.8": 2575,
+          "0.9": 3149,
+          "0.95": 3405
+        },
+        "frames": 3846
+      },
+      "baseline_false_dead": 3909,
+      "baseline_true_dead": 57936,
+      "candidate_false_dead": 3846,
+      "candidate_true_dead": 63458,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 904,
+        "2_to_5s": 1705,
+        "at_least_5s": 1010,
+        "under_0p5s": 227
+      },
+      "known_dead": 67065,
+      "known_live": 76329,
+      "match_id": 3853,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 11,
+        "overlap_reference_dead": 66
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4089,
+          "far_from_direct_boundary": 5807,
+          "moving_ball_observed": 559,
+          "observed_contact_1p5m": 709,
+          "outside_support": 23,
+          "players_median_above_2mps": 1413,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1728
+        },
+        "dead_probability_below": {
+          "0.5": 831,
+          "0.6": 1422,
+          "0.7": 2039,
+          "0.8": 2800,
+          "0.9": 3927,
+          "0.95": 4802
+        },
+        "frames": 5807
+      },
+      "removed_false_dead": 1433
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1680,
+          "far_from_direct_boundary": 1194,
+          "moving_ball_observed": 281,
+          "observed_contact_1p5m": 296,
+          "outside_support": 4,
+          "players_median_above_2mps": 676,
+          "post_restart_within_2s": 352,
+          "pre_onset_within_2s": 627,
+          "raw_ball_observed": 556
+        },
+        "dead_probability_below": {
+          "0.5": 559,
+          "0.6": 836,
+          "0.7": 1217,
+          "0.8": 1632,
+          "0.9": 1996,
+          "0.95": 2115
+        },
+        "frames": 2152
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4867,
+          "far_from_direct_boundary": 3614,
+          "moving_ball_observed": 317,
+          "observed_contact_1p5m": 301,
+          "outside_support": 6,
+          "players_median_above_2mps": 854,
+          "post_restart_within_2s": 666,
+          "pre_onset_within_2s": 1135,
+          "raw_ball_observed": 614
+        },
+        "dead_probability_below": {
+          "0.5": 741,
+          "0.6": 1305,
+          "0.7": 2191,
+          "0.8": 3122,
+          "0.9": 4041,
+          "0.95": 4639
+        },
+        "frames": 5369
+      },
+      "baseline_false_dead": 3899,
+      "baseline_true_dead": 49365,
+      "candidate_false_dead": 5369,
+      "candidate_true_dead": 52885,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 903,
+        "2_to_5s": 1105,
+        "at_least_5s": 3188,
+        "under_0p5s": 173
+      },
+      "known_dead": 54724,
+      "known_live": 91296,
+      "match_id": 3855,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 13,
+        "overlap_reference_dead": 61
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2427,
+          "far_from_direct_boundary": 3799,
+          "moving_ball_observed": 566,
+          "observed_contact_1p5m": 876,
+          "outside_support": 0,
+          "players_median_above_2mps": 1015,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1365
+        },
+        "dead_probability_below": {
+          "0.5": 355,
+          "0.6": 653,
+          "0.7": 1091,
+          "0.8": 1659,
+          "0.9": 2543,
+          "0.95": 3209
+        },
+        "frames": 3799
+      },
+      "removed_false_dead": 682
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2072,
+          "far_from_direct_boundary": 1696,
+          "moving_ball_observed": 328,
+          "observed_contact_1p5m": 300,
+          "outside_support": 5,
+          "players_median_above_2mps": 803,
+          "post_restart_within_2s": 298,
+          "pre_onset_within_2s": 649,
+          "raw_ball_observed": 512
+        },
+        "dead_probability_below": {
+          "0.5": 692,
+          "0.6": 1116,
+          "0.7": 1518,
+          "0.8": 1934,
+          "0.9": 2306,
+          "0.95": 2479
+        },
+        "frames": 2561
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 6605,
+          "far_from_direct_boundary": 5333,
+          "moving_ball_observed": 558,
+          "observed_contact_1p5m": 417,
+          "outside_support": 33,
+          "players_median_above_2mps": 1116,
+          "post_restart_within_2s": 564,
+          "pre_onset_within_2s": 1649,
+          "raw_ball_observed": 885
+        },
+        "dead_probability_below": {
+          "0.5": 1120,
+          "0.6": 2089,
+          "0.7": 3011,
+          "0.8": 4139,
+          "0.9": 5245,
+          "0.95": 6063
+        },
+        "frames": 7411
+      },
+      "baseline_false_dead": 6425,
+      "baseline_true_dead": 64090,
+      "candidate_false_dead": 7411,
+      "candidate_true_dead": 67979,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 966,
+        "2_to_5s": 1678,
+        "at_least_5s": 4524,
+        "under_0p5s": 243
+      },
+      "known_dead": 69841,
+      "known_live": 74536,
+      "match_id": 3856,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 22,
+        "overlap_reference_dead": 77
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3188,
+          "far_from_direct_boundary": 4162,
+          "moving_ball_observed": 412,
+          "observed_contact_1p5m": 589,
+          "outside_support": 1,
+          "players_median_above_2mps": 1190,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 938
+        },
+        "dead_probability_below": {
+          "0.5": 549,
+          "0.6": 964,
+          "0.7": 1445,
+          "0.8": 2098,
+          "0.9": 3026,
+          "0.95": 3660
+        },
+        "frames": 4162
+      },
+      "removed_false_dead": 1575
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1251,
+          "far_from_direct_boundary": 1403,
+          "moving_ball_observed": 393,
+          "observed_contact_1p5m": 719,
+          "outside_support": 16,
+          "players_median_above_2mps": 826,
+          "post_restart_within_2s": 320,
+          "pre_onset_within_2s": 749,
+          "raw_ball_observed": 1121
+        },
+        "dead_probability_below": {
+          "0.5": 537,
+          "0.6": 851,
+          "0.7": 1183,
+          "0.8": 1519,
+          "0.9": 2005,
+          "0.95": 2258
+        },
+        "frames": 2402
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2610,
+          "far_from_direct_boundary": 2569,
+          "moving_ball_observed": 480,
+          "observed_contact_1p5m": 867,
+          "outside_support": 86,
+          "players_median_above_2mps": 949,
+          "post_restart_within_2s": 568,
+          "pre_onset_within_2s": 980,
+          "raw_ball_observed": 1400
+        },
+        "dead_probability_below": {
+          "0.5": 675,
+          "0.6": 1232,
+          "0.7": 1706,
+          "0.8": 2177,
+          "0.9": 2834,
+          "0.95": 3325
+        },
+        "frames": 4047
+      },
+      "baseline_false_dead": 2545,
+      "baseline_true_dead": 50598,
+      "candidate_false_dead": 4047,
+      "candidate_true_dead": 55758,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1163,
+        "2_to_5s": 1197,
+        "at_least_5s": 1559,
+        "under_0p5s": 128
+      },
+      "known_dead": 57404,
+      "known_live": 82729,
+      "match_id": 3857,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 15,
+        "overlap_reference_dead": 57
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3664,
+          "far_from_direct_boundary": 5229,
+          "moving_ball_observed": 539,
+          "observed_contact_1p5m": 684,
+          "outside_support": 25,
+          "players_median_above_2mps": 1463,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1678
+        },
+        "dead_probability_below": {
+          "0.5": 606,
+          "0.6": 1061,
+          "0.7": 1600,
+          "0.8": 2434,
+          "0.9": 3523,
+          "0.95": 4236
+        },
+        "frames": 5229
+      },
+      "removed_false_dead": 900
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1703,
+          "far_from_direct_boundary": 1517,
+          "moving_ball_observed": 467,
+          "observed_contact_1p5m": 433,
+          "outside_support": 5,
+          "players_median_above_2mps": 773,
+          "post_restart_within_2s": 346,
+          "pre_onset_within_2s": 738,
+          "raw_ball_observed": 818
+        },
+        "dead_probability_below": {
+          "0.5": 529,
+          "0.6": 873,
+          "0.7": 1224,
+          "0.8": 1687,
+          "0.9": 2231,
+          "0.95": 2457
+        },
+        "frames": 2523
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 6509,
+          "far_from_direct_boundary": 5395,
+          "moving_ball_observed": 722,
+          "observed_contact_1p5m": 521,
+          "outside_support": 63,
+          "players_median_above_2mps": 1038,
+          "post_restart_within_2s": 961,
+          "pre_onset_within_2s": 1510,
+          "raw_ball_observed": 1333
+        },
+        "dead_probability_below": {
+          "0.5": 918,
+          "0.6": 1725,
+          "0.7": 2590,
+          "0.8": 3654,
+          "0.9": 5006,
+          "0.95": 5910
+        },
+        "frames": 7782
+      },
+      "baseline_false_dead": 6383,
+      "baseline_true_dead": 63685,
+      "candidate_false_dead": 7782,
+      "candidate_true_dead": 68993,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 704,
+        "2_to_5s": 2387,
+        "at_least_5s": 4514,
+        "under_0p5s": 177
+      },
+      "known_dead": 71498,
+      "known_live": 78722,
+      "match_id": 3859,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 21,
+        "overlap_reference_dead": 66
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4043,
+          "far_from_direct_boundary": 5437,
+          "moving_ball_observed": 559,
+          "observed_contact_1p5m": 801,
+          "outside_support": 30,
+          "players_median_above_2mps": 1328,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1421
+        },
+        "dead_probability_below": {
+          "0.5": 581,
+          "0.6": 942,
+          "0.7": 1465,
+          "0.8": 2152,
+          "0.9": 3194,
+          "0.95": 4150
+        },
+        "frames": 5437
+      },
+      "removed_false_dead": 1124
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1350,
+          "far_from_direct_boundary": 1205,
+          "moving_ball_observed": 347,
+          "observed_contact_1p5m": 354,
+          "outside_support": 0,
+          "players_median_above_2mps": 573,
+          "post_restart_within_2s": 271,
+          "pre_onset_within_2s": 516,
+          "raw_ball_observed": 647
+        },
+        "dead_probability_below": {
+          "0.5": 494,
+          "0.6": 867,
+          "0.7": 1188,
+          "0.8": 1548,
+          "0.9": 1833,
+          "0.95": 1959
+        },
+        "frames": 1992
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3726,
+          "far_from_direct_boundary": 2638,
+          "moving_ball_observed": 578,
+          "observed_contact_1p5m": 437,
+          "outside_support": 97,
+          "players_median_above_2mps": 785,
+          "post_restart_within_2s": 582,
+          "pre_onset_within_2s": 1494,
+          "raw_ball_observed": 993
+        },
+        "dead_probability_below": {
+          "0.5": 726,
+          "0.6": 1461,
+          "0.7": 2074,
+          "0.8": 2751,
+          "0.9": 3504,
+          "0.95": 4060
+        },
+        "frames": 4655
+      },
+      "baseline_false_dead": 3436,
+      "baseline_true_dead": 45385,
+      "candidate_false_dead": 4655,
+      "candidate_true_dead": 48486,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 952,
+        "2_to_5s": 1530,
+        "at_least_5s": 1960,
+        "under_0p5s": 213
+      },
+      "known_dead": 50327,
+      "known_live": 90487,
+      "match_id": 10503,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 11,
+        "overlap_reference_dead": 61
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2553,
+          "far_from_direct_boundary": 3299,
+          "moving_ball_observed": 279,
+          "observed_contact_1p5m": 530,
+          "outside_support": 3,
+          "players_median_above_2mps": 730,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 807
+        },
+        "dead_probability_below": {
+          "0.5": 362,
+          "0.6": 692,
+          "0.7": 1158,
+          "0.8": 1668,
+          "0.9": 2365,
+          "0.95": 2869
+        },
+        "frames": 3299
+      },
+      "removed_false_dead": 773
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1368,
+          "far_from_direct_boundary": 1509,
+          "moving_ball_observed": 353,
+          "observed_contact_1p5m": 476,
+          "outside_support": 4,
+          "players_median_above_2mps": 635,
+          "post_restart_within_2s": 312,
+          "pre_onset_within_2s": 384,
+          "raw_ball_observed": 801
+        },
+        "dead_probability_below": {
+          "0.5": 656,
+          "0.6": 1050,
+          "0.7": 1397,
+          "0.8": 1727,
+          "0.9": 2023,
+          "0.95": 2122
+        },
+        "frames": 2182
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3659,
+          "far_from_direct_boundary": 3404,
+          "moving_ball_observed": 518,
+          "observed_contact_1p5m": 616,
+          "outside_support": 37,
+          "players_median_above_2mps": 844,
+          "post_restart_within_2s": 756,
+          "pre_onset_within_2s": 778,
+          "raw_ball_observed": 1179
+        },
+        "dead_probability_below": {
+          "0.5": 846,
+          "0.6": 1509,
+          "0.7": 2206,
+          "0.8": 2949,
+          "0.9": 3717,
+          "0.95": 4257
+        },
+        "frames": 4862
+      },
+      "baseline_false_dead": 4145,
+      "baseline_true_dead": 51073,
+      "candidate_false_dead": 4862,
+      "candidate_true_dead": 55452,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 700,
+        "2_to_5s": 2008,
+        "at_least_5s": 2013,
+        "under_0p5s": 141
+      },
+      "known_dead": 57269,
+      "known_live": 87326,
+      "match_id": 10504,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 22,
+        "overlap_reference_dead": 49
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3114,
+          "far_from_direct_boundary": 4495,
+          "moving_ball_observed": 433,
+          "observed_contact_1p5m": 671,
+          "outside_support": 16,
+          "players_median_above_2mps": 1255,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1427
+        },
+        "dead_probability_below": {
+          "0.5": 459,
+          "0.6": 965,
+          "0.7": 1484,
+          "0.8": 2091,
+          "0.9": 3008,
+          "0.95": 3718
+        },
+        "frames": 4495
+      },
+      "removed_false_dead": 1465
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 607,
+          "far_from_direct_boundary": 416,
+          "moving_ball_observed": 139,
+          "observed_contact_1p5m": 165,
+          "outside_support": 4,
+          "players_median_above_2mps": 329,
+          "post_restart_within_2s": 146,
+          "pre_onset_within_2s": 400,
+          "raw_ball_observed": 328
+        },
+        "dead_probability_below": {
+          "0.5": 272,
+          "0.6": 415,
+          "0.7": 561,
+          "0.8": 723,
+          "0.9": 868,
+          "0.95": 916
+        },
+        "frames": 928
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1837,
+          "far_from_direct_boundary": 1288,
+          "moving_ball_observed": 182,
+          "observed_contact_1p5m": 282,
+          "outside_support": 41,
+          "players_median_above_2mps": 395,
+          "post_restart_within_2s": 612,
+          "pre_onset_within_2s": 618,
+          "raw_ball_observed": 614
+        },
+        "dead_probability_below": {
+          "0.5": 393,
+          "0.6": 851,
+          "0.7": 1266,
+          "0.8": 1679,
+          "0.9": 2059,
+          "0.95": 2255
+        },
+        "frames": 2433
+      },
+      "baseline_false_dead": 2393,
+      "baseline_true_dead": 52335,
+      "candidate_false_dead": 2433,
+      "candidate_true_dead": 56030,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 841,
+        "2_to_5s": 730,
+        "at_least_5s": 752,
+        "under_0p5s": 110
+      },
+      "known_dead": 57693,
+      "known_live": 82493,
+      "match_id": 10505,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 10,
+        "overlap_reference_dead": 42
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2623,
+          "far_from_direct_boundary": 3791,
+          "moving_ball_observed": 466,
+          "observed_contact_1p5m": 511,
+          "outside_support": 32,
+          "players_median_above_2mps": 1063,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1194
+        },
+        "dead_probability_below": {
+          "0.5": 511,
+          "0.6": 868,
+          "0.7": 1282,
+          "0.8": 1787,
+          "0.9": 2539,
+          "0.95": 3119
+        },
+        "frames": 3791
+      },
+      "removed_false_dead": 888
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 949,
+          "far_from_direct_boundary": 1157,
+          "moving_ball_observed": 228,
+          "observed_contact_1p5m": 407,
+          "outside_support": 0,
+          "players_median_above_2mps": 235,
+          "post_restart_within_2s": 122,
+          "pre_onset_within_2s": 242,
+          "raw_ball_observed": 587
+        },
+        "dead_probability_below": {
+          "0.5": 268,
+          "0.6": 565,
+          "0.7": 773,
+          "0.8": 1028,
+          "0.9": 1304,
+          "0.95": 1443
+        },
+        "frames": 1521
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4203,
+          "far_from_direct_boundary": 3560,
+          "moving_ball_observed": 331,
+          "observed_contact_1p5m": 547,
+          "outside_support": 32,
+          "players_median_above_2mps": 328,
+          "post_restart_within_2s": 686,
+          "pre_onset_within_2s": 818,
+          "raw_ball_observed": 830
+        },
+        "dead_probability_below": {
+          "0.5": 503,
+          "0.6": 1357,
+          "0.7": 2217,
+          "0.8": 2864,
+          "0.9": 3723,
+          "0.95": 4188
+        },
+        "frames": 5013
+      },
+      "baseline_false_dead": 4210,
+      "baseline_true_dead": 50064,
+      "candidate_false_dead": 5013,
+      "candidate_true_dead": 52875,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 757,
+        "2_to_5s": 1517,
+        "at_least_5s": 2611,
+        "under_0p5s": 128
+      },
+      "known_dead": 54456,
+      "known_live": 86857,
+      "match_id": 10507,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 21,
+        "overlap_reference_dead": 44
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2106,
+          "far_from_direct_boundary": 2939,
+          "moving_ball_observed": 339,
+          "observed_contact_1p5m": 609,
+          "outside_support": 24,
+          "players_median_above_2mps": 737,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 891
+        },
+        "dead_probability_below": {
+          "0.5": 315,
+          "0.6": 578,
+          "0.7": 914,
+          "0.8": 1294,
+          "0.9": 1909,
+          "0.95": 2473
+        },
+        "frames": 2939
+      },
+      "removed_false_dead": 718
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1540,
+          "far_from_direct_boundary": 419,
+          "moving_ball_observed": 83,
+          "observed_contact_1p5m": 57,
+          "outside_support": 12,
+          "players_median_above_2mps": 578,
+          "post_restart_within_2s": 377,
+          "pre_onset_within_2s": 938,
+          "raw_ball_observed": 161
+        },
+        "dead_probability_below": {
+          "0.5": 507,
+          "0.6": 762,
+          "0.7": 1049,
+          "0.8": 1299,
+          "0.9": 1488,
+          "0.95": 1610
+        },
+        "frames": 1674
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3216,
+          "far_from_direct_boundary": 1092,
+          "moving_ball_observed": 296,
+          "observed_contact_1p5m": 120,
+          "outside_support": 89,
+          "players_median_above_2mps": 745,
+          "post_restart_within_2s": 1065,
+          "pre_onset_within_2s": 1587,
+          "raw_ball_observed": 485
+        },
+        "dead_probability_below": {
+          "0.5": 755,
+          "0.6": 1268,
+          "0.7": 1852,
+          "0.8": 2371,
+          "0.9": 2847,
+          "0.95": 3184
+        },
+        "frames": 3663
+      },
+      "baseline_false_dead": 2827,
+      "baseline_true_dead": 67694,
+      "candidate_false_dead": 3663,
+      "candidate_true_dead": 74199,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1194,
+        "2_to_5s": 1981,
+        "at_least_5s": 316,
+        "under_0p5s": 172
+      },
+      "known_dead": 76931,
+      "known_live": 108086,
+      "match_id": 10508,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 6,
+        "overlap_reference_dead": 84
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 4966,
+          "far_from_direct_boundary": 6727,
+          "moving_ball_observed": 569,
+          "observed_contact_1p5m": 904,
+          "outside_support": 9,
+          "players_median_above_2mps": 1764,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1819
+        },
+        "dead_probability_below": {
+          "0.5": 751,
+          "0.6": 1362,
+          "0.7": 2036,
+          "0.8": 3002,
+          "0.9": 4327,
+          "0.95": 5307
+        },
+        "frames": 6727
+      },
+      "removed_false_dead": 838
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 988,
+          "far_from_direct_boundary": 391,
+          "moving_ball_observed": 213,
+          "observed_contact_1p5m": 98,
+          "outside_support": 5,
+          "players_median_above_2mps": 375,
+          "post_restart_within_2s": 253,
+          "pre_onset_within_2s": 602,
+          "raw_ball_observed": 314
+        },
+        "dead_probability_below": {
+          "0.5": 426,
+          "0.6": 609,
+          "0.7": 811,
+          "0.8": 1022,
+          "0.9": 1196,
+          "0.95": 1229
+        },
+        "frames": 1246
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2585,
+          "far_from_direct_boundary": 1645,
+          "moving_ball_observed": 357,
+          "observed_contact_1p5m": 176,
+          "outside_support": 20,
+          "players_median_above_2mps": 520,
+          "post_restart_within_2s": 527,
+          "pre_onset_within_2s": 1043,
+          "raw_ball_observed": 571
+        },
+        "dead_probability_below": {
+          "0.5": 698,
+          "0.6": 1105,
+          "0.7": 1518,
+          "0.8": 1971,
+          "0.9": 2312,
+          "0.95": 2435
+        },
+        "frames": 3057
+      },
+      "baseline_false_dead": 2780,
+      "baseline_true_dead": 55645,
+      "candidate_false_dead": 3057,
+      "candidate_true_dead": 60315,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 763,
+        "2_to_5s": 715,
+        "at_least_5s": 1435,
+        "under_0p5s": 144
+      },
+      "known_dead": 62940,
+      "known_live": 77827,
+      "match_id": 10509,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 4,
+        "overlap_reference_dead": 56
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3676,
+          "far_from_direct_boundary": 4913,
+          "moving_ball_observed": 485,
+          "observed_contact_1p5m": 490,
+          "outside_support": 16,
+          "players_median_above_2mps": 1249,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1326
+        },
+        "dead_probability_below": {
+          "0.5": 582,
+          "0.6": 1064,
+          "0.7": 1623,
+          "0.8": 2433,
+          "0.9": 3634,
+          "0.95": 4282
+        },
+        "frames": 4913
+      },
+      "removed_false_dead": 969
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2054,
+          "far_from_direct_boundary": 1338,
+          "moving_ball_observed": 279,
+          "observed_contact_1p5m": 116,
+          "outside_support": 0,
+          "players_median_above_2mps": 869,
+          "post_restart_within_2s": 520,
+          "pre_onset_within_2s": 646,
+          "raw_ball_observed": 487
+        },
+        "dead_probability_below": {
+          "0.5": 833,
+          "0.6": 1264,
+          "0.7": 1678,
+          "0.8": 2129,
+          "0.9": 2394,
+          "0.95": 2483
+        },
+        "frames": 2504
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 5561,
+          "far_from_direct_boundary": 4218,
+          "moving_ball_observed": 665,
+          "observed_contact_1p5m": 116,
+          "outside_support": 59,
+          "players_median_above_2mps": 1231,
+          "post_restart_within_2s": 1061,
+          "pre_onset_within_2s": 1238,
+          "raw_ball_observed": 1024
+        },
+        "dead_probability_below": {
+          "0.5": 1401,
+          "0.6": 2455,
+          "0.7": 3508,
+          "0.8": 4644,
+          "0.9": 5650,
+          "0.95": 6114
+        },
+        "frames": 6485
+      },
+      "baseline_false_dead": 8912,
+      "baseline_true_dead": 55634,
+      "candidate_false_dead": 6485,
+      "candidate_true_dead": 60964,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1288,
+        "2_to_5s": 2928,
+        "at_least_5s": 2171,
+        "under_0p5s": 98
+      },
+      "known_dead": 64352,
+      "known_live": 79116,
+      "match_id": 10512,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 26,
+        "overlap_reference_dead": 57
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3817,
+          "far_from_direct_boundary": 5581,
+          "moving_ball_observed": 426,
+          "observed_contact_1p5m": 901,
+          "outside_support": 1,
+          "players_median_above_2mps": 1427,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1668
+        },
+        "dead_probability_below": {
+          "0.5": 574,
+          "0.6": 1048,
+          "0.7": 1754,
+          "0.8": 2706,
+          "0.9": 4010,
+          "0.95": 4838
+        },
+        "frames": 5581
+      },
+      "removed_false_dead": 4931
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1286,
+          "far_from_direct_boundary": 1109,
+          "moving_ball_observed": 208,
+          "observed_contact_1p5m": 322,
+          "outside_support": 21,
+          "players_median_above_2mps": 487,
+          "post_restart_within_2s": 237,
+          "pre_onset_within_2s": 366,
+          "raw_ball_observed": 466
+        },
+        "dead_probability_below": {
+          "0.5": 347,
+          "0.6": 601,
+          "0.7": 914,
+          "0.8": 1248,
+          "0.9": 1578,
+          "0.95": 1663
+        },
+        "frames": 1694
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 2884,
+          "far_from_direct_boundary": 2270,
+          "moving_ball_observed": 482,
+          "observed_contact_1p5m": 388,
+          "outside_support": 97,
+          "players_median_above_2mps": 684,
+          "post_restart_within_2s": 415,
+          "pre_onset_within_2s": 1005,
+          "raw_ball_observed": 846
+        },
+        "dead_probability_below": {
+          "0.5": 551,
+          "0.6": 1045,
+          "0.7": 1620,
+          "0.8": 2322,
+          "0.9": 3079,
+          "0.95": 3361
+        },
+        "frames": 3652
+      },
+      "baseline_false_dead": 3316,
+      "baseline_true_dead": 62233,
+      "candidate_false_dead": 3652,
+      "candidate_true_dead": 65594,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 579,
+        "2_to_5s": 972,
+        "at_least_5s": 1884,
+        "under_0p5s": 217
+      },
+      "known_dead": 66982,
+      "known_live": 79681,
+      "match_id": 10513,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 11,
+        "overlap_reference_dead": 55
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 2502,
+          "far_from_direct_boundary": 3544,
+          "moving_ball_observed": 307,
+          "observed_contact_1p5m": 511,
+          "outside_support": 3,
+          "players_median_above_2mps": 1027,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1167
+        },
+        "dead_probability_below": {
+          "0.5": 458,
+          "0.6": 745,
+          "0.7": 1138,
+          "0.8": 1608,
+          "0.9": 2267,
+          "0.95": 2829
+        },
+        "frames": 3544
+      },
+      "removed_false_dead": 1358
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1267,
+          "far_from_direct_boundary": 983,
+          "moving_ball_observed": 348,
+          "observed_contact_1p5m": 370,
+          "outside_support": 16,
+          "players_median_above_2mps": 539,
+          "post_restart_within_2s": 306,
+          "pre_onset_within_2s": 641,
+          "raw_ball_observed": 658
+        },
+        "dead_probability_below": {
+          "0.5": 520,
+          "0.6": 812,
+          "0.7": 1119,
+          "0.8": 1439,
+          "0.9": 1735,
+          "0.95": 1890
+        },
+        "frames": 1930
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 3405,
+          "far_from_direct_boundary": 2670,
+          "moving_ball_observed": 441,
+          "observed_contact_1p5m": 402,
+          "outside_support": 54,
+          "players_median_above_2mps": 668,
+          "post_restart_within_2s": 547,
+          "pre_onset_within_2s": 998,
+          "raw_ball_observed": 812
+        },
+        "dead_probability_below": {
+          "0.5": 765,
+          "0.6": 1352,
+          "0.7": 1851,
+          "0.8": 2381,
+          "0.9": 2988,
+          "0.95": 3423
+        },
+        "frames": 4215
+      },
+      "baseline_false_dead": 3120,
+      "baseline_true_dead": 51088,
+      "candidate_false_dead": 4215,
+      "candidate_true_dead": 55473,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1013,
+        "2_to_5s": 1351,
+        "at_least_5s": 1715,
+        "under_0p5s": 136
+      },
+      "known_dead": 56634,
+      "known_live": 84211,
+      "match_id": 10515,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 11,
+        "overlap_reference_dead": 59
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3367,
+          "far_from_direct_boundary": 4457,
+          "moving_ball_observed": 539,
+          "observed_contact_1p5m": 643,
+          "outside_support": 13,
+          "players_median_above_2mps": 1204,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1218
+        },
+        "dead_probability_below": {
+          "0.5": 444,
+          "0.6": 722,
+          "0.7": 1158,
+          "0.8": 1724,
+          "0.9": 2684,
+          "0.95": 3484
+        },
+        "frames": 4457
+      },
+      "removed_false_dead": 835
+    },
+    {
+      "added_false_dead": {
+        "conditions": {
+          "ball_missing_support": 1406,
+          "far_from_direct_boundary": 1222,
+          "moving_ball_observed": 332,
+          "observed_contact_1p5m": 384,
+          "outside_support": 1,
+          "players_median_above_2mps": 679,
+          "post_restart_within_2s": 296,
+          "pre_onset_within_2s": 526,
+          "raw_ball_observed": 673
+        },
+        "dead_probability_below": {
+          "0.5": 726,
+          "0.6": 1012,
+          "0.7": 1302,
+          "0.8": 1589,
+          "0.9": 1814,
+          "0.95": 1979
+        },
+        "frames": 2044
+      },
+      "all_false_dead": {
+        "conditions": {
+          "ball_missing_support": 4224,
+          "far_from_direct_boundary": 3234,
+          "moving_ball_observed": 530,
+          "observed_contact_1p5m": 428,
+          "outside_support": 72,
+          "players_median_above_2mps": 913,
+          "post_restart_within_2s": 654,
+          "pre_onset_within_2s": 1279,
+          "raw_ball_observed": 935
+        },
+        "dead_probability_below": {
+          "0.5": 957,
+          "0.6": 1493,
+          "0.7": 2038,
+          "0.8": 2703,
+          "0.9": 3387,
+          "0.95": 3796
+        },
+        "frames": 5122
+      },
+      "baseline_false_dead": 4036,
+      "baseline_true_dead": 48765,
+      "candidate_false_dead": 5122,
+      "candidate_true_dead": 53665,
+      "false_dead_frames_by_contiguous_error_duration": {
+        "0p5_to_2s": 1006,
+        "2_to_5s": 1199,
+        "at_least_5s": 2727,
+        "under_0p5s": 190
+      },
+      "known_dead": 55251,
+      "known_live": 82195,
+      "match_id": 10516,
+      "predicted_dead_segments_with_false_frames": {
+        "no_reference_dead_overlap": 10,
+        "overlap_reference_dead": 69
+      },
+      "recovered_true_dead": {
+        "conditions": {
+          "ball_missing_support": 3386,
+          "far_from_direct_boundary": 5041,
+          "moving_ball_observed": 630,
+          "observed_contact_1p5m": 770,
+          "outside_support": 19,
+          "players_median_above_2mps": 1459,
+          "post_restart_within_2s": 0,
+          "pre_onset_within_2s": 0,
+          "raw_ball_observed": 1707
+        },
+        "dead_probability_below": {
+          "0.5": 589,
+          "0.6": 987,
+          "0.7": 1544,
+          "0.8": 2254,
+          "0.9": 3344,
+          "0.95": 4155
+        },
+        "frames": 5041
+      },
+      "removed_false_dead": 958
+    }
+  ],
+  "reference_quality": "provider event-derived silver; not independent dense truth",
+  "schema_version": 1,
+  "split": "train",
+  "total": {
+    "added_false_dead": {
+      "conditions": {
+        "ball_missing_support": 53205,
+        "far_from_direct_boundary": 41974,
+        "moving_ball_observed": 11417,
+        "observed_contact_1p5m": 12081,
+        "outside_support": 209,
+        "players_median_above_2mps": 23042,
+        "post_restart_within_2s": 12715,
+        "pre_onset_within_2s": 21706,
+        "raw_ball_observed": 23366
+      },
+      "dead_probability_below": {
+        "0.5": 21294,
+        "0.6": 33253,
+        "0.7": 45132,
+        "0.8": 57136,
+        "0.9": 68268,
+        "0.95": 73166
+      },
+      "frames": 75408
+    },
+    "all_false_dead": {
+      "conditions": {
+        "ball_missing_support": 151177,
+        "far_from_direct_boundary": 113785,
+        "moving_ball_observed": 18682,
+        "observed_contact_1p5m": 14788,
+        "outside_support": 2387,
+        "players_median_above_2mps": 31667,
+        "post_restart_within_2s": 27988,
+        "pre_onset_within_2s": 46365,
+        "raw_ball_observed": 36814
+      },
+      "dead_probability_below": {
+        "0.5": 32012,
+        "0.6": 57550,
+        "0.7": 83670,
+        "0.8": 110567,
+        "0.9": 138693,
+        "0.95": 154844
+      },
+      "frames": 185762
+    },
+    "baseline_false_dead": 168652,
+    "baseline_true_dead": 2221145,
+    "candidate_false_dead": 185762,
+    "candidate_true_dead": 2414663,
+    "false_dead_frames_by_contiguous_error_duration": {
+      "0p5_to_2s": 35455,
+      "2_to_5s": 61228,
+      "at_least_5s": 81585,
+      "under_0p5s": 7494
+    },
+    "known_dead": 2504392,
+    "known_live": 3319653,
+    "predicted_dead_segments_with_false_frames": {
+      "no_reference_dead_overlap": 540,
+      "overlap_reference_dead": 2465
+    },
+    "recovered_true_dead": {
+      "conditions": {
+        "ball_missing_support": 142370,
+        "far_from_direct_boundary": 200760,
+        "moving_ball_observed": 21773,
+        "observed_contact_1p5m": 31197,
+        "outside_support": 864,
+        "players_median_above_2mps": 53303,
+        "post_restart_within_2s": 0,
+        "pre_onset_within_2s": 0,
+        "raw_ball_observed": 60625
+      },
+      "dead_probability_below": {
+        "0.5": 23337,
+        "0.6": 40167,
+        "0.7": 61477,
+        "0.8": 89322,
+        "0.9": 131333,
+        "0.95": 162834
+      },
+      "frames": 200760
+    },
+    "removed_false_dead": 58298
+  }
+}
