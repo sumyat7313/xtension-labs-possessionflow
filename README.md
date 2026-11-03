@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/likalight/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/external-pff-development-verification.json"><img src="https://img.shields.io/badge/tests-720%20verified-31b88a" alt="720 tests verified locally"></a>
+  <a href="docs/clean-pff-diagnosis-verification.json"><img src="https://img.shields.io/badge/tests-752%20verified-31b88a" alt="752 tests verified locally"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
   <img src="https://img.shields.io/badge/release-1.5.2-112b36" alt="Release 1.5.2">

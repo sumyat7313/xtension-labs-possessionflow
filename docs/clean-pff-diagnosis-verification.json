@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "engineering_tests": {
+    "count": 752,
+    "seconds": 141.421,
+    "result": "OK",
+    "log_sha256": "5504d02306ecb9e57da465db2782484bb362e98275b5ec4d8511dd15c0cc7fc1"
+  },
+  "candidate_sha256": "7d79dc50cfc16a7f64c37b65908be90e588d3bfdec35f599071b25180089bf47",
+  "protocol_sha256": "f92a95fc3a59c8daa3adc3997b4f85708a5baa25e79daf0bad37290241957d33",
+  "method_and_integrity_review_passed": true,
+  "development_access_authorized": false,
+  "final_access_authorized": false,
+  "promoted": false,
+  "submission_hold": true,
+  "scope": "Engineering readiness only; actual diagnostic outcomes belong in a separate results checkpoint."
+}
