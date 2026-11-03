@@ -34,6 +34,8 @@ PossessionFlow assigns H/A/D/X labels to every football video frame using automa
 
 An hourly continuation coordinates training and independent review agents through a [bounded experiment harness](docs/CONTINUOUS_IMPROVEMENT.md). Immutable recipes, an append-only attempt ledger, locks and stage checkpoints preserve failed experiments and prevent silent retries. The [first declared trial](configs/experiments/external-rebuild-001.json) rebuilds control and joint-state models from licensed external Sportec data and fixed synthetic camera variation. No final-test or submission-promotion command is available in the harness. See the [research backlog](docs/IMPROVEMENT_BACKLOG.md) and [rebuild method](docs/EXTERNAL_REBUILD.md).
 
+**First rebuild completed:** all eleven stages passed artifact verification. The joint model beat the newly fitted control model on the exposed Sportec development comparison (spell F1 **0.4776 → 0.6162**). This has not yet demonstrated a win over v1.5. Final twelve PFF matches remain untouched and no submission was replaced. [Complete results and next experiment](docs/EXTERNAL_REBUILD_RESULTS.md).
+
 Research release **1.5.2** retains the original v1.5 submission and adds explicit boundary learning, contact-cue reliability checks, and a fresh two-match phase audit. **Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.**
 
 ## V8 research update

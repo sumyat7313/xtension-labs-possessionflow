@@ -4,6 +4,8 @@ This is the working sequence for the user-authorized recurring agent loop. It is
 
 ## First milestone: external-only ancestry
 
+**Completed 2026-11-04:** trial `external-rebuild-001` finished all eleven stages, with `external-joint` selected by the rebuild diagnostic checks. Actual artifacts and aggregate selection were verified. See [results](EXTERNAL_REBUILD_RESULTS.md). Next: implement and freeze a development-only PFF comparison for the exact resulting candidate, recomputing upstream probabilities from its clean heads. Do not reuse v1.5's cached upstream probabilities or open the final twelve. The remaining paragraphs describe the completed milestone's requirements and the continuing limitations.
+
 Build fresh Sportec observation caches from pinned external files. Start from the exact historical external-data dead head, audit its configuration and fit provenance, and refit synthetic-camera control and joint state components without the challenge-derived profile. Group folds by full match, exclude the dead-head training matches from scored folds, and keep the final PFF fixtures sealed. Save complete per-match/per-condition aggregate metrics, artifact identities and every failed attempt. Verify the actual dependencies, not only a manifest's claim of external training.
 
 The seven Sportec fixtures have already been exposed. Their grouped results are development diagnostics, never a fresh test estimate. A successful clean rebuild is a compliance milestone, not automatically a performance improvement or permission to replace v1.5.
