@@ -77,7 +77,7 @@ class DevelopmentHarnessTests(unittest.TestCase):
         trial = self.snapshot()['trials'][driver.TRIAL]
         command = driver.authenticate(self.out, trial['recipe_sha256'], self.root)
         self.assertEqual(command[1:4], ['-m', 'tools.external_pff_development', 'run'])
-        self.assertEqual(command[4:], ['--out', str(self.out / 'output'), '--stage', 'next'])
+        self.assertEqual(command[4:], ['--out', str((self.out / 'output').resolve()), '--stage', 'next'])
         self.assertNotIn('--fit', command)
         self.assertNotIn('--recipe', command)
         self.assertNotIn('--split', command)
