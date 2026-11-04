@@ -1,0 +1,93 @@
+{
+  "at": "2026-11-04T15:37:18.519573+00:00",
+  "campaign_ready": false,
+  "core_protocol_sha256": "a1271ea8c6b95848d1379f5770fc4c1788c82d2e4472b7123edcbeb4fe66e02f",
+  "final_accessed": false,
+  "independent_kernel_review": "adaptation_kernel_review: 30 tests passed in 7.849s; no kernel correctness defect found",
+  "independent_source_review": {
+    "actual_source_hashes_match": true,
+    "all_authorization_flags_false": true,
+    "core_protocol_sha256": "a1271ea8c6b95848d1379f5770fc4c1788c82d2e4472b7123edcbeb4fe66e02f",
+    "dynamic_import_or_exec_calls": [],
+    "final_accessed": false,
+    "fitting": false,
+    "model_weight_access": false,
+    "protocol_sha256": "4df9683901ef0eafa08e5344a43870558b09173ac09fc1c3377514ec363cce53",
+    "provider_record_access": false,
+    "published_comparator_binding_verified": true,
+    "reviewer": "adaptation_protocol_review",
+    "scope": "Static scientific specification/source snapshot and published aggregates only; not execution authorization",
+    "snapshot_file_sha256": "bbc6f5bc3c650a50112cfeeecde851643b028929700d9e3e66874acc0ce85c3c",
+    "source_count": 24,
+    "static_import_closure_complete": true,
+    "status": "passed"
+  },
+  "new_test_hashes": {
+    "tests/test_clean_pff_adaptation_fit.py": "22dafa9f3b16138a89ec045959f1d624553e67732bbc7f61e5c2538b8d941454",
+    "tests/test_clean_pff_adaptation_integrity.py": "e4527c6d66a926a8df7ea3b7f9b8ef7ed29bf9468a56c9ca07ad39836953a5e6",
+    "tests/test_clean_pff_adaptation_protocol.py": "a0d2e4deaf9d0f7ead1887a0429bde4a875279941ca6193f4f4a746758b0e6b4"
+  },
+  "post_review_protocol_tests": {
+    "count": 28,
+    "log_sha256": "2b73b6d4f3d6f217d34165d8a92bc7a60801fb692d89cf7a474383bc43753559",
+    "result": "OK",
+    "seconds": 0.361
+  },
+  "prior_failures": [
+    "Previous specialist review interrupted by service usage limits; no real fit attempted",
+    "Initial independent targeted run: 28 tests with one failure and two errors from stale receipt fixtures; repaired before final passing runs"
+  ],
+  "promoted": false,
+  "protocol_file_sha256": "bbc6f5bc3c650a50112cfeeecde851643b028929700d9e3e66874acc0ce85c3c",
+  "protocol_review": "adaptation_protocol_review: 28 tests passed in .351s; inclusive comparison and source-map test coverage corrected",
+  "protocol_sha256": "4df9683901ef0eafa08e5344a43870558b09173ac09fc1c3377514ec363cce53",
+  "provider_records_accessed": false,
+  "real_adaptation_fits": 0,
+  "refit_authorized": false,
+  "remaining": [
+    "Authenticated cache and connected-lineage validation",
+    "Immutable stage/source manifests and consumed-attempt ledger",
+    "Bounded runner with locking, one heavy fit and one BLAS/Torch thread",
+    "Both full prediction cohorts before inner references",
+    "Verified-selection winner-refit adapter and one later development comparison",
+    "Unresolved PFF delivery rights and independent dense reference validity"
+  ],
+  "schema_version": 1,
+  "scope": "Adaptation protocol and inner kernel engineering; not execution authorization",
+  "source_count": 24,
+  "source_hashes": {
+    "evaluation/possession_metrics.py": "32c878630c74fb52a90c301485d6dff806509d8e933b1177b6035ee8e8f42b80",
+    "possession/__init__.py": "707b027b6093517b8b140c7e37bf0422d4ee4929ebbd4624cba7834f14879e2d",
+    "possession/boundary.py": "121ad4405309960f9b7dace405afdd11d0ee7db8af924549b0ab5828db6fb7c7",
+    "possession/changes.py": "bb5e58ec445b6163114cad781e65d2ac383cbaa310f892e2420ebc431f31d457",
+    "possession/config.py": "8ae2fa6a1a14af35a092190020952a5504a399a4f8655def5e38367f30e425ce",
+    "possession/contact_evidence.py": "22af27ab7d8860adba310808332a4a68365ac4fd8427d56f29244dc43729a7ed",
+    "possession/control.py": "c0aac6c6d5b2a67eea0f81348a51589cb692af91ba0bd8232fa4e5360be53eae",
+    "possession/decoder.py": "cd4a38906dcd2660370aa4db9183434df31df9685b3e05a4db9891ab588ff731",
+    "possession/features.py": "02e065ecf1ab78a4a5d86d097755d93bdb474c09e2ced30e24bb4fda09e0b3e3",
+    "possession/joint_temporal.py": "a6200685a1b6929f5a21abd7a28f6b94c5487837206519b511b9eff3e6d401ce",
+    "possession/learned.py": "d2b0ac714e700b07644cf8fcc4dee4df5782d9e68bc2fc24d4a24a6fee4f47c3",
+    "possession/missing_ball.py": "01f5fb186d83ccc896218ced834a03c5ada984216fa1bc845232234d19ccdfe2",
+    "possession/robust_control.py": "e220e29fe830dd93f1dffded6b3047e24b47512415456d4f4d7e748c3e0af6f0",
+    "possession/tags.py": "b2f4fd4e7236759d5231e8b2bbbda60b83074ef19a510fe162ac30ea20463dbb",
+    "possession/temporal.py": "e43edd6711b21a592e5f2cd52bb9f8d9cf4ae609fb314bb56708ffeadc0e0c5b",
+    "possession/transition.py": "e2c590c218275ab04d2bd2742afc9ca8441fc3a0ad605df9c6ba0749673f0fb4",
+    "possession/typed_boundary.py": "fcadef46d8cc7228ec04247f56f11f291480a8f0b669d09cc22b8480b307d3a5",
+    "requirements-solution.txt": "695cb1c7d3bbfbce4f665574f7287d2bde445511e5d096a1a79d9a42376f9d4c",
+    "requirements-training.txt": "349bd0f57b47bb4a10f2d9777a3e94ebf5df3a5222fc599bbe2c1ae0f3d44b3f",
+    "tools/clean_pff_adaptation_fit.py": "0290387287045598100e1e877666e9e395e7196f039292c607ac6fd9dbc49c8e",
+    "tools/clean_pff_adaptation_protocol.py": "f872e312658bdc7ebe3e097f6c805dd55cb4f869afbcc15eb5d8529da824efdc",
+    "tools/control_diagnostics.py": "d5efe3e9ca9bb428896f4832ff03bbdfce9eba02930e6801ecb30e76357f3205",
+    "tools/pff_validation.py": "a12fcaf0b74b0fb3879d8f3354544a4b1cf888c78ee6c1c1f5a0991e5093bbac",
+    "tools/train_joint.py": "3bdaabcdf7bbb533d8fe67b3b047e3fabc53ed0d32a6d7a0a5a56b6ff1c5b7bd"
+  },
+  "submission_eligible": false,
+  "submission_hold": true,
+  "tests": {
+    "count": 810,
+    "log": "runs/clean-pff-adaptation-engineering/full-suite-20261104T152738.log",
+    "log_sha256": "5012b370fd6c70de89aff66face6ede7c3ca36a0533116f9f8db19abeeb06a6b",
+    "result": "OK",
+    "seconds": 108.747
+  }
+}

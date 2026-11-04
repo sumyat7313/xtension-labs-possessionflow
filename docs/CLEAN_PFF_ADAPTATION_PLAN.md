@@ -1,6 +1,6 @@
 # Next family: matched external D-head and joint adaptation
 
-Status: bounded design proposal after the [completed training-only diagnosis](CLEAN_PFF_DIAGNOSIS_RESULTS.md). **Not an executable frozen recipe; no fitting or selection has started.** The next implementation must settle and hash the remaining details below before reading training labels for fitting. Do not infer permission to change a recipe after its outcomes are available.
+Status: original bounded design proposal after the [completed training-only diagnosis](CLEAN_PFF_DIAGNOSIS_RESULTS.md). Its exact split, recipe and inner guards are now implemented in the [protocol and kernel](CLEAN_PFF_ADAPTATION_PROTOCOL.md). **Not an executable frozen campaign; no real fitting or selection has started.** The authenticated execution runner, cache identities, stage bounds and winner-refit adapter remain prerequisites. Do not infer permission to change a recipe after its outcomes are available.
 
 ## Rationale and candidate budget
 
