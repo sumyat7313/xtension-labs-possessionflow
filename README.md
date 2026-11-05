@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/likalight/xtension-labs-possessionflow/actions/workflows/ci.yml"><img src="https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white" alt="View GitHub Actions CI"></a>
   <a href="requirements-solution.txt"><img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python 3.12"></a>
-  <a href="docs/clean-pff-adaptation-runner-verification.json"><img src="https://img.shields.io/badge/tests-928%20passed%20%7C%201%20skipped-31b88a" alt="928 tests passed locally; one platform skip"></a>
+  <a href="docs/clean-pff-adaptation-launch-repair-verification.json"><img src="https://img.shields.io/badge/tests-974%20passed%20%7C%201%20skipped-31b88a" alt="974 tests passed locally; one platform skip"></a>
   <a href="models/submission.json"><img src="https://img.shields.io/badge/inference-CPU%20only-0c7769" alt="CPU only inference"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-MIT-blue" alt="MIT licensed code"></a>
   <img src="https://img.shields.io/badge/release-1.5.2-112b36" alt="Release 1.5.2">
@@ -40,7 +40,7 @@ An hourly continuation coordinates training and independent review agents throug
 
 **Training-only diagnosis completed:** all 83 stages and forty matches were independently audited. The joint correction reduced false-stoppage frames from **350,501 to 262,398** versus clean base heads, but short-possession precision fell as unmatched short predictions increased. This is component diagnosis, not a win over v1.5. No model was fitted or replaced. [Full findings and next bounded adaptation](docs/CLEAN_PFF_DIAGNOSIS_RESULTS.md).
 
-**Adaptation engineering completed:** the matched A/B training kernel and guarded inner selector passed 810 local engineering tests. Exact recipes, the 32/8 training split and source identities are recorded. The authenticated input bridge, attempt lifecycle, bounded worker dispatcher and one-winner refit are now implemented and independently tested. The latest full local suite ran 929 tests: 928 passed and one platform-dependent symlink test was skipped. Real-data preflight and execution freeze are next. No real adaptation fit or accuracy improvement is claimed. [Protocol and remaining prerequisites](docs/CLEAN_PFF_ADAPTATION_PROTOCOL.md).
+**Adaptation launch repair verified:** real preflight authenticated 47 observation caches and the clean training ancestry. The first launch failed before training because of a Windows virtual-environment process mismatch. A separately versioned repair preserves that failed attempt, authenticates the owned worker and contains its descendants before execution. The latest local suite ran 975 tests: 974 passed and one platform-dependent symlink test was skipped, including real subprocess integration. Actual repaired initialization is next; no new adaptation fit or accuracy improvement is claimed. [Failure, repair and validation](docs/CLEAN_PFF_ADAPTATION_LAUNCH_REPAIR.md).
 
 Research release **1.5.2** retains the original v1.5 submission and adds explicit boundary learning, contact-cue reliability checks, and a fresh two-match phase audit. **Retained the original v1.5 joint-state model and configuration. V7 adds completed research and reproducible evidence; phase-only fresh labels cannot validate stoppage or short-possession improvements or authorize replacement.**
 
