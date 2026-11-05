@@ -6,6 +6,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from unittest.mock import patch
 
@@ -195,9 +196,34 @@ class SubprocessBoundsTests(unittest.TestCase):
 
     def test_synthetic_sleeping_process_is_killed_on_timeout(self):
         with tempfile.TemporaryDirectory() as tmp:
-            with self.assertRaises(subprocess.TimeoutExpired):
-                op._execute([sys.executable,'-c','import time; time.sleep(30)'],
-                                   Path(tmp),Path(tmp)/'console.log',.1)
+            log=Path(tmp)/'console.log'
+            command=[sys.executable,'-c','import time; time.sleep(60)']
+            real_popen=subprocess.Popen
+            children=[]
+            def capture(*args,**kwargs):
+                child=real_popen(*args,**kwargs)
+                if args and args[0]==command:children.append(child)
+                return child
+            with patch.object(op.subprocess,'Popen',side_effect=capture), \
+                 self.assertRaises(subprocess.TimeoutExpired):
+                op._execute(command,Path(tmp),log,.1)
+            self.assertEqual(len(children),1)
+            self.assertIsNotNone(children[0].poll(),'Owned worker was not terminated and reaped')
+            # Windows can release inherited log handles shortly after process
+            # termination. Require release within five seconds, rather than
+            # letting immediate TemporaryDirectory cleanup race that release.
+            # A surviving sleeper keeps its handle and must still fail here;
+            # its natural exit is well beyond this bounded grace period.
+            deadline=time.monotonic()+5
+            while True:
+                try:
+                    log.unlink()
+                    break
+                except PermissionError as error:
+                    if os.name!='nt' or getattr(error,'winerror',None)!=32:raise
+                    if time.monotonic()>=deadline:
+                        self.fail('Timed-out worker log remained held for more than five seconds')
+                    time.sleep(.02)
 
 
 if __name__=='__main__':unittest.main()

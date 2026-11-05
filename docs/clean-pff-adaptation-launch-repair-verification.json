@@ -125,12 +125,39 @@
   ],
   "preserved_failures": [
     "First real v1 launch rejected Windows venv intermediary before inner claim; attempt remains consumed",
-    "Initial operator unit-test invocation failed because the sandbox default temporary directory was inaccessible; workspace TEMP/TMP fixed fixture setup without scientific changes"
+    "Initial operator unit-test invocation failed because the sandbox default temporary directory was inaccessible; workspace TEMP/TMP fixed fixture setup without scientific changes",
+    "Initial Windows CI failed old v1 timeout-test temporary-directory cleanup; strengthened actual-process and bounded handle-release assertions without editing frozen production sources"
   ],
   "limits": [
     "No new accuracy result or submission eligibility",
     "Actual v2 migration and initialization have not run",
     "Worker timeout is bounded; parent verification has no hard whole-process deadline",
     "PFF delivery rights and independently adjudicated dense labels remain unresolved"
-  ]
+  ],
+  "initial_ci": {
+    "run_id": 41951311216,
+    "commit": "095b10dcd5e4647ec6475e91e100208a15d82d33",
+    "ubuntu": "success",
+    "windows": "failure",
+    "failure": "Historical v1 timeout test raced immediate console-log deletion with Windows handle release; production process liveness was not established by that original assertion",
+    "log_sha256": "ccdcef3966f9c92894b35274f2e83c82f4ccbd04d5367758b3fd097e962b9721"
+  },
+  "timeout_test_followup": {
+    "count": 10,
+    "passed": 10,
+    "seconds": 27.572,
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "tests.test_clean_pff_adaptation_operator.SubprocessBoundsTests",
+      "tests.test_clean_pff_adaptation_repair_integrity",
+      "-v"
+    ],
+    "log_sha256": "16223149bc63f9661e1773ea1df448a409cb7be9362ea36cb439cca45a6c84a2",
+    "test_source_sha256": "368726f3cb270c1c297822ba3b2cedfeeceef311856f718d9e17aab4ce026c07",
+    "change": "Capture real owned process; assert terminated; require log deletion within five seconds; no ignored errors; sleeper cannot exit naturally within grace",
+    "production_source_changed": false,
+    "cloud_followup_pending": true
+  }
 }
