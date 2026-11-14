@@ -87,7 +87,7 @@ The corrected implementation passed **17 focused tests** in 32.342 seconds, incl
 The corrected focused-suite command used the project CPython 3.12 environment with a short temporary path:
 
 ```powershell
-$env:TEMP = 'C:/Users/tkala/Documents/Codex/fallback-test-tmp'
+$env:TEMP = Join-Path $env:USERPROFILE 'Documents/Codex/fallback-test-tmp'
 $env:TMP = $env:TEMP
 New-Item -ItemType Directory -Force -Path $env:TEMP | Out-Null
 python -B -m unittest tests.test_compliant_fallback tests.test_fallback_export_integrity -v
