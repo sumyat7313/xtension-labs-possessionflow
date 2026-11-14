@@ -2,7 +2,9 @@
 
 Team: **Xtension Labs**. The existing `likalight/xtension-labs-possessionflow` repository must remain private. No repository visibility change, public publication, provider contact or competition submission is performed by this checklist.
 
-The organiser's [published submission contract](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/SUBMISSION.md), checked November 14, requires one possession CSV, a public code-repository URL and a short technical document. The published deadline is **November 17, 2026**; the document does not state the cutoff time or timezone. The user supplied the emailed submission-form URL and explicitly instructed **do not submit yet**. The full form URL is retained only in the local checkpoint, not this repository document. The precise cutoff details remain unanswered.
+The organiser's [published submission contract](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/SUBMISSION.md), checked November 14, requires one possession CSV, a public code-repository URL and a short technical document. Read-only inspection of the emailed form confirmed the deadline: **November 17, 2026, at 23:59 CET** (**November 18 at 06:59 Singapore time**, or November 17 at 22:59 UTC). Only the latest pre-deadline submission counts. The user explicitly instructed **do not submit yet**. The full form URL is retained only in the local checkpoint, not this repository document.
+
+The form requires email acknowledgement, team name, team members' names, a possession CSV, a public code repository URL, and a short technical document. Each upload accepts one file up to 10 MB. Its naming instruction specifically requests **`Xtension Labs.csv` and `Xtension Labs.pdf`**. The team-named PDF has now been generated from the frozen Markdown report and checked visually. No fields were filled, files uploaded, or submission made during inspection.
 
 ## Candidate separation
 
@@ -17,15 +19,17 @@ The scheduled automation was deleted at the user's request. The current work is 
 
 ## Prepared local deliverables
 
-`tools/build_compliant_fallback.py` prepared the audited fallback package. Its explicit source allowlist is the publication boundary. The verified portable source contains only required inference code, pinned dependencies, the audited Sportec-trained model/configuration, licensing/attribution, package integrity information and the technical report. It excludes `.git`, supplied match data, challenge ground truth, all target-derived historical models, PFF-fitted weights, provider documents, sensitive download links, model-training caches, frame-level predictions and diagnostics.
+`tools/build_compliant_fallback.py` prepared the corrected, 31-file fallback package under `runs/compliant-fallback-20261114-git-safe/`. Its explicit source allowlist is the publication boundary. The verified portable source contains only required inference code, pinned dependencies, the audited Sportec-trained model/configuration, licensing/attribution, package integrity information and the technical report. It excludes `.git`, supplied match data, challenge ground truth, all target-derived historical models, PFF-fitted weights, provider documents, sensitive download links, model-training caches, frame-level predictions and diagnostics.
 
-The team-named prediction CSV is a **separate form upload**, not a file in the public source archive. It is stored in the ignored local delivery directory with its receipt; the team-named technical document is at the package root. The existing `submission/Xtension Labs.csv` remains the held historical comparator and is not overwritten.
+The correction adds a pinned `.gitattributes` containing `* -text` so Git preserves exact source/model bytes instead of applying platform newline conversion. The earlier 30-file export and its successful reproduction are preserved unchanged as superseded evidence. Use the corrected package for any subsequent review or publication decision.
+
+The team-named prediction CSV is a **separate form upload**, not a file in the public source archive. It is stored in the ignored local delivery directory with its receipt; the team-named PDF and Markdown technical documents are at the package root. The existing `submission/Xtension Labs.csv` remains the held historical comparator and is not overwritten.
 
 The technical document source is [Xtension_Labs_Technical_Report.md](Xtension_Labs_Technical_Report.md). It covers the fixed fallback only: method, used/dropped assets, training amount and label provenance, possession semantics, limitations, reproduction and attribution. If a different model later becomes eligible, prepare a new model-specific report rather than silently changing what the existing report describes.
 
 ## Release checklist
 
-Checks 1–6 passed locally for the fixed fallback on November 14. The two inference executions used separate source/output directories; the second source was extracted independently from the prepared archive. Both CSVs have exactly 199,319 valid ordered rows and identical SHA-256, both receipts match, and source verification remained unchanged. This establishes reproducibility and format correctness, not predictive accuracy or submission authorization.
+Checks 1–6 passed locally again for the corrected fallback on November 14. The two inference executions used separate source/output directories; the second source was extracted independently from the corrected archive. Both CSVs have exactly 199,319 valid ordered rows and identical SHA-256, both receipts match, and source verification remained unchanged. The CSV also matches the earlier export's output. This establishes reproducibility and format correctness, not predictive accuracy or submission authorization.
 
 1. Authenticate the exact clean candidate, configuration, connected ancestry and copied inference-source bytes. Reject target-derived learned components or mismatched model/configuration files.
 2. Validate the source-export allowlist and archive contents. No history, raw data, restricted weights, predictions or sensitive URLs may enter the public-source candidate. Confirm the current private repository's visibility remains unchanged.
@@ -34,7 +38,7 @@ Checks 1–6 passed locally for the fixed fallback on November 14. The two infer
 5. Reproduce the CSV from the extracted portable source into a different output directory using the same pinned runtime and inputs. Require matching SHA-256 hashes. Retain the original and reproduced local receipts.
 6. Check that the technical report describes the model actually packaged. Record source, model, configuration and CSV hashes. Preserve the explicit failure to beat v1.5 and do not convert engineering-test success into an accuracy claim.
 7. Review the concrete sanitized public-source candidate with the user before publication. Use a separate repository or export destination; do not make the existing development repository public.
-8. The emailed form URL has been received. Confirm the registered team name and membership, and confirm the cutoff time/timezone. The [published rules](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/RULES.md) specify teams of three to five; GitHub collaborators are not evidence of registration.
+8. The emailed form, exact cutoff and required team-named PDF are verified. Confirm the registered team name and all members' names. The [published rules](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/RULES.md) specify teams of three to five; GitHub collaborators are not evidence of registration. Keep both uploads below 10 MB.
 9. Submission is expressly not authorized yet. Submit only if the user later authorizes the concrete CSV, public URL and report. Save the form confirmation separately. There is no automatic submission step.
 
 ## Rights and label-quality record
@@ -47,7 +51,6 @@ PFF local analytical access does not establish permission to deliver PFF-trained
 
 ## Outstanding inputs and decisions
 
-- The precise deadline time/timezone; the submission-form URL is already received.
 - Confirmation that all team members registered under **Xtension Labs**, with the required team size.
 - User approval of a concrete, separate sanitized public-code destination; existing repository stays private.
 - A later explicit instruction to submit; the current instruction is to hold submission.
@@ -57,35 +60,46 @@ All research failures and consumed experiment attempts remain in the local ledge
 
 ## Completed local reproduction evidence
 
-The aggregate checkpoint `runs/submission-preparation-20261114/fallback-reproduction.json` records `passed` at `2026-11-14T05:31:23Z`, independent extracted-source reproduction, identical receipts, and no reference access, final-PFF access, publication or submission. Input-specific hashes and paths remain local and are not reproduced here.
+The current aggregate checkpoint `runs/submission-preparation-20261114/fallback-reproduction-git-safe.json` records `passed` at `2026-11-14T05:55:40Z`, independent extracted-source reproduction, identical receipts, and no reference access, final-PFF access, publication or submission. The accompanying `fallback-privacy-audit-git-safe.json` verifies all 31 explicit files, clean Sportec weights only, no data records/history/sensitive URLs or machine paths, separate predictions and unchanged historical v1.5 bytes. Input-specific hashes and paths remain local and are not reproduced here.
 
 | Artifact | SHA-256 |
 | --- | --- |
 | Both prediction CSVs | `313f467af967cf1f471d4e37bd85feddfb37041c16e96d48816833f1851ebb26` |
-| Sanitized source archive | `26bceb5aaa243884128c66542c94606377fee93761b67de19364ad3cc740cdb2` |
-| Source integrity manifest | `9ff9a5400aaee73ff16e4f89562075565798838b9b00875c3a238b5002652db7` |
-| Packaged technical document | `c55f06df28f25e23f50b5c997236bf22eacb28ddf8c6c81aee9f169a8a0c57c5` |
+| Corrected sanitized source archive | `4a8be9b64f96bd3a2d3d1f82b7c17798d7580ba06a6440f55f88b45435c03b79` |
+| Corrected source integrity manifest | `c06c1de1fce1e0b55eefd2afddc2621f89a4ffa53c61f284b3f2df77f418e1d3` |
+| Packaged Markdown technical document | `c55f06df28f25e23f50b5c997236bf22eacb28ddf8c6c81aee9f169a8a0c57c5` |
+| Form-ready PDF technical document | `185949e436a5cdd079cfc8dbba231c1f0e584957af0c513094fcd445c3e3e912` |
 
-Model and configuration identities remain those specified above. The technical document was not edited after packaging. All frame predictions and fitted model files remain outside tracked repository changes.
+Model and configuration identities remain those specified above. The corrected archive is **146,489 bytes**. The Markdown document remains unchanged; the PDF is the identical verified **3-page, 105,415-byte** artifact. All three pages were rendered with Poppler and visually inspected; extracted text exactly matches the frozen Markdown after removing formatting syntax and normalizing typographic dashes. `pdf-delivery-git-safe.json` binds those reused PDF bytes and the original `pdf-delivery.json` visual evidence to the corrected archive. All frame predictions, fitted model files and delivery artifacts remain outside tracked repository changes.
+
+The superseded archive `26bceb5aaa243884128c66542c94606377fee93761b67de19364ad3cc740cdb2`, its manifest `9ff9a5400aaee73ff16e4f89562075565798838b9b00875c3a238b5002652db7`, and the original successful `fallback-reproduction.json` checkpoint at `2026-11-14T05:31:23Z` remain unchanged. They are retained for history, not the current public-source candidate.
 
 ## Independent export review
 
-Four synthetic integrity tests passed on November 14 after review fixes. They verify the clean allowlisted export and rejection of an extra model file, frame-record file, or changed input-reader source even when the archive, manifest and local receipts are all rehashed consistently. The implementation now authenticates the fixed model/configuration and scientific source bytes independently of those mutable receipts. Runtime Git metadata is permitted only for a cloned public source repository; it remains excluded from the prepared archive. CSV validation enforces the exact header, frame sequence and label values.
+The current complete local review folder is `dist/xtension-labs-fallback-review-20261114-git-safe/`. It contains the CSV, PDF, Markdown report, corrected source ZIP, checksums and an explicit submission-hold note. This directory remains ignored and local; the earlier review folder is preserved. The CSV is 1,682,773 bytes and the PDF is 105,415 bytes, both below the form's 10 MB upload limit. Only the separately reviewed source ZIP contents are a public-code candidate; the whole delivery folder must not be published.
 
-The isolated review command was:
+The corrected implementation, commit `5343fef5b625bc97ddfa645863df047ad2cd80a4`, passed [Linux and Windows CI](https://github.com/likalight/xtension-labs-possessionflow/actions/runs/43563810217). Each platform ran **992 tests**: Linux passed 981 with 11 skips in 35.155 seconds; Windows passed 985 with 7 skips in 101.830 seconds. The successful logs and aggregate status are retained locally as `git-safe-ci.*`. Platform/dependency skips remain explicit; these engineering checks do not measure hidden challenge accuracy.
+
+Historical fallback implementation commit `4684c41eda668da7b2b3afc0098c9f6fb45a24f0` also passed its [earlier Linux and Windows CI](https://github.com/likalight/xtension-labs-possessionflow/actions/runs/43562212507). That run had 990 tests per platform: Linux passed 979 with 11 skips, Windows passed 983 with 7 skips. Its release-integrity and structural-validation steps and 15 focused local tests passed. This earlier evidence is preserved separately from the corrected implementation's results.
+
+The corrected implementation passed **17 focused tests** in 32.342 seconds, including five independent integrity tests. They verify the clean allowlisted export and rejection of an extra model file, frame-record file, or changed input-reader source even when the archive, manifest and local receipts are all rehashed consistently. A real local Git add/commit with `core.autocrlf=true`, followed by clones using `true`, `input` and `false`, preserves every exported byte, including original CRLF Python files; each clone's portable verifier passes. The `.gitattributes` bytes are independently pinned in both package and runtime verification. Runtime Git metadata is permitted only for a cloned public source repository; it remains excluded from the prepared archive. CSV validation enforces the exact header, frame sequence and label values.
+
+The corrected focused-suite command used the project CPython 3.12 environment with a short temporary path:
 
 ```powershell
-$env:TEMP = Join-Path (Get-Location) 'runs/fallback-review-test-tmp'
+$env:TEMP = 'C:/Users/tkala/Documents/Codex/fallback-test-tmp'
 $env:TMP = $env:TEMP
 New-Item -ItemType Directory -Force -Path $env:TEMP | Out-Null
-python -B -m unittest tests.test_fallback_export_integrity -v
+python -B -m unittest tests.test_compliant_fallback tests.test_fallback_export_integrity -v
 ```
 
-This used the existing CPython 3.12 project environment. An initial invocation during concurrent builder editing stopped at a syntax error before executing tests; the owner corrected it, and the completed run passed all four tests. The review used invented model bytes and records, original code and non-reconstructive evidence only. It did not perform real-match inference, inspect fitted-weight contents, establish predictive accuracy or resolve historical eligibility.
+The successful Git test required approved execution outside the sandbox because local clone plumbing was blocked; no network or provider data was used. Prior MAX_PATH/clone environment failures are retained in `fallback-gitattributes-checkpoint.json` and its logs. The earlier four-test review and its corrected initial syntax failure also remain recorded. These tests use invented model bytes and records, original code and non-reconstructive evidence only. They do not perform real-match inference, inspect fitted-weight contents, establish predictive accuracy or resolve historical eligibility.
 
 ## Timeline and fixed-configuration provenance review
 
 A bounded review on November 14 compared code, Git history and aggregate campaign evidence; it opened no challenge records, fitted-weight contents or predictions.
+
+The current public `evaluation/possession_metrics.py` and `evaluation/validate_submission.py` were also authenticated from the organiser's repository on November 14. Both exactly match the local evaluator after newline normalization, with identical Python syntax trees. No scoring or CSV-format drift was found. This check fetched public source code only, never ground truth or prediction files.
 
 The complete local `games.py` equals the [organiser's published source](https://github.com/metrica-sports/more-than-a-hack-2027/blob/main/games.py) after converting Windows CRLF line endings to LF. The local SHA-256 is `473bf0502a28d93ff49fe5c20be4e546e30a9d8fa4112ab50b1ecdaf44233064`; the fetched LF source is `3b2122794e9e0476e2b3a871d14880e5fa47c4feaeacf99caef054c2309076ce`. Thus the frame-count, period boundaries, offsets and pitch constants used here are organiser-provided. The comments about video measurement originate in that supplied source; this review found no team-added manual timeline annotation. The comparison initially encountered sandbox DNS failure; the successful public-source fetch and newline-normalized equality resolved the question without accessing any match asset.
 
