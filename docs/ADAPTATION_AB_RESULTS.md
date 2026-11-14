@@ -92,9 +92,13 @@ The coordinator's local verifier authenticated actual artifacts, reconstructed t
 
 Complete per-fixture metrics, exact commands, fits and audit receipts remain in the ignored local ledgers. Only non-reconstructive aggregate findings are published here.
 
-## Next permitted step and remaining limits
+## Winner refit and remaining limits
 
-Independent review admits exactly the existing fixed A winner-refit stage on the original forty PFF training fixtures plus seven clean Sportec fixtures. The refit keeps the recipe, one-heavy-fit limit, one thread per worker and 1,800-second stage bound. This admission does not authorize development or final access. Actual refit bytes and connected lineage must be verified before a separately reviewed development route is admitted; all original development gates remain in force.
+After independent admission, the single fixed A winner refit completed on the original forty PFF training fixtures plus seven clean Sportec fixtures. It retained the recipe, one-heavy-fit limit, one thread per worker and 1,800-second stage bound. The coordinator verified actual artifact bytes; a separate aggregate review checked the exact 47-fixture roster, exclusions, recipe, clean parent, frozen stoppage head, new joint fit and selection binding. The complete bounded operator now records thirty completed stages, including this sole refit, while retaining the earlier failed launch.
+
+The refit model SHA-256 is `0481630d32bd17218c3e897af66a2d9babdace35e5ca33fe112a44730f96eaca`; its aggregate report SHA-256 is `68990945d282277534c975c20c193c5ad14dbdba3534cd9de1d39b95d9691625`. These weights remain local. No second candidate was refitted.
+
+Refitting does not supply new validation scores or authorize development or final access. Connected lineage and a separately reviewed fixed-candidate development route must be admitted before the v1.5 comparison; all original development gates remain in force.
 
 PFF fitted-model delivery rights and independent dense-reference validity remain unresolved. Event-derived provider-reference agreement must not be described as hidden challenge accuracy. PFF records, reconstructed references and fitted weights remain local. The existing repository stays private; this report contains only method descriptions, identities and non-reconstructive aggregate findings.
 
