@@ -89,6 +89,23 @@ class FallbackTests(unittest.TestCase):
         self.runner(out)['verify_source']()
         with self.assertRaises(ValueError):builder.verify_package(out)
 
+    def test_git_attributes_preserve_exact_source_bytes_and_are_pinned(self):
+        out=self.prepare()
+        path=out/'source/.gitattributes'
+        self.assertEqual(path.read_bytes(),b'* -text\n')
+        runner=self.runner(out)
+        self.assertEqual(runner['SCIENTIFIC_SHA']['.gitattributes'],builder._sha(b'* -text\n'))
+        # Even coherently changing the mutable manifest cannot permit checkout
+        # normalization of source bytes covered by scientific provenance hashes.
+        path.write_bytes(b'* text=auto\n')
+        manifest_path=out/'source/source-manifest.json'
+        manifest=json.loads(manifest_path.read_bytes())
+        manifest['files']['.gitattributes']=builder._sha(path.read_bytes())
+        manifest_path.write_bytes(builder._canonical(manifest)+b'\n')
+        with self.assertRaisesRegex(ValueError,'Unreviewed inference source bytes'):
+            runner['verify_source']()
+        with self.assertRaises(ValueError):builder.verify_package(out)
+
     def test_runtime_csv_contract_is_exact(self):
         runner=self.runner(self.prepare())
         # Format tests use invented labels; no challenge reference is read.

@@ -1,6 +1,9 @@
 """Independent source-export review using invented bytes, never match records."""
 import json
+import os
 from pathlib import Path
+import shutil
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -95,6 +98,59 @@ class ExportIntegrityReviewTests(unittest.TestCase):
         self._self_consistent_extra_file('possession/io.py')
         with self.assertRaises(ValueError):
             export.verify_package(self.destination)
+
+    def test_git_add_and_clone_preserve_all_export_bytes_with_autocrlf(self):
+        git = shutil.which('git')
+        self.assertIsNotNone(git, 'Git is required for publication-byte verification')
+        source = self.destination / 'source'
+        expected = {p.relative_to(source).as_posix(): p.read_bytes()
+                    for p in source.rglob('*') if p.is_file()}
+        self.assertTrue(any(b'\r\n' in raw for name, raw in expected.items()
+                            if name.endswith('.py')), 'Exercise original CRLF source bytes')
+        self.assertEqual(expected['.gitattributes'], b'* -text\n')
+        environment = dict(os.environ, GIT_CONFIG_NOSYSTEM='1',
+                           GIT_CONFIG_GLOBAL=os.devnull, GIT_TERMINAL_PROMPT='0')
+        # Ignore any parent process's alternate repository/index and injected config.
+        for key in list(environment):
+            if key in ('GIT_DIR', 'GIT_WORK_TREE', 'GIT_INDEX_FILE', 'GIT_CONFIG_PARAMETERS') \
+                    or key.startswith(('GIT_CONFIG_COUNT', 'GIT_CONFIG_KEY_', 'GIT_CONFIG_VALUE_')):
+                environment.pop(key)
+        empty = self.root / 'empty-git-template-and-hooks'
+        empty.mkdir()
+
+        def command(directory, *arguments, autocrlf='true'):
+            result = subprocess.run(
+                [git, '-c', f'core.autocrlf={autocrlf}', '-c', 'core.safecrlf=false',
+                 '-c', 'core.longpaths=true',
+                 '-c', f'init.templateDir={empty}', '-c', f'core.hooksPath={empty}',
+                 '-c', 'commit.gpgSign=false', '-c', 'user.name=Synthetic Export Review',
+                 '-c', 'user.email=export-review@example.invalid', *arguments],
+                cwd=directory, env=environment, check=False, capture_output=True, text=True,
+                timeout=30)
+            self.assertEqual(result.returncode, 0, result.stderr[:2000])
+            return result
+
+        command(source, 'init', '--quiet')
+        command(source, 'add', '--all')
+        command(source, 'commit', '--quiet', '-m', 'Synthetic byte-preservation fixture')
+        # The strict Windows-style path is the primary regression; input/false
+        # also cover common Linux/macOS checkout configurations.
+        for autocrlf in ('true', 'input', 'false'):
+            with self.subTest(checkout_autocrlf=autocrlf):
+                clone = self.root / ('clone-autocrlf-' + autocrlf)
+                command(self.root, 'clone', '--quiet', '--local', '--no-hardlinks',
+                        source.relative_to(self.root).as_posix(), clone.name,
+                        autocrlf=autocrlf)
+                actual = {p.relative_to(clone).as_posix(): p.read_bytes()
+                          for p in clone.rglob('*')
+                          if p.is_file() and p.relative_to(clone).parts[0] != '.git'}
+                self.assertEqual(set(actual), set(expected))
+                for name, raw in expected.items():
+                    self.assertEqual(actual[name], raw, name)
+                scope = {'__name__': 'synthetic_export_review',
+                         '__file__': str(clone / 'run_fallback.py')}
+                exec(compile(actual['run_fallback.py'], 'run_fallback.py', 'exec'), scope)
+                scope['verify_source']()
 
 
 if __name__ == '__main__':

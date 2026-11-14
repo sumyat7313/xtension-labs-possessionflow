@@ -43,7 +43,8 @@ INFERENCE_FILES = frozenset(('evaluation/possession_metrics.py', 'games.py',
     'possession/transition.py', 'possession/typed_boundary.py'))
 EXPORT_FILES = INFERENCE_FILES | frozenset(('run_fallback.py', 'models/fallback.json',
     'config.json', 'lineage.json', 'requirements.txt', 'LICENSE', 'Xtension Labs.md',
-    'provenance.json', 'ATTRIBUTION.md', 'README.md'))
+    'provenance.json', 'ATTRIBUTION.md', 'README.md', '.gitattributes'))
+GIT_ATTRIBUTES = b'* -text\n'
 GAMES_SHA = '473bf0502a28d93ff49fe5c20be4e546e30a9d8fa4112ab50b1ecdaf44233064'
 REQUIREMENTS_SHA = '695cb1c7d3bbfbce4f665574f7287d2bde445511e5d096a1a79d9a42376f9d4c'
 
@@ -329,6 +330,7 @@ if __name__ == '__main__':
 
 def runner_bytes():
     scientific = {name:_sha(raw) for name,raw in inference_sources(ROOT).items()}
+    scientific['.gitattributes'] = _sha(GIT_ATTRIBUTES)
     return (RUNNER.replace('MODEL_ID_LITERAL', repr(CANDIDATE_SHA))
             .replace('CONFIG_ID_LITERAL', repr(CONFIG_SHA))
             .replace('EXPECTED_FILES_LITERAL', 'set(' + repr(tuple(sorted(EXPORT_FILES))) + ')')
@@ -358,6 +360,7 @@ def prepare(out):
     report = _relative(ROOT, REPORT).read_bytes()
     _need(report.strip(), 'Technical report is required before packaging')
     files.update({
+        '.gitattributes': GIT_ATTRIBUTES,
         'run_fallback.py': runner_bytes(),
         'models/fallback.json': evidence['model_bytes'],
         'config.json': evidence['config_bytes'],
@@ -444,6 +447,7 @@ def verify_package(out):
         identity=GAMES_SHA if name=='games.py' else evidence['scientific_sources'][name]
         _checked(dest/'source',name,identity)
     _checked(dest/'source','requirements.txt',REQUIREMENTS_SHA)
+    _checked(dest/'source','.gitattributes',_sha(GIT_ATTRIBUTES))
     _need(_relative(dest/'source','run_fallback.py').read_bytes()==runner_bytes(), 'Unreviewed inference runner')
     _need({p.relative_to(dest/'source').as_posix() for p in (dest/'source').rglob('*') if p.is_file()}
           ==set(expected)|{'source-manifest.json'},'Source export contains unexpected files')
